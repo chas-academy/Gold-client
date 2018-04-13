@@ -9,6 +9,7 @@ export default class Home extends Component {
         <header className="home-view-header">
           <img src={ReactLogo} className="home-view-logo" alt="React Logo" />
           <PageTitle />
+          <h1>Docker work plz</h1>
         </header>
       </div>
     )
