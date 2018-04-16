@@ -14,7 +14,7 @@ export default class Home extends Component {
                     />
                     <PageTitle />
                     <h1>Docker work plz</h1>
-                    <h2>Gelo testish</h2>
+                    <h2>Gelo te stish</h2>
                 </header>
             </div>
         );
