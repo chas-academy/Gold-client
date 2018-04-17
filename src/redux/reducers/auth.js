@@ -2,8 +2,8 @@ const initialState = {};
 
 const authReducer = (state = initialState, action) => {
     switch (action.type) {
-        case SOMETHING:
-            return { }
+    //     case SOMETHING:
+    //         return { }
         default:
             return state;
     }
