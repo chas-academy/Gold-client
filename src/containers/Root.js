@@ -8,7 +8,7 @@ import {
 import { Provider } from "react-redux";
 import thunk from "redux-thunk";
 
-import rootReducer from "../reducers/Index";
+import rootReducer from "../redux/reducers";
 
 import {
   Home,
