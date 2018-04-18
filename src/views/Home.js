@@ -43,7 +43,6 @@ class Home extends Component {
             // {switch (true) {
             //     case isAdmin:  
                     <div>
-                        <p>Admin - home</p>
                         <AdminMainMenu />
                     </div>
             //         break;
