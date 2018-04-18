@@ -13,7 +13,11 @@ import rootReducer from "../redux/reducers";
 import {
   Home,
   Accounts,
-  CreateAccounts,
+  HandleAccounts,
+  Employees,
+  Companies,
+  PrivateCustomers,
+  Profile,
   IncomingOrders,
   AddOrders,
   HandleOrders,
@@ -39,7 +43,11 @@ const Root = () => {
           <Route exact path="/" component={Login} />
           <Route path="/home" component={Home} />
           <Route path="/admin/accounts" component={Accounts} />
-          <Route path="/admin/accounts/create" component={CreateAccounts} />
+          <Route path="/admin/accounts/handle" component={HandleAccounts} />
+          <Route path="/admin/accounts/Profile" component={Profile} />
+          <Route path="/admin/accounts/employees" component={Employees} />
+          <Route path="/admin/accounts/customers/private" component={PrivateCustomers} />
+          <Route path="/admin/accounts/customers/companies" component={Companies} />
           <Route path="/admin/orders/incoming" component={IncomingOrders} />
           <Route path="/admin/orders/add" component={AddOrders} />
           <Route path="/admin/orders/handle" component={HandleOrders} />
