@@ -9,3 +9,4 @@ export { default as IncomingOrders } from './admin/orders/IncomingOrders';
 export { default as InternalOrders } from './admin/orders/InternalOrders';
 export { default as NotFoundPage } from './NotFoundPage';
 export { default as Login } from './Login';
+export { default as Register } from './Register';

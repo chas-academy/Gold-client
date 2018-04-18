@@ -21,6 +21,7 @@ import {
   Complaints,
   InternalOrders,
   Login,
+  Register,
   NotFoundPage
 } from "../views";
 
@@ -47,6 +48,7 @@ const Root = () => {
           <Route path="/admin/orders/complaints" component={Complaints} />
           <Route path="/admin/orders/internal" component={InternalOrders} />
           <Route path="/logout" component={Login} />
+          <Route path="/register" component={Register} />
           <Route component={NotFoundPage} />
         </Switch>
       </Router>
