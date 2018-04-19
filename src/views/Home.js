@@ -3,7 +3,7 @@ import React, { Component } from "react"
 // import CustomerHome from '/customers/Home'
 // import EmployeeHome from '/employees/Home'
 
-import { AdminTopNav, AdminBottomNav } from './../components'
+import { AdminTopNav, AdminBottomNav, GoogleApiWrapper, MapContainer } from './../components'
 
 import './style.css'
 
@@ -44,6 +44,7 @@ class Home extends Component {
             //     case isAdmin:  
                     <div>
                         <AdminTopNav />
+                        <MapContainer />
                         <AdminBottomNav />
                     </div>
             //         break;
