@@ -1,14 +1,19 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
+import React, { Component } from "react"
+// import { connect } from "react-redux";
+import { AdminTopNav, AdminBottomNav, UpdateUser } from '../../../components'
 
-class CreateAccounts extends Component {
+export default class HandleAccounts extends Component {
 
   render() {
     return (
-        <p> CreateAccounts </p>
+        <div> 
+            <AdminTopNav />
+            <UpdateUser />
+            <AdminBottomNav />
+        </div>    
     )
 }
 
 }
 
-export default (CreateAccounts);
+

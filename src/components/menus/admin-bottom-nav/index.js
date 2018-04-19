@@ -31,9 +31,9 @@ class AdminBottomNav extends Component {
                         </Link>
                     </li>
                     <li>
-                        <button onClick={this.logout}>
-                            Logga ut
-                        </button>
+                    <Link to={`/home`}>
+                          <p>Home</p>
+                    </Link>
                     </li>
                 </ul>    
             </nav>

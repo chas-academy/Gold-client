@@ -3,7 +3,7 @@ import React, { Component } from "react"
 // import CustomerHome from '/customers/Home'
 // import EmployeeHome from '/employees/Home'
 
-import { AdminTopNav, AdminBottomNav, GoogleApiWrapper, MapContainer } from './../components'
+import { AdminTopNav, AdminBottomNav, MapContainer } from './../components'
 
 import './style.css'
 

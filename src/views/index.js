@@ -1,5 +1,4 @@
 export { default as Home } from './Home';
-export { default as Accounts } from './admin/accounts/Accounts';
 export { default as HandleAccounts } from './admin/accounts/HandleAccounts';
 export { default as Employees } from './admin/accounts/Employees';
 export { default as Companies } from './admin/accounts/Companies';
