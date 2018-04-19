@@ -1,17 +1,25 @@
-import React, { Component } from "react";
+import React, { Component } from 'react'
 // import { connect } from "react-redux";
+import { Link, withRouter } from 'react-router-dom'
 
-export default class CompanyList extends Component {
+
+class CompanyList extends Component {
   render() {
+      const userId = 3
+
     return (
       <div>
         <h1> Företagskunder </h1>
         <ul>
           <li>
-            <p>Stena</p>
+          <Link to={`/admin/accounts/customers/companies/${userId}`}>
+             <p>Stena</p>
+          </Link>
           </li>
         </ul>
       </div>
     );
   }
 }
+
+export default withRouter(CompanyList);
