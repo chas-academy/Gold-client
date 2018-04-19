@@ -3,7 +3,7 @@ import React, { Component } from "react"
 // import CustomerHome from '/customers/Home'
 // import EmployeeHome from '/employees/Home'
 
-import { AdminMainMenu } from './../components'
+import { AdminTopNav, AdminBottomNav } from './../components'
 
 import './style.css'
 
@@ -43,7 +43,8 @@ class Home extends Component {
             // {switch (true) {
             //     case isAdmin:  
                     <div>
-                        <AdminMainMenu />
+                        <AdminTopNav />
+                        <AdminBottomNav />
                     </div>
             //         break;
             //     case isCustomer:
