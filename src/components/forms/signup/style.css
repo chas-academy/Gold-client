@@ -19,8 +19,18 @@
 }
 
 .help-block {
+    background-color: #ff0b0b00 !important;
+    color: black;
+}
+
+.error {
     background-color: #fffdfd00 !important;
-    color: rgb(36, 36, 36);
+    color: red
+}
+
+.sucess {
+    background-color: #fffdfd00 !important;
+    color: green;
 }
 
 @media only screen and (min-width : 320px) and (max-width : 480px) {

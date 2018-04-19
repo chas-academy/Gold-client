@@ -27,7 +27,7 @@ class SignUp extends Component {
   }  
 
   handleChange(e) {
-    
+    const regex = "blalbajbjb";
     this.setState({ [e.target.name]: e.target.value });
     console.log(e.target.value);
 
@@ -41,14 +41,14 @@ class SignUp extends Component {
         this.setState({ passwordError: false });
       }
 
-      if(this.state.persOrgNumber.length <= 9 
-        && this.state.persOrgNumber.length) {
-        console.log("bad pers/org");
-        this.setState({ perOrgNumberError: true });
+      if(this.state.persOrgNumber.length >= 9 ) {
+        console.log("good pers/org");
+        this.setState({ persOrgNumberError: true });
+        
       }
       else {
-        console.log("good pers/org");
-        this.setState({ perOrgNumberError: false });
+        console.log("bad pers/org");
+        this.setState({ persOrgNumberError: false });
       }
 
     }
@@ -89,9 +89,16 @@ class SignUp extends Component {
           <div className="form-group">
             <label>Person eller OrganisationsNummer</label>
             <input type='text' name='persOrgNumber' className="form-control" placeholder='ÅÅMMDD-XXXX' value={persOrgNumber} onChange={this.handleChange} required/>
+
+            {/* error handling */}
             { !persOrgNumber  &&
               <div className="help-block">Fyll i ditt organisationsnummer alternativt ditt personummer</div>
-              
+              } 
+            { !persOrgNumberError &&
+              <div className="help-block error">org nummer eller pers nummer måste vara 10 siffor och en - måste ingås</div>
+              } 
+            { persOrgNumberError &&
+              <div className="help-block sucess">org/pers nummer är tillräkligt lång</div>
               } 
           </div>
 
@@ -99,12 +106,14 @@ class SignUp extends Component {
           <div className="form-group">
             <label>Lösenord</label>
             <input type='password' name='password' className="form-control" placeholder='lösenord' value={password}  onChange={this.handleChange} required/> 
+
+            {/* error handling */}
             { !passwordError  &&
-              <div className="help-block">Lösenord måste vara  minst 8 karaktärer</div>
+              <div className="help-block error">Lösenord måste vara  minst 8 karaktärer</div>
               }
             { passwordError  &&
-              <div className="help-block">:)</div>
-              } 
+              <div className="help-block sucess">Lösenord är tillräckligt lång</div>
+              }
           </div>
           
 
