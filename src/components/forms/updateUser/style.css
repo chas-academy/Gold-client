@@ -1,0 +1,24 @@
+.UpdateUser-login {
+    width: 350px;
+    margin: auto;
+    border: #41293291;
+    margin-top: 200px;
+}
+
+.btn-primary {
+    width: 350px;
+    margin: auto;
+}
+
+.App-signup-text {
+    display: flex;
+    margin: auto;
+    justify-content: center;
+    margin-top: 15px;
+    font-size: 16px;
+}
+
+.help-block {
+    background-color: #fffdfd00 !important;
+    color: rgb(36, 36, 36);
+}

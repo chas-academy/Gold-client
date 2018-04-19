@@ -1,21 +1,25 @@
 import React, { Component } from "react"
 // import { connect } from "react-redux";
+// import { Link, withRouter } from "react-router-dom"
 
-export default class EmployeeList extends Component {
-
-
+class EmployeeList extends Component {
+  
   render() {
     return (
         <div> 
-            <h1> Anställda </h1>
+            <h1> Hantera Anställda </h1>
                 <ul>
                     <li>
-                        <p>Karin</p>
+                        {/* <Link to={'/admin/accounts'}>
+                          <p>Karin</p>
+                        </Link> */}
                     </li>
                 </ul>
         </div>    
-    )
-}
+        )
+    }
 
 }
+
+export default withRouter(EmployeeList);
 

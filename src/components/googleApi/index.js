@@ -4,7 +4,7 @@ import GoogleMapReact from 'google-map-react'
 
 const AnyReactComponent = ({ text }) => <div>{ text }</div>;
 
-const Google = ';
+const Google = KEY;
 
 export default class MapContainer extends Component {
   

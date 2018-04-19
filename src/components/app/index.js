@@ -31,6 +31,7 @@ class App extends Component {
         <Switch>
           <Route exact path="/" component={Login} />
           <Route path="/home" component={Home} />
+          <Route path="/admin/accounts/employees/update/:userId" />
           <Route path="/admin/accounts/handle" component={HandleAccounts} />
           <Route path="/admin/accounts/Profile" component={Profile} />  
           <Route path="/admin/accounts/employees" component={Employees} />
