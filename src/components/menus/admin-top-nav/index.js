@@ -11,9 +11,7 @@ class AdminTopNav extends Component {
       <nav>
         <Tabs>
           <div className="TabLinks">
-            <TabLink to="tab1" default>
-              Ärenden
-            </TabLink>
+            <TabLink to="tab1">Ärenden</TabLink>
             <TabLink to="tab2">Konton</TabLink>
           </div>
           <TabContent for="tab1">
