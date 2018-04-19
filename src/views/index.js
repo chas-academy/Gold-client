@@ -1,6 +1,9 @@
 export { default as Home } from './Home';
-export { default as Accounts } from './admin/accounts/Accounts';
-export { default as CreateAccounts } from './admin/accounts/CreateAccounts';
+export { default as HandleAccounts } from './admin/accounts/HandleAccounts';
+export { default as Employees } from './admin/accounts/Employees';
+export { default as Companies } from './admin/accounts/Companies';
+export { default as PrivateCustomers } from './admin/accounts/PrivateCustomers';
+export { default as Profile } from './admin/accounts/Profile';
 export { default as AddOrders } from './admin/orders/AddOrders';
 export { default as Complaints } from './admin/orders/Complaints';
 export { default as CompletedOrders } from './admin/orders/CompletedOrders';

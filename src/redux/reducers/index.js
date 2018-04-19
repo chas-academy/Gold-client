@@ -5,7 +5,7 @@ import employeeReducer from './Employee';
 import authReducer from './Auth';
 
 const rootReducer = combineReducers({
-    admin : adminReducer,
+    admin: adminReducer,
     customer: customerReducer,
     employee: employeeReducer,
     auth: authReducer
