@@ -65,6 +65,7 @@ class SignUp extends Component {
       persOrgNumber: this.state.persOrgNumber,
       password: this.state.password
     }
+    // dispatch goes here.....
     
   }
 
@@ -88,7 +89,7 @@ class SignUp extends Component {
             {/* Pers/Org nummer  */}
           <div className="form-group">
             <label>Person eller OrganisationsNummer</label>
-            <input type='text' name='persOrgNumber' className="form-control" placeholder='ÅÅMMDD-XXXX' value={persOrgNumber} onChange={this.handleChange} required/>
+            <input type='text' name='persOrgNumber' className="form-control" placeholder='ÅÅMMDDXXXX' value={persOrgNumber} onChange={this.handleChange} required/>
 
             {/* error handling */}
             { !persOrgNumber  &&
