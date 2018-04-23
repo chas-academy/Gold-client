@@ -18,6 +18,12 @@
     font-size: 16px;
 }
 
+.form {
+    border: none;
+    border-radius: 0px;
+    box-shadow: none;
+}
+
 .help-block {
     background-color: #ff0b0b00 !important;
     color: black;

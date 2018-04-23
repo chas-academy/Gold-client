@@ -80,7 +80,7 @@ class SignUp extends Component {
             {/* Namn eller FöretagsNamn */}
           <div className="form-group">
             <label>Namn eller Företagsnamn</label>
-            <input type='text' name='name' className="form-control" placeholder='namn' value={name} onChange={this.handleChange} required/>
+            <input type='text' name='name' className="form-control form" placeholder='namn' value={name} onChange={this.handleChange} required/>
             { !name &&
               <div className="help-block">Registrera med ditt namn</div>
               }  
@@ -89,7 +89,7 @@ class SignUp extends Component {
             {/* Pers/Org nummer  */}
           <div className="form-group">
             <label>Person eller OrganisationsNummer</label>
-            <input type='text' name='persOrgNumber' className="form-control" placeholder='ÅÅMMDDXXXX' value={persOrgNumber} onChange={this.handleChange} required/>
+            <input type='text' name='persOrgNumber' className="form-control form" placeholder='ÅÅMMDDXXXX' value={persOrgNumber} onChange={this.handleChange} required/>
 
             {/* error handling */}
             { !persOrgNumber  &&
@@ -106,7 +106,7 @@ class SignUp extends Component {
             {/* Lösenord Password */}
           <div className="form-group">
             <label>Lösenord</label>
-            <input type='password' name='password' className="form-control" placeholder='lösenord' value={password}  onChange={this.handleChange} required/> 
+            <input type='password' name='password' className="form-control form" placeholder='lösenord' value={password}  onChange={this.handleChange} required/> 
 
             {/* error handling */}
             { !passwordError  &&
