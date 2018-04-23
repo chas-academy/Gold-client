@@ -14,6 +14,7 @@ class SignIn extends Component {
       password: '',
       passwordError: null,
       persOrgNumberError: null,
+      errorMessage: '',
      };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -48,14 +49,9 @@ class SignIn extends Component {
   handleSubmit(e) {
     e.preventDefault();
     
-    const { username, password } = this.state;
-    this.setState({ submitted: true });
-
-    if (username && password) {
-      this.props.loginUser({ username, password }).then(
-        (res) => this.props.history.push('/home'),
-        (err) => this.setState({ errorMessage: 'Could not match username with password' })
-      );
+    const loginUser = {
+      persOrgNumber: this.state.persOrgNumber,
+      password: this.state.password
     }
   }
 
