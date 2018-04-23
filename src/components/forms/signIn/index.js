@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 // import { loginUser } from '../actions/auth';
 // import { connect } from 'react-redux';
-// import { withRouter } from 'react-router-dom';
-
+import { Link } from 'react-router-dom';
 import './style.css';
 
 class SignIn extends Component {
@@ -25,6 +24,22 @@ class SignIn extends Component {
     this.setState({ [e.target.name]: e.target.value });
     console.log(e.target.value);
 
+      const isNumeric = /^[0-9]+$/;
+
+
+      if(this.state.persOrgNumber.length >= 9 
+        && this.state.persOrgNumber.match(isNumeric)) {
+
+        console.log("good pers/org");
+        this.setState({ persOrgNumberError: true });
+
+      }
+      else {
+
+        console.log("bad pers/org");
+        this.setState({ persOrgNumberError: false });
+      }
+
 
       if(this.state.password.length >= 7 ) {
         console.log("good");
@@ -33,16 +48,6 @@ class SignIn extends Component {
       else {
         console.log("password needs to be minimum 8 characters");
         this.setState({ passwordError: false });
-      }
-
-      if(this.state.persOrgNumber.length >= 9) {
-        console.log("good pers/org");
-        this.setState({ persOrgNumberError: true });
-        
-      }
-      else {
-        console.log("bad pers/org");
-        this.setState({ persOrgNumberError: false });
       }
   }
 
@@ -72,7 +77,7 @@ class SignIn extends Component {
                 <div className="help-block">Fyll i ditt organisationsnummer alternativt ditt personummer</div>
                 } 
               { !persOrgNumberError &&
-                <div className="help-block error">org nummer eller pers nummer måste vara 10 siffor och en - måste ingås</div>
+                <div className="help-block error">org nummer eller pers nummer måste vara 10 siffror</div>
                 } 
               { persOrgNumberError &&
                 <div className="help-block sucess">org/pers nummer är godkänt</div>
