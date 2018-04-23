@@ -35,7 +35,7 @@ class SignIn extends Component {
         this.setState({ passwordError: false });
       }
 
-      if(this.state.persOrgNumber.length >= 10 && this.state.persOrgNumber.includes('-')) {
+      if(this.state.persOrgNumber.length >= 9) {
         console.log("good pers/org");
         this.setState({ persOrgNumberError: true });
         
@@ -65,7 +65,7 @@ class SignIn extends Component {
               {/* Pers/Org nummer  */}
             <div className="form-group">
               <label>Person eller OrganisationsNummer</label>
-              <input type='text' name='persOrgNumber' className="form-control" placeholder='ÅÅMMDD-XXXX' value={persOrgNumber} onChange={this.handleChange} required/>
+              <input type='text' name='persOrgNumber' className="form-control" placeholder='ÅÅMMDDXXXX' value={persOrgNumber} onChange={this.handleChange} required/>
   
               {/* error handling */}
               { !persOrgNumber  &&
