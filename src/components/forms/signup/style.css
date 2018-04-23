@@ -2,7 +2,7 @@
     width: 350px;
     margin: auto;
     border: #41293291;
-    margin-top: 200px;
+    margin-top: 75px;
 }
 
 .btn-primary {
@@ -17,17 +17,16 @@
     margin-top: 15px;
     font-size: 16px;
 }
-
-.form-control {
-    border-bottom: 1px solid blue;
-}
-
 .form {
     border: none;
     border-radius: 0px;
     box-shadow: none;
 }
 
+.form-control {
+    border: none;
+    border-bottom: 2px solid #377bb5;
+}
 .help-block {
     background-color: #ff0b0b00 !important;
     color: black;
