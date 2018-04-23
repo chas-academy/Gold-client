@@ -19,7 +19,7 @@ class SignIn extends Component {
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
-  }  
+}  
 
   handleChange(e) {
     this.setState({ [e.target.name]: e.target.value });
@@ -35,7 +35,7 @@ class SignIn extends Component {
         this.setState({ passwordError: false });
       }
 
-      if(this.state.persOrgNumber.length >= 9 ) {
+      if(this.state.persOrgNumber.length >= 10 && this.state.persOrgNumber.includes('-')) {
         console.log("good pers/org");
         this.setState({ persOrgNumberError: true });
         
@@ -75,7 +75,7 @@ class SignIn extends Component {
                 <div className="help-block error">org nummer eller pers nummer måste vara 10 siffor och en - måste ingås</div>
                 } 
               { persOrgNumberError &&
-                <div className="help-block sucess">org/pers nummer är tillräkligt lång</div>
+                <div className="help-block sucess">org/pers nummer är godkänt</div>
                 } 
             </div>
   
