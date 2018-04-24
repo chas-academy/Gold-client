@@ -68,6 +68,9 @@ class SignIn extends Component {
     return (
       <div className="col-md-6 col-md-offset-3">
           <form name="form" className="SignInForm-login" onSubmit={this.handleSubmit}>
+
+              <Link className="signin-link" to="/">Logga in </Link>
+              <Link className="signin-link" to="/register">Skapa konto</Link>
   
               {/* Pers/Org nummer  */}
             <div className="form-group">
