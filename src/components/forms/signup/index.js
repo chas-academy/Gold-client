@@ -24,12 +24,13 @@ class SignUp extends Component {
   }  
 
   handleChange(e) {
-    const regex = "blalbajbjb";
+    
     this.setState({ [e.target.name]: e.target.value });
-    console.log(e.target.value);
 
+      const isNumeric = /^[0-9]+$/;
 
-      if(this.state.persOrgNumber.length >= 9 ) {
+      if(this.state.persOrgNumber.length >= 9
+         && this.state.persOrgNumber.match(isNumeric) ) {
         
         this.setState({ persOrgNumberError: true });
 
