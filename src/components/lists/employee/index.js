@@ -1,17 +1,30 @@
 import React, { Component } from "react"
 // import { connect } from "react-redux";
 import { Link, withRouter } from "react-router-dom"
+import '../style.css'
 
 class EmployeeList extends Component {
     render() {
         const userId = 1
+        const userId2 = 2 
     return (
-        <div> 
-            <h1> Hantera Anställda </h1>
+        <div className="users"> 
+            <h4> Hantera Anställda </h4>
                 <ul>
                     <li>
                         <Link to={`/admin/accounts/employees/${userId}`}>
-                          <p>Karin</p>
+                        <div className="edit">
+                            <p>Karin</p> 
+                            <i className="fas fa-edit"></i>
+                        </div> 
+                        </Link>
+                    </li>
+                    <li>
+                        <Link to={`/admin/accounts/employees/${userId2}`}>
+                        <div className="edit">
+                            <p>Hassan</p> 
+                            <i className="fas fa-edit"></i>
+                        </div> 
                         </Link>
                     </li>
                 </ul>

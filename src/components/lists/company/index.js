@@ -8,12 +8,15 @@ class CompanyList extends Component {
       const userId = 3
 
     return (
-      <div>
-        <h1> Företagskunder </h1>
+      <div className="users">
+        <h4> Företagskunder </h4>
         <ul>
           <li>
           <Link to={`/admin/accounts/customers/companies/${userId}`}>
-             <p>Stena</p>
+            <div className="edit">
+              <p>Stena</p>
+              <i className="fas fa-edit"></i>
+            </div> 
           </Link>
           </li>
         </ul>

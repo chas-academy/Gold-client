@@ -20,19 +20,18 @@ class AdminBottomNav extends Component {
         return  (
             <nav className="bottomNav">
                 <ul className="bottomNavList">
-                    <li>
-                        <Link to={`/admin/orders/incoming`}>
-                          <p>Nya beställningar</p>
-                        </Link>
-                    </li>
-                    <li>
-                        <Link to={`/admin/orders/complaints`}>
-                          <p>Nya reklamationer</p>
-                        </Link>
-                    </li>
+                        <li>
+                            <Link to={`/admin/orders/incoming`}>
+                                <i className="fas fa-quidditch"></i>                            </Link>
+                        </li>
+                        <li>
+                            <Link to={`/admin/orders/complaints`}>
+                                <i className="far fa-frown"></i>
+                            </Link>
+                        </li>
                     <li>
                     <Link to={`/home`}>
-                          <p>Home</p>
+                        <i className="fas fa-home"></i>
                     </Link>
                     </li>
                 </ul>    

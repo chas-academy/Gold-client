@@ -2,12 +2,18 @@
     width: 350px;
     margin: auto;
     border: #41293291;
-    margin-top: 200px;
+    margin-top: 120px;
 }
 
 .btn-primary {
     width: 350px;
     margin: auto;
+}
+
+.btn-danger {
+    width: 350px;
+    margin: auto;
+    margin-left: 150px;
 }
 
 .App-signup-text {

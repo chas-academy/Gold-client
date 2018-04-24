@@ -17,7 +17,8 @@ class UpdateUser extends Component {
         tel: this.props,
         number: this.props,
         password: this.props,
-        errorMessage: ''
+        errorMessage: '',
+        isAdmin: true
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -37,49 +38,55 @@ class UpdateUser extends Component {
   }
 
     render() {
-    const { submitted, name, email, password, tel, number, adress, errorMessage } = this.state;
+    const { submitted, name, email, password, tel, number, adress, errorMessage, isAdmin } = this.state;
 
     return (
     <div className="col-md-6 col-md-offset-3">
         <form name="form" className="UpdateUser-login" onSubmit={this.handleSubmit}>
           <div className="form-group">
+            <label for="name">Namn</label>
             <input type='text' name='name' className="form-control" placeholder='name' value={name} onChange={this.handleChange}/>
             {submitted && !name &&
               <div className="help-block">Glöm inte fylla i namnet!</div>
               }
           </div>
           <div className="form-group">
+          <label for="name">Personnummer/organisationsnummer</label>
             <input type='text' name='person/orgnr' className="form-control" placeholder='person/orgnr' value={number} onChange={this.handleChange}/>
             {submitted && !number &&
               <div className="help-block">Glöm inte fylla i personnummer/organisationsnummer!</div>
               }
           </div>
           <div className="form-group">
+          <label for="name">Email</label>
             <input type='text' name='email' className="form-control" placeholder='email' value={email} onChange={this.handleChange}/>
             {submitted && !email &&
               <div className="help-block">Glöm inte fylla i email!</div>
               }
           </div>
           <div className="form-group">
+          <label for="name">Tel</label>
             <input type='text' name='tel' className="form-control" placeholder='tel' value={tel} onChange={this.handleChange}/>
             {submitted && !tel &&
               <div className="help-block">Glöm inte fylla i telefonnummer!</div>
               }
           </div>
           <div className="form-group">
+          <label for="name">Adress</label>
             <input type='text' name='adress' className="form-control" placeholder='adress' value={adress} onChange={this.handleChange}/>
             {submitted && !adress &&
               <div className="help-block">Glöm inte fylla i adressen!</div>
               }
           </div>
           <div className="form-group">
+          <label for="name">Lösenord</label>
             <input type='password' name='password' className="form-control" placeholder='Password' value={password} onChange={this.handleChange}/>
             {submitted && !password &&
               <div className="help-block">Glöm inte att fylla i nytt lösenord</div>
             }
           </div>
           <div className="form-group">
-            <button className="btn btn-primary">
+            <button type="submit" className="btn btn-primary">
               Uppdatera Användare
             </button>
               {errorMessage &&
@@ -87,6 +94,11 @@ class UpdateUser extends Component {
               }
           </div>  
         </form> 
+              {isAdmin == false ?
+            <button className="btn btn-danger">
+              Radera Användare
+            </button>
+            : ('')}
       </div>
     )
   }
