@@ -58,6 +58,8 @@ class SignIn extends Component {
       persOrgNumber: this.state.persOrgNumber,
       password: this.state.password
     }
+
+    //dispatch goes here...
   }
 
     render() {
