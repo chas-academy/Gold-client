@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 // import { loginUser } from '../actions/auth';
 import { connect } from 'react-redux';
-// import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 
 import './style.css';
 
@@ -11,14 +11,11 @@ class SignUp extends Component {
 
     this.state = { 
         name: '',
-        persOrgNumber: '',
         password: '',
-        // nameError: '',
-        // persOrgNumberError: '',
-         passwordError: null,
-         persOrgNumberError: null,
-        
-     };
+        persOrgNumber: '',
+        passwordError: null,
+        persOrgNumberError: null,
+    };
 
 
 
@@ -27,31 +24,32 @@ class SignUp extends Component {
   }  
 
   handleChange(e) {
-    const regex = "blalbajbjb";
+    
     this.setState({ [e.target.name]: e.target.value });
-    console.log(e.target.value);
 
+      const isNumeric = /^[0-9]+$/;
 
-      if(this.state.password.length >= 7 ) {
-        console.log("good");
-        this.setState({ passwordError: true });
-      }
-      else {
-        console.log("password needs to be minimum 8 characters");
-        this.setState({ passwordError: false });
-      }
-
-      if(this.state.persOrgNumber.length >= 9 ) {
-        console.log("good pers/org");
-        this.setState({ persOrgNumberError: true });
+      if(this.state.persOrgNumber.length >= 9
+         && this.state.persOrgNumber.match(isNumeric) ) {
         
+        this.setState({ persOrgNumberError: true });
       }
       else {
-        console.log("bad pers/org");
+
         this.setState({ persOrgNumberError: false });
       }
 
-    }
+      if(this.state.password.length >= 7 ) { 
+
+        this.setState({ passwordError: true });
+      }
+      else {
+        
+        this.setState({ passwordError: false });
+      }
+
+      
+  }
 
        
 
@@ -65,6 +63,7 @@ class SignUp extends Component {
       persOrgNumber: this.state.persOrgNumber,
       password: this.state.password
     }
+    // dispatch goes here.....
     
   }
 
@@ -72,14 +71,21 @@ class SignUp extends Component {
     const { submitted, name, password, passwordError, persOrgNumber, persOrgNumberError  } = this.state;
 
     return (
-    <div className="col-md-6 col-md-offset-3">
+  <div className="col-md-6 col-md-offset-3">
+    <div className="register-form">
+        <div className="form-container">
+        <div className="link-group">
+          <Link  className="signin-link" to="/">Logga in</Link>
+          <Link className="signin-link" to="/register">Skapa konto</Link> 
+        </div>
         <form name="form" className="SignInForm-login" onSubmit={this.handleSubmit}>
+        
 
-
+          
             {/* Namn eller FöretagsNamn */}
           <div className="form-group">
             <label>Namn eller Företagsnamn</label>
-            <input type='text' name='name' className="form-control" placeholder='namn' value={name} onChange={this.handleChange} required/>
+            <input type='text' name='name' className="form-control form" placeholder='namn' value={name} onChange={this.handleChange} required/>
             { !name &&
               <div className="help-block">Registrera med ditt namn</div>
               }  
@@ -88,14 +94,14 @@ class SignUp extends Component {
             {/* Pers/Org nummer  */}
           <div className="form-group">
             <label>Person eller OrganisationsNummer</label>
-            <input type='text' name='persOrgNumber' className="form-control" placeholder='ÅÅMMDD-XXXX' value={persOrgNumber} onChange={this.handleChange} required/>
+            <input type='text' name='persOrgNumber' className="form-control form" placeholder='ÅÅMMDDXXXX' value={persOrgNumber} onChange={this.handleChange} required/>
 
             {/* error handling */}
             { !persOrgNumber  &&
               <div className="help-block">Fyll i ditt organisationsnummer alternativt ditt personummer</div>
               } 
             { !persOrgNumberError &&
-              <div className="help-block error">org nummer eller pers nummer måste vara 10 siffor och en - måste ingås</div>
+              <div className="help-block error">org nummer eller pers nummer måste vara minst 10 siffror</div>
               } 
             { persOrgNumberError &&
               <div className="help-block sucess">org/pers nummer är tillräkligt lång</div>
@@ -105,14 +111,14 @@ class SignUp extends Component {
             {/* Lösenord Password */}
           <div className="form-group">
             <label>Lösenord</label>
-            <input type='password' name='password' className="form-control" placeholder='lösenord' value={password}  onChange={this.handleChange} required/> 
+            <input type='password' name='password' className="form-control form" placeholder='lösenord' value={password}  onChange={this.handleChange} required/> 
 
             {/* error handling */}
             { !passwordError  &&
               <div className="help-block error">Lösenord måste vara  minst 8 karaktärer</div>
               }
             { passwordError  &&
-              <div className="help-block sucess">Lösenord är tillräckligt lång</div>
+              <div className="help-block sucess">Lösenord är godkänt</div>
               }
           </div>
           
@@ -127,10 +133,11 @@ class SignUp extends Component {
               } */}
           </div>  
         </form> 
+        </div>
       </div>
+    </div>
     )
   }
-
 }
   
 export default SignUp;
