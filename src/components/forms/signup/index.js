@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 // import { loginUser } from '../actions/auth';
 import { connect } from 'react-redux';
-// import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 
 import './style.css';
 
@@ -33,7 +33,6 @@ class SignUp extends Component {
          && this.state.persOrgNumber.match(isNumeric) ) {
         
         this.setState({ persOrgNumberError: true });
-
       }
       else {
 
@@ -72,10 +71,12 @@ class SignUp extends Component {
     const { submitted, name, password, passwordError, persOrgNumber, persOrgNumberError  } = this.state;
 
     return (
-    <div className="col-md-6 col-md-offset-3">
+    <div className="register-form">
+        
         <form name="form" className="SignInForm-login" onSubmit={this.handleSubmit}>
+        <Link  className="signin-link" to="/">Logga in</Link> <Link className="signin-link" to="/register">Skapa konto</Link> 
 
-
+          
             {/* Namn eller FöretagsNamn */}
           <div className="form-group">
             <label>Namn eller Företagsnamn</label>

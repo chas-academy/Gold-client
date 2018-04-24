@@ -3,6 +3,7 @@
     margin: auto;
     border: #41293291;
     margin-top: 75px;
+    
 }
 
 .btn-primary {
@@ -40,6 +41,15 @@
 .sucess {
     background-color: #fffdfd00 !important;
     color: green;
+}
+
+.signin-link {
+    color: black;
+}
+
+.signin-link:active {
+    color: black;
+    border-bottom: 2px solid #377bb5;
 }
 
 @media only screen and (min-width : 320px) and (max-width : 480px) {
