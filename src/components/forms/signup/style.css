@@ -18,18 +18,10 @@
     font-size: 16px;
 }
 
-
-
-.form-control {
-    border: none;
-    border-bottom: 2px solid rgb(0, 183, 255);
-}
-
 .help-block {
-    background-color: #fffdfd00 !important;
-    color: rgb(36, 36, 36);
+    background-color: #ff0b0b00 !important;
+    color: black;
 }
-
 
 .error {
     background-color: #fffdfd00 !important;
@@ -47,4 +39,3 @@
         padding-top: 80px;
     }
 }
-

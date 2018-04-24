@@ -1,4 +1,5 @@
 export { default as App } from './app'
+export { default as SignUp } from './forms/signup';
 export { default as SignIn } from './forms/signIn'
 
 //ADMIN - HOME
@@ -14,4 +15,6 @@ export { default as CompanyList } from './lists/company'
 export { default as UserProfile } from './profile'
 export { default as UpdateUser } from './forms/updateUser'
 
+
 //ADMIN - ORDERS
+
