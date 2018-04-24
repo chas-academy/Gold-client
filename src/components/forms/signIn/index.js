@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 // import { loginUser } from '../actions/auth';
 // import { connect } from 'react-redux';
-// import { withRouter } from 'react-router-dom';
-
+import { Link } from 'react-router-dom';
 import './style.css';
 
 class SignIn extends Component {
@@ -19,11 +18,27 @@ class SignIn extends Component {
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
-  }  
+}  
 
   handleChange(e) {
     this.setState({ [e.target.name]: e.target.value });
     console.log(e.target.value);
+
+      const isNumeric = /^[0-9]+$/;
+
+
+      if(this.state.persOrgNumber.length >= 9 
+        && this.state.persOrgNumber.match(isNumeric)) {
+
+        console.log("good pers/org");
+        this.setState({ persOrgNumberError: true });
+
+      }
+      else {
+
+        console.log("bad pers/org");
+        this.setState({ persOrgNumberError: false });
+      }
 
 
       if(this.state.password.length >= 7 ) {
@@ -34,16 +49,6 @@ class SignIn extends Component {
         console.log("password needs to be minimum 8 characters");
         this.setState({ passwordError: false });
       }
-
-      if(this.state.persOrgNumber.length >= 9 ) {
-        console.log("good pers/org");
-        this.setState({ persOrgNumberError: true });
-        
-      }
-      else {
-        console.log("bad pers/org");
-        this.setState({ persOrgNumberError: false });
-      }
   }
 
   handleSubmit(e) {
@@ -53,6 +58,8 @@ class SignIn extends Component {
       persOrgNumber: this.state.persOrgNumber,
       password: this.state.password
     }
+
+    //dispatch goes here...
   }
 
     render() {
@@ -60,29 +67,35 @@ class SignIn extends Component {
 
     return (
       <div className="col-md-6 col-md-offset-3">
+        <div className="form-container">
+          <div className="link-group">
+            <Link className="signin-link" to="/">Logga in </Link>
+            <Link className="signin-link" to="/register">Skapa konto</Link>
+          </div>
           <form name="form" className="SignInForm-login" onSubmit={this.handleSubmit}>
-  
+
+              
               {/* Pers/Org nummer  */}
             <div className="form-group">
               <label>Person eller OrganisationsNummer</label>
-              <input type='text' name='persOrgNumber' className="form-control" placeholder='ÅÅMMDD-XXXX' value={persOrgNumber} onChange={this.handleChange} required/>
+              <input type='text' name='persOrgNumber' className="form-control form" placeholder='ÅÅMMDDXXXX' value={persOrgNumber} onChange={this.handleChange} required/>
   
               {/* error handling */}
               { !persOrgNumber  &&
                 <div className="help-block">Fyll i ditt organisationsnummer alternativt ditt personummer</div>
                 } 
               { !persOrgNumberError &&
-                <div className="help-block error">org nummer eller pers nummer måste vara 10 siffor och en - måste ingås</div>
+                <div className="help-block error">org nummer eller pers nummer måste vara 10 siffror</div>
                 } 
               { persOrgNumberError &&
-                <div className="help-block sucess">org/pers nummer är tillräkligt lång</div>
+                <div className="help-block sucess">org/pers nummer är godkänt</div>
                 } 
             </div>
   
               {/* Lösenord Password */}
             <div className="form-group">
               <label>Lösenord</label>
-              <input type='password' name='password' className="form-control" placeholder='lösenord' value={password}  onChange={this.handleChange} required/> 
+              <input type='password' name='password' className="form-control form" placeholder='lösenord' value={password}  onChange={this.handleChange} required/> 
   
               {/* error handling */}
               { !passwordError  &&
@@ -104,6 +117,7 @@ class SignIn extends Component {
                 } */}
             </div>  
           </form> 
+          </div>
         </div>
       )
   }
