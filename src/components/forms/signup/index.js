@@ -71,10 +71,15 @@ class SignUp extends Component {
     const { submitted, name, password, passwordError, persOrgNumber, persOrgNumberError  } = this.state;
 
     return (
+  <div className="col-md-6 col-md-offset-3">
     <div className="register-form">
-        
+        <div className="form-container">
+        <div className="link-group">
+          <Link  className="signin-link" to="/">Logga in</Link>
+          <Link className="signin-link" to="/register">Skapa konto</Link> 
+        </div>
         <form name="form" className="SignInForm-login" onSubmit={this.handleSubmit}>
-        <Link  className="signin-link" to="/">Logga in</Link> <Link className="signin-link" to="/register">Skapa konto</Link> 
+        
 
           
             {/* Namn eller FöretagsNamn */}
@@ -96,7 +101,7 @@ class SignUp extends Component {
               <div className="help-block">Fyll i ditt organisationsnummer alternativt ditt personummer</div>
               } 
             { !persOrgNumberError &&
-              <div className="help-block error">org nummer eller pers nummer måste vara 10 siffror</div>
+              <div className="help-block error">org nummer eller pers nummer måste vara minst 10 siffror</div>
               } 
             { persOrgNumberError &&
               <div className="help-block sucess">org/pers nummer är tillräkligt lång</div>
@@ -128,7 +133,9 @@ class SignUp extends Component {
               } */}
           </div>  
         </form> 
+        </div>
       </div>
+    </div>
     )
   }
 }
