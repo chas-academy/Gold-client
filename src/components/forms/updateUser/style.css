@@ -2,16 +2,18 @@
     width: 350px;
     margin: auto;
     border: #41293291;
-    margin-top: 120px;
+    margin-top: 150px;
+    background-color: rgba(58, 57, 57, 0.644);
+    padding: 20px;
 }
 
 .btn-primary {
-    width: 350px;
+    width: 300px;
     margin: auto;
 }
 
 .btn-danger {
-    width: 350px;
+    width: 300px;
     margin: auto;
     margin-left: 150px;
 }
@@ -27,4 +29,12 @@
 .help-block {
     background-color: #fffdfd00 !important;
     color: rgb(36, 36, 36);
+}
+
+.form-control {
+    background: rgba(255, 255, 255, 0);
+}
+
+label {
+    color: rgb(221, 220, 220);
 }

@@ -14,6 +14,7 @@ export { default as PrivateCustomerList } from './lists/privateCustomer'
 export { default as CompanyList } from './lists/company'
 export { default as UserProfile } from './profile'
 export { default as UpdateUser } from './forms/updateUser'
+export { default as CreateUser } from './buttons/createUser'
 
 
 //ADMIN - ORDERS
