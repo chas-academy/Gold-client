@@ -11,12 +11,11 @@ class SignUp extends Component {
 
     this.state = { 
         name: '',
-        persOrgNumber: '',
         password: '',
-         passwordError: null,
-         persOrgNumberError: null,
-        
-     };
+        persOrgNumber: '',
+        passwordError: null,
+        persOrgNumberError: null,
+    };
 
 
 
@@ -30,26 +29,27 @@ class SignUp extends Component {
     console.log(e.target.value);
 
 
-      if(this.state.password.length >= 7 ) {
-        console.log("good");
-        this.setState({ passwordError: true });
-      }
-      else {
-        console.log("password needs to be minimum 8 characters");
-        this.setState({ passwordError: false });
-      }
-
       if(this.state.persOrgNumber.length >= 9 ) {
-        console.log("good pers/org");
-        this.setState({ persOrgNumberError: true });
         
+        this.setState({ persOrgNumberError: true });
+
       }
       else {
-        console.log("bad pers/org");
+
         this.setState({ persOrgNumberError: false });
       }
 
-    }
+      if(this.state.password.length >= 7 ) { 
+
+        this.setState({ passwordError: true });
+      }
+      else {
+        
+        this.setState({ passwordError: false });
+      }
+
+      
+  }
 
        
 
@@ -94,7 +94,7 @@ class SignUp extends Component {
               <div className="help-block">Fyll i ditt organisationsnummer alternativt ditt personummer</div>
               } 
             { !persOrgNumberError &&
-              <div className="help-block error">org nummer eller pers nummer måste vara 10 siffor och en - måste ingås</div>
+              <div className="help-block error">org nummer eller pers nummer måste vara 10 siffror</div>
               } 
             { persOrgNumberError &&
               <div className="help-block sucess">org/pers nummer är tillräkligt lång</div>
@@ -129,7 +129,6 @@ class SignUp extends Component {
       </div>
     )
   }
-
 }
   
 export default SignUp;
