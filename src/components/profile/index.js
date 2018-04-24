@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 // import { connect } from "react-redux";
+import { UpdateUser } from '../../components'
+import './style.css'
 
 export default class UserProfile extends Component {
 
@@ -16,13 +18,12 @@ export default class UserProfile extends Component {
   render() {
     return (
       <div>
-        <h1> Min profil </h1>
         <ul>
           <li>
-            <p>Kunna redigera</p>
+            <UpdateUser />
           </li>
           <li>
-            <button onClick={this.logout}>
+            <button className="btn btn-danger" onClick={this.logout}>
                 Logga ut
             </button>
           </li>  

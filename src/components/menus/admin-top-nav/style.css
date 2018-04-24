@@ -1,33 +1,24 @@
-nav {
-    padding-top: 30px;
-    background-color: rgb(73, 114, 226);
-}
-
-.AdminMainMenu_tabs {
-    display: flex;
-    padding: 20px;
-    color: white;
-}
-
-.AdminMainMenu_orders {
+.navBar {
+    position: absolute;
+    top: 0;
+    z-index: 2;
     display: flex;
     width: 100%;
-    margin-top: 50px;
-    list-style: none;
     justify-content: space-around;
-    margin: auto;
-    color: white;
-}
-
-.AdminMainMenu_orders > li > a > p {
-    color: white;
+    background-color: #282829e8;
     padding: 20px;
+    border-bottom: 1px solid rgb(43, 41, 41); 
+    list-style: none;
 }
 
-.TabLinks {
-    width: 50%;
-    display: flex;
-    justify-content: space-around;
-    margin: auto;
-    color: white;
+.navBar > li > a {
+    color:rgb(205, 207, 209);
+    font-size: 36px;
 }
+
+.navBar > li > a:active, .navBar > li > a:hover {
+    color: rgb(139, 177, 219);    
+}
+
+
+
