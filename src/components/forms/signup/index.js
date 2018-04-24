@@ -13,8 +13,6 @@ class SignUp extends Component {
         name: '',
         persOrgNumber: '',
         password: '',
-        // nameError: '',
-        // persOrgNumberError: '',
          passwordError: null,
          persOrgNumberError: null,
         
@@ -113,7 +111,7 @@ class SignUp extends Component {
               <div className="help-block error">Lösenord måste vara  minst 8 karaktärer</div>
               }
             { passwordError  &&
-              <div className="help-block sucess">Lösenord är tillräckligt lång</div>
+              <div className="help-block sucess">Lösenord är godkänt</div>
               }
           </div>
           
