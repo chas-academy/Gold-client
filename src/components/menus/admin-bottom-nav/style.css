@@ -25,6 +25,15 @@
     color: white;
 }
 
-.bottomNavList > li > a:hover {
+.bottomNavList > li > a:hover, .bottomNav > li > a:focus {
     color: rgb(139, 177, 219);  
+}
+
+.logout {
+    background: rgba(255, 255, 255, 0);
+    border: none;
+    color: rgb(206, 205, 205);
+    margin: 0;
+    font-size: 26px;
+    padding: 0;
 }

@@ -1,14 +1,14 @@
 import React, { Component } from "react"
 // import { connect } from "react-redux";
-import { AdminTopNav, AdminBottomNav, CompanyList, IncomingOrdersList } from '../../../components'
+import { AdminTopNav, AdminBottomNav, ActiveOrdersList } from '../../../components'
 
-export default class IncomingOrders extends Component {
+export default class ActiveOrders extends Component {
 
   render() {
     return (
         <div> 
             <AdminTopNav />
-            <IncomingOrdersList />
+            <ActiveOrdersList />
             <AdminBottomNav />
         </div>    
     )
