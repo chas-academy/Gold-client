@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 // import { connect } from "react-redux";
 import { Link, withRouter } from "react-router-dom"
-import { CreateUser } from '../../../components'
+import { CreateUser } from '../../components'
+import './style.css'
+
 
 class PrivateCustomerList extends Component {
   

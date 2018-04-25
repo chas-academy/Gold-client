@@ -1,21 +1,26 @@
 .UpdateUser-login {
-    width: 350px;
+    width: 90%;
     margin: auto;
-    border: #41293291;
+    border: #412932ce;
     margin-top: 150px;
-    background-color: rgba(58, 57, 57, 0.644);
+    background-color: rgba(255, 255, 255, 0.699);
     padding: 20px;
+    z-index: 9999;
 }
 
 .btn-primary {
-    width: 300px;
+    width: 100%;
     margin: auto;
+    padding: 15px;
+    background: rgba(57, 57, 58, 0.836);
+    border: black;
 }
 
 .btn-danger {
-    width: 300px;
+    width: 100%;
     margin: auto;
-    margin-left: 150px;
+    padding: 15px;
+    background: rgb(202, 16, 16);
 }
 
 .App-signup-text {
@@ -33,8 +38,10 @@
 
 .form-control {
     background: rgba(255, 255, 255, 0);
+    border-bottom: 1px solid black;
 }
 
 label {
-    color: rgb(221, 220, 220);
+    color: rgb(63, 62, 62);
 }
+

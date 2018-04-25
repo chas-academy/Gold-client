@@ -10,15 +10,15 @@ class UpdateUser extends Component {
     super(props);
 
     this.state = { 
-        submitted: false,
-        name: this.props,
-        email: this.props,
-        adress: this.props,
-        tel: this.props,
-        number: this.props,
-        password: this.props,
+        submitted: '',
+        name: '',
+        email: '',
+        adress: '',
+        tel: '',
+        number: '',
+        password: '',
         errorMessage: '',
-        isAdmin: true
+        userisAdmin: ''
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -38,42 +38,43 @@ class UpdateUser extends Component {
   }
 
     render() {
-    const { submitted, name, email, password, tel, number, adress, errorMessage, isAdmin } = this.state;
+    const { submitted, name, email, password, tel, number, adress, errorMessage, userisAdmin } = this.state;
 
     return (
     <div className="col-md-6 col-md-offset-3">
+      <div className="blur">
         <form name="form" className="UpdateUser-login" onSubmit={this.handleSubmit}>
           <div className="form-group">
-            <label for="name">Namn</label>
-            <input type='text' name='name' className="form-control" placeholder='name' value={name} onChange={this.handleChange}/>
+            <label for="name">Användarens Namn</label>
+            <input type='text' name='name' className="form-control" placeholder='Användarens namn' value={name} onChange={this.handleChange}/>
             {submitted && !name &&
               <div className="help-block">Glöm inte fylla i namnet!</div>
               }
           </div>
           <div className="form-group">
           <label for="name">Personnummer/organisationsnummer</label>
-            <input type='text' name='person/orgnr' className="form-control" placeholder='person/orgnr' value={number} onChange={this.handleChange}/>
+            <input type='text' name='person/orgnr' className="form-control" placeholder='Person/organisationsnummer' value={number} onChange={this.handleChange}/>
             {submitted && !number &&
               <div className="help-block">Glöm inte fylla i personnummer/organisationsnummer!</div>
               }
           </div>
           <div className="form-group">
           <label for="name">Email</label>
-            <input type='text' name='email' className="form-control" placeholder='email' value={email} onChange={this.handleChange}/>
+            <input type='text' name='email' className="form-control" placeholder='Email' value={email} onChange={this.handleChange}/>
             {submitted && !email &&
               <div className="help-block">Glöm inte fylla i email!</div>
               }
           </div>
           <div className="form-group">
           <label for="name">Tel</label>
-            <input type='text' name='tel' className="form-control" placeholder='tel' value={tel} onChange={this.handleChange}/>
+            <input type='text' name='tel' className="form-control" placeholder='Tel' value={tel} onChange={this.handleChange}/>
             {submitted && !tel &&
               <div className="help-block">Glöm inte fylla i telefonnummer!</div>
               }
           </div>
           <div className="form-group">
           <label for="name">Adress</label>
-            <input type='text' name='adress' className="form-control" placeholder='adress' value={adress} onChange={this.handleChange}/>
+            <input type='text' name='adress' className="form-control" placeholder='Adress' value={adress} onChange={this.handleChange}/>
             {submitted && !adress &&
               <div className="help-block">Glöm inte fylla i adressen!</div>
               }
@@ -85,6 +86,7 @@ class UpdateUser extends Component {
               <div className="help-block">Glöm inte att fylla i nytt lösenord</div>
             }
           </div>
+          <div className="buttons">
           <div className="form-group">
             <button type="submit" className="btn btn-primary">
               Uppdatera Användare
@@ -92,13 +94,17 @@ class UpdateUser extends Component {
               {errorMessage &&
               <div className="help-block">{errorMessage}</div>  
               }
+              </div>
           </div>  
-        </form> 
-              {isAdmin == false ?
+        <div className="form-group">
+          {userisAdmin == false ?
             <button className="btn btn-danger">
               Radera Användare
             </button>
             : ('')}
+        </div>
+        </form> 
+        </div>    
       </div>
     )
   }

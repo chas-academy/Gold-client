@@ -1,32 +1,33 @@
 import React, { Component } from "react";
 // import { connect } from "react-redux";
 import { Link, withRouter } from "react-router-dom";
-import { CreateUser } from "../../../components";
-import "../style.css";
+import { CreateOrder } from "../../components";
+import './style.css'
 
-class EmployeeList extends Component {
+
+class InternalOrdersList extends Component {
   render() {
-    const userId = 1;
-    const userId2 = 2;
+      const orderId = 1;
+      const orderId2 = 2;
     return (
       <div className="users">
-        <h4> Hantera Anställda </h4>
+        <h4> Interna ärenden </h4>
         <ul>
           <li>
-            <CreateUser />
+            <CreateOrder />
           </li>
           <li>
-            <Link to={`/admin/accounts/employees/${userId}`}>
+            <Link to={`/admin/orders/internal/${orderId}`}>
               <div className="edit">
-                <p>Karin</p>
+                <p>Ärende: XXXX, orderId:{orderId} </p>
                 <i className="fas fa-edit" />
               </div>
             </Link>
           </li>
           <li>
-            <Link to={`/admin/accounts/employees/${userId2}`}>
+            <Link to={`/admin/orders/internal/${orderId2}`}>
               <div className="edit">
-                <p>Hassan</p>
+                <p>Ärende: XXXX, orderId:{orderId2}</p>
                 <i className="fas fa-edit" />
               </div>
             </Link>
@@ -37,4 +38,4 @@ class EmployeeList extends Component {
   }
 }
 
-export default withRouter(EmployeeList);
+export default withRouter(InternalOrdersList);

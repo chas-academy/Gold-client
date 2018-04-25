@@ -26,6 +26,7 @@
     align-items: center;
     width: 70%;
     color: rgb(241, 241, 237);
+    font-size: 14px;
 }
 
 .edit:hover {

@@ -16,7 +16,7 @@ class AdminTopNav extends Component {
                     </Link>
                 </MenuItem>    
                 <MenuItem>
-                  <Link to={`/admin/orders/handle`}>
+                  <Link to={`/admin/orders/active`}>
                     <p>Pågående</p>
                   </Link>
                 </MenuItem>    
