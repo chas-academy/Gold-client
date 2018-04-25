@@ -7,6 +7,7 @@ const AnyReactComponent = ({ text }) => <div>{ text }</div>;
 
 const Google = '';
 
+
  export default class MapContainer extends Component {
   
 

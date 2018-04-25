@@ -71,13 +71,6 @@ class SignUp extends Component {
     const { submitted, name, password, passwordError, persOrgNumber, persOrgNumberError  } = this.state;
 
     return (
-  <div className="col-md-6 col-md-offset-3">
-    <div className="register-form">
-        <div className="form-container">
-        <div className="link-group">
-          <Link  className="signin-link" to="/">Logga in</Link>
-          <Link className="signin-link" to="/register">Skapa konto</Link> 
-        </div>
         <form name="form" className="SignInForm-login" onSubmit={this.handleSubmit}>
         
 
@@ -133,9 +126,6 @@ class SignUp extends Component {
               } */}
           </div>  
         </form> 
-        </div>
-      </div>
-    </div>
     )
   }
 }
