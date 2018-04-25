@@ -65,17 +65,17 @@
 
 .help-block {
     background-color: #fffdfd00 !important;
-    color: white;
+    color: white !important;
 }
 
 .error {
     background-color: #fffdfd00 !important;
-    color: rgb(245, 3, 3)
+    color: rgb(245, 3, 3) !important;
 }
 
 .sucess {
-    background-color: #fffdfd00 !important;
-    color: rgb(95, 255, 95);
+    /* background-color: #fffdfd00 !important; */
+    color: rgb(95, 255, 95) !important;
 }
 
 @media only screen and (min-width : 320px) and (max-width : 480px) {

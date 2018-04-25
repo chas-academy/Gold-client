@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Tabs, TabContent, TabLink } from 'react-tabs-redux';
 // import { loginUser } from '../actions/auth';
 // import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -66,12 +67,6 @@ class SignIn extends Component {
     const { submitted, name, persOrgNumber, persOrgNumberError, password, errorMessage, passwordError } = this.state;
 
     return (
-      <div className="col-md-6 col-md-offset-3">
-        <div className="form-container">
-          <div className="link-group">
-            <Link className="signin-link" to="/">Logga in </Link>
-            <Link className="signin-link" to="/register">Skapa konto</Link>
-          </div>
           <form name="form" className="SignInForm-login" onSubmit={this.handleSubmit}>
 
               
@@ -116,9 +111,7 @@ class SignIn extends Component {
                 <div className="help-block">{errorMessage}</div>  
                 } */}
             </div>  
-          </form> 
-          </div>
-        </div>
+          </form>           
       )
   }
 
