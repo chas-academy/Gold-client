@@ -1,0 +1,10 @@
+.add {
+    padding: 20px;
+    border-radius: 30px;
+    text-transform: uppercase;
+    margin-bottom: 25px;
+    background: rgba(195, 195, 196, 0.445);
+    border: black;
+    color: rgb(44, 43, 43);
+    width: 300px;
+}

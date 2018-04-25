@@ -16,13 +16,8 @@ class AdminTopNav extends Component {
                     </Link>
                 </MenuItem>    
                 <MenuItem>
-                  <Link to={`/admin/orders/handle`}>
+                  <Link to={`/admin/orders/active`}>
                     <p>Pågående</p>
-                  </Link>
-                </MenuItem>    
-                <MenuItem>
-                  <Link to={`/admin/orders/completed`}>
-                    <p>Avslutade</p>
                   </Link>
                 </MenuItem>    
                 <MenuItem>
@@ -33,6 +28,11 @@ class AdminTopNav extends Component {
                 <MenuItem>
                   <Link to={`/admin/orders/complaints`}>
                     <p>Reklamationer</p>
+                  </Link>
+                </MenuItem>    
+                <MenuItem>
+                  <Link to={`/admin/orders/completed`}>
+                    <p>Avslutade</p>
                   </Link>
                 </MenuItem>    
             </NavDropdown>

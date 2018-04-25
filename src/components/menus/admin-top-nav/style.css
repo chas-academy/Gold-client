@@ -1,7 +1,6 @@
 .navBar {
     position: absolute;
     top: 0;
-    z-index: 2;
     display: flex;
     width: 100%;
     justify-content: space-around;
@@ -9,6 +8,7 @@
     padding: 20px;
     border-bottom: 1px solid rgb(43, 41, 41); 
     list-style: none;
+    z-index: 2;
 }
 
 .navBar > li > a {
@@ -16,7 +16,7 @@
     font-size: 36px;
 }
 
-.navBar > li > a:active, .navBar > li > a:hover {
+.navBar > li > a:focus, .navBar > li > a:hover {
     color: rgb(139, 177, 219);    
 }
 

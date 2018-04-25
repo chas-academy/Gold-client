@@ -4,30 +4,17 @@ import { UpdateUser } from '../../components'
 import './style.css'
 
 export default class UserProfile extends Component {
-
-    constructor(props) {
-        super(props);
-        this.logout = this.logout.bind(this);
-      }
-
-    logout() {
-        localStorage.clear();
-        this.props.history.push("/");
-      }   
+  constructor(props) {
+    super(props);
+    this.state = { 
+       };
+  }
 
   render() {
     return (
       <div>
-        <ul>
-          <li>
+        <h4> Min profil </h4>
             <UpdateUser />
-          </li>
-          <li>
-            <button className="btn btn-danger" onClick={this.logout}>
-                Logga ut
-            </button>
-          </li>  
-        </ul>
       </div>
     );
   }

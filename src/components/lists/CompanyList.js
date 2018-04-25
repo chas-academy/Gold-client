@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 // import { connect } from "react-redux";
 import { Link, withRouter } from 'react-router-dom'
+import { CreateUser } from '../../components'
+import './style.css'
 
 
 class CompanyList extends Component {
@@ -11,6 +13,9 @@ class CompanyList extends Component {
       <div className="users">
         <h4> Företagskunder </h4>
         <ul>
+          <li>
+             <CreateUser />
+          </li>  
           <li>
           <Link to={`/admin/accounts/customers/companies/${userId}`}>
             <div className="edit">
