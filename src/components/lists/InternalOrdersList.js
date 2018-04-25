@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 // import { connect } from "react-redux";
 import { Link, withRouter } from "react-router-dom";
-import { CreateOrder } from "../../components";
+import { CreateInternalOrder } from "../../components";
 import './style.css'
 
 
@@ -14,10 +14,10 @@ class InternalOrdersList extends Component {
         <h4> Interna ärenden </h4>
         <ul>
           <li>
-            <CreateOrder />
+            <CreateInternalOrder />
           </li>
           <li>
-            <Link to={`/admin/orders/internal/${orderId}`}>
+            <Link to={`/admin/orders/${orderId}`}>
               <div className="edit">
                 <p>Ärende: XXXX, orderId:{orderId} </p>
                 <i className="fas fa-edit" />
@@ -25,7 +25,7 @@ class InternalOrdersList extends Component {
             </Link>
           </li>
           <li>
-            <Link to={`/admin/orders/internal/${orderId2}`}>
+            <Link to={`/admin/orders/${orderId2}`}>
               <div className="edit">
                 <p>Ärende: XXXX, orderId:{orderId2}</p>
                 <i className="fas fa-edit" />

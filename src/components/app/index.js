@@ -11,6 +11,8 @@ import {
     Profile,
     IncomingOrders,
     AddOrders,
+    AddComplaints,
+    AddInternalOrders,
     ActiveOrders,
     HandleOrders,
     CompletedOrders,
@@ -31,20 +33,23 @@ class App extends Component {
           <Route exact path='/' component={Login} />
           <Route path='/home' component={Home} />
           <Route path='/admin/accounts/employees/:userId' component={HandleAccounts}/>
+          <Route path='/admin/accounts/add' component={HandleAccounts}/>
           <Route path='/admin/accounts/profile' component={Profile} />  
           <Route path='/admin/accounts/employees' component={Employees} />
-          <Route path='/admin/accounts/customers/private' component={PrivateCustomers} />
           <Route path='/admin/accounts/customers/private/:userId' component={HandleAccounts}/>
-          <Route path='/admin/accounts/customers/companies' component={Companies} />
+          <Route path='/admin/accounts/customers/private' component={PrivateCustomers} />
           <Route path='/admin/accounts/customers/companies/:userId' component={HandleAccounts}/>
-          <Route path='/admin/orders/:id' component={Order} />
+          <Route path='/admin/accounts/customers/companies' component={Companies} />
           <Route path='/admin/orders/incoming' component={IncomingOrders} />
           <Route path='/admin/orders/active' component={ActiveOrders} />
           <Route path='/admin/orders/add' component={AddOrders} />
           <Route path='/admin/orders/handle' component={HandleOrders} />
           <Route path='/admin/orders/completed' component={CompletedOrders} />
+          <Route path='/admin/orders/complaints/add' component={AddComplaints} />
           <Route path='/admin/orders/complaints' component={Complaints} />
+          <Route path='/admin/orders/internal/add' component={AddInternalOrders} />
           <Route path='/admin/orders/internal' component={InternalOrders} />
+          <Route path='/admin/orders/:id' component={Order} />
           <Route path='/logout' component={Login} />
           <Route component={NotFoundPage} />  
         </Switch>

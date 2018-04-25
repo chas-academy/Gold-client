@@ -13,7 +13,7 @@ export { default as EmployeeList } from './lists/EmployeeList'
 export { default as PrivateCustomerList } from './lists/PrivateCustomerList'
 export { default as CompanyList } from './lists/CompanyList'
 export { default as UserProfile } from './profile'
-export { default as UpdateUser } from './forms/updateUser'
+export { default as UpdateUser } from './forms/UpdateUser'
 export { default as CreateUser } from './buttons/createUser'
 
 
@@ -24,6 +24,14 @@ export { default as InternalOrdersList } from './lists/InternalOrdersList'
 export { default as ActiveOrdersList } from './lists/ActiveOrdersList'
 export { default as CompletedOrdersList } from './lists/CompletedOrdersList'
 export { default as CreateComplaint } from './buttons/CreateComplaint'
+export { default as CreateInternalOrder } from './buttons/CreateInternalOrder'
+
 export { default as ComplaintsList } from './lists/ComplaintsList'
-export { default as OrderDetails } from './orderDetails'
+export { default as OrderDetails } from './orderdetails'
+export { default as AddOrder } from './forms/AddOrder'
+export { default as AddComplaint } from './forms/AddComplaint'
+export { default as AddInternalOrder } from './forms/AddInternalOrder'
+
+
+
 

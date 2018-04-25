@@ -6,7 +6,9 @@ import '../style.css'
 export default class CreateOrder extends Component {
     render() {  
       return (
-        <button className="add">Lägg till ärende</button>
+        <Link to={`/admin/orders/add`} >
+          <button className="add">Lägg till ärende</button>
+        </Link>  
       );
     }
 

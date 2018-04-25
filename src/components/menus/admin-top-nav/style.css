@@ -8,6 +8,7 @@
     padding: 20px;
     border-bottom: 1px solid rgb(43, 41, 41); 
     list-style: none;
+    z-index: 2;
 }
 
 .navBar > li > a {

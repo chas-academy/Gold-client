@@ -3,11 +3,11 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import './style.css'
 
-export default class CreateComplaint extends Component {
+export default class CreateInternalOrder extends Component {
     render() {  
       return (
-        <Link to={`/admin/orders/complaints/add`} >
-          <button className="add">Lägg till reklamation</button>
+        <Link to={`/admin/orders/internal/add`} >
+          <button className="add">Skapa internt ärende </button>
         </Link>  
       );
     }

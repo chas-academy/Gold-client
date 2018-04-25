@@ -18,7 +18,7 @@ class UpdateUser extends Component {
         number: '',
         password: '',
         errorMessage: '',
-        userisAdmin: ''
+        userIsNotAdmin: this.props
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -38,11 +38,10 @@ class UpdateUser extends Component {
   }
 
     render() {
-    const { submitted, name, email, password, tel, number, adress, errorMessage, userisAdmin } = this.state;
+    const { submitted, name, email, password, tel, number, adress, errorMessage, userIsNotAdmin } = this.state;
 
     return (
     <div className="col-md-6 col-md-offset-3">
-      <div className="blur">
         <form name="form" className="UpdateUser-login" onSubmit={this.handleSubmit}>
           <div className="form-group">
             <label for="name">Användarens Namn</label>
@@ -97,7 +96,7 @@ class UpdateUser extends Component {
               </div>
           </div>  
         <div className="form-group">
-          {userisAdmin == false ?
+          {userIsNotAdmin == true ?
             <button className="btn btn-danger">
               Radera Användare
             </button>
@@ -105,7 +104,6 @@ class UpdateUser extends Component {
         </div>
         </form> 
         </div>    
-      </div>
     )
   }
 

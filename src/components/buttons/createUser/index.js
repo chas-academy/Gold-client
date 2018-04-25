@@ -6,7 +6,9 @@ import '../style.css'
 export default class CreateUser extends Component {
     render() {  
       return (
-        <button className="add">Lägg till användare</button>
+        <Link to={`/admin/accounts/add`} >
+          <button className="add">Lägg till användare</button>
+        </Link>  
       );
     }
 

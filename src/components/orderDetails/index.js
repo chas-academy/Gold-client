@@ -6,7 +6,7 @@ export default class OrderDetails extends Component {
 
   render() {
     return (
-      <div>
+      <div className="orderDetails">
             <p> Detaljer om ordern </p>
       </div>
     );
