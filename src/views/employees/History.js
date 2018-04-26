@@ -6,7 +6,7 @@ export default class EmployeeHistory extends Component {
   render() {
     return (
         <div>  
-            <EmployeeTopNav/>
+            {/* <EmployeeTopNav/> */}
                     employee - history view
             <EmployeeBottomNav/>
         </div>    
