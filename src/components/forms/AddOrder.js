@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 // import { connect } from 'react-redux';
 // import { withRouter } from 'react-router-dom';
 
+import  DateTimePicker  from '../dateTime'
 import './style.css';
 
 class AddOrder extends Component {
@@ -72,19 +73,13 @@ class AddOrder extends Component {
               }
           </div>
           <div className="form-group">
-          <label for="date">Datum</label>
-            <input type='text' name='date' className="form-control" placeholder='Datum' value={date} onChange={this.handleChange}/>
-            {submitted && !adress &&
-              <div className="help-block">Glöm inte välja ett datum!</div>
-              }
-          </div>
-          <div className="form-group">
           <label for="description">Beskrivning</label>
             <text type="text" name='description' className="form-control" placeholder='Beskrivning av ärende' value={description} onChange={this.handleChange}/>
             {submitted && !description &&
               <div className="help-block">Glöm inte att fylla i nytt lösenord</div>
             }
           </div>
+          <DateTimePicker />
           <div className="buttons">
           <div className="form-group">
             <button type="submit" className="btn btn-primary">

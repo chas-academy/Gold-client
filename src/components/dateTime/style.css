@@ -1,0 +1,31 @@
+.react-datepicker__input-container > input, .date > input {
+    margin-bottom: 20px;
+    background-color: rgba(255, 255, 255, 0.014);
+    border: none;
+}
+
+.react-datepicker__month-container {
+    width: 500px;
+    height: 400px;
+}
+
+.react-datepicker__month, .react-datepicker__current-month {
+    font-size: 20px !important;
+    margin-bottom: 5px;
+}
+
+.react-datepicker__header {
+    height: 70px;
+}
+
+.date {
+    display: flex;
+    justify-content: space-between;
+    width: 70%;
+}
+
+.react-datepicker__day, .react-datepicker__day-name, .react-datepicker__day, .react-datepicker__time-name {
+    width: 6.0rem !important;
+    height: 5.8rem;
+    font-size: 14px !important;
+}
