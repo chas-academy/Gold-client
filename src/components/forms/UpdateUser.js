@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 // import { withRouter } from 'react-router-dom';
 
 import './style.css';
+import { Contact } from '../../components'
 
 class UpdateUser extends Component {
   constructor (props) {
@@ -41,7 +42,10 @@ class UpdateUser extends Component {
     const { submitted, name, email, password, tel, number, adress, errorMessage, userIsNotAdmin } = this.state;
 
     return (
-    <div className="col-md-6 col-md-offset-3">
+
+      <div className="col-md-6 col-md-offset-3">
+      <Contact />
+
         <form name="form" className="UpdateUser-login" onSubmit={this.handleSubmit}>
           <div className="form-group">
             <label for="name">Användarens Namn</label>

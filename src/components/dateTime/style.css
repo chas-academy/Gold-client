@@ -5,8 +5,8 @@
 }
 
 .react-datepicker__month-container {
-    width: 500px;
-    height: 400px;
+    width: 300px;
+    height: 300px;
 }
 
 .react-datepicker__month, .react-datepicker__current-month {
@@ -25,8 +25,8 @@
 }
 
 .react-datepicker__day, .react-datepicker__day-name, .react-datepicker__day, .react-datepicker__time-name {
-    width: 6.0rem !important;
-    height: 5.8rem;
+    width: 3.2rem !important;
+    height: 3.2rem;
     font-size: 14px !important;
 }
 

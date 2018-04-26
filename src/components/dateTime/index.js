@@ -27,8 +27,9 @@ class DateTime extends Component {
   render() {
     const { time, submitted } = this.state; 
     return (
-        <div className="date">
+        <div>
           <p> Välj datum och tid: </p>
+          <div className="date">
           <DatePicker
           selected={this.state.startDate}
           onChange={this.handleChange}
@@ -37,6 +38,7 @@ class DateTime extends Component {
           {submitted && !time &&
             <div className="help-block">Välj datum reklamationen ska åtgärdas</div>
             }
+            </div>
         </div>  
     )
   }

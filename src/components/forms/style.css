@@ -45,3 +45,15 @@ label {
     color: rgb(63, 62, 62);
 }
 
+.contact {
+    margin-top: 120px;
+    margin-bottom: -120px;
+    width: 100%;
+    text-align: center;
+}
+
+.contact > a {
+    color: rgb(41, 40, 40);
+    font-size: 40px;
+    padding: 40px;
+}

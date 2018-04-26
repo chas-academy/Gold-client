@@ -20,5 +20,22 @@
     color: rgb(139, 177, 219);    
 }
 
+.dropdown-menu {
+    left: -130px;
+    background-color: #141414e8;
+    margin-top: 20px;
+    width: 300px !important;
+    text-align: center;
+    text-transform: uppercase;
+}
 
+#app > div > div > div.navBar > li.dropdown.open > ul > li > a > a > p {
+    padding: 10px;
+    color: rgb(139, 177, 219);    
 
+}
+#app > div > div > div.navBar > li.dropdown.open > ul > li > a:hover {
+    background-color: #000000e8;
+    text-decoration: none;
+
+} 
