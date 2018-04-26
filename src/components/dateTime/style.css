@@ -21,11 +21,15 @@
 .date {
     display: flex;
     justify-content: space-between;
-    width: 70%;
+    width: 100%;
 }
 
 .react-datepicker__day, .react-datepicker__day-name, .react-datepicker__day, .react-datepicker__time-name {
     width: 6.0rem !important;
     height: 5.8rem;
     font-size: 14px !important;
+}
+
+.react-datepicker-popper[data-placement^="top"] {
+    transform: translate3d(43px, -25px, 0px) !important;
 }

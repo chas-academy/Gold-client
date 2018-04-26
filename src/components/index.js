@@ -1,6 +1,7 @@
 export { default as App } from './app'
 export { default as SignUp } from './forms/signup'
 export { default as SignIn } from './forms/signIn'
+export { default as DateTime } from './dateTime'
 
 //ADMIN - HOME
 export { default as AdminTopNav } from './menus/admin-top-nav'

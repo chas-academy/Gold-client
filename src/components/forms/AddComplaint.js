@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 // import { connect } from 'react-redux';
 // import { withRouter } from 'react-router-dom';
 
+import  DateTime  from '../dateTime'
 import './style.css';
 
 class AddComplaint extends Component {
@@ -48,13 +49,6 @@ class AddComplaint extends Component {
               }
           </div>
           <div className="form-group">
-          <label for="date">Datum</label>
-            <input type='text' name='date' className="form-control" placeholder='Datum' value={date} onChange={this.handleChange}/>
-            {submitted && !date &&
-              <div className="help-block">Välj datum reklamationen ska åtgärdas</div>
-              }
-          </div>
-          <div className="form-group">
           <label for="employee">Åtgärdas av:</label>
             <input type='text' name='employee' className="form-control" placeholder='Anställd' value={employee} onChange={this.handleChange}/>
             {submitted && !employee &&
@@ -65,9 +59,10 @@ class AddComplaint extends Component {
           <label for="description">Beskrivning</label>
             <text type="text" name='description' className="form-control" placeholder='Beskrivning av ärende' value={description} onChange={this.handleChange}/>
             {submitted && !description &&
-              <div className="help-block">Glöm inte att fylla i nytt lösenord</div>
+              <div className="help-block">Lägg till beskrivning av ärendet</div>
             }
           </div>
+            <DateTime />
           <div className="buttons">
           <div className="form-group">
             <button type="submit" className="btn btn-primary">

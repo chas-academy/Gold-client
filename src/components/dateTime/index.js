@@ -3,11 +3,8 @@ import DatePicker from 'react-datepicker';
 import moment from 'moment';
 
 import './style.css'
- 
 import 'react-datepicker/dist/react-datepicker.css';
 
-// import 'react-datepicker/dist/react-datepicker-cssmodules.css';
-// CSS Modules, react-datepicker-cssmodules.css
 
 class DateTime extends Component {
 
