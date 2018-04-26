@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import { EmployeeTopNav, EmployeeBottomNav } from '../../components'
+import { EmployeeTopNav, EmployeeBottomNav, EmployeeHistoryList } from '../../components'
 
 export default class EmployeeHistory extends Component {
 
@@ -8,6 +8,7 @@ export default class EmployeeHistory extends Component {
         <div>  
             {/* <EmployeeTopNav/> */}
                     employee - history view
+                    <EmployeeHistoryList/>
             <EmployeeBottomNav/>
         </div>    
     )
