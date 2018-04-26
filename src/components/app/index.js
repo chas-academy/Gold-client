@@ -20,6 +20,9 @@ import {
     InternalOrders,
     Order,
     Login,
+    EmployeeConfirm,
+    EmployeeHistory,
+    EmployeeIncoming,
     NotFoundPage
   } from '../../views'
 
@@ -50,6 +53,9 @@ class App extends Component {
           <Route path='/admin/orders/internal/add' component={AddInternalOrders} />
           <Route path='/admin/orders/internal' component={InternalOrders} />
           <Route path='/admin/orders/:id' component={Order} />
+          <Route path='/employee/confirm' component={EmployeeConfirm} />
+          <Route path='/employee/history' component={EmployeeHistory} />
+          <Route path='/employee/incoming' component={EmployeeIncoming} />
           <Route path='/logout' component={Login} />
           <Route component={NotFoundPage} />  
         </Switch>

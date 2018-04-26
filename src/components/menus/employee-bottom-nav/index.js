@@ -19,13 +19,13 @@ class EmployeeBottomNav extends Component {
       <nav className="bottomNav">
         <ul className="bottomNavList">
           <li>
-            <Link to={`/admin/orders/incoming`}>
+            <Link to={`/employee/incoming`}>
                 <i class="fas fa-inbox"></i>
             </Link>
           </li>
           <li>
-            <Link to={`/admin/orders/complaints`}>
-              <i className="far fa-frown" />
+            <Link to={`/employee/history`}>
+              <i className="fas fa-book" />
             </Link>
           </li>
           <li>

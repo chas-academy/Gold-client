@@ -21,3 +21,10 @@ export { default as ActiveOrders } from './admin/orders/ActiveOrders';
 export { default as IncomingOrders } from './admin/orders/IncomingOrders';
 export { default as InternalOrders } from './admin/orders/InternalOrders';
 export { default as AddInternalOrders } from './admin/orders/AddInternalOrders';
+
+
+//Employee
+
+export { default as EmployeeConfirm } from './employees/Confirm';
+export { default as EmployeeIncoming } from './employees/Incoming';
+export { default as EmployeeHistory} from './employees/History';

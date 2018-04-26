@@ -1,12 +1,14 @@
 import React, { Component } from "react"
+import { EmployeeTopNav, EmployeeBottomNav } from '../../components'
 
-
-export default class History extends Component {
+export default class EmployeeHistory extends Component {
 
   render() {
     return (
-        <div> 
-            employee - History view
+        <div>  
+            <EmployeeTopNav/>
+                    employee - history view
+            <EmployeeBottomNav/>
         </div>    
     )
   }

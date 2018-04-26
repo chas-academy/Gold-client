@@ -1,12 +1,14 @@
 import React, { Component } from "react"
+import { EmployeeTopNav, EmployeeBottomNav } from '../../components'
 
-
-export default class Incoming extends Component {
+export default class EmployeeIncoming extends Component {
 
   render() {
     return (
-        <div> 
+        <div>
+            <EmployeeTopNav/>
             employee - Incoming view
+            <EmployeeBottomNav/>
         </div>    
     )
   }

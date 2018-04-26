@@ -1,12 +1,14 @@
 import React, { Component } from "react"
+import { EmployeeTopNav, EmployeeBottomNav } from '../../components'
 
-
-export default class Confirm extends Component {
+export default class EmployeeConfirm extends Component {
 
   render() {
     return (
         <div> 
-            employee - Confirm view
+            < EmployeeTopNav />
+                employee - Confirm view
+            < EmployeeBottomNav />
         </div>    
     )
   }
