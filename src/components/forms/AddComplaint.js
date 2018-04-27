@@ -3,7 +3,8 @@ import React, { Component } from 'react';
 // import { connect } from 'react-redux';
 // import { withRouter } from 'react-router-dom';
 
-import  DateTime  from '../dateTime'
+import { DateTime, ImageUploader, AddPhotos, MultipleSelect  } from '../../components'
+
 import './style.css';
 
 class AddComplaint extends Component {
@@ -62,8 +63,16 @@ class AddComplaint extends Component {
               <div className="help-block">Lägg till beskrivning av ärendet</div>
             }
           </div>
+          <div className="form-group">
+          <label for="employee">Åtgärdas av: </label>
+          <MultipleSelect />
+            {submitted && !employee &&
+              <div className="help-block">Glöm inte att tilldela ärendet till rätt person</div>
+            }
+          </div>
             <DateTime />
           <div className="buttons">
+          <AddPhotos />
           <div className="form-group">
             <button type="submit" className="btn btn-primary">
               Skapa Reklamation
@@ -73,11 +82,6 @@ class AddComplaint extends Component {
               }
               </div>
           </div>  
-        <div className="form-group">
-            <button className="btn btn-info"> 
-            Lägg till Foto
-            </button>
-        </div>
         </form> 
         </div>    
     )

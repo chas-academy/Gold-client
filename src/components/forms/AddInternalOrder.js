@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 // import { connect } from 'react-redux';
 // import { withRouter } from 'react-router-dom';
 
-import  DateTime  from '../dateTime'
+import { DateTime, ImageUploader, AddPhotos, MultipleSelect  } from '../../components'
 import './style.css';
 
 class AddInternalOrder extends Component {
@@ -62,8 +62,16 @@ class AddInternalOrder extends Component {
               <div className="help-block">Fyll i din beskrivning av ärendet</div>
             }
           </div>
+          <div className="form-group">
+          <label for="employee">Åtgärdas av: </label>
+          <MultipleSelect />
+            {submitted && !employee &&
+              <div className="help-block">Glöm inte att tilldela ärendet till rätt person</div>
+            }
+          </div>
           <DateTime />
           <div className="buttons">
+          <AddPhotos />
           <div className="form-group">
             <button type="submit" className="btn btn-primary">
               Skapa internt ärende
@@ -73,11 +81,6 @@ class AddInternalOrder extends Component {
               }
               </div>
           </div>  
-        <div className="form-group">
-            <button className="btn btn-info"> 
-            Lägg till Foto
-            </button>
-        </div>
         </form> 
         </div>    
     )
