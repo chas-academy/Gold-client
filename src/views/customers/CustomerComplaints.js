@@ -8,7 +8,7 @@ export default class CustomerComplaints extends Component {
   render() {
     return (
         <div className="customerOrder">
-          <h3>Beställningshistorik</h3>
+          <h3>Skapa reklamation</h3>
           <AddComplaint />
           <CustomerBottomNav />
         </div>

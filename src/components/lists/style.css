@@ -24,7 +24,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 70%;
+    width: 100%;
     color: rgb(241, 241, 237);
     font-size: 14px;
 }
@@ -35,8 +35,9 @@
 
 #app > div > div > div.users > ul > li > a {
     text-decoration: none;
-
 }
+
+
 
 
 
