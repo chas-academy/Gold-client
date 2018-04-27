@@ -5,14 +5,14 @@ import GoogleMapReact from 'google-map-react'
 
 const AnyReactComponent = ({ text }) => <div>{ text }</div>;
 
-const Google = '';
+const Google = 'AIzaSyCt8fptPasyGjtQHBMYzhNvPgz5vefEzeY';
 
 
  export default class MapContainer extends Component {
   
 
     static defaultProps = {
-    center: { lat: 55.60587, lng: 13.00073},
+    center: { lat: 55.5873503, lng: 12.9814429},
     zoom: 10
   }
 
