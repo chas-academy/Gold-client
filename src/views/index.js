@@ -3,14 +3,14 @@ export { default as NotFoundPage } from './NotFoundPage';
 export { default as Login } from './Login';
 export { default as Register } from './Register';
 
-//Admin - accounts
+// Admin - accounts
 export { default as HandleAccounts } from './admin/accounts/HandleAccounts';
 export { default as Employees } from './admin/accounts/Employees';
 export { default as Companies } from './admin/accounts/Companies';
 export { default as PrivateCustomers } from './admin/accounts/PrivateCustomers';
 export { default as Profile } from './admin/accounts/Profile';
 
-//Admin -orders
+// Admin - orders
 export { default as Order } from './admin/orders/Order';
 export { default as AddOrders } from './admin/orders/AddOrders';
 export { default as Complaints } from './admin/orders/Complaints';
@@ -22,9 +22,17 @@ export { default as IncomingOrders } from './admin/orders/IncomingOrders';
 export { default as InternalOrders } from './admin/orders/InternalOrders';
 export { default as AddInternalOrders } from './admin/orders/AddInternalOrders';
 
-
-//Employee
-
+// Employee
 export { default as EmployeeConfirm } from './employees/Confirm';
 export { default as EmployeeIncoming } from './employees/Incoming';
 export { default as EmployeeHistory} from './employees/History';
+
+
+// Customers
+
+export { default as Contact } from './Contact'
+export { default as CustomerComplaints } from './CustomerComplaints'
+export { default as CustomerHistory } from './CustomerHistory'
+export { default as CustomerOrders } from './CustomerOrders'
+export { default as CustomerProfile } from './CustomerProfile'
+export { default as CustomerHome } from './CustomerHome'
