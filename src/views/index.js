@@ -29,10 +29,9 @@ export { default as EmployeeHistory} from './employees/History';
 
 
 // Customers
-
-export { default as Contact } from './Contact'
-export { default as CustomerComplaints } from './CustomerComplaints'
-export { default as CustomerHistory } from './CustomerHistory'
-export { default as CustomerOrders } from './CustomerOrders'
-export { default as CustomerProfile } from './CustomerProfile'
-export { default as CustomerHome } from './CustomerHome'
+export { default as Contact } from './customers/Contact'
+export { default as CustomerComplaints } from './customers/CustomerComplaints'
+export { default as CustomerHistory } from './customers/CustomerHistory'
+export { default as CustomerOrders } from './customers/CustomerOrders'
+export { default as CustomerProfile } from './customers/CustomerProfile'
+export { default as CustomerHome } from './customers/CustomerHome'

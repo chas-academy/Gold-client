@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 
-// import CustomerHome from '/customers/Home'
+import CustomerHome from './customers/CustomerHome'
 // import EmployeeHome from '/employees/Home'
 
 import { AdminTopNav, AdminBottomNav, MapContainer } from './../components'
@@ -12,8 +12,8 @@ class Home extends Component {
     constructor(props) {
       super(props);
       this.state = { 
-          isAdmin: true,
-          isCustomer: false,
+          isAdmin: false,
+          isCustomer: true,
           isEmployee: false
          };
     }
@@ -42,14 +42,14 @@ class Home extends Component {
             
             // {switch (true) {
             //     case isAdmin:  
-                    <div>
-                        <AdminTopNav />
-                            <MapContainer />
-                        <AdminBottomNav />
-                    </div>
+                    // <div>
+                    //     <AdminTopNav />
+                    //         <MapContainer />
+                    //     <AdminBottomNav />
+                    // </div>
             //         break;
             //     case isCustomer:
-            //         <CustomerHome />
+                    <CustomerHome />
             //         break;
             //     case isEmployee:
             //         <EmployeeHome />

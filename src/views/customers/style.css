@@ -1,0 +1,21 @@
+.welcome {
+    width: 100%;
+    position: absolute;
+    color: rgb(63, 62, 62);
+    margin-top: 150px;
+    text-align: center;
+}
+
+.fa-user-circle {
+    font-size: 66px;
+}
+
+.CustomerHomeButtons {
+    font-size: 50px;
+    width: 170px;
+    height: 250px;
+    margin: 5px;
+    background-color: rgba(32, 32, 32, 0.548);
+    border: none;
+    color: white;
+}
