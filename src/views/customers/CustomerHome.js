@@ -1,7 +1,9 @@
 import React, { Component } from "react"
+import { Link, withRouter } from "react-router-dom"
+
 import './style.css'
 
-export default class CustomerHome extends Component {
+class CustomerHome extends Component {
 
   render() {
       const user = 'Adam';
@@ -11,18 +13,26 @@ export default class CustomerHome extends Component {
             <h3>Välkommen {user}</h3>
             <div>
                 <button className="CustomerHomeButtons">
+                <Link to={`/order/add`}>
                     <i className="fas fa-shopping-cart"></i>
+                </Link>    
                 </button>
                 <button className="CustomerHomeButtons">
+                <Link to={`/complaints`}>
                     <i className="fas fa-exclamation-triangle"></i>
+                </Link>    
                 </button>
             </div>
             <div>
                 <button className="CustomerHomeButtons">
+                <Link to={`/contact`}>
                     <i class="far fa-envelope"></i>
+                </Link>    
                 </button>
                 <button className="CustomerHomeButtons">
-                    <i class="fas fa-history"></i>
+                <Link to={`/history`}>
+                    <i className="fas fa-history"></i>
+                </Link>    
                 </button>
             </div>
         </div>    
@@ -30,3 +40,5 @@ export default class CustomerHome extends Component {
   }
 
 }
+
+export default withRouter(CustomerHome)

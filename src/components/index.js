@@ -62,5 +62,8 @@ export { default as EmployeeCompleteList} from './lists/EmployeeCompleteList'
 
 
 
+// CUSTOMER 
+export { default as CustomerBottomNav } from './menus/customer-bottom-nav'
+
 
 
