@@ -11,7 +11,7 @@ export default class AddPhotos extends Component {
             <p>Ladda upp foton:</p>
             <ImageUploader>
             <button className="uploadImageButton">
-                <i class="far fa-images"></i>
+                <i className="far fa-images"></i>
             </button>
             </ImageUploader>
         </div>

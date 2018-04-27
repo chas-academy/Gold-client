@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 // import { connect } from "react-redux";
-import { AdminTopNav, AdminBottomNav, OrderDetails, HandleOrder } from '../../../components'
+import { AdminTopNav, AdminBottomNav, HandleOrder } from '../../../components'
 
 export default class Order extends Component {
 

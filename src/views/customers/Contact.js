@@ -18,7 +18,7 @@ export default class CustomerContact extends Component {
     
     render() {
         const AnyReactComponent = ({ text }) => <div>{ text }</div>;
-        const Google = 'AIzaSyCt8fptPasyGjtQHBMYzhNvPgz5vefEzeY';
+        const Google = '';
         
         return (
         <div className="customerContact">
