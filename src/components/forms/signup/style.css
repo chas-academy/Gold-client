@@ -78,6 +78,10 @@
     color: rgb(95, 255, 95) !important;
 }
 
+label {
+    color: white;
+}
+
 @media only screen and (min-width : 320px) and (max-width : 480px) {
 
     .PhotoFeed {
