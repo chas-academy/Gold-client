@@ -44,8 +44,6 @@ class UpdateUser extends Component {
     return (
 
       <div className="col-md-6 col-md-offset-3">
-      <Contact />
-
         <form name="form" className="UpdateUser-login" onSubmit={this.handleSubmit}>
           <div className="form-group">
             <label for="name">Användarens Namn</label>

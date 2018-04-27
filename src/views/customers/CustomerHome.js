@@ -8,8 +8,10 @@ class CustomerHome extends Component {
   render() {
       const user = 'Adam';
     return (
-        <div className="welcome"> 
-            <i className="far fa-user-circle"></i>
+        <div className="welcome">
+            <Link to={`/profile`}>
+                <i className="far fa-user-circle"></i>
+            </Link>
             <h3>Välkommen {user}</h3>
             <div>
                 <button className="CustomerHomeButtons">
