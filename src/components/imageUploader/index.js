@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import Dropzone from 'react-dropzone'
 
 import './style.css'
@@ -14,7 +14,4 @@ const ImageUploader = ({children}) => (
 
 )
   
-
-
-
 export default ImageUploader

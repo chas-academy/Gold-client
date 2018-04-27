@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 import { Tabs, TabLink, TabContent } from 'react-tabs-redux';
-import { EmployeeTopNav,
+import { 
   EmployeeBottomNav,
     EmployeeHistoryList,
       EmployeeIncomingList,
@@ -13,8 +13,7 @@ export default class EmployeeHistory extends Component {
   render() {
     return (
         <div>  
-            {/* <EmployeeTopNav/> */}
-            <h1>Historia</h1>
+            <h1>Historik</h1>
             <ul>
             <Tabs>
             <div className="history-tabs">

@@ -1,9 +1,8 @@
-import React, { Component } from 'react';
-import { Tabs, TabContent, TabLink } from 'react-tabs-redux';
+import React, { Component } from 'react'
 // import { loginUser } from '../actions/auth';
 // import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
-import './style.css';
+import { Link } from 'react-router-dom'
+import './style.css'
 
 class SignIn extends Component {
   constructor (props) {
@@ -55,10 +54,10 @@ class SignIn extends Component {
   handleSubmit(e) {
     e.preventDefault();
     
-    const loginUser = {
-      persOrgNumber: this.state.persOrgNumber,
-      password: this.state.password
-    }
+    // const loginUser = {
+    //   persOrgNumber: this.state.persOrgNumber,
+    //   password: this.state.password
+    // }
 
     //dispatch goes here...
   }

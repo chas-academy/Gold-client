@@ -35,7 +35,7 @@ class CustomerBottomNav extends Component {
           </li>
           <li>
             <button className="logout" onClick={this.logout}>
-              <i class="fas fa-sign-out-alt" />
+              <i className="fas fa-sign-out-alt" />
             </button>
           </li>
         </ul>

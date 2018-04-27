@@ -1,6 +1,6 @@
 import React, { Component } from "react"
-// import { connect } from "react-redux";
-import { AdminTopNav, AdminBottomNav, CompanyList, IncomingOrdersList } from '../../../components'
+// import { connect } from "react-redux"
+import { AdminTopNav, AdminBottomNav, IncomingOrdersList } from '../../../components'
 
 export default class IncomingOrders extends Component {
 
