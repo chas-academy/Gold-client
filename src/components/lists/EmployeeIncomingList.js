@@ -15,10 +15,10 @@ class IncomingJobsList extends Component {
     const jobId2 = 2;
     return (
       <div className="users">
-        <h4> Inkommande ärenden </h4>
+        <h4> Nya Jobb </h4>
         <ul>
           <li>
-            <Link to={`/employee/${jobId}`}>
+            <Link to={`/employee/order/${jobId}`}>
               <div className="edit">
                 <p>Clean that up</p>
                 <i className="fas fa-edit" />
@@ -26,7 +26,7 @@ class IncomingJobsList extends Component {
             </Link>
           </li>
           <li>
-            <Link to={`/admin/accounts/employees/${jobId2}`}>
+            <Link to={`/employee/order/${jobId2}`}>
               <div className="edit">
                 <p>Clean that office job</p>
                 <i className="fas fa-edit" />

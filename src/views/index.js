@@ -26,6 +26,7 @@ export { default as AddInternalOrders } from './admin/orders/AddInternalOrders';
 export { default as EmployeeConfirm } from './employees/Confirm';
 export { default as EmployeeIncoming } from './employees/Incoming';
 export { default as EmployeeHistory} from './employees/History';
+export { default as EmployeeHome} from './employees/EmployeeHome';
 
 
 // Customers
