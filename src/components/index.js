@@ -8,14 +8,11 @@ export { default as MultipleSelect } from './multipleSelect'
 export { default as AddPhotos } from './buttons/AddPhotos'
 
 
-
-
 /* ADMIN - HOME ----------------------------------------------------- */
 export { default as AdminTopNav } from './menus/admin-top-nav'
 export { default as AdminBottomNav } from './menus/admin-bottom-nav'
 export { default as GoogleApiWrapper } from './googleApi'
 export { default as MapContainer } from './googleApi'
-
 
 
 /* ADMIN - ACCOUNTS -------------------------------------------------- */
@@ -28,8 +25,6 @@ export { default as PrivateCustomerList } from './lists/PrivateCustomerList'
 export { default as CreateUser } from './buttons/createUser'
 // Forms
 export { default as UpdateUser } from './forms/UpdateUser'
-
-
 
 
 /* ADMIN - ORDERS --------------------------------------------------- */
