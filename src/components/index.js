@@ -3,6 +3,8 @@ export { default as SignUp } from './forms/signup'
 export { default as SignIn } from './forms/signIn'
 export { default as DateTime } from './dateTime'
 export { default as Contact} from './contact' 
+export { default as ImageUploader } from './imageUploader'
+export { default as AddPhotos } from './buttons/AddPhotos'
 
 //ADMIN - HOME
 export { default as AdminTopNav } from './menus/admin-top-nav'

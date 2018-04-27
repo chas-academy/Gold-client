@@ -4,7 +4,9 @@ import React, { Component } from 'react';
 // import { withRouter } from 'react-router-dom';
 
 import  DateTime  from '../dateTime'
-import './style.css';
+import  ImageUploader from '../imageUploader'
+import  AddPhotos from '../buttons/AddPhotos'
+import  './style.css';
 
 class AddOrder extends Component {
   constructor (props) {
@@ -76,11 +78,12 @@ class AddOrder extends Component {
           <label for="description">Beskrivning</label>
             <text type="text" name='description' className="form-control" placeholder='Beskrivning av ärende' value={description} onChange={this.handleChange}/>
             {submitted && !description &&
-              <div className="help-block">Glöm inte att fylla i nytt lösenord</div>
+              <div className="help-block">Glöm inte att beskriva ärendet</div>
             }
           </div>
           <DateTime />
           <div className="buttons">
+          <AddPhotos />
           <div className="form-group">
             <button type="submit" className="btn btn-primary">
               Skapa Ärende
@@ -90,11 +93,6 @@ class AddOrder extends Component {
               }
               </div>
           </div>  
-        <div className="form-group">
-            <button className="btn btn-info"> 
-            Lägg till Foto
-            </button>
-        </div>
         </form> 
         </div>    
     )
