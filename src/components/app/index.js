@@ -23,6 +23,7 @@ import {
     EmployeeConfirm,
     EmployeeHistory,
     EmployeeIncoming,
+    EmployeeJobView,
     NotFoundPage
   } from '../../views'
 
@@ -56,6 +57,7 @@ class App extends Component {
           <Route path='/employee/confirm' component={EmployeeConfirm} />
           <Route path='/employee/history' component={EmployeeHistory} />
           <Route path='/employee/incoming' component={EmployeeIncoming} />
+          <Route path='/employee/jobs/:id' component={EmployeeJobView} />
           <Route path='/logout' component={Login} />
           <Route component={NotFoundPage} />  
         </Switch>

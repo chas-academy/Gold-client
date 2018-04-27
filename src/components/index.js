@@ -45,7 +45,8 @@ export { default as EmployeeConfirmJob } from './buttons/EmployeeConfirmJob'
 export { default as EmployeeIncomingList } from './lists/EmployeeIncomingList'
 export { default as EmployeeOngoingList } from './lists/EmployeeOngoingList'
 export { default as EmployeeCompleteList} from './lists/EmployeeCompleteList'
-
+export { default as EmployeeJobDetails } from './EmployeeOrderDetails'
+ 
 
 
 

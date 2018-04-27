@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import '../style.css'
 
-export default class CreateUser extends Component {
+export default class EmployeeCompleteJob extends Component {
     render() {  
       return (
         // <Link to={`/Employee/${employee_id}/add`} >
