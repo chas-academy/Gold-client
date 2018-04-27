@@ -1,13 +1,12 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 // import { loginUser } from '../actions/auth';
 // import { connect } from 'react-redux';
 // import { withRouter } from 'react-router-dom';
 
 import { DateTime, ImageUploader, AddPhotos, MultipleSelect  } from '../../components'
-
 import  './style.css';
 
-class AddOrder extends Component {
+class HandleOrder extends Component {
   constructor (props) {
     super(props);
 
@@ -42,6 +41,7 @@ class AddOrder extends Component {
     render() {
     const { submitted, contact, customerId, phone, adress, date, description, employee, photo, errorMessage } = this.state;
 
+    const employeeName = 'Någon';
     return (
     <div className="col-md-6 col-md-offset-3">
         <form name="form" className="UpdateUser-login" onSubmit={this.handleSubmit}>
@@ -106,4 +106,4 @@ class AddOrder extends Component {
 
 }
   
-export default AddOrder;
+export default HandleOrder;

@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 // import { connect } from 'react-redux';
 // import { withRouter } from 'react-router-dom';
 
+import { DateTime, ImageUploader, AddPhotos, MultipleSelect  } from '../../components'
 import './style.css';
 
 class AddInternalOrder extends Component {
@@ -48,13 +49,6 @@ class AddInternalOrder extends Component {
               }
           </div>
           <div className="form-group">
-          <label for="date">Datum</label>
-            <input type='text' name='date' className="form-control" placeholder='Datum' value={date} onChange={this.handleChange}/>
-            {submitted && !date &&
-              <div className="help-block">Välj datum reklamationen ska åtgärdas</div>
-              }
-          </div>
-          <div className="form-group">
           <label for="employee">Åtgärdas av:</label>
             <input type='text' name='employee' className="form-control" placeholder='Anställd' value={employee} onChange={this.handleChange}/>
             {submitted && !employee &&
@@ -68,7 +62,16 @@ class AddInternalOrder extends Component {
               <div className="help-block">Fyll i din beskrivning av ärendet</div>
             }
           </div>
+          <div className="form-group">
+          <label for="employee">Åtgärdas av: </label>
+          <MultipleSelect />
+            {submitted && !employee &&
+              <div className="help-block">Glöm inte att tilldela ärendet till rätt person</div>
+            }
+          </div>
+          <DateTime />
           <div className="buttons">
+          <AddPhotos />
           <div className="form-group">
             <button type="submit" className="btn btn-primary">
               Skapa internt ärende
@@ -78,11 +81,6 @@ class AddInternalOrder extends Component {
               }
               </div>
           </div>  
-        <div className="form-group">
-            <button className="btn btn-info"> 
-            Lägg till Foto
-            </button>
-        </div>
         </form> 
         </div>    
     )
