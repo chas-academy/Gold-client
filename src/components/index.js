@@ -38,13 +38,29 @@ export { default as ComplaintsList } from './lists/ComplaintsList'
 export { default as CreateOrder } from './buttons/createOrder'
 export { default as CreateComplaint } from './buttons/CreateComplaint'
 export { default as CreateInternalOrder } from './buttons/CreateInternalOrder'
+
 // Forms
+
 export { default as AddOrder } from './forms/AddOrder'
 export { default as AddComplaint } from './forms/AddComplaint'
 export { default as AddInternalOrder } from './forms/AddInternalOrder'
 export { default as HandleOrder } from './forms/HandleOrder'
-
 export { default as OrderDetails } from './orderDetails'
+
+
+// EMPLOYEE HOME 
+
+
+//EMPLOYEE VIEW COMPONENTS
+export { default as EmployeeTopNav } from './menus/employee-top-nav'
+export { default as EmployeeBottomNav } from './menus/employee-bottom-nav'
+export { default as IncomingJobsList } from './lists/IncomingJobsList'
+export { default as EmployeeConfirmJob } from './buttons/EmployeeConfirmJob'
+export { default as EmployeeIncomingList } from './lists/EmployeeIncomingList'
+export { default as EmployeeOngoingList } from './lists/EmployeeOngoingList'
+export { default as EmployeeCompleteList} from './lists/EmployeeCompleteList'
+
+
 
 
 
