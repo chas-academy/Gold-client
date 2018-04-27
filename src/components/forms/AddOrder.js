@@ -22,6 +22,7 @@ class AddOrder extends Component {
         employee: '',
         photo: '',
         errorMessage: '',
+        isAdmin: false
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -40,7 +41,7 @@ class AddOrder extends Component {
   }
 
     render() {
-    const { submitted, contact, customerId, phone, adress, date, description, employee, photo, errorMessage } = this.state;
+    const { isAdmin, submitted, contact, customerId, phone, adress, date, description, employee, photo, errorMessage } = this.state;
 
     return (
     <div className="col-md-6 col-md-offset-3">
@@ -80,6 +81,7 @@ class AddOrder extends Component {
               <div className="help-block">Glöm inte att beskriva ärendet</div>
             }
           </div>
+          {isAdmin === true ? 
           <div className="form-group">
           <label for="employee">Åtgärdas av: </label>
           <MultipleSelect />
@@ -87,6 +89,7 @@ class AddOrder extends Component {
               <div className="help-block">Glöm inte att tilldela ärendet till rätt person</div>
             }
           </div>
+            : ('')}
           <DateTime />
           <div className="buttons">
           <AddPhotos />
