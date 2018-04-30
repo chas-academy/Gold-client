@@ -1,6 +1,6 @@
 .location-search-input {
     background-color: rgba(255, 255, 255, 0.178);
-    border-bottom: 1px solid black;
+    border-bottom: 2px solid rgba(50, 90, 163, 0.486);
     border-top: none;
     border-right: none;
     border-left: none;
@@ -8,5 +8,10 @@
     width: 100%;
     line-height: 2.0;
     border-radius: 5px;
+}
+
+
+.help-block {
+    color: rgb(58, 95, 165) !important;
 }
 

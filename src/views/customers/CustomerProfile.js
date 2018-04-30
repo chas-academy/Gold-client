@@ -6,9 +6,13 @@ import { CustomerBottomNav, UserProfile } from '../../components'
 export default class CustomerProfile extends Component {
 
   render() {
+
+    const kund = 'Stena';
     return (
         <div className="customerOrder">
-          <h3>Din profil</h3>
+            <div className="AllPagesInfo">
+              <h3>{kund}</h3>
+            </div>  
           <UserProfile />
           <CustomerBottomNav />
         </div>

@@ -42,7 +42,7 @@ class AddComplaint extends Component {
 
     return (
     <div className="col-md-6 col-md-offset-3">
-        <form name="form" className="UpdateUser-login" onSubmit={this.handleSubmit}>
+        <form name="form" className="BasicForm" onSubmit={this.handleSubmit}>
           <div className="form-group">
             <label for="orderId">ÄrendeId</label>
             <input type='text' name='orderId' className="form-control" placeholder='Ärende id' value={orderId} onChange={this.handleChange}/>

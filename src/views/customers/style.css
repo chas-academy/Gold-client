@@ -1,28 +1,47 @@
-.welcome {
+.CustomerHome__menu {
     width: 100%;
     position: absolute;
     color: rgb(63, 62, 62);
-    margin-top: 100px;
+    margin-top: 50px;
     text-align: center;
 }
 
-.welocome > .fa-user-circle {
-    font-size: 66px;
-}
-
-.CustomerHomeButtons {
+.CustomerHome__buttons {
     font-size: 50px;
-    width: 170px;
-    height: 250px;
+    width: 180px;
+    height: 200px;
     margin: 5px;
-    background-color: rgba(32, 32, 32, 0.548);
+    background-color: rgba(77, 77, 77, 0.521);
     border: none;
-    color: white;
+    border-radius: 10px;
 }
 
-.customerOrder > h3 {
+.CustomerHome__buttons > a {
+    color: rgb(26, 25, 25);
+}
+
+.CustomerHome__buttonText {
+    font-size: 12px;
+}
+
+.CustomerHome__welcome {
+    color: #424242;
+    text-transform: uppercase;
+    margin-bottom: 50px;
+    font-size: 32px;
+}
+
+.CustomerHome__userIcon {
+    font-size: 96px;
+    color: rgb(60, 61, 61);
+}
+
+.AllPagesInfo {
+    display: flex;
+    align-items: center;
     position: absolute;
-    top: 20px;
     width: 100%;
-    text-align: center;
+    top: 20px;
+    justify-content: center;
+    text-transform: uppercase;
 }

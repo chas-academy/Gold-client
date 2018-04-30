@@ -2,9 +2,8 @@
     position: absolute;
     bottom: 0;
     width: 100%;
-    background-color: #282829e8;
+    background-color: #3161a6;
     padding-top: 20px;
-    border-top: 1px solid rgb(46, 46, 46);
 }
 
 .bottomNavList {
@@ -16,7 +15,7 @@
 }
 
 .bottomNavList > li > a {
-    color: rgb(206, 205, 205);
+    color: rgb(241, 240, 240);
     font-size: 26px;
 }
 
@@ -26,7 +25,7 @@
 }
 
 .bottomNavList > li > a:hover, .bottomNav > li > a:focus {
-    color: rgb(139, 177, 219);  
+    color: rgb(45, 46, 46);  
 }
 
 .logout {

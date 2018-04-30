@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 // import { withRouter } from 'react-router-dom';
 
 import './style.css';
-import { Contact, LocationSearchInput } from '../../components'
+import { Contact, LocationSearchInput, Logo } from '../../components'
 
 class UpdateUser extends Component {
   constructor (props) {
@@ -44,9 +44,9 @@ class UpdateUser extends Component {
     return (
 
       <div className="col-md-6 col-md-offset-3">
-        <form name="form" className="UpdateUser-login" onSubmit={this.handleSubmit}>
+        <form name="form" className="BasicForm" onSubmit={this.handleSubmit}>
           <div className="form-group">
-            <label for="name">Användarens Namn</label>
+            <label for="name">Namn</label>
             <input type='text' name='name' className="form-control" placeholder='Användarens namn' value={name} onChange={this.handleChange}/>
             {submitted && !name &&
               <div className="help-block">Glöm inte fylla i namnet!</div>
@@ -105,10 +105,9 @@ class UpdateUser extends Component {
             : ('')}
         </div>
         </form> 
-        </div>    
+              </div>    
     )
   }
-
 }
   
 export default UpdateUser;

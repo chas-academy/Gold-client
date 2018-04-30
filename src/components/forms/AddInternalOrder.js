@@ -40,7 +40,7 @@ class AddInternalOrder extends Component {
 
     return (
     <div className="col-md-6 col-md-offset-3">
-        <form name="form" className="UpdateUser-login" onSubmit={this.handleSubmit}>
+        <form name="form" className="BasicForm" onSubmit={this.handleSubmit}>
           <div className="form-group">
             <label for="title">Titel</label>
             <input type='text' name='title' className="form-control" placeholder='Titel' value={title} onChange={this.handleChange}/>

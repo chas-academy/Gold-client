@@ -1,10 +1,10 @@
-.users {
+BasicList__container {
     padding: 20px;
     margin-top: 90px;
     background-color: rgba(46, 45, 45, 0.568);
 }
 
-.users > h4 {
+BasicList__container > h4 {
     margin: auto;
     text-align: center;
     margin-bottom: 20px;
@@ -12,7 +12,7 @@
     text-transform: uppercase;
 } 
 
-.users > ul {
+BasicList__container > ul {
     list-style: none;
     margin: auto;
     text-align: center;
@@ -33,7 +33,7 @@
     color: rgb(139, 177, 219);  
 }
 
-#app > div > div > div.users > ul > li > a {
+#app > div > div > div.BasicList__container > ul > li > a {
     text-decoration: none;
 }
 

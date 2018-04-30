@@ -21,6 +21,7 @@ class LocationSearchInput extends React.Component {
   }
 
   render() {
+    const { address } = this.state; 
     return (
       <PlacesAutocomplete
         value={this.state.address}
@@ -41,7 +42,7 @@ class LocationSearchInput extends React.Component {
                 // inline style for demonstration purpose
                 const style = suggestion.active
                             ? { backgroundColor: '#fafafa', cursor: 'pointer' }
-                            : { backgroundColor: '#ffffff', cursor: 'pointer' };
+                            : { backgroundColor: '#ffffff44', cursor: 'pointer' };
                 return (
                   <div {...getSuggestionItemProps(suggestion, { className, style })}>
                     <span>{suggestion.description}</span>
@@ -49,6 +50,9 @@ class LocationSearchInput extends React.Component {
                 )
               })}
             </div>
+            {/* {!address &&
+              <div className="help-block">Glöm inte fylla i adressen!</div>
+              } */}
           </div>
         )}
       </PlacesAutocomplete>

@@ -44,7 +44,7 @@ class HandleOrder extends Component {
     const employeeName = 'Någon';
     return (
     <div className="col-md-6 col-md-offset-3">
-        <form name="form" className="UpdateUser-login" onSubmit={this.handleSubmit}>
+        <form name="form" className="BasicForm" onSubmit={this.handleSubmit}>
           <div className="form-group">
             <label for="contact">Kontaktperson</label>
             <input type='text' name='contact' className="form-control" placeholder='Kontakperson' value={contact} onChange={this.handleChange}/>

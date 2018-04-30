@@ -1,4 +1,4 @@
-.add {
+.Create__button {
     padding: 20px;
     border-radius: 30px;
     text-transform: uppercase;
@@ -9,8 +9,9 @@
     width: 300px;
 }
 
-.uploadImageButton {
+.AddPhotos__button {
     color: rgb(72, 105, 148);
     font-size: 24px;
+    background-color: rgba(255, 255, 255, 0);
 }
 

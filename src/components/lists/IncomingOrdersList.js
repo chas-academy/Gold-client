@@ -10,7 +10,7 @@ class IncomingOrdersList extends Component {
       const orderId = 1;
       const orderId2 = 2;
     return (
-      <div className="users">
+      <div className="BasicList__container">
         <h4> Nya ärenden </h4>
         <ul>
           <li>

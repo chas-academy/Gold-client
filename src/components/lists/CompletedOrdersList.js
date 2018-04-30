@@ -19,8 +19,8 @@ class CompletedOrdersList extends Component {
       const { isAdmin } = this.state;
       
     return (
-      <div className="users">
-        <h4> Avslutade ärenden </h4>
+      <div className="BasicList__container">
+        <h4>Avslutade ärenden</h4>
         <ul>
           <li>
             {isAdmin === true ?

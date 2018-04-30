@@ -1,0 +1,7 @@
+.CustomerBottomNav__container {
+    background-color: rgba(77, 77, 77, 0.521);
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding-top: 20px;
+}

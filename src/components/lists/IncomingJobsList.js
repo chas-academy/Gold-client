@@ -9,7 +9,7 @@ class IncomingJobsList extends Component {
     const jobId = 1;
     const jobId2 = 2;
     return (
-      <div className="users">
+      <div className="BasicList__container">
         <h4> Inkommande ärenden </h4>
         <ul>
           <li>

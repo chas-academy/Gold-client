@@ -10,7 +10,7 @@ class PrivateCustomerList extends Component {
     render() {
       const userId = 2
     return (
-      <div className="users">
+      <div className="BasicList__container">
         <h4> Privatkunder </h4>
         <ul>
           <li>

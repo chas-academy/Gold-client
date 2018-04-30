@@ -17,7 +17,7 @@ class EmployeeOngoingList extends Component {
   render() {
 
     return (
-      <div className="users">
+      <div className="BasicList__container">
         <h4> pågående jobb </h4>
 
       </div>
