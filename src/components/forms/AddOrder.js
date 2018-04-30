@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 // import { connect } from 'react-redux';
 // import { withRouter } from 'react-router-dom';
 
-import { DateTime, ImageUploader, AddPhotos, MultipleSelect  } from '../../components'
+import { DateTime, ImageUploader, AddPhotos, MultipleSelect, LocationSearchInput  } from '../../components'
 
 import  './style.css';
 
@@ -62,6 +62,7 @@ class AddOrder extends Component {
           </div>
           <div className="form-group">
           <label for="Adress">Adress</label>
+            <LocationSearchInput />
             <input type='text' name='Adress' className="form-control" placeholder='Adress' value={adress} onChange={this.handleChange}/>
             {submitted && !adress &&
               <div className="help-block">Glöm inte fylla i adressen!</div>
