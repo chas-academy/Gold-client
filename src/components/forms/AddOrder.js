@@ -63,7 +63,6 @@ class AddOrder extends Component {
           <div className="form-group">
           <label for="Adress">Adress</label>
             <LocationSearchInput />
-            <input type='text' name='Adress' className="form-control" placeholder='Adress' value={adress} onChange={this.handleChange}/>
             {submitted && !adress &&
               <div className="help-block">Glöm inte fylla i adressen!</div>
               }

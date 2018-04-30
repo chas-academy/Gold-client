@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 // import { withRouter } from 'react-router-dom';
 
 import './style.css';
-import { Contact } from '../../components'
+import { Contact, LocationSearchInput } from '../../components'
 
 class UpdateUser extends Component {
   constructor (props) {
@@ -75,7 +75,7 @@ class UpdateUser extends Component {
           </div>
           <div className="form-group">
           <label for="name">Adress</label>
-            <input type='text' name='adress' className="form-control" placeholder='Adress' value={adress} onChange={this.handleChange}/>
+            <LocationSearchInput />
             {submitted && !adress &&
               <div className="help-block">Glöm inte fylla i adressen!</div>
               }

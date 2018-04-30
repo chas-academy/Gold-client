@@ -1,0 +1,12 @@
+.location-search-input {
+    background-color: rgba(255, 255, 255, 0.178);
+    border-bottom: 1px solid black;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    color: black;
+    width: 100%;
+    line-height: 2.0;
+    border-radius: 5px;
+}
+

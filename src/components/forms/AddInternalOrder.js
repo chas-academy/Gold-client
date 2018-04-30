@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 // import { connect } from 'react-redux';
 // import { withRouter } from 'react-router-dom';
 
-import { DateTime, ImageUploader, AddPhotos, MultipleSelect  } from '../../components'
+import { DateTime, ImageUploader, AddPhotos, MultipleSelect, LocationSearchInput  } from '../../components'
 import './style.css';
 
 class AddInternalOrder extends Component {
@@ -60,6 +60,13 @@ class AddInternalOrder extends Component {
             <text type="text" name='description' className="form-control" placeholder='Beskrivning av ärende' value={description} onChange={this.handleChange}/>
             {submitted && !description &&
               <div className="help-block">Fyll i din beskrivning av ärendet</div>
+            }
+          </div>
+          <div className="form-group">
+          <label for="description">Adress</label>
+            <LocationSearchInput />  
+            {submitted && !description &&
+              <div className="help-block">Fyll i adressen</div>
             }
           </div>
           <div className="form-group">
