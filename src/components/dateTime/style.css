@@ -1,7 +1,8 @@
 .react-datepicker__input-container > input, .date > input {
-    margin-bottom: 20px;
     background-color: rgba(255, 255, 255, 0.014);
     border: none;
+    color: rgb(72, 105, 148);
+    width: 100%;
 }
 
 .react-datepicker__month-container {
@@ -25,20 +26,47 @@
 }
 
 .react-datepicker-popper[data-placement^="top"] {
-    transform: translate3d(43px, -25px, 0px) !important;
+    transform: translate3d(36px, 65px, 0px) !important;
+}
+
+
+.DateTime__container {
+    display: flex;
+    width: 100%;
+}
+
+.DateTime__buttons {
+    flex-direction: column;
+}
+
+.DateTime__input {
+    width: 80%;
+    background-color: rgba(255, 255, 255, 0.014);
+    border: none;
+}
+
+.DateTime__buttons > input::placeholder{
+    font-family: 'Orbitron', sans-serif;
+    text-align: center;
 }
 
 .DateTime__calendar {
     display: flex;
-    justify-content: space-between;
+    align-items: baseline;
 }
 
-.DateTime__calendar > p {
-    margin-right: 10px;
+
+.fa-calendar-alt, .fa-clock {
+    color: rgb(72, 105, 148);
+    font-size: 28px;
 }
 
-.time {
-    width: 80px;
+.BasicForm__urgent {
+    align-items: baseline;
+    font-size: 20px;
 }
+
+
+
 
 

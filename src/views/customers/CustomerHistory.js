@@ -17,7 +17,6 @@ export default class CustomerHistory extends Component {
     return (
         <div className='customerOrder'>
             <div className='AllPagesInfo'>
-                <img src={img} height={50} />
                 <h3>Beställningshistorik</h3>
             </div>
           <CompletedOrdersList isAdmin={this.state.isAdmin} />

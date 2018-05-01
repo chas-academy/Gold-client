@@ -2,46 +2,75 @@
     width: 100%;
     position: absolute;
     color: rgb(63, 62, 62);
-    margin-top: 50px;
     text-align: center;
 }
 
 .CustomerHome__buttons {
     font-size: 50px;
-    width: 180px;
-    height: 200px;
-    margin: 5px;
-    background-color: rgba(77, 77, 77, 0.521);
+    width: 150px;
+    height: 160px;
+    margin: 10px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 6px;
     border: none;
-    border-radius: 10px;
+    box-shadow: 0 2px 4px 0 rgba(77,77,79,.2);
 }
 
 .CustomerHome__buttons > a {
-    color: rgb(26, 25, 25);
+    color: rgb(49, 100, 165);
 }
 
 .CustomerHome__buttonText {
-    font-size: 12px;
+    font-size: 15px;
 }
 
 .CustomerHome__welcome {
     color: #424242;
-    text-transform: uppercase;
-    margin-bottom: 50px;
-    font-size: 32px;
+    margin-bottom: 10px;
+    margin-top: 120px;
+    font-size: 26px;
+    letter-spacing: 0.4px;
 }
 
-.CustomerHome__userIcon {
-    font-size: 96px;
-    color: rgb(60, 61, 61);
+.CustomerHome__profile {
+    text-align: right;
+    color:  rgb(49, 100, 165);
+    text-decoration: underline;
+    margin-right: 30px;
 }
+
+.CustomerHome__contact {
+    position: absolute;
+    bottom: 0; 
+    text-align: center;
+    text-decoration: underline;
+    color: rgb(255, 255, 255);
+    height: 70px;
+    padding-top: 25px;
+    background-color: rgb(49, 100, 165);
+    width: 100%;
+    margin: auto;
+}
+
 
 .AllPagesInfo {
-    display: flex;
     align-items: center;
-    position: absolute;
     width: 100%;
-    top: 20px;
-    justify-content: center;
+    top: 10px;
+    position: absolute;
+}
+
+.CustomerHome__logo {
+    left: 25px;
+    margin-top: 20px;
+    opacity: 0.2;
+    position: absolute;
+}
+
+.CustomerHome__logout {
+    float: right;
+    margin-top: 20px;
+    margin-right: 20px;
+    color: rgba(180, 179, 179, 0.479);
     text-transform: uppercase;
 }

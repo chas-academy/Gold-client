@@ -23,26 +23,27 @@ class LocationSearchInput extends React.Component {
   render() {
     const { address } = this.state; 
     return (
-      <PlacesAutocomplete
-        value={this.state.address}
-        onChange={this.handleChange}
-        onSelect={this.handleSelect}
-      >
+      <div className="BasicForm__check">
+        <PlacesAutocomplete
+          value={this.state.address}
+          onChange={this.handleChange}
+          onSelect={this.handleSelect}
+        >
         {({ getInputProps, suggestions, getSuggestionItemProps }) => (
           <div>
             <input
               {...getInputProps({
-                placeholder: 'Adress...',
+                placeholder: 'Adress',
                 className: 'location-search-input'
               })}
-            />
+              />
             <div className="autocomplete-dropdown-container">
               {suggestions.map(suggestion => {
                 const className = suggestion.active ? 'suggestion-item--active' : 'suggestion-item';
                 // inline style for demonstration purpose
                 const style = suggestion.active
-                            ? { backgroundColor: '#fafafa', cursor: 'pointer' }
-                            : { backgroundColor: '#ffffff44', cursor: 'pointer' };
+                ? { backgroundColor: '#fafafa', cursor: 'pointer' }
+                : { backgroundColor: '#ffffff44', cursor: 'pointer' };
                 return (
                   <div {...getSuggestionItemProps(suggestion, { className, style })}>
                     <span>{suggestion.description}</span>
@@ -52,10 +53,12 @@ class LocationSearchInput extends React.Component {
             </div>
             {/* {!address &&
               <div className="help-block">Glöm inte fylla i adressen!</div>
-              } */}
+            } */}
           </div>
         )}
       </PlacesAutocomplete>
+        {address && <i className="fas fa-check BasicForm__check" />
+      }</div>
     );
   }
 }

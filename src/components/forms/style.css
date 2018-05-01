@@ -1,18 +1,31 @@
 .BasicForm {
+    position: absolute;
     width: 90%;
     margin: auto;
-    margin-top: 100px;
-    background-color: rgba(77, 77, 77, 0.123);
+    margin-top: 30px;
+    background-color: rgba(197, 197, 197, 0.055);
+    box-shadow: 0 2px 4px 0 rgba(77,77,79,.2);
     padding: 20px;
-    z-index: 9999;
+}
+
+.BasicForm > h5 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 24px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: rgba(32, 32, 32, 0.726);
 }
 
 .btn-primary {
     width: 100%;
-    margin: auto;
+    margin-top: 10px;
     padding: 15px;
-    background-color: rgba(49, 98, 166, 0.87);
-    border: rgba(49, 98, 166, 0.521);
+    border: none;
+    font-size: 15px;
+    background-color: rgba(37, 37, 37, 0.925);
+    box-shadow: 0 1px 2px 0 rgba(20, 20, 20, 0.753);
+    color: rgba(250, 249, 249, 0.726);
 }
 
 .btn-danger {
@@ -37,13 +50,12 @@
 }
 
 .form-control {
-    background: rgba(255, 255, 255, 0.144);
-    border-bottom: 2px solid rgba(50, 90, 163, 0.486);
+    background: rgba(255, 255, 255, 0.308);
     color: black;
-}
-
-label {
-    color: rgb(63, 62, 62);
+    box-shadow: 0 1px 2px 0 rgba(180, 180, 184, 0.068);
+    border-bottom: 2px solid rgb(224, 224, 224);
+    border-radius: 0px;
+    width: 100%;
 }
 
 .Contact__container {
@@ -57,4 +69,50 @@ label {
     color: rgb(41, 40, 40);
     font-size: 40px;
     padding: 40px;
+}
+
+.BasicForm__urgent {
+    display: flex;
+    color: rgb(241, 112, 112);
+}
+
+.BasicForm__urgent > p {
+    margin-left: 5px;
+}
+
+.BasicForm__textArea {
+    width: 100%;
+    padding-left: 15px;
+    border: none;
+    background: rgba(255, 255, 255, 0.308);
+    box-shadow: 0 1px 2px 0 rgba(180, 180, 184, 0.068);
+    border-bottom: 2px solid rgb(224, 224, 224);
+    margin-top: 15px;
+}
+
+.BasicForm__check {
+    color: rgb(49, 100, 165) !important;
+    display: flex;
+    align-items: center;
+}
+
+.BasicForm__textAreacheck {
+    float: right;
+    font-size: 20px;
+    color: rgb(49, 100, 165) !important;
+
+
+}
+
+.BasicForm__check > .fa-check {
+    margin-left: 10px;
+    font-size: 20px;
+}
+
+input:focus {
+    border: rgb(49, 100, 165);
+}
+
+::placeholder {
+    color: rgba(14, 46, 95, 0.336) !important;
 }

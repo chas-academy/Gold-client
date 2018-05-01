@@ -10,7 +10,7 @@ class CompanyList extends Component {
       const userId = 3
 
     return (
-      <div className="users">
+      <div className="BasicList__container">
         <h4> Företagskunder </h4>
         <ul>
           <li>

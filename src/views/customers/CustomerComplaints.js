@@ -9,10 +9,6 @@ export default class CustomerComplaints extends Component {
   render() {
     return (
         <div className='customerOrder'>
-            <div className='AllPagesInfo'>
-              <img src={img} height={50} />
-              <h3>Skapa reklamation</h3>
-            </div>  
           <AddComplaint />
           <CustomerBottomNav />
         </div>

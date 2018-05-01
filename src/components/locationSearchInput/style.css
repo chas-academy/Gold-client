@@ -1,13 +1,13 @@
 .location-search-input {
-    background-color: rgba(255, 255, 255, 0.178);
-    border-bottom: 2px solid rgba(50, 90, 163, 0.486);
-    border-top: none;
-    border-right: none;
-    border-left: none;
+    background: rgba(255, 255, 255, 0.308);
+    border: none;
+    box-shadow: 0 1px 2px 0 rgba(180, 180, 184, 0.068);
+    border-bottom: 2px solid rgb(224, 224, 224);    
     color: black;
-    width: 100%;
+    border-radius: 0px;
+    width: 183%;
     line-height: 2.0;
-    border-radius: 5px;
+    padding-left: 15px;
 }
 
 

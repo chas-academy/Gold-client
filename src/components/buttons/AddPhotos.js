@@ -6,11 +6,11 @@ import "./style.css";
 const AddPhotos = () => {
   return (
     <div>
-      <p>Ladda upp foton:</p>
       <ImageUploader>
         <button className="AddPhotos__button">
-          <i class="far fa-images" />
+          <i className="fas fa-camera"></i>
         </button>
+        <p>Lägg till foto</p>
       </ImageUploader>
     </div>
   );

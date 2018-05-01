@@ -9,10 +9,6 @@ export default class CustomerOrders extends Component {
   render() {
     return (
         <div className="CustomerOrders__container">
-          <div className="AllPagesInfo">
-            <img src={img} height={50} />
-            <h3> Ny beställning</h3>
-          </div>
           <AddOrder />
           <CustomerBottomNav />
         </div>

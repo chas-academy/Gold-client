@@ -1,47 +1,64 @@
-import React, { Component } from 'react'
-import DatePicker from 'react-datepicker'
-import moment from 'moment'
+import React, { Component } from "react";
+import DatePicker from "react-datepicker";
+import moment from "moment";
 
-import './style.css'
-import 'react-datepicker/dist/react-datepicker.css'
-
+import "./style.css";
+import "react-datepicker/dist/react-datepicker.css";
+import { AddPhotos } from '../../components'
 
 class DateTime extends Component {
-
-  constructor (props) {
-    super(props)
+  constructor(props) {
+    super(props);
     this.state = {
       startDate: moment()
     };
     this.handleChange = this.handleChange.bind(this);
   }
- 
+
   handleChange(date) {
     this.setState({
       startDate: date,
-      time: '',
-      submitted: ''
+      time: "",
+      submitted: ""
     });
   }
- 
+
   render() {
-    const { time, submitted } = this.state; 
+    const { time, submitted } = this.state;
     return (
-        <div className="DateTime__container">
-          <div className="DateTime__calendar">
-            <p> Välj önskat datum: </p>          
-              <DatePicker
+      <div className="DateTime__container">
+
+          <div className="DateTime__buttons">
+            <button className="AddPhotos__button">
+              <i className="fas fa-calendar-alt" />
+            </button>
+            <DatePicker
               selected={this.state.startDate}
               onChange={this.handleChange}
-              />
-            <p>Tidpunkt:</p>  
-            <input type='text' className="form-control time" name='time' placeholder='HH:MM' value={time} onChange={this.handleChange}/>
+            />
           </div>
-            {submitted && !time &&
-              <div className="help-block">Välj datum reklamationen ska åtgärdas</div>
-              }
-        </div>  
-    )
+
+          <div className="DateTime__buttons">
+            <button className="AddPhotos__button">
+              <i className="fas fa-clock" />
+            </button>   
+            <input
+              className="DateTime__input"
+              type="text"
+              name="time"
+              placeholder="HH:MM"
+              value={time}
+              onChange={this.handleChange}
+            />
+          </div>
+            <AddPhotos />
+          {/* <div className="BasicForm__urgent">
+            <input type="hidden" name="urgent" />
+            <i class="fas fa-exclamation" />
+            <p> Akut</p>
+          </div> */}
+      </div>
+    );
   }
 }
 

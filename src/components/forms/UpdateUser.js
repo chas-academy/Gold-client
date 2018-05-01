@@ -90,7 +90,7 @@ class UpdateUser extends Component {
           <div className="buttons">
           <div className="form-group">
             <button type="submit" className="btn btn-primary">
-              Uppdatera Användare
+              Spara
             </button>
               {errorMessage &&
               <div className="help-block">{errorMessage}</div>  

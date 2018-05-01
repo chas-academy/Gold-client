@@ -1,22 +1,22 @@
 .bottomNav {
-    position: absolute;
-    bottom: 0;
     width: 100%;
-    background-color: #3161a6;
-    padding-top: 20px;
+    background-color: #3161A6;
+    padding: 20px;
+    height: 70px;
 }
 
 .bottomNavList {
+    justify-content: space-around;
     display: flex;
     border: none;
     width: 100%;
-    justify-content: space-around;
     list-style: none;
 }
 
 .bottomNavList > li > a {
     color: rgb(241, 240, 240);
     font-size: 26px;
+    padding: 10px;
 }
 
 .bottomOrders {

@@ -1,7 +1,7 @@
 import React, { Component } from "react"
 import { Link, withRouter } from "react-router-dom"
-import { Logo } from '../../components'
 
+import img from '../../assets/img/Slice1.png'
 import './style.css'
 
 class CustomerHome extends Component {
@@ -9,11 +9,13 @@ class CustomerHome extends Component {
   render() {
       const user = 'Adam';
     return (
+        <div>
+        <img src={img} className="CustomerHome__logo" height={50} />
+            <button className="CustomerHome__logout" onClick={this.logout}>
+              Logga ut
+            </button>
         <div className="CustomerHome__menu">
-            <Link to={`/profile`}>
-                <i className="far fa-user-circle CustomerHome__userIcon"></i>
-            </Link>
-            <h3 className="CustomerHome__welcome">Välkommen {user}</h3>
+            <h3 className="CustomerHome__welcome">Välkommen {user}!</h3>
             <div>
                 <button className="CustomerHome__buttons">
                 <Link to={`/order/add`}>
@@ -24,26 +26,29 @@ class CustomerHome extends Component {
                 <button className="CustomerHome__buttons">
                 <Link to={`/complaints`}>
                     <i className="fas fa-exclamation-triangle"></i>
-                    <p className="CustomerHome__buttonText"> Skapa reklamation</p>
+                    <p className="CustomerHome__buttonText"> Reklamera</p>
                 </Link>    
                 </button>
             </div>
             <div>
-                <button className="CustomerHome__buttons">
-                <Link to={`/contact`}>
-                    <i class="far fa-envelope"></i>
-                    <p className="CustomerHome__buttonText"> Kontakta oss</p>
-                </Link>    
-                </button>
                 <button className="CustomerHome__buttons">
                 <Link to={`/history`}>
                     <i className="fas fa-history"></i>
                     <p className="CustomerHome__buttonText"> Beställningshistorik</p>
                 </Link>    
                 </button>
+                <button className="CustomerHome__buttons">
+                <Link to={`/profile`}>
+                    <i className="fas fa-user-circle"></i>
+                <p className="CustomerHome__buttonText"> Redigera profil</p>
+                </Link>    
+                </button>
             </div>
-            <Logo />
         </div>    
+                <Link to={`/contact`}>
+                    <p className="CustomerHome__contact">Hittar du inte det du söker? Kontakta oss!</p>
+                </Link>
+                </div>
     )
   }
 
