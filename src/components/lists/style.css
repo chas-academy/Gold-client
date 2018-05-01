@@ -7,7 +7,7 @@
     margin-top: 15px;
     background-color: rgba(197, 197, 197, 0.055);
     box-shadow: 0 2px 4px 0 rgba(77,77,79,.2);
-    padding: 20px;
+    padding-bottom: 15px;
 }
 
 .BasicList__container > h4 {
@@ -21,11 +21,12 @@
 .BasicList__list {
     list-style: none;
     text-align: center;
-    padding: 0;
+    padding: 30px;
+    margin: 0 !important;
 }
 
 .BasicList__list > li > a > div > p {
-    color: grey;
+    color: rgb(27, 27, 27);
 }
 
 .edit {
@@ -34,7 +35,7 @@
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    color: rgb(241, 241, 237);
+    color: rgb(94, 93, 93);
     font-size: 14px;
 }
 

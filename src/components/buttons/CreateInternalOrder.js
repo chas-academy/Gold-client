@@ -5,7 +5,9 @@ import "./style.css";
 const CreateInternalOrder = () => {
   return (
     <Link to={`/admin/orders/internal/add`}>
-      <button className="Create__button">Skapa internt ärende</button>
+      <button className="Create__button">
+        <i class="fas fa-plus"></i>
+      </button>
     </Link>
   );
 };

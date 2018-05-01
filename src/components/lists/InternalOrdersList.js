@@ -12,10 +12,7 @@ class InternalOrdersList extends Component {
     return (
       <div className="BasicList__container">
         <h4> Interna ärenden </h4>
-        <ul>
-          <li>
-            <CreateInternalOrder />
-          </li>
+        <ul className="BasicList__list">
           <li>
             <Link to={`/admin/orders/${orderId}`}>
               <div className="edit">

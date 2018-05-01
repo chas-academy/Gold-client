@@ -11,10 +11,7 @@ class EmployeeList extends Component {
     return (
       <div className="BasicList__container">
         <h4> Hantera Anställda </h4>
-        <ul>
-          <li>
-            <CreateUser />
-          </li>
+        <ul className="BasicList__list">
           <li>
             <Link to={`/admin/accounts/employees/${userId}`}>
               <div className="edit">

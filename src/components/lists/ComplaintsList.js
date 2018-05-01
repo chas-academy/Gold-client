@@ -12,10 +12,7 @@ class ComplaintsList extends Component {
     return (
       <div className="BasicList__container">
         <h4> Reklamationer </h4>
-        <ul>
-          <li>
-            <CreateComplaint />
-          </li>
+        <ul className="BasicList__list">
           <li>
             <Link to={`/admin/orders/${orderId}`}>
               <div className="edit">

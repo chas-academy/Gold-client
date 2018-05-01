@@ -52,11 +52,6 @@ class DateTime extends Component {
             />
           </div>
             <AddPhotos />
-          {/* <div className="BasicForm__urgent">
-            <input type="hidden" name="urgent" />
-            <i class="fas fa-exclamation" />
-            <p> Akut</p>
-          </div> */}
       </div>
     );
   }

@@ -5,7 +5,9 @@ import './style.css'
 const CreateOrder = () => {
       return (
         <Link to={`/admin/orders/add`} >
-          <button className="Create__button">Lägg till ärende</button>
+          <button className="Create__button">
+            <i class="fas fa-plus"></i>
+          </button>
         </Link>  
       );
 }

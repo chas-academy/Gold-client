@@ -22,7 +22,7 @@ class UpdateUser extends Component {
       phoneError: null,
       submitted: "",
       userIsNotAdmin: this.props,
-      ValidatePassword: "",
+      ValidatePassword: ""
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -32,7 +32,7 @@ class UpdateUser extends Component {
   handleChange(event) {
     const { name, value } = event.target;
     this.setState({ [name]: value });
-    
+
     const isNumeric = /^[0-9]+$/;
 
     if (this.state.phone.match(isNumeric)) {
@@ -40,11 +40,17 @@ class UpdateUser extends Component {
     } else {
       this.setState({ phoneError: true });
     }
-    
+
     if (this.state.number.match(isNumeric)) {
       this.setState({ numberError: false });
     } else {
       this.setState({ numberError: true });
+    }
+
+    if (this.state.password.length >= 7) {
+      this.setState({ passwordError: false });
+    } else {
+      this.setState({ passwordError: true });
     }
   }
 
@@ -59,6 +65,7 @@ class UpdateUser extends Component {
       name,
       email,
       password,
+      passwordError,
       phone,
       number,
       adress,
@@ -72,7 +79,7 @@ class UpdateUser extends Component {
     return (
       <div className="col-md-6 col-md-offset-3">
         <form name="form" className="BasicForm" onSubmit={this.handleSubmit}>
-          <h5>Uppdatera din profil</h5>
+          <h5>profil</h5>
           <div className="form-group">
             <div className="BasicForm__check">
               <input
@@ -100,7 +107,8 @@ class UpdateUser extends Component {
                 value={number}
                 onChange={this.handleChange}
               />
-              {number && !numberError && <i className="fas fa-check BasicForm__check" />}
+              {number &&
+                !numberError && <i className="fas fa-check BasicForm__check" />}
             </div>
             {submitted &&
               !number && (
@@ -110,7 +118,7 @@ class UpdateUser extends Component {
               )}
             {number &&
               numberError && (
-                <div className="help-block">Oopa! fick du med en bokstav?</div> 
+                <div className="help-block">Oopa! fick du med en bokstav?</div>
               )}
           </div>
           <div className="form-group">
@@ -164,9 +172,25 @@ class UpdateUser extends Component {
                 value={password}
                 onChange={this.handleChange}
               />
-              {password && password !== ValidatePassword && <i className="fas fa-check BasicForm__passwordNotOk" />}
-              {password && password === ValidatePassword && <i className="fas fa-check BasicForm__passwordOk" />}
+              {password && passwordError &&
+                password !== ValidatePassword &&  (
+                  <i className="fas fa-check BasicForm__passwordNotOk" />
+                )}
+              {password && password !== ValidatePassword && !passwordError && (
+                  <i className="fas fa-check BasicForm__check" />
+                )}
+                
+              {password &&
+                password === ValidatePassword && (
+                  <i className="fas fa-check BasicForm__passwordOk" />
+                )}
             </div>
+                {password && passwordError  &&
+                <div className="help-block">Lösenordet måste vara minst 8 tecken långt</div>
+                }
+                {!passwordError && password && password !== ValidatePassword &&
+                <div className="help-block">Bekräfta lösenordet nedan</div>
+                }
             {submitted &&
               !password && (
                 <div className="help-block">
@@ -184,14 +208,18 @@ class UpdateUser extends Component {
                 value={ValidatePassword}
                 onChange={this.handleChange}
               />
-              {ValidatePassword && password !== ValidatePassword && <i className="fas fa-check BasicForm__passwordNotOk" />}
-              {ValidatePassword && password === ValidatePassword && <i className="fas fa-check BasicForm__passwordOk" />}
+              {ValidatePassword &&
+                password !== ValidatePassword && (
+                  <i className="fas fa-check BasicForm__passwordNotOk" />
+                )}
+              {ValidatePassword &&
+                password === ValidatePassword && (
+                  <i className="fas fa-check BasicForm__passwordOk" />
+                )}
             </div>
             {submitted &&
               !ValidatePassword && (
-                <div className="help-block">
-                  Du måste upprepa lösenordet!
-                </div>
+                <div className="help-block">Du måste upprepa lösenordet!</div>
               )}
           </div>
           <div className="form-group">

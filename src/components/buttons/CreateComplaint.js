@@ -5,7 +5,9 @@ import "./style.css";
 const CreateComplaint = () => {
   return (
     <Link to={`/admin/orders/complaints/add`}>
-      <button className="Create__button">Lägg till reklamation</button>
+      <button className="Create__button">
+        <i class="fas fa-plus"></i>
+      </button>
     </Link>
   );
 };

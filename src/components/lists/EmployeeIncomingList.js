@@ -16,7 +16,7 @@ class IncomingJobsList extends Component {
     return (
       <div className="BasicList__container">
         <h4> Inkommande ärenden </h4>
-        <ul>
+        <ul className="BasicList__list">
           <li>
             <Link to={`/employee/${jobId}`}>
               <div className="edit">

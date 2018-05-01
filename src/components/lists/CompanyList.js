@@ -12,10 +12,7 @@ class CompanyList extends Component {
     return (
       <div className="BasicList__container">
         <h4> Företagskunder </h4>
-        <ul>
-          <li>
-             <CreateUser />
-          </li>  
+        <ul className="BasicList__list">
           <li>
           <Link to={`/admin/accounts/customers/companies/${userId}`}>
             <div className="edit">

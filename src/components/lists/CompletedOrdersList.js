@@ -27,11 +27,13 @@ class CompletedOrdersList extends Component {
             <Link to={`/admin/orders/${orderId}`}>
               <div className="edit">
                     <p>OrderId:{orderId} </p>
+                    <i className="fas fa-exclamation-triangle"></i>
               </div>
               </Link>
             : ( <Link to={`/order/${orderId}`}> 
               <div className="edit">
                     <p>OrderId:{orderId} </p>
+                    <i className="fas fa-exclamation-triangle"></i>
               </div>
             </Link>)}
           </li>
@@ -39,6 +41,7 @@ class CompletedOrdersList extends Component {
             <Link to={`/admin/orders/${orderId2}`}>
               <div className="edit">
                 <p>OrderId:{orderId2} </p>
+                <i className="fas fa-exclamation-triangle"></i>
               </div>
             </Link>
           </li>

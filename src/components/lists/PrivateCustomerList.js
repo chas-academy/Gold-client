@@ -12,10 +12,7 @@ class PrivateCustomerList extends Component {
     return (
       <div className="BasicList__container">
         <h4> Privatkunder </h4>
-        <ul>
-          <li>
-             <CreateUser />
-          </li>  
+        <ul className="BasicList__list">
           <li>
           <Link to={`/admin/accounts/customers/private/${userId}`}>
           <div className="edit">

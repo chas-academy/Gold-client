@@ -4,9 +4,10 @@
     color: rgb(72, 105, 148);
     width: 100%;
     position: relative;
-    margin-left: 10px;
 }
-
+.react-datepicker__input-container > input, .date > input::placeholder {
+    font-family: 'Orbitron', sans-serif;
+} 
 .react-datepicker__month-container {
     width: 300px;
     height: 300px;
