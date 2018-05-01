@@ -11,6 +11,8 @@
     border: none;
     width: 100%;
     list-style: none;
+    margin-left: -20px;
+    margin-top: 5px;
 }
 
 .bottomNavList > li > a {

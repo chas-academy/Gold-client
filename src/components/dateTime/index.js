@@ -15,10 +15,10 @@ class DateTime extends Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
-  handleChange(date) {
+  handleChange(date, event) {
+
     this.setState({
       startDate: date,
-      time: "",
       submitted: ""
     });
   }

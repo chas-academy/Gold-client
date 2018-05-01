@@ -1,8 +1,10 @@
 .BasicForm {
     position: absolute;
-    width: 90%;
+    width: 92%;
     margin: auto;
-    margin-top: 30px;
+    left: 0;
+    right: 0;
+    margin-top: 15px;
     background-color: rgba(197, 197, 197, 0.055);
     box-shadow: 0 2px 4px 0 rgba(77,77,79,.2);
     padding: 20px;
@@ -11,7 +13,7 @@
 .BasicForm > h5 {
     text-align: center;
     margin-bottom: 20px;
-    font-size: 24px;
+    font-size: 16px;
     letter-spacing: 0.5px;
     text-transform: uppercase;
     color: rgba(32, 32, 32, 0.726);
@@ -87,7 +89,6 @@
     background: rgba(255, 255, 255, 0.308);
     box-shadow: 0 1px 2px 0 rgba(180, 180, 184, 0.068);
     border-bottom: 2px solid rgb(224, 224, 224);
-    margin-top: 15px;
 }
 
 .BasicForm__check {
@@ -96,17 +97,25 @@
     align-items: center;
 }
 
-.BasicForm__textAreacheck {
+.BasicForm__autoCheck {
     float: right;
     font-size: 20px;
     color: rgb(49, 100, 165) !important;
-
-
+    margin-top: -30px;
 }
 
 .BasicForm__check > .fa-check {
     margin-left: 10px;
     font-size: 20px;
+}
+
+.BasicForm__passwordOk {
+    color: green;
+}
+
+.BasicForm__passwordNotOk {
+    color: red;
+
 }
 
 input:focus {
@@ -116,3 +125,51 @@ input:focus {
 ::placeholder {
     color: rgba(14, 46, 95, 0.336) !important;
 }
+
+.BasicForm__checkboxContainer {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-top: 15px;
+    cursor: pointer;
+    font-size: 15px;
+    color: grey;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+  .BasicForm__checkboxContainer input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+  }
+
+  .BasicForm__checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: rgb(153, 152, 152);
+    width: 100%;
+    text-align: center;
+  }
+
+  .BasicForm__checkboxContainer  input:checked ~  .BasicForm__checkmark {
+    color: red;
+  }
+
+  .BasicForm__checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+
+  .BasicForm__checkboxContainer input:checked ~ .BasicForm__checkmark:after {
+    display: block;
+  }
+
+  .fa-exclamation-circle {
+      margin-right: 5px;
+      font-size: 18px;
+  }

@@ -10,7 +10,7 @@ const AddPhotos = () => {
         <button className="AddPhotos__button">
           <i className="fas fa-camera"></i>
         </button>
-        <p>Lägg till foto</p>
+        <p className="AddPhotos__text">Lägg till foto</p>
       </ImageUploader>
     </div>
   );

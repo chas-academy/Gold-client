@@ -73,7 +73,7 @@ class AddOrder extends Component {
     return (
       <div className="col-md-6 col-md-offset-3">
         <form name="form" className="BasicForm" onSubmit={this.handleSubmit}>
-          <h5>Skapa nytt ärende</h5>
+          <h5>Beställning</h5>
           <input
             type="hidden"
             name="customerId"
@@ -124,27 +124,34 @@ class AddOrder extends Component {
               <div className="help-block">Oopa! fick du med en bokstav?</div>
             )}
           </div>
-          <div className="form-group">
-            <LocationSearchInput />
             <div className="form-group">
+            <div className="BasicForm__check">
               <textarea
                 rows="5"
                 type="text"
                 className="BasicForm__textArea"
                 name="description"
-                placeholder="Detaljerad beskrivning av ärendet"
+                placeholder="Beskriv gärna detaljerat vad som ska åtgärdas"
                 value={description}
                 onChange={this.handleChange}
               />
               {description &&
-                <i className="fas fa-check BasicForm__textAreacheck" />}
+                <i className="fas fa-check BasicForm__check" />}
+              </div>
               {submitted &&
                 !description && (
                   <div className="help-block">
                     Glöm inte att beskriva ärendet!
                   </div>
                 )}
-            </div>
+                <LocationSearchInput />
+            <label class="BasicForm__checkboxContainer">
+              <input type="checkbox" />
+              <span class="BasicForm__checkmark">
+                <i class="fas fa-exclamation-circle"></i>
+                Akut ärende (åtgärdas inom 4h)
+              </span>
+            </label>
             {isAdmin === true ? (
               <div className="form-group">
             <MultipleSelect />

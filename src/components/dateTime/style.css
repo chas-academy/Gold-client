@@ -3,6 +3,8 @@
     border: none;
     color: rgb(72, 105, 148);
     width: 100%;
+    position: relative;
+    margin-left: 10px;
 }
 
 .react-datepicker__month-container {
@@ -33,6 +35,7 @@
 .DateTime__container {
     display: flex;
     width: 100%;
+    margin-top: 50px;
 }
 
 .DateTime__buttons {
@@ -43,6 +46,7 @@
     width: 80%;
     background-color: rgba(255, 255, 255, 0.014);
     border: none;
+    margin-left: 10px;
 }
 
 .DateTime__buttons > input::placeholder{

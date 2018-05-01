@@ -21,21 +21,17 @@ class CompletedOrdersList extends Component {
     return (
       <div className="BasicList__container">
         <h4>Avslutade ärenden</h4>
-        <ul>
+        <ul className="BasicList__list">
           <li>
             {isAdmin === true ?
             <Link to={`/admin/orders/${orderId}`}>
               <div className="edit">
                     <p>OrderId:{orderId} </p>
-                    <p>Beställt: MM - DD - XX:XX </p>
-                    <p>Avslutat: MM - DD - XX:XX </p>
               </div>
               </Link>
             : ( <Link to={`/order/${orderId}`}> 
               <div className="edit">
                     <p>OrderId:{orderId} </p>
-                    <p>Beställt: MM - DD - XX:XX </p>
-                    <p>Avslutat: MM - DD - XX:XX </p>
               </div>
             </Link>)}
           </li>
@@ -43,8 +39,6 @@ class CompletedOrdersList extends Component {
             <Link to={`/admin/orders/${orderId2}`}>
               <div className="edit">
                 <p>OrderId:{orderId2} </p>
-                <p>Beställt: MM - DD - XX:XX </p>
-                <p>Avslutat: MM - DD - XX:XX </p>
               </div>
             </Link>
           </li>

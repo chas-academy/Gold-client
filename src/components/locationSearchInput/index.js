@@ -21,10 +21,10 @@ class LocationSearchInput extends React.Component {
   }
 
   render() {
-    const { address } = this.state; 
-    return (
-      <div className="BasicForm__check">
-        <PlacesAutocomplete
+  const { address } = this.state; 
+  return (
+    <div className="form-group">
+      <PlacesAutocomplete
           value={this.state.address}
           onChange={this.handleChange}
           onSelect={this.handleSelect}
@@ -57,8 +57,9 @@ class LocationSearchInput extends React.Component {
           </div>
         )}
       </PlacesAutocomplete>
-        {address && <i className="fas fa-check BasicForm__check" />
-      }</div>
+        {address && 
+          <i className="fas fa-check BasicForm__autoCheck" />}
+        </div>
     );
   }
 }

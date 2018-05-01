@@ -52,11 +52,18 @@ class AddComplaint extends Component {
               }
           </div>
           <div className="form-group">
-            <textarea type="text" rows="5" name='description' className="BasicForm__textArea" placeholder='Detaljerad beskrivning av reklamation' value={description} onChange={this.handleChange}/>
+            <textarea type="text" rows="5" name='description' className="BasicForm__textArea" placeholder='Detaljerad beskrivning av reklamationen' value={description} onChange={this.handleChange}/>
             {submitted && !description &&
-              <div className="help-block">Lägg till beskrivning av ärendet</div>
+              <div className="help-block">Glöm inte bort att beskriva vad vi ska åtgärda</div>
             }
           </div>
+          <label class="BasicForm__checkboxContainer">
+              <input type="checkbox" />
+              <span class="BasicForm__checkmark">
+                <i class="fas fa-exclamation-circle"></i>
+                Akut ärende (åtgärdas inom 4h)
+              </span>
+            </label>
           {isAdmin === true? 
           <div className="form-group">
           <label for="employee">Åtgärdas av: </label>

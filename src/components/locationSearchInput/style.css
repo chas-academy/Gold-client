@@ -5,11 +5,11 @@
     border-bottom: 2px solid rgb(224, 224, 224);    
     color: black;
     border-radius: 0px;
-    width: 183%;
+    width: 90%;
     line-height: 2.0;
     padding-left: 15px;
+    margin-top: 10px;
 }
-
 
 .help-block {
     color: rgb(58, 95, 165) !important;
