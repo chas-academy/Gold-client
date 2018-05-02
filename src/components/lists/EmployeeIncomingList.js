@@ -9,7 +9,7 @@ class IncomingJobsList extends Component {
   componentDidMount() {
 
   }
-  
+
   render() {
     const jobId = 1;
     const jobId2 = 2;
