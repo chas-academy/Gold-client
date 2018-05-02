@@ -1,6 +1,6 @@
 export { default as App } from './app'
-export { default as SignUp } from './forms/signup'
-export { default as SignIn } from './forms/signIn'
+export { default as SignUp } from './forms/SignUp'
+export { default as SignIn } from './forms/SignIn'
 export { default as DateTime } from './dateTime'
 export { default as Contact} from './contact' 
 export { default as ImageUploader } from './imageUploader'
