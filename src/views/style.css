@@ -11,3 +11,26 @@ body {
 }
 
 
+.link-group {
+    margin: auto;
+    margin-top: 40%;
+    display: flex;
+    width: 95%;
+}
+
+.signin-link {
+    width: 80%;
+    background-color:  rgb(49, 100, 165);
+    color: white;
+    padding: 15px;
+    border-radius: 4px;
+    border: 1px solid white;
+    text-align: center;
+    font-size: 18px;
+}
+
+.login {
+    position: absolute;
+    top: 50px;
+    margin-left: 20px;
+}
