@@ -17,9 +17,8 @@ class EmployeeCompleteList extends Component {
   render() {
 
     return (
-      <div className="users">
+      <div className="BasicList__container">
         <h4> Avslutade jobb </h4>
-
       </div>
     );
   }

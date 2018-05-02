@@ -19,23 +19,21 @@ class CompletedOrdersList extends Component {
       const { isAdmin } = this.state;
       
     return (
-      <div className="users">
-        <h4> Avslutade ärenden </h4>
-        <ul>
+      <div className="BasicList__container">
+        <h4>Avslutade ärenden</h4>
+        <ul className="BasicList__list">
           <li>
             {isAdmin === true ?
             <Link to={`/admin/orders/${orderId}`}>
               <div className="edit">
                     <p>OrderId:{orderId} </p>
-                    <p>Beställt: MM - DD - XX:XX </p>
-                    <p>Avslutat: MM - DD - XX:XX </p>
+                    <i className="fas fa-exclamation-triangle"></i>
               </div>
               </Link>
             : ( <Link to={`/order/${orderId}`}> 
               <div className="edit">
                     <p>OrderId:{orderId} </p>
-                    <p>Beställt: MM - DD - XX:XX </p>
-                    <p>Avslutat: MM - DD - XX:XX </p>
+                    <i className="fas fa-exclamation-triangle"></i>
               </div>
             </Link>)}
           </li>
@@ -43,8 +41,7 @@ class CompletedOrdersList extends Component {
             <Link to={`/admin/orders/${orderId2}`}>
               <div className="edit">
                 <p>OrderId:{orderId2} </p>
-                <p>Beställt: MM - DD - XX:XX </p>
-                <p>Avslutat: MM - DD - XX:XX </p>
+                <i className="fas fa-exclamation-triangle"></i>
               </div>
             </Link>
           </li>

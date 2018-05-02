@@ -1,4 +1,5 @@
-import React, { Component } from "react"
+import React, { Component } from 'react'
+import img from '../../assets/img/Slice1.png'
 import './style.css'
 
 import { CustomerBottomNav, CompletedOrdersList } from '../../components'
@@ -14,8 +15,9 @@ export default class CustomerHistory extends Component {
 
   render() {
     return (
-        <div className="customerOrder">
-          <h3>Beställningshistorik</h3>
+        <div className='customerOrder'>
+            <div className='AllPagesInfo'>
+            </div>
           <CompletedOrdersList isAdmin={this.state.isAdmin} />
           <CustomerBottomNav />
         </div>

@@ -9,12 +9,9 @@ class EmployeeList extends Component {
     const userId = 1;
     const userId2 = 2;
     return (
-      <div className="users">
+      <div className="BasicList__container">
         <h4> Hantera Anställda </h4>
-        <ul>
-          <li>
-            <CreateUser />
-          </li>
+        <ul className="BasicList__list">
           <li>
             <Link to={`/admin/accounts/employees/${userId}`}>
               <div className="edit">

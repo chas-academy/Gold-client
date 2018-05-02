@@ -8,7 +8,9 @@ export default class AddComplaints extends Component {
     return (
         <div> 
             <AdminTopNav />
-            <AddInternalOrder />
+            <div className="Admin__div">
+                <AddInternalOrder />
+            </div>    
             <AdminBottomNav />
         </div>    
     )

@@ -16,7 +16,7 @@ class CustomerBottomNav extends Component {
 
   render() {
     return (
-      <nav className="bottomNav">
+      <nav className="CustomerBottomNav__container">
         <ul className="bottomNavList">
           <li>
             <Link to={`/order/add`}>

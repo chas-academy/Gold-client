@@ -36,7 +36,7 @@ class AdminTopNav extends Component {
                   </Link>
                 </MenuItem>    
             </NavDropdown>
-            <NavDropdown title={<i class="far fa-user-circle"></i>} noCaret>
+            <NavDropdown title={<i className="fas fa-user-circle"></i>} noCaret>
                 <MenuItem>
                   <Link to={`/admin/accounts/employees`}>
                     <p>Anställda</p>

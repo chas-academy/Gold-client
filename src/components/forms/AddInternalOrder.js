@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 // import { connect } from 'react-redux';
 // import { withRouter } from 'react-router-dom';
 
-import { DateTime, ImageUploader, AddPhotos, MultipleSelect  } from '../../components'
+import { DateTime, ImageUploader, AddPhotos, MultipleSelect, LocationSearchInput  } from '../../components'
 import './style.css';
 
 class AddInternalOrder extends Component {
@@ -40,38 +40,45 @@ class AddInternalOrder extends Component {
 
     return (
     <div className="col-md-6 col-md-offset-3">
-        <form name="form" className="UpdateUser-login" onSubmit={this.handleSubmit}>
+        <form name="form" className="BasicForm" onSubmit={this.handleSubmit}>
+            <h5>Skapa Internt ärende</h5>
           <div className="form-group">
-            <label for="title">Titel</label>
-            <input type='text' name='title' className="form-control" placeholder='Titel' value={title} onChange={this.handleChange}/>
-            {submitted && !title &&
-              <div className="help-block">Skriv in din titel!</div>
-              }
+            <div className="BasicForm__check">
+              <textarea
+                rows="5"
+                type="text"
+                className="BasicForm__textArea"
+                name="description"
+                placeholder="Beskriv ditt ärende"
+                value={description}
+                onChange={this.handleChange}
+              />
+              {description &&
+                <i className="fas fa-check BasicForm__check" />}
+              </div>
           </div>
           <div className="form-group">
-          <label for="employee">Åtgärdas av:</label>
-            <input type='text' name='employee' className="form-control" placeholder='Anställd' value={employee} onChange={this.handleChange}/>
-            {submitted && !employee &&
-              <div className="help-block">Välj en anställd</div>
-              }
-          </div>
-          <div className="form-group">
-          <label for="description">Beskrivning</label>
-            <text type="text" name='description' className="form-control" placeholder='Beskrivning av ärende' value={description} onChange={this.handleChange}/>
+            <LocationSearchInput />  
             {submitted && !description &&
-              <div className="help-block">Fyll i din beskrivning av ärendet</div>
+              <div className="help-block">Fyll i adressen</div>
             }
           </div>
           <div className="form-group">
-          <label for="employee">Åtgärdas av: </label>
+          <label>Åtgärdas av: </label>
           <MultipleSelect />
             {submitted && !employee &&
               <div className="help-block">Glöm inte att tilldela ärendet till rätt person</div>
             }
           </div>
+          <label class="BasicForm__checkboxContainer">
+              <input type="checkbox" />
+              <span class="BasicForm__checkmark">
+                <i class="fas fa-exclamation-circle"></i>
+                Akut ärende (åtgärdas inom 4h)
+              </span>
+            </label>
           <DateTime />
           <div className="buttons">
-          <AddPhotos />
           <div className="form-group">
             <button type="submit" className="btn btn-primary">
               Skapa internt ärende

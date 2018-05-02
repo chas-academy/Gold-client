@@ -13,5 +13,4 @@ const ImageUploader = ({children}) => (
     </Dropzone>
 
 )
-  
 export default ImageUploader

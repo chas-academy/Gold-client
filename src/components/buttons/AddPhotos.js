@@ -1,21 +1,19 @@
-import React, { Component } from 'react';
-// import { connect } from 'react-redux';
+import React from "react";
 
-import './style.css'
-import ImageUploader from '../imageUploader'
+import ImageUploader from "../imageUploader";
+import "./style.css";
 
-export default class AddPhotos extends Component {
-    render() {  
-      return (
-        <div>
-            <p>Ladda upp foton:</p>
-            <ImageUploader>
-            <button className="uploadImageButton">
-                <i className="far fa-images"></i>
-            </button>
-            </ImageUploader>
-        </div>
-      );
-    }
+const AddPhotos = () => {
+  return (
+    <div>
+      <ImageUploader>
+        <button className="AddPhotos__button">
+          <i className="fas fa-camera"></i>
+        </button>
+        <p className="AddPhotos__text">Lägg till foto</p>
+      </ImageUploader>
+    </div>
+  );
+};
 
-}
+export default AddPhotos;

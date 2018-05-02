@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 // import { connect } from "react-redux";
-import { AdminTopNav, AdminBottomNav, PrivateCustomerList } from '../../../components'
+import { AdminTopNav, AdminBottomNav, PrivateCustomerList, CreateUser } from '../../../components'
 
 export default class PrivateCustomers extends Component {
 
@@ -8,7 +8,10 @@ export default class PrivateCustomers extends Component {
     return (
         <div> 
             <AdminTopNav />
-            <PrivateCustomerList />
+            <div className="Admin__div">
+                <PrivateCustomerList />
+                <CreateUser />
+            </div>    
             <AdminBottomNav />
         </div>    
     )

@@ -14,9 +14,9 @@ class IncomingJobsList extends Component {
     const jobId = 1;
     const jobId2 = 2;
     return (
-      <div className="users">
-        <h4> Nya Jobb </h4>
-        <ul>
+      <div className="BasicList__container">
+        <h4> Inkommande ärenden </h4>
+        <ul className="BasicList__list">
           <li>
             <Link to={`/employee/order/${jobId}`}>
               <div className="edit">

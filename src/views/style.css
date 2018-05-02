@@ -1,10 +1,13 @@
 body {
-    background-image: url('../assets/img/alvin-engler-48444-unsplash.jpg');
+    /* background-image: url('../assets/img/background.jpg');
     background-repeat: no-repeat;
     background-position: center;
-    background-size: cover;
-    min-height: 100vh;
+    background-size: cover; */
+    background-color: #f9f9f9;
+    height: auto;
+    overflow: scroll;
     width: auto;
-    font-family: 'Lato', sans-serif;
+    font-family: "open sans","Helvetica Neue",Helvetica,Arial,sans-serif;
 }
+
 

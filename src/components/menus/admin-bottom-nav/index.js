@@ -25,7 +25,7 @@ class AdminBottomNav extends Component {
           </li>
           <li>
             <Link to={`/admin/orders/complaints`}>
-              <i className="far fa-frown" />
+            <i className="fas fa-exclamation-triangle"></i>
             </Link>
           </li>
           <li>
