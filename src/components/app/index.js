@@ -29,7 +29,8 @@ import {
     CustomerHistory,
     CustomerComplaints,
     CustomerOrders,
-    Contact
+    Contact,
+    EmployeeOngoing
   } from '../../views'
 
 
@@ -59,7 +60,7 @@ class App extends Component {
           <Route path='/admin/orders/internal/add' component={AddInternalOrders} />
           <Route path='/admin/orders/internal' component={InternalOrders} />
           <Route path='/admin/orders/:id' component={Order} />
-          <Route path='/employee/confirm' component={EmployeeConfirm} />
+          <Route path='/employee/ongoing' component={EmployeeOngoing} />
           <Route path='/employee/history' component={EmployeeHistory} />
           <Route path='/employee/incoming' component={EmployeeIncoming} />
           <Route path='/employee/jobs/:id' component={EmployeeJobView} />

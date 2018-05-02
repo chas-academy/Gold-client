@@ -21,7 +21,7 @@ class EmployeeHome extends Component {
                 </Link>    
                 </button>
                 <button className="EmployeeHomeButtons">
-                <Link to={`/confirm`}>
+                <Link to={`/employee/ongoing`}>
                     <i class="far fa-check-circle"></i>           
                 </Link>    
                 </button>
