@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import { EmployeeTopNav, EmployeeBottomNav, EmployeeJobDetails  } from '../../components'
+import { EmployeeTopNav, EmployeeBottomNav, EmployeeJobDetails, EmployeeConfirmJob  } from '../../components'
 
 export default class EmployeeJobView extends Component {
 
@@ -9,14 +9,14 @@ export default class EmployeeJobView extends Component {
 
   render() {
 
-
+  const { match: {params} } = this.props
     return (
-        <div> 
-          <div>
-            <h1></h1>
+        <div>
+            
+          <div className="col-md-6 col-md-offset-3">
+            <EmployeeJobDetails id={params.id}/>
           </div>
-              <EmployeeJobDetails/>
-            < EmployeeBottomNav />
+            <EmployeeBottomNav/>
         </div>    
     )
   }
