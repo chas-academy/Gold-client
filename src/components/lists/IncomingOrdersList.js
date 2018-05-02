@@ -10,12 +10,9 @@ class IncomingOrdersList extends Component {
       const orderId = 1;
       const orderId2 = 2;
     return (
-      <div className="users">
+      <div className="BasicList__container">
         <h4> Nya ärenden </h4>
-        <ul>
-          <li>
-            <CreateOrder />
-          </li>
+        <ul className="BasicList__list">
           <li>
             <Link to={`/admin/orders/${orderId}`}>
               <div className="edit">

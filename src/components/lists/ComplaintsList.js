@@ -10,12 +10,9 @@ class ComplaintsList extends Component {
       const orderId = 1;
       const orderId2 = 2;
     return (
-      <div className="users">
+      <div className="BasicList__container">
         <h4> Reklamationer </h4>
-        <ul>
-          <li>
-            <CreateComplaint />
-          </li>
+        <ul className="BasicList__list">
           <li>
             <Link to={`/admin/orders/${orderId}`}>
               <div className="edit">

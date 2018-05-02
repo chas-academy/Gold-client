@@ -24,7 +24,12 @@ import {
     EmployeeHistory,
     EmployeeIncoming,
     EmployeeJobView,
-    NotFoundPage
+    NotFoundPage,
+    CustomerProfile,
+    CustomerHistory,
+    CustomerComplaints,
+    CustomerOrders,
+    Contact
   } from '../../views'
 
 
@@ -58,6 +63,11 @@ class App extends Component {
           <Route path='/employee/history' component={EmployeeHistory} />
           <Route path='/employee/incoming' component={EmployeeIncoming} />
           <Route path='/employee/jobs/:id' component={EmployeeJobView} />
+          <Route path='/profile' component={CustomerProfile} />
+          <Route path='/complaints' component={CustomerComplaints} />
+          <Route path='/history' component={CustomerHistory} />
+          <Route path='/order/add' component={CustomerOrders} />
+          <Route path='/contact' component={Contact} />
           <Route path='/logout' component={Login} />
           <Route component={NotFoundPage} />  
         </Switch>

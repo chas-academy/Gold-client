@@ -13,7 +13,6 @@ export default class UserProfile extends Component {
   render() {
     return (
       <div>
-        <h4> Min profil </h4>
             <UpdateUser />
       </div>
     );

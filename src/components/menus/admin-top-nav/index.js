@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Link, withRouter } from 'react-router-dom'
-import { Nav, Navbar, NavDropdown, MenuItem }from 'react-bootstrap'
+import { NavDropdown, MenuItem }from 'react-bootstrap'
 
 import './style.css'
 
@@ -36,7 +36,7 @@ class AdminTopNav extends Component {
                   </Link>
                 </MenuItem>    
             </NavDropdown>
-            <NavDropdown title={<i class="far fa-user-circle"></i>} noCaret>
+            <NavDropdown title={<i className="fas fa-user-circle"></i>} noCaret>
                 <MenuItem>
                   <Link to={`/admin/accounts/employees`}>
                     <p>Anställda</p>

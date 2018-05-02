@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-// import { loginUser } from '../actions/auth';
-import { connect } from 'react-redux';
-import { withRouter, Link } from 'react-router-dom';
+import React, { Component } from 'react'
+// import { loginUser } from '../actions/auth'
+// import { connect } from 'react-redux'
+// import { withRouter, Link } from 'react-router-dom'
 
 import './style.css';
 
@@ -58,11 +58,11 @@ class SignUp extends Component {
     e.preventDefault();
 
     // register user object to dispatched to register action
-    const newUser = {
-      name: this.state.name,
-      persOrgNumber: this.state.persOrgNumber,
-      password: this.state.password
-    }
+    // const newUser = {
+    //   name: this.state.name,
+    //   persOrgNumber: this.state.persOrgNumber,
+    //   password: this.state.password
+    // }
     // dispatch goes here.....
     
   }

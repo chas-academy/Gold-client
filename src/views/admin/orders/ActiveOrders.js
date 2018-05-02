@@ -8,7 +8,9 @@ export default class ActiveOrders extends Component {
     return (
         <div> 
             <AdminTopNav />
-            <ActiveOrdersList />
+            <div className="Admin__div">
+                <ActiveOrdersList />
+            </div>    
             <AdminBottomNav />
         </div>    
     )

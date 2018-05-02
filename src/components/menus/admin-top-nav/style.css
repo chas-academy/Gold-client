@@ -4,21 +4,38 @@
     display: flex;
     width: 100%;
     justify-content: space-around;
-    background-color: #282829e8;
-    padding: 20px;
+    background-color:  rgb(49, 100, 165);
+    padding: 10px;
     border-bottom: 1px solid rgb(43, 41, 41); 
     list-style: none;
     z-index: 2;
 }
 
 .navBar > li > a {
-    color:rgb(205, 207, 209);
+    color:rgb(244, 244, 245);
     font-size: 36px;
 }
 
 .navBar > li > a:focus, .navBar > li > a:hover {
-    color: rgb(139, 177, 219);    
+    color: rgb(45, 46, 46);  
 }
 
+.dropdown-menu {
+    left: -130px;
+    background-color:  rgba(49, 99, 165, 0.952);
+    margin-top: 20px;
+    width: 300px !important;
+    text-align: center;
+    text-transform: uppercase;
+}
 
+#app > div > div > div.navBar > li.dropdown.open > ul > li > a > a > p {
+    padding: 10px;
+    color: rgb(139, 177, 219);    
 
+}
+#app > div > div > div.navBar > li.dropdown.open > ul > li > a:hover {
+    background-color: #000000e8;
+    text-decoration: none;
+
+} 

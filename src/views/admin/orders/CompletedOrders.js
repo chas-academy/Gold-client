@@ -8,7 +8,9 @@ export default class CompletedOrders extends Component {
     return (
         <div> 
             <AdminTopNav />
-            <CompletedOrdersList />
+            <div className="Admin__div">
+                <CompletedOrdersList />
+            </div>    
             <AdminBottomNav />
         </div>    
     )

@@ -14,11 +14,11 @@ class IncomingJobsList extends Component {
     const jobId = 1;
     const jobId2 = 2;
     return (
-      <div className="users">
+      <div className="BasicList__container">
         <h4> Inkommande ärenden </h4>
-        <ul>
+        <ul className="BasicList__list">
           <li>
-            <Link to={`/employee/jobs/${jobId}`}>
+            <Link to={`/employee/order/${jobId}`}>
               <div className="edit">
                 <p>Clean that up</p>
                 <i className="fas fa-edit" />
@@ -26,7 +26,7 @@ class IncomingJobsList extends Component {
             </Link>
           </li>
           <li>
-            <Link to={`/employee/jobs/${jobId2}`}>
+            <Link to={`/employee/order/${jobId2}`}>
               <div className="edit">
                 <p>Clean that office job</p>
                 <i className="fas fa-edit" />

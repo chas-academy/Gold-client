@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 // import { connect } from 'react-redux';
 // import { withRouter } from 'react-router-dom';
 
+import { DateTime, ImageUploader, MultipleSelect  } from '../../components'
+
 import './style.css';
 
 class AddComplaint extends Component {
@@ -17,6 +19,7 @@ class AddComplaint extends Component {
         employee: '',
         photo: '',
         errorMessage: '',
+        isAdmin: false
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -35,54 +38,52 @@ class AddComplaint extends Component {
   }
 
     render() {
-    const { submitted, orderId, date, description, employee, photo, errorMessage } = this.state;
+    const { isAdmin, submitted, orderId, date, description, employee, photo, errorMessage } = this.state;
 
     return (
     <div className="col-md-6 col-md-offset-3">
-        <form name="form" className="UpdateUser-login" onSubmit={this.handleSubmit}>
+        <form name="form" className="BasicForm" onSubmit={this.handleSubmit}>
+          <h5>Reklamation</h5>
+
           <div className="form-group">
-            <label for="orderId">ÄrendeId</label>
             <input type='text' name='orderId' className="form-control" placeholder='Ärende id' value={orderId} onChange={this.handleChange}/>
             {submitted && !orderId &&
               <div className="help-block">Välj ärendenummer!</div>
               }
           </div>
           <div className="form-group">
-          <label for="date">Datum</label>
-            <input type='text' name='date' className="form-control" placeholder='Datum' value={date} onChange={this.handleChange}/>
-            {submitted && !date &&
-              <div className="help-block">Välj datum reklamationen ska åtgärdas</div>
-              }
-          </div>
-          <div className="form-group">
-          <label for="employee">Åtgärdas av:</label>
-            <input type='text' name='employee' className="form-control" placeholder='Anställd' value={employee} onChange={this.handleChange}/>
-            {submitted && !employee &&
-              <div className="help-block">Välj en anställd</div>
-              }
-          </div>
-          <div className="form-group">
-          <label for="description">Beskrivning</label>
-            <text type="text" name='description' className="form-control" placeholder='Beskrivning av ärende' value={description} onChange={this.handleChange}/>
+            <textarea type="text" rows="5" name='description' className="BasicForm__textArea" placeholder='Detaljerad beskrivning av reklamationen' value={description} onChange={this.handleChange}/>
             {submitted && !description &&
-              <div className="help-block">Glöm inte att fylla i nytt lösenord</div>
+              <div className="help-block">Glöm inte bort att beskriva vad vi ska åtgärda</div>
             }
           </div>
+          <label class="BasicForm__checkboxContainer">
+              <input type="checkbox" />
+              <span class="BasicForm__checkmark">
+                <i class="fas fa-exclamation-circle"></i>
+                Akut ärende (åtgärdas inom 4h)
+              </span>
+            </label>
+          {isAdmin === true? 
+          <div className="form-group">
+          <label for="employee">Åtgärdas av: </label>
+          <MultipleSelect />
+            {submitted && !employee &&
+              <div className="help-block">Glöm inte att tilldela ärendet till rätt person</div>
+            }
+          </div>
+          : ('')}
+            <DateTime />
           <div className="buttons">
           <div className="form-group">
             <button type="submit" className="btn btn-primary">
-              Skapa Reklamation
+              Skicka
             </button>
               {errorMessage &&
               <div className="help-block">{errorMessage}</div>  
               }
               </div>
           </div>  
-        <div className="form-group">
-            <button className="btn btn-info"> 
-            Lägg till Foto
-            </button>
-        </div>
         </form> 
         </div>    
     )
