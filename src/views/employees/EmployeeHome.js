@@ -32,7 +32,7 @@ class EmployeeHome extends Component {
                 </Link>    
                 </button>
                 <button className="CustomerHomeButtons">
-                <Link to={`/history`}>
+                <Link to={`employee/history`}>
                     <i className="fas fa-history"></i>
                 </Link>    
                 </button>
