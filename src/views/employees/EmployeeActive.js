@@ -1,13 +1,12 @@
 import React, { Component } from "react"
-import { EmployeeBottomNav, EmployeeOngoingList } from '../../components'
+import { EmployeeBottomNav, EmployeeActiveList } from '../../components'
 
 export default class EmployeeOngoing extends Component {
 
   render() {
     return (
         <div>
-            employee - Ongoing view
-            <EmployeeOngoingList/>
+            <EmployeeActiveList/>
             <EmployeeBottomNav/>
         </div>    
     )

@@ -1,7 +1,10 @@
 import React, { Component } from "react";
 // import { connect } from "react-redux";
 import './style.css'
-import { EmployeeConfirmJob } from '../buttons/EmployeeConfirmJob';
+import { EmployeeConfirmJob, EmployeeCompleteJob } from '../../components';
+
+
+
 export default class EmployeeOrderDetails extends Component {
   constructor(props) {
       super(props);
@@ -18,10 +21,10 @@ export default class EmployeeOrderDetails extends Component {
     
     const { id, Ongoing } = this.props;
 
-    const button = !Ongoing ? (
-      <button className="btn btn-primary">Acceptera </button>
-    ) : (
-      <button className="btn btn-danger">Avsluta </button>
+    const button = Ongoing ? 
+    <EmployeeCompleteJob />
+    : (
+      <EmployeeConfirmJob />
     );
     return (
       <div className="EmployeeOrderDetails">

@@ -4,9 +4,10 @@ import "./style.css"
 
 const EmployeeConfirmJob = () => {
       return (
-        // <Link to={`/Employee/${employee_id}/add`} >
         <div>
-          <button className="Create__button">Konfirmera Jobb</button>
+          <form method="put" action="">
+            <button className="btn btn-primary take">Acceptera Jobb</button>
+          </form>  
         </div>      
       );
 }

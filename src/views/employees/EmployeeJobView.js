@@ -12,7 +12,6 @@ export default class EmployeeJobView extends Component {
   const { match: {params} } = this.props
     return (
         <div>
-            
           <div className="col-md-6 col-md-offset-3">
             <EmployeeJobDetails id={params.id}/>
           </div>

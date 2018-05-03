@@ -2,35 +2,35 @@ import React, { Component } from 'react'
 import { Switch, Route, withRouter } from 'react-router-dom'
 
 import {
-    Home,
-    Accounts,
-    HandleAccounts,
-    Employees,
-    Companies,
-    PrivateCustomers,
-    Profile,
-    IncomingOrders,
-    AddOrders,
-    AddComplaints,
-    AddInternalOrders,
-    ActiveOrders,
-    HandleOrders,
-    CompletedOrders,
-    Complaints,
-    InternalOrders,
-    Order,
-    Login,
-    EmployeeConfirm,
-    EmployeeHistory,
-    EmployeeIncoming,
-    EmployeeJobView,
-    NotFoundPage,
-    CustomerProfile,
-    CustomerHistory,
-    CustomerComplaints,
-    CustomerOrders,
-    Contact,
-    EmployeeOngoing
+  AddComplaints,
+  AddInternalOrders,
+  AddOrders,
+  Accounts,
+  ActiveOrders,
+  Companies,
+  Complaints,
+  CompletedOrders,
+  CustomerContact,
+  CustomerComplaints,
+  CustomerHistory,
+  CustomerOrders,
+  CustomerProfile,
+  EmployeeActive,
+  EmployeeConfirm,
+  EmployeeHistory,
+  EmployeeIncoming,
+  EmployeeJobView,
+  Employees,
+  HandleAccounts,
+  HandleOrders,
+  Home,
+  IncomingOrders,
+  InternalOrders,
+  Login,
+  Order,
+  NotFoundPage,
+  PrivateCustomers,
+  Profile,
   } from '../../views'
 
 
@@ -60,15 +60,15 @@ class App extends Component {
           <Route path='/admin/orders/internal/add' component={AddInternalOrders} />
           <Route path='/admin/orders/internal' component={InternalOrders} />
           <Route path='/admin/orders/:id' component={Order} />
-          <Route path='/employee/ongoing' component={EmployeeOngoing} />
+          <Route path='/employee/active' component={EmployeeActive} />
           <Route path='/employee/history' component={EmployeeHistory} />
           <Route path='/employee/incoming' component={EmployeeIncoming} />
-          <Route path='/employee/jobs/:id' component={EmployeeJobView} />
+          <Route path='/employee/orders/:id' component={EmployeeJobView} />
           <Route path='/profile' component={CustomerProfile} />
           <Route path='/complaints' component={CustomerComplaints} />
           <Route path='/history' component={CustomerHistory} />
           <Route path='/order/add' component={CustomerOrders} />
-          <Route path='/contact' component={Contact} />
+          <Route path='/contact' component={CustomerContact} />
           <Route path='/logout' component={Login} />
           <Route component={NotFoundPage} />  
         </Switch>
