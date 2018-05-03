@@ -1,0 +1,12 @@
+.orderDetails {
+    padding: 20px;
+    margin-top: 90px;
+    background-color: rgba(46, 45, 45, 0.568);
+}
+
+.orderDetails > p {
+    display: flex;
+    margin: auto;
+    width: 100%;
+    color: rgb(241, 241, 237);
+}

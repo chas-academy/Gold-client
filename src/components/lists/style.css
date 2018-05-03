@@ -1,0 +1,53 @@
+.BasicList__container {
+    position: absolute;
+    width: 95%;
+    margin: auto;
+    left: 0;
+    right: 0;
+    margin-top: 15px;
+    background-color: rgba(197, 197, 197, 0.055);
+    box-shadow: 0 2px 4px 0 rgba(77,77,79,.2);
+    padding-bottom: 15px;
+}
+
+.BasicList__container > h4 {
+    margin: auto;
+    text-align: center;
+    margin-bottom: 20px;
+    color: rgb(124, 123, 123);
+    text-transform: uppercase;
+} 
+
+.BasicList__list {
+    list-style: none;
+    text-align: center;
+    padding: 30px;
+    margin: 0 !important;
+}
+
+.BasicList__list > li > a > div > p {
+    color: rgb(27, 27, 27);
+}
+
+.edit {
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    color: rgb(94, 93, 93);
+    font-size: 14px;
+}
+
+.edit:hover {
+    color: rgb(139, 177, 219);  
+}
+
+#app > div > div > div.BasicList__container > ul > li > a {
+    text-decoration: none;
+}
+
+
+
+
+
