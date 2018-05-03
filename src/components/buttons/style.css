@@ -1,7 +1,7 @@
 .Create__button {
-    color: rgb(72, 105, 148);
+    color: #0f2f56;
     box-shadow: 0 1px 2px 0 rgba(20, 20, 20, 0.288);
-    border: 5px solid  rgb(72, 105, 148);
+    border: 5px solid  #0f2f56;
     background: rgba(255, 255, 255, 0.308);
     border-radius: 50%;
     display: flex;
@@ -10,14 +10,14 @@
     justify-content: center;
     margin: auto;
     position: absolute;
-    bottom: 10%;
+    bottom: 12%;
     right: 40%;
 }
 
 .AddPhotos__button {
-    color: rgb(72, 105, 148);
+    color: #0f2f56;
     box-shadow: 0 1px 2px 0 rgba(20, 20, 20, 0.288);
-    border: 5px solid  rgb(72, 105, 148);
+    border: 5px solid  #0f2f56;
     background: white;
     border-radius: 50%;
     display: flex;
@@ -28,7 +28,7 @@
 }
 
 .AddPhotos__text {
-    color: rgb(72, 105, 148);
+    color: #0f2f56;
     margin-left: 10px;
 }
 

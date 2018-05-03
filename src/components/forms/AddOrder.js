@@ -23,7 +23,7 @@ class AddOrder extends Component {
       description: "",
       employee: "",
       errorMessage: "",
-      isAdmin: false,
+      isAdmin: true,
       phone: "",
       photo: "",
       submitted: ""
@@ -68,7 +68,25 @@ class AddOrder extends Component {
     return (
       <div className="col-md-6 col-md-offset-3">
         <form name="form" className="BasicForm" onSubmit={this.handleSubmit}>
-          <h5>Beställning</h5>
+          <h5> Skapa Beställning</h5>
+          {isAdmin === true ? (
+            <div className="form-group">
+            <div className="BasicForm__check">
+
+          <select className="BasicForm__select">
+            <option defaultValue>Välj kund</option>
+            <option value="customerId">Stena</option>
+          </select>  
+          {customerId && <i className="fas fa-check BasicForm__check" />}
+            </div>
+            {submitted &&
+              !customerId && (
+                <div className="help-block">
+                  Glöm inte välja rätt kund!
+                </div>
+              )}
+              </div>
+          ) : (
           <input
             type="hidden"
             name="customerId"
@@ -77,6 +95,7 @@ class AddOrder extends Component {
             value={customerId}
             onChange={this.handleChange}
           />
+        )}
           <div className="form-group">
             <div className="BasicForm__check">
               <input
@@ -140,9 +159,9 @@ class AddOrder extends Component {
                   </div>
                 )}
                 <LocationSearchInput />
-            <label class="BasicForm__checkboxContainer">
+            <label className="BasicForm__checkboxContainer">
                 <input type="checkbox" />
-              <span class="BasicForm__checkmark">
+              <span className="BasicForm__checkmark">
                 <i className="fas fa-hand-point-right"></i>
                 <i className="fas fa-exclamation-circle"></i>
                 Akut ärende? (åtgärdas inom 4h)

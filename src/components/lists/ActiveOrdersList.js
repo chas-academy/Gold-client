@@ -9,6 +9,7 @@ class ActiveOrdersList extends Component {
       const orderId = 1;
       const orderId2 = 2;
     return (
+      
       <div className="BasicList__container">
         <h4> Pågående ärenden </h4>
         <ul>

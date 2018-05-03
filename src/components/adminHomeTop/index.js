@@ -1,10 +1,9 @@
-import React, { Component } from "react";
-import CreateInternalOrder from "../buttons/CreateInternalOrder";
+import React from "react";
 
 const AdminHomeTop = () => {
 
     return (
-        <h3>Någon fint</h3>
+        <h3>Något fint</h3>
     );
   }
 

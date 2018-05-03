@@ -74,8 +74,9 @@ class AddInternalOrder extends Component {
           <label class="BasicForm__checkboxContainer">
             <input type="checkbox" />
             <span class="BasicForm__checkmark">
+              <i className="fas fa-hand-point-right"></i>
               <i class="fas fa-exclamation-circle" />
-              Akut ärende (åtgärdas inom 4h)
+              Akut ärende? (åtgärdas inom 4h)
             </span>
           </label>
           <DateTimePhoto />

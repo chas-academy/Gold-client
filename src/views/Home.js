@@ -45,7 +45,7 @@ class Home extends Component {
       //     case isAdmin:
       <div>
         <AdminTopNav />
-        <AdminHomeTop />
+        {/* <AdminHomeTop /> */}
         <MapContainer />
         <AdminBottomNav />
       </div>

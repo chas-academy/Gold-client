@@ -8,9 +8,8 @@ const AnyReactComponent = ({ text }) => <div>{ text }</div>;
 const Google = '';
 
 
- export default class MapContainer extends Component {
+export default class MapContainer extends Component {
   
-
     static defaultProps = {
     center: { lat: 55.5873503, lng: 12.9814429},
     zoom: 9
@@ -19,7 +18,7 @@ const Google = '';
 render() {
     return (
     <div className="google-map-overlay">
-      <div className='google-map' style={{ height: '50vh', width: '100%', marginTop: '35vh', zIndex: '-9999'}}>
+      <div className='google-map' style={{ height: '100vh', width: '100%', marginTop: '-20px'}}>
           <GoogleMapReact
             bootstrapURLKeys={{ key: Google }}
             defaultCenter={ this.props.center }
@@ -28,19 +27,25 @@ render() {
             <AnyReactComponent
               lat={ 55.60587 }
               lng={ 13.20073 }
-              text={<i className="fas fa-dot-circle" style={{color:'red', fontSize: '25px'}}></i>}
+              text={<a href="admin/orders/1"><i className="fas fa-dot-circle button-glow-new" style={{color:'red', fontSize: '16px'}}></i></a>}
             />
+
+              <AnyReactComponent
+                lat={ 55.70587 }
+                lng={ 13.30073 }
+                text={<a href="admin/orders/2"> <i className="fas fa-dot-circle button-glow-active" style={{color:'orange', fontSize: '16px'}}></i></a>}
+              />
 
             <AnyReactComponent
               lat={ 55.80587 }
               lng={ 13.30073 }
-              text={<i className="fas fa-dot-circle" style={{color:'green', fontSize: '25px'}}></i>}
+              text={<a href="admin/orders/3"><i className="fas fa-dot-circle" style={{color:'green', fontSize: '16px'}}></i></a>}
             />
 
           <AnyReactComponent
               lat={ 55.80587 }
               lng={ 12.99073 }
-              text={<i className="fas fa-dot-circle" style={{color:'green', fontSize: '25px'}}></i>}
+              text={<a href="admin/orders/4"><i className="fas fa-dot-circle" style={{color:'green', fontSize: '16px'}}></i></a>}
             />
 
           </GoogleMapReact>
@@ -49,4 +54,5 @@ render() {
     )
   }
 }
+
 

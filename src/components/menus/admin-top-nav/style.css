@@ -48,30 +48,57 @@
 
 .bm-overlay {
     margin-top: -10px;
+    background-color: rgba(223, 222, 222, 0.637) !important;
 }
 
 .menu-item {
-    font-size: 14px;
+    font-size: 16px;
     padding: 12px;
     color: white;
-    text-transform: uppercase;
     padding-left: 40px;
 }
 
+.menu-item:hover {
+    color: rgb(175, 174, 174);
+    text-decoration: none;
+}
+
+.slide {
+    margin-right: 15px;
+    color: rgb(207, 207, 207);
+    font-size: 20px;
+}
 
 .slide-menu__header {
-    margin-left: 20px;
+    text-transform: uppercase;
+    padding-left: 20px;
+    font-size: 16px;
+    line-height: 2;
+    margin-top: 0;
+    background-color: #0a213d;
     color: rgba(235, 235, 235, 0.418);
 }
 
 .slide-menu__press {
+    /* position: fixed; */
+    top: 0;
     z-index: 9999;
     width: 100%;
     margin-top: 0;
     padding: 20px;
-    background-color:  rgb(49, 100, 165);
-    text-align: center;
-    color: white;
-    border-bottom: 1px solid white;
+    background-color:  #0f2f56;
+    color: rgb(206, 205, 205);
     height: 70px;
+}
+
+.slide-logout {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    margin-top: 10px;
+    padding-left: 40px;
+}
+
+.slide-logout:hover {
+    color: white;
+    text-decoration: none;
 }

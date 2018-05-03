@@ -17,7 +17,7 @@ class AddComplaint extends Component {
         description: '',
         employee: '',
         errorMessage: '',
-        isAdmin: false
+        isAdmin: true
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -41,7 +41,7 @@ class AddComplaint extends Component {
     return (
     <div className="col-md-6 col-md-offset-3">
         <form name="form" className="BasicForm" onSubmit={this.handleSubmit}>
-          <h5>Reklamation</h5>
+          <h5>Skapa Reklamation</h5>
 
           <div className="form-group">
             <input type='text' name='orderId' className="form-control" placeholder='Ärende id' value={orderId} onChange={this.handleChange}/>
@@ -55,22 +55,22 @@ class AddComplaint extends Component {
               <div className="help-block">Glöm inte bort att beskriva vad vi ska åtgärda</div>
             }
           </div>
-          <label class="BasicForm__checkboxContainer">
-              <input type="checkbox" />
-              <span class="BasicForm__checkmark">
-                <i class="fas fa-exclamation-circle"></i>
-                Akut ärende (åtgärdas inom 4h)
-              </span>
-            </label>
           {isAdmin === true? 
           <div className="form-group">
-          <label for="employee">Åtgärdas av: </label>
           <MultipleSelect />
             {submitted && !employee &&
               <div className="help-block">Glöm inte att tilldela ärendet till rätt person</div>
             }
           </div>
           : ('')}
+          <label className="BasicForm__checkboxContainer">
+              <input type="checkbox" />
+              <span className="BasicForm__checkmark">
+                <i className="fas fa-hand-point-right"></i>
+                <i className="fas fa-exclamation-circle"></i>
+                Akut ärende? (åtgärdas inom 4h)
+              </span>
+            </label>
             <DateTimePhoto />
           <div className="buttons">
           <div className="form-group">

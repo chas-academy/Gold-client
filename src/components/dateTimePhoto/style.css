@@ -1,7 +1,7 @@
 .react-datepicker__input-container > input, .date > input {
     background-color: rgba(255, 255, 255, 0.014);
     border: none;
-    color: rgb(72, 105, 148);
+    color: #0f2f56;
     width: 100%;
     position: relative;
     text-align: center;
@@ -36,7 +36,7 @@
 .DateTime__container {
     display: flex;
     width: 100%;
-    margin-top: 70px;
+    margin-top: 25%;
     margin-bottom: 3%;
 }
 
@@ -61,7 +61,7 @@
 
 
 .fa-calendar-alt, .fa-clock {
-    color: rgb(72, 105, 148);
+    color: #0f2f56;
     font-size: 28px;
 }
 

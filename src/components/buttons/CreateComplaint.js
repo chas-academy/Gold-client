@@ -6,7 +6,7 @@ const CreateComplaint = () => {
   return (
     <Link to={`/admin/orders/complaints/add`}>
       <button className="Create__button">
-        <i class="fas fa-plus"></i>
+        <i className="fas fa-plus"></i>
       </button>
     </Link>
   );
