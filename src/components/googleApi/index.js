@@ -18,7 +18,7 @@ export default class MapContainer extends Component {
 render() {
     return (
     <div className="google-map-overlay">
-      <div className='google-map' style={{ height: '50vh', width: '100%', marginTop: '35vh'}}>
+      <div className='google-map' style={{ height: '50vh', width: '100%', marginTop: '10px'}}>
           <GoogleMapReact
             bootstrapURLKeys={{ key: Google }}
             defaultCenter={ this.props.center }

@@ -33,8 +33,9 @@
 }
 
 .take {
-    background-color: rgb(49, 100, 165); 
+    background-color: green; 
     text-transform: uppercase;
+    margin-bottom: 0;
 
 }
 
@@ -42,4 +43,5 @@
 .accept {
     background-color: green;
     text-transform: uppercase;
+    margin-bottom: 0;
 }

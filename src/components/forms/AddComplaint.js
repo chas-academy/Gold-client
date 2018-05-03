@@ -17,7 +17,7 @@ class AddComplaint extends Component {
         description: '',
         employee: '',
         errorMessage: '',
-        isAdmin: true
+        isAdmin: this.props
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);

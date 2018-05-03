@@ -7,9 +7,6 @@ export default class CustomerHistory extends Component {
     constructor (props) {
         super(props);
     
-        this.state = { 
-            isAdmin: false
-        };
     } 
 
   render() {
@@ -17,7 +14,7 @@ export default class CustomerHistory extends Component {
         <div className='customerOrder'>
             <div className='AllPagesInfo'>
             </div>
-          <CompletedOrdersList isAdmin={this.state.isAdmin} />
+          <CompletedOrdersList isAdmin={false} />
           <CustomerBottomNav />
         </div>
     )

@@ -2,42 +2,43 @@ import React, { Component } from "react";
 // import { connect } from "react-redux";
 import './style.css'
 import { EmployeeConfirmJob, EmployeeCompleteJob } from '../../components';
+import AddPhotos from "../buttons/AddPhotos";
 
 
 
 export default class EmployeeOrderDetails extends Component {
-  // constructor(props) {
-  //     super(props);
+  constructor(props) {
+      super(props);
 
-  // }
+  }
 
-  componentDidMount() {
-    console.log(this.props.id);
-    
+  componentDidMount() {    
     //change buttons depending if job is been accepted or not
   }
 
   render() {
-    
     const { id, Ongoing } = this.props;
 
-    const button = Ongoing ? 
-    <EmployeeCompleteJob />
-    : (
-      <EmployeeConfirmJob />
-    );
     return (
       <div className="EmployeeOrderDetails">
-            <p>order id: {id}</p>
-            <ul>
-              <li><h2>Jobb</h2></li>
-              <li>Tele nummer</li>
-              <li>Foton?</li>
+            <ul className="BasicList__list orderDetails">
+              <li><h2>Kund</h2></li>
+              <li>Datum</li>
               <li>Adress</li>
               <li>beskrivning</li>
-              <li>Datum</li>
+              <li>Foton</li>
+              <li>Anställd som bekräftar</li>
             </ul>
-              {button}
+        {Ongoing ?
+        <div>
+        {/* <div className="orderDetails">
+          <AddPhotos />
+        </div>   */}
+        <EmployeeCompleteJob />
+        </div>
+        : (
+        <EmployeeConfirmJob />
+        )}
       </div>
     );
   }

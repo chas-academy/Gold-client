@@ -8,7 +8,7 @@ export default class CustomerComplaints extends Component {
   render() {
     return (
         <div className='customerOrder'>
-          <AddComplaint />
+          <AddComplaint isAdmin={false}/>
           <CustomerBottomNav />
         </div>
     )

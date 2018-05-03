@@ -23,7 +23,7 @@ class AddOrder extends Component {
       description: "",
       employee: "",
       errorMessage: "",
-      isAdmin: true,
+      isAdmin: this.props,
       phone: "",
       photo: "",
       submitted: ""

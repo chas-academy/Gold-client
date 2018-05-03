@@ -49,11 +49,11 @@ export { default as EmployeeCompleteJob } from './buttons/EmployeeCompleteJob'
 export { default as EmployeeIncomingList } from './lists/EmployeeIncomingList'
 export { default as EmployeeActiveList } from './lists/EmployeeActiveList'
 export { default as EmployeeCompleteList} from './lists/EmployeeCompleteList'
-export { default as EmployeeJobDetails } from './EmployeeOrderDetails'
+export { default as EmployeeOrderDetails } from './employeeOrderDetails'
  
 
 // CUSTOMER 
 export { default as CustomerBottomNav } from './menus/customer-bottom-nav'
-
+export { default as CustomerOrderDetails } from './customerOrderDetails'
 
 

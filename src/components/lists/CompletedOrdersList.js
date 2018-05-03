@@ -27,23 +27,35 @@ class CompletedOrdersList extends Component {
             <Link to={`/admin/orders/${orderId}`}>
               <div className="edit">
                     <p>OrderId:{orderId} </p>
-                    <i className="fas fa-exclamation-triangle"></i>
+                    <i className="fas fa-exclamation-triangle">Skapa Reklamation</i>
               </div>
               </Link>
-            : ( <Link to={`/order/${orderId}`}> 
+            : ( <Link to={`/orders/${orderId}`}> 
               <div className="edit">
                     <p>OrderId:{orderId} </p>
-                    <i className="fas fa-exclamation-triangle"></i>
+                    <i className="fas fa-exclamation-triangle"> Skapa Reklamation</i>
+                    
               </div>
             </Link>)}
           </li>
           <li>
+          {isAdmin === true ?
             <Link to={`/admin/orders/${orderId2}`}>
               <div className="edit">
                 <p>OrderId:{orderId2} </p>
-                <i className="fas fa-exclamation-triangle"></i>
+                <button>
+                  <i className="fas fa-exclamation-triangle"> Skapa Reklamation</i>
+                </button>
               </div>
             </Link>
+            : ( <Link to={`/orders/${orderId2}`}> 
+              <div className="edit">
+                    <p>OrderId:{orderId} </p>
+                    <button>
+                      <i className="fas fa-exclamation-triangle"> Skapa Reklamation</i>
+                    </button>
+              </div>
+            </Link>)}
           </li>
         </ul>
       </div>
