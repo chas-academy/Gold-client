@@ -154,19 +154,19 @@ class HandleOrder extends Component {
               )}
           </div>
           <div className="form-group">
-            <LocationSearchInput />
-            {submitted &&
-              !adress && (
-                <div className="help-block">Glöm inte fylla i adressen!</div>
-              )}
-          </div>
-          <div className="form-group">
             <MultipleSelect />
             {submitted &&
               !employee && (
                 <div className="help-block">
                   Glöm inte att tilldela ärendet till rätt person
                 </div>
+              )}
+          </div>
+          <div className="form-group">
+            <LocationSearchInput />
+            {submitted &&
+              !adress && (
+                <div className="help-block">Glöm inte fylla i adressen!</div>
               )}
           </div>
           <label class="BasicForm__checkboxContainer">

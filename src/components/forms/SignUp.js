@@ -14,6 +14,7 @@ class SignUp extends Component {
 
     this.state = {
       adress: "",
+      company: null,
       email: "",
       errorMessage: "",
       name: "",
@@ -21,6 +22,7 @@ class SignUp extends Component {
       numberError: null,
       password: "",
       phone: "",
+      privateCustomer: null,
       phoneError: null,
       submitted: "",
       userIsNotAdmin: this.props,
@@ -63,25 +65,26 @@ class SignUp extends Component {
 
   render() {
     const {
+      adress,
+      company,
+      email,
+      errorMessage,
       submitted,
       name,
-      email,
+      number,
+      numberError,
       password,
       passwordError,
       phone,
-      number,
-      adress,
-      errorMessage,
+      phoneError,
+      privateCustomer,
       userIsNotAdmin,
       ValidatePassword,
-      phoneError,
-      numberError
     } = this.state;
 
     return (
       <div className="col-md-6 col-md-offset-3">
         <form name="form" className="BasicForm" onSubmit={this.handleSubmit}>
-          <h5>Registrera dig som användare</h5>
           <div className="form-group">
             <div className="BasicForm__check">
               <input
@@ -99,6 +102,20 @@ class SignUp extends Component {
                 <div className="help-block">Glöm inte fylla i namnet!</div>
               )}
           </div>
+          <div className="form-group">
+            <div className="BasicForm__check">
+              <select className="BasicForm__select">
+                <option selected>Tryck här</option>
+                <option value="privateCustomer">Privatkund</option>
+                <option value="company">Företagskund</option>
+              </select>  
+          {privateCustomer && <i className="fas fa-check BasicForm__check" />}
+            </div>
+            {submitted &&
+              !privateCustomer || !company && (
+                <div className="help-block">Välj typ av kund!</div>
+              )}  
+          </div>      
           <div className="form-group">
             <div className="BasicForm__check">
               <input
