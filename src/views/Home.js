@@ -52,7 +52,7 @@ class Home extends Component {
                     // <CustomerHome />
             //         break;
             //     case isEmployee:
-                    <EmployeeHome />
+                    // <EmployeeHome />
             //         break;    
             //     default: 
             //         // redirect to login

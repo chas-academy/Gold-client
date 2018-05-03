@@ -22,6 +22,7 @@ export default class Login extends Component {
               <TabContent for="signup"><SignUp/></TabContent>
         </Tabs> 
         </div>
+        </div>
       )
   }
 
