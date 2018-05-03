@@ -1,7 +1,8 @@
 import React, { Component } from "react"
 import { Link, withRouter } from "react-router-dom"
 
-import './style.css'
+import './style.css';
+import img from '../../assets/img/Slice1.png'
 
 class EmployeeHome extends Component {
 
@@ -14,25 +15,25 @@ class EmployeeHome extends Component {
             </Link>
             <h3>Välkommen {user}</h3>
             <div>
-                <button className="CustomerHomeButtons">
+                <button className="EmployeeHomeButtons">
                 <Link to={`/employee/incoming`}>
                     <i className="fas fa-inbox"></i>
                 </Link>    
                 </button>
-                <button className="CustomerHomeButtons">
-                <Link to={`/confirm`}>
+                <button className="EmployeeHomeButtons">
+                <Link to={`/employee/ongoing`}>
                     <i class="far fa-check-circle"></i>           
                 </Link>    
                 </button>
             </div>
             <div>
-                <button className="CustomerHomeButtons">
+                <button className="EmployeeHomeButtons">
                 <Link to={`/contact`}>
                     <i class="far fa-envelope"></i>
                 </Link>    
                 </button>
-                <button className="CustomerHomeButtons">
-                <Link to={`/history`}>
+                <button className="EmployeeHomeButtons">
+                <Link to={`employee/history`}>
                     <i className="fas fa-history"></i>
                 </Link>    
                 </button>

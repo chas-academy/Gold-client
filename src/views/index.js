@@ -28,7 +28,7 @@ export { default as EmployeeIncoming } from './employees/Incoming';
 export { default as EmployeeHistory} from './employees/History';
 export { default as EmployeeJobView } from './employees/EmployeeJobView';
 export { default as EmployeeHome} from './employees/EmployeeHome';
-
+export { default as EmployeeOngoing } from './employees/EmployeeOngoing';
 
 // Customers
 export { default as Contact } from './customers/Contact'
