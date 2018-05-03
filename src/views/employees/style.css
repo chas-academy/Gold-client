@@ -1,8 +1,10 @@
 .history-tabs {
     color: black;
     padding-top:30px;
+    margin: auto;
     display: flex;
     justify-content: center;
+    
 }
 
 .history-tablink {

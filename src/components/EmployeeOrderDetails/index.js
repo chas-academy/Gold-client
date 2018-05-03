@@ -18,10 +18,10 @@ export default class EmployeeOrderDetails extends Component {
     
     const { id, Ongoing } = this.props;
 
-    const button = Ongoing ? (
+    const button = !Ongoing ? (
       <button className="btn btn-primary">Acceptera </button>
     ) : (
-      <button className="btn btn-primary">Avsluta </button>
+      <button className="btn btn-danger">Avsluta </button>
     );
     return (
       <div className="EmployeeOrderDetails">
