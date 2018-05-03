@@ -10,7 +10,7 @@ class CustomerHome extends Component {
       const user = 'Adam';
     return (
         <div>
-        <img src={img} className="CustomerHome__logo" height={70} />
+        <img src={img} className="CustomerHome__logo" height={70} alt="logotype"/>
             <button className="CustomerHome__logout" onClick={this.logout}>
               Logga ut
             </button>

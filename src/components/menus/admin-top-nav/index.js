@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
-import { Link, withRouter } from 'react-router-dom'
-import { NavDropdown, MenuItem }from 'react-bootstrap'
-
+import { withRouter } from 'react-router-dom'
 import { slide as Menu } from 'react-burger-menu'
 import './style.css'
 

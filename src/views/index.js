@@ -23,7 +23,6 @@ export { default as InternalOrders } from './admin/orders/InternalOrders';
 export { default as AddInternalOrders } from './admin/orders/AddInternalOrders';
 
 // Employee
-export { default as EmployeeConfirm } from './employees/EmployeeConfirm';
 export { default as EmployeeIncoming } from './employees/EmployeeIncoming';
 export { default as EmployeeHistory} from './employees/EmployeeHistory';
 export { default as EmployeeJobView } from './employees/EmployeeJobView';

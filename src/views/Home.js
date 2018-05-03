@@ -1,7 +1,6 @@
 import React, { Component } from "react"
 
 import { CustomerHome, EmployeeHome } from '../views'
-// import EmployeeHome from '/employees/Home'
 
 import { AdminTopNav, AdminBottomNav, MapContainer } from './../components'
 

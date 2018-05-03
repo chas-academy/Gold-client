@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-import { Tabs, TabContent, TabLink } from 'react-tabs-redux';
 // import { loginUser } from '../actions/auth';
 // import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 import './style.css';
 
 class SignIn extends Component {
@@ -14,7 +12,7 @@ class SignIn extends Component {
       password: '',
       passwordError: null,
       numberError: null,
-      errorMessage: '',
+      // errorMessage: '',
      };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -39,29 +37,22 @@ handleChange(event) {
     event.preventDefault();
     this.setState({ submitted: true });
 
-    const loginUser = {
-      persOrgNumber: this.state.persOrgNumber,
-      password: this.state.password
-    }
+    // const loginUser = {
+    //   persOrgNumber: this.state.persOrgNumber,
+    //   password: this.state.password
+    // }
 
     //dispatch goes here...
   }
 
     render() {
       const {
-        submitted,
-        name,
-        email,
-        password,
-        passwordError,
-        phone,
         number,
-        adress,
-        errorMessage,
-        userIsNotAdmin,
-        ValidatePassword,
-        phoneError,
-        numberError
+        submitted,
+        numberError,
+        password,
+        // passwordError,
+        // errorMessage,
       } = this.state;
 
     return (

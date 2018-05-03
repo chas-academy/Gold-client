@@ -6,10 +6,10 @@ import { EmployeeConfirmJob, EmployeeCompleteJob } from '../../components';
 
 
 export default class EmployeeOrderDetails extends Component {
-  constructor(props) {
-      super(props);
+  // constructor(props) {
+  //     super(props);
 
-  }
+  // }
 
   componentDidMount() {
     console.log(this.props.id);
@@ -32,7 +32,7 @@ export default class EmployeeOrderDetails extends Component {
             <ul>
               <li><h2>Jobb</h2></li>
               <li>Tele nummer</li>
-              <li>Foton?<img src="#"/></li>
+              <li>Foton?</li>
               <li>Adress</li>
               <li>beskrivning</li>
               <li>Datum</li>

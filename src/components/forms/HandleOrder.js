@@ -4,9 +4,7 @@ import React, { Component } from "react";
 // import { withRouter } from 'react-router-dom';
 
 import {
-  DateTime,
-  ImageUploader,
-  AddPhotos,
+  DateTimePhoto,
   MultipleSelect,
   LocationSearchInput
 } from "../../components";
@@ -23,10 +21,8 @@ class HandleOrder extends Component {
       phone: "",
       phoneError: null,
       adress: "",
-      date: "",
       description: "",
       employee: "",
-      photo: "",
       errorMessage: ""
     };
 
@@ -60,14 +56,11 @@ class HandleOrder extends Component {
       phone,
       phoneError,
       adress,
-      date,
       description,
       employee,
-      photo,
       errorMessage
     } = this.state;
 
-    const employeeName = "Någon";
     return (
       <div className="col-md-6 col-md-offset-3">
         <form name="form" className="BasicForm" onSubmit={this.handleSubmit}>
@@ -176,7 +169,7 @@ class HandleOrder extends Component {
                 Akut ärende (åtgärdas inom 4h)
               </span>
             </label>
-          <DateTime />
+          <DateTimePhoto />
           <div className="buttons">
             <div className="form-group">
               <button type="submit" className="btn btn-primary">

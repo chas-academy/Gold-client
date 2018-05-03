@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 // import { connect } from "react-redux"
-import { Link, withRouter } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 
 import "./style.css";
 
 class EmployeeActiveList extends Component {
-  constructor(props) {
-    super(props);
-  }
+  // constructor(props) {
+  //   super(props);
+  // }
 
   componentDidMount() {}
 

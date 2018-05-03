@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 // import { loginUser } from '../actions/auth';
-import { connect } from 'react-redux';
-import { withRouter, Link } from 'react-router-dom';
+// import { connect } from 'react-redux';
 
 import './style.css';
-import { Contact, LocationSearchInput, Logo } from "../../components";
+import { LocationSearchInput } from "../../components";
 
 
 class SignUp extends Component {
@@ -78,7 +77,6 @@ class SignUp extends Component {
       phone,
       phoneError,
       privateCustomer,
-      userIsNotAdmin,
       ValidatePassword,
     } = this.state;
 
@@ -105,16 +103,12 @@ class SignUp extends Component {
           <div className="form-group">
             <div className="BasicForm__check">
               <select className="BasicForm__select">
-                <option selected>Tryck här</option>
+                <option defaultValue>Välj typ av kund </option>
                 <option value="privateCustomer">Privatkund</option>
                 <option value="company">Företagskund</option>
               </select>  
-          {privateCustomer && <i className="fas fa-check BasicForm__check" />}
+          {(privateCustomer || company) && <i className="fas fa-check BasicForm__check" />}
             </div>
-            {submitted &&
-              !privateCustomer || !company && (
-                <div className="help-block">Välj typ av kund!</div>
-              )}  
           </div>      
           <div className="form-group">
             <div className="BasicForm__check">

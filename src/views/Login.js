@@ -10,7 +10,7 @@ export default class Login extends Component {
       return (          
       <div className="col-md-6 col-md-offset-3">
 
-      <h3 className="Login__header1"><img src={img} className="Login__img" height={50} /> Servicebyråns</h3>
+      <h3 className="Login__header1"><img src={img} className="Login__img" height={50} alt="logotype"/> Servicebyråns</h3>
       <h3 className="Login__header2"> ärendehanteringssystem</h3>
         <div className="form-container">
           <Tabs>
