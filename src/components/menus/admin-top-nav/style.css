@@ -48,11 +48,11 @@
 
 .bm-overlay {
     margin-top: -10px;
-    background-color: rgba(223, 222, 222, 0.637) !important;
+    background-color: rgba(19, 18, 18, 0.637) !important;
 }
 
 .menu-item {
-    font-size: 16px;
+    font-size: 18px;
     padding: 12px;
     color: white;
     padding-left: 40px;
@@ -73,7 +73,7 @@
     text-transform: uppercase;
     padding-left: 20px;
     font-size: 16px;
-    line-height: 2;
+    line-height: 2.5;
     margin-top: 0;
     background-color: #0a213d;
     color: rgba(235, 235, 235, 0.418);
@@ -92,9 +92,8 @@
 }
 
 .slide-logout {
-    padding-top: 30px;
+    padding-top: 20px;
     padding-bottom: 30px;
-    margin-top: 10px;
     padding-left: 40px;
 }
 
