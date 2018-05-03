@@ -42,17 +42,17 @@ class Home extends Component {
             
             // {switch (true) {
             //     case isAdmin:  
-                    <div>
-                        <AdminTopNav />
-                            <MapContainer />
-                        <AdminBottomNav />
-                    </div>
+                    // <div>
+                    //     <AdminTopNav />
+                    //         <MapContainer />
+                    //     <AdminBottomNav />
+                    // </div>
             //         break;
             //     case isCustomer:
                     // <CustomerHome />
             //         break;
             //     case isEmployee:
-                    // <EmployeeHome />
+                    <EmployeeHome />
             //         break;    
             //     default: 
             //         // redirect to login

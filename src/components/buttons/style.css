@@ -32,3 +32,14 @@
     margin-left: 10px;
 }
 
+.take {
+    background-color: rgb(49, 100, 165); 
+    text-transform: uppercase;
+
+}
+
+
+.accept {
+    background-color: green;
+    text-transform: uppercase;
+}

@@ -7,7 +7,6 @@ export { default as ImageUploader } from './imageUploader'
 export { default as MultipleSelect } from './multipleSelect'
 export { default as AddPhotos } from './buttons/AddPhotos'
 export { default as LocationSearchInput } from './locationSearchInput'
-export { default as Logo } from './logo'
 
 
 /* ADMIN - HOME ----------------------------------------------------- */
@@ -42,15 +41,12 @@ export { default as HandleOrder } from './forms/HandleOrder'
 export { default as OrderDetails } from './orderDetails'
 
 
-// EMPLOYEE HOME 
-
-
 //EMPLOYEE VIEW COMPONENTS
 export { default as EmployeeBottomNav } from './menus/employee-bottom-nav'
-export { default as IncomingJobsList } from './lists/IncomingJobsList'
 export { default as EmployeeConfirmJob } from './buttons/EmployeeConfirmJob'
+export { default as EmployeeCompleteJob } from './buttons/EmployeeCompleteJob'
 export { default as EmployeeIncomingList } from './lists/EmployeeIncomingList'
-export { default as EmployeeOngoingList } from './lists/EmployeeOngoingList'
+export { default as EmployeeActiveList } from './lists/EmployeeActiveList'
 export { default as EmployeeCompleteList} from './lists/EmployeeCompleteList'
 export { default as EmployeeJobDetails } from './EmployeeOrderDetails'
  

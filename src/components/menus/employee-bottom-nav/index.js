@@ -24,7 +24,7 @@ class EmployeeBottomNav extends Component {
           </li>
           <li>
             <Link to={`/employee/history`}>
-              <i className="fas fa-book" />
+            <i className="fas fa-history"></i>
             </Link>
           </li>
           <li>
