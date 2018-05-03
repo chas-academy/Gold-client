@@ -40,23 +40,28 @@
 
 } 
 
+.slide-menu {
+    background-color: #0f2f56;
+    margin-top: -10px;
+    height: 100vh;
+}
+
+.bm-overlay {
+    margin-top: -10px;
+}
+
 .menu-item {
-    font-size: 16px;
-    padding: 18px;
+    font-size: 14px;
+    padding: 12px;
     color: white;
     text-transform: uppercase;
     padding-left: 40px;
-    border-bottom: 1px solid white;
-
 }
 
-.slide-menu {
-    background-color: rgba(49, 99, 165, 0.952);
-    margin-top: 0;
-}
 
 .slide-menu__header {
     margin-left: 20px;
+    color: rgba(235, 235, 235, 0.418);
 }
 
 .slide-menu__press {

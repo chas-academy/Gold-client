@@ -14,6 +14,7 @@ export { default as AdminTopNav } from './menus/admin-top-nav'
 export { default as AdminBottomNav } from './menus/admin-bottom-nav'
 export { default as GoogleApiWrapper } from './googleApi'
 export { default as MapContainer } from './googleApi'
+export { default as AdminHomeTop } from './adminHomeTop'
 
 
 /* ADMIN - ACCOUNTS -------------------------------------------------- */

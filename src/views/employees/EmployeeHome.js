@@ -24,7 +24,7 @@ class EmployeeHome extends Component {
             </button>
             <button className="CustomerHome__buttons">
               <Link to={`/employee/ongoing`}>
-                <i class="far fa-check-circle" />
+                <i className="far fa-check-circle" />
                 <p className="CustomerHome__buttonText">
                   Bekräfta avslutat jobb
                 </p>

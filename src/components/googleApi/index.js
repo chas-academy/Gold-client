@@ -13,12 +13,13 @@ const Google = '';
 
     static defaultProps = {
     center: { lat: 55.5873503, lng: 12.9814429},
-    zoom: 10
+    zoom: 9
   }
 
 render() {
     return (
-        <div className='google-map' style={{ height: '50vh', width: '100%', marginTop: '-10px' }}>
+    <div className="google-map-overlay">
+      <div className='google-map' style={{ height: '50vh', width: '100%', marginTop: '35vh', zIndex: '-9999'}}>
           <GoogleMapReact
             bootstrapURLKeys={{ key: Google }}
             defaultCenter={ this.props.center }
@@ -43,6 +44,7 @@ render() {
             />
 
           </GoogleMapReact>
+          </div>
           </div>
     )
   }

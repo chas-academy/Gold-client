@@ -22,7 +22,7 @@ class AdminTopNav extends Component {
       <div>
         <h3 className="slide-menu__press"> Hantera konton och ärenden </h3>
       <div>
-      <Menu className="slide-menu" width={'85%'}>
+      <Menu className="slide-menu" width={'75%'}>
         <h3 className="slide-menu__header">Ärenden</h3>
           <a id="incoming" className="menu-item" href={`/admin/orders/incoming`}>Nya</a>
           <a id="active" className="menu-item" href={`/admin/orders/active`}>Pågående</a>
@@ -34,7 +34,6 @@ class AdminTopNav extends Component {
           <a id="active" className="menu-item" href={`/admin/accounts/customers/private`}>Privatkunder</a>
           <a id="internal" className="menu-item" href={`/admin/accounts/customers/companies`}>Företagskunder</a>
           <a id="complaints" className="menu-item" href={`/admin/accounts/profile`}>Min profil</a>
-          <a id="completed" className="menu-item" href={`/admin/orders/completed`}>Avslutade</a>  
         </Menu>  
       </div>
       </div>
