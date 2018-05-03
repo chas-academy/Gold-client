@@ -95,7 +95,7 @@ handleChange(event) {
           </div>
 
           <div className="form-group">
-          <label className="BasicForm__label"> Fyll i ditt lösenord </label>
+          <label className="BasicForm__label"> Lösenord </label>
             <div className="BasicForm__check">
               <input
                 type="password"

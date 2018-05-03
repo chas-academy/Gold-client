@@ -4,7 +4,6 @@
     margin: auto;
     left: 0;
     right: 0;
-    margin-top: 15px;
     background-color: rgba(197, 197, 197, 0.055);
     box-shadow: 0 2px 4px 0 rgba(77,77,79,.2);
     padding: 20px;
@@ -52,11 +51,11 @@
 }
 
 .form-control {
-    background: rgba(255, 255, 255, 0.308);
+    background: rgb(255, 255, 255);
     color: black;
     box-shadow: 0 1px 2px 0 rgba(180, 180, 184, 0.068);
     border-bottom: 2px solid rgb(224, 224, 224);
-    border-radius: 0px;
+    border-radius: 4px;
     width: 100%;
 }
 
@@ -82,13 +81,18 @@
     margin-left: 5px;
 }
 
-.BasicForm__textArea {
+.BasicForm__textArea, .BasicForm__select {
     width: 100%;
     padding-left: 15px;
-    border: none;
-    background: rgba(255, 255, 255, 0.308);
+    border: 0.5px solid rgb(197, 197, 197);
+    background: rgb(255, 255, 255);
     box-shadow: 0 1px 2px 0 rgba(180, 180, 184, 0.068);
     border-bottom: 2px solid rgb(224, 224, 224);
+    border-radius: 4px;
+}
+
+.BasicForm__select {
+    height: 35px;
 }
 
 .BasicForm__check {
@@ -172,4 +176,10 @@ input:focus {
   .fa-exclamation-circle {
       margin-right: 5px;
       font-size: 18px;
+  }
+
+  .fa-hand-point-right {
+      margin-right: 5px;
+      font-size: 20px;
+      color:  rgb(49, 100, 165);
   }

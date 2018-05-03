@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import GoogleMapReact from 'google-map-react'
 
-
+import './style.css'
 
 const AnyReactComponent = ({ text }) => <div>{ text }</div>;
 
@@ -18,7 +18,7 @@ const Google = '';
 
 render() {
     return (
-        <div className='google-map' style={{ height: '100vh', width: '100%' }}>
+        <div className='google-map' style={{ height: '50vh', width: '100%', marginTop: '-10px' }}>
           <GoogleMapReact
             bootstrapURLKeys={{ key: Google }}
             defaultCenter={ this.props.center }

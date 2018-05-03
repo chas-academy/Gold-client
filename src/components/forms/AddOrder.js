@@ -146,10 +146,11 @@ class AddOrder extends Component {
                 )}
                 <LocationSearchInput />
             <label class="BasicForm__checkboxContainer">
-              <span class="BasicForm__checkmark">
                 <input type="checkbox" />
-                <i class="fas fa-exclamation-circle"></i>
-                Akut ärende (åtgärdas inom 4h)
+              <span class="BasicForm__checkmark">
+                <i className="fas fa-hand-point-right"></i>
+                <i className="fas fa-exclamation-circle"></i>
+                Akut ärende? (åtgärdas inom 4h)
               </span>
             </label>
             {isAdmin === true ? (
