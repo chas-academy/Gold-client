@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 
-import CustomerHome from './customers/CustomerHome'
+import { CustomerHome, EmployeeHome } from '../views'
 // import EmployeeHome from '/employees/Home'
 
 import { AdminTopNav, AdminBottomNav, MapContainer } from './../components'
@@ -13,7 +13,7 @@ class Home extends Component {
       super(props);
       this.state = { 
           isAdmin: false,
-          isCustomer: true,
+          isCustomer: false,
           isEmployee: false
          };
     }
@@ -52,7 +52,7 @@ class Home extends Component {
                     // <CustomerHome />
             //         break;
             //     case isEmployee:
-            //         <EmployeeHome />
+                    <EmployeeHome />
             //         break;    
             //     default: 
             //         // redirect to login

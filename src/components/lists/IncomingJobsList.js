@@ -13,7 +13,7 @@ class IncomingJobsList extends Component {
         <h4> Inkommande ärenden </h4>
         <ul className="BasicList__list">
           <li>
-            <Link to={`/employee/${jobId}`}>
+            <Link to={`/employee/jobs/${jobId}`}>
               <div className="edit">
                 <p>Clean that up</p>
                 <i className="fas fa-edit" />
@@ -21,7 +21,7 @@ class IncomingJobsList extends Component {
             </Link>
           </li>
           <li>
-            <Link to={`/admin/accounts/employees/${jobId2}`}>
+            <Link to={`/employee/jobs/${jobId2}`}>
               <div className="edit">
                 <p>Clean that office job</p>
                 <i className="fas fa-edit" />

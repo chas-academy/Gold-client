@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 import { Tabs, TabLink, TabContent } from 'react-tabs-redux';
-import { EmployeeTopNav,
+import { 
   EmployeeBottomNav,
     EmployeeHistoryList,
       EmployeeIncomingList,
@@ -13,12 +13,12 @@ export default class EmployeeHistory extends Component {
   render() {
     return (
         <div>  
-            {/* <EmployeeTopNav/> */}
-            <h1>Historia</h1>
+            <h1>Historik</h1>
             <ul>
+            <div className="col-md-6 col-md-offset-3">
             <Tabs>
             <div className="history-tabs">
-              <TabLink className="history-tablink" to="inkommande">Kommande</TabLink>
+              <TabLink className="history-tablink" to="inkommande">Inkommande</TabLink>
               <TabLink className="history-tablink" to="pågående">Pågående</TabLink>
               <TabLink className="history-tablink" to="avslutade">Avslutade</TabLink>
             </div>
@@ -33,6 +33,7 @@ export default class EmployeeHistory extends Component {
                 <i className="fas fa-edit" />
               </div>
           </li> */}
+            </div>
             </ul>
             <EmployeeBottomNav/>
         </div>    

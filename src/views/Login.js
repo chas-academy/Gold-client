@@ -7,8 +7,7 @@ import img from '../assets/img/Slice1.png'
 export default class Login extends Component {
 
     render() {
-      return (  
-        
+      return (          
       <div className="col-md-6 col-md-offset-3">
 
       <h3 className="Login__header1"><img src={img} className="Login__img" height={50} /> Servicebyråns</h3>
@@ -23,7 +22,6 @@ export default class Login extends Component {
               <TabContent for="signup"><SignUp/></TabContent>
         </Tabs> 
         </div>
-      </div>
       )
   }
 

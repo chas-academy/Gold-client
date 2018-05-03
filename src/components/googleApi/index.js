@@ -12,7 +12,7 @@ const Google = '';
   
 
     static defaultProps = {
-    center: { lat: 55.60587, lng: 13.00073},
+    center: { lat: 55.5873503, lng: 12.9814429},
     zoom: 10
   }
 
