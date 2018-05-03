@@ -19,12 +19,12 @@ class EmployeeBottomNav extends Component {
         <ul className="bottomNavList">
           <li>
             <Link to={`/employee/incoming`}>
-                <i class="fas fa-inbox"></i>
+                <i className="fas fa-inbox"></i>
             </Link>
           </li>
           <li>
             <Link to={`/employee/history`}>
-              <i className="fas fa-book" />
+            <i className="fas fa-history"></i>
             </Link>
           </li>
           <li>
@@ -34,7 +34,7 @@ class EmployeeBottomNav extends Component {
           </li>
           <li>
             <button className="logout" onClick={this.logout}>
-              <i class="fas fa-sign-out-alt" />
+              <i className="fas fa-sign-out-alt" />
             </button>
           </li>
         </ul>

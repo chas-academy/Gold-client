@@ -23,15 +23,14 @@ export { default as InternalOrders } from './admin/orders/InternalOrders';
 export { default as AddInternalOrders } from './admin/orders/AddInternalOrders';
 
 // Employee
-export { default as EmployeeConfirm } from './employees/Confirm';
-export { default as EmployeeIncoming } from './employees/Incoming';
-export { default as EmployeeHistory} from './employees/History';
+export { default as EmployeeIncoming } from './employees/EmployeeIncoming';
+export { default as EmployeeHistory} from './employees/EmployeeHistory';
 export { default as EmployeeJobView } from './employees/EmployeeJobView';
 export { default as EmployeeHome} from './employees/EmployeeHome';
-
+export { default as EmployeeActive } from './employees/EmployeeActive';
 
 // Customers
-export { default as Contact } from './customers/Contact'
+export { default as CustomerContact } from './customers/CustomerContact'
 export { default as CustomerComplaints } from './customers/CustomerComplaints'
 export { default as CustomerHistory } from './customers/CustomerHistory'
 export { default as CustomerOrders } from './customers/CustomerOrders'

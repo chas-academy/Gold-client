@@ -6,12 +6,14 @@ import "./style.css";
 import "react-datepicker/dist/react-datepicker.css";
 import { AddPhotos } from '../../components'
 
-class DateTime extends Component {
+class DateTimePhoto extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      startDate: moment()
+      startDate: moment(),
+      time: ''
     };
+    
     this.handleChange = this.handleChange.bind(this);
   }
 
@@ -19,15 +21,13 @@ class DateTime extends Component {
 
     this.setState({
       startDate: date,
-      submitted: ""
     });
   }
 
   render() {
-    const { time, submitted } = this.state;
+    const { time } = this.state;
     return (
       <div className="DateTime__container">
-
           <div className="DateTime__buttons">
             <button className="AddPhotos__button">
               <i className="fas fa-calendar-alt" />
@@ -57,4 +57,4 @@ class DateTime extends Component {
   }
 }
 
-export default DateTime;
+export default DateTimePhoto;

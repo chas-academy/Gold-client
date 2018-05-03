@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 // import { connect } from 'react-redux';
 // import { withRouter } from 'react-router-dom';
 
-import { DateTime, ImageUploader, MultipleSelect  } from '../../components'
+import { DateTimePhoto, MultipleSelect  } from '../../components'
 
 import './style.css';
 
@@ -14,10 +14,8 @@ class AddComplaint extends Component {
     this.state = { 
         submitted: '',
         orderId: '',
-        date: '',
         description: '',
         employee: '',
-        photo: '',
         errorMessage: '',
         isAdmin: false
     };
@@ -38,7 +36,7 @@ class AddComplaint extends Component {
   }
 
     render() {
-    const { isAdmin, submitted, orderId, date, description, employee, photo, errorMessage } = this.state;
+    const { isAdmin, submitted, orderId, description, employee,  errorMessage } = this.state;
 
     return (
     <div className="col-md-6 col-md-offset-3">
@@ -73,7 +71,7 @@ class AddComplaint extends Component {
             }
           </div>
           : ('')}
-            <DateTime />
+            <DateTimePhoto />
           <div className="buttons">
           <div className="form-group">
             <button type="submit" className="btn btn-primary">

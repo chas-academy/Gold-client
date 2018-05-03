@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 // import { loginUser } from '../actions/auth';
-import { connect } from 'react-redux';
-import { withRouter, Link } from 'react-router-dom';
+// import { connect } from 'react-redux';
 
 import './style.css';
-import { Contact, LocationSearchInput, Logo } from "../../components";
+import { LocationSearchInput } from "../../components";
 
 
 class SignUp extends Component {
@@ -14,6 +13,7 @@ class SignUp extends Component {
 
     this.state = {
       adress: "",
+      company: null,
       email: "",
       errorMessage: "",
       name: "",
@@ -21,6 +21,7 @@ class SignUp extends Component {
       numberError: null,
       password: "",
       phone: "",
+      privateCustomer: null,
       phoneError: null,
       submitted: "",
       userIsNotAdmin: this.props,
@@ -63,25 +64,25 @@ class SignUp extends Component {
 
   render() {
     const {
+      adress,
+      company,
+      email,
+      errorMessage,
       submitted,
       name,
-      email,
+      number,
+      numberError,
       password,
       passwordError,
       phone,
-      number,
-      adress,
-      errorMessage,
-      userIsNotAdmin,
-      ValidatePassword,
       phoneError,
-      numberError
+      privateCustomer,
+      ValidatePassword,
     } = this.state;
 
     return (
       <div className="col-md-6 col-md-offset-3">
         <form name="form" className="BasicForm" onSubmit={this.handleSubmit}>
-          <h5>Registrera dig som användare</h5>
           <div className="form-group">
             <div className="BasicForm__check">
               <input
@@ -99,6 +100,16 @@ class SignUp extends Component {
                 <div className="help-block">Glöm inte fylla i namnet!</div>
               )}
           </div>
+          <div className="form-group">
+            <div className="BasicForm__check">
+              <select className="BasicForm__select">
+                <option defaultValue>Välj typ av kund </option>
+                <option value="privateCustomer">Privatkund</option>
+                <option value="company">Företagskund</option>
+              </select>  
+          {(privateCustomer || company) && <i className="fas fa-check BasicForm__check" />}
+            </div>
+          </div>      
           <div className="form-group">
             <div className="BasicForm__check">
               <input

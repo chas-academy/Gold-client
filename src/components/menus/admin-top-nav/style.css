@@ -39,3 +39,34 @@
     text-decoration: none;
 
 } 
+
+.menu-item {
+    font-size: 16px;
+    padding: 18px;
+    color: white;
+    text-transform: uppercase;
+    padding-left: 40px;
+    border-bottom: 1px solid white;
+
+}
+
+.slide-menu {
+    background-color: rgba(49, 99, 165, 0.952);
+    margin-top: 0;
+}
+
+.slide-menu__header {
+    margin-left: 20px;
+}
+
+.slide-menu__press {
+    z-index: 9999;
+    width: 100%;
+    margin-top: 0;
+    padding: 20px;
+    background-color:  rgb(49, 100, 165);
+    text-align: center;
+    color: white;
+    border-bottom: 1px solid white;
+    height: 70px;
+}

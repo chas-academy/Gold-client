@@ -18,7 +18,7 @@
     color: rgb(72, 105, 148);
     box-shadow: 0 1px 2px 0 rgba(20, 20, 20, 0.288);
     border: 5px solid  rgb(72, 105, 148);
-    background: rgba(255, 255, 255, 0.308);
+    background: white;
     border-radius: 50%;
     display: flex;
     padding: 25px;
@@ -32,3 +32,14 @@
     margin-left: 10px;
 }
 
+.take {
+    background-color: rgb(49, 100, 165); 
+    text-transform: uppercase;
+
+}
+
+
+.accept {
+    background-color: green;
+    text-transform: uppercase;
+}

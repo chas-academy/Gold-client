@@ -3,12 +3,12 @@ import GoogleMapReact from 'google-map-react'
 
 import './style.css'
 
-import { CustomerBottomNav, Contact, MapContainer } from '../../components'
+import { CustomerBottomNav } from '../../components'
 
 export default class CustomerContact extends Component {
-    constructor (props) {
-        super(props);
-    } 
+    // constructor (props) {
+    //     super(props);
+    // } 
 
     
     static defaultProps = {

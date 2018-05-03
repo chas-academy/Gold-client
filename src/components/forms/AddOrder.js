@@ -4,9 +4,7 @@ import React, { Component } from "react";
 // import { withRouter } from 'react-router-dom';
 
 import {
-  AddPhotos,
-  DateTime,
-  ImageUploader,
+  DateTimePhoto,
   LocationSearchInput,
   MultipleSelect
 } from "../../components";
@@ -56,17 +54,14 @@ class AddOrder extends Component {
 
   render() {
     const {
-      adress,
       contact,
       customerId,
-      date,
       description,
       employee,
       errorMessage,
       isAdmin,
       phone,
       phoneError,
-      photo,
       submitted
     } = this.state;
 
@@ -146,10 +141,11 @@ class AddOrder extends Component {
                 )}
                 <LocationSearchInput />
             <label class="BasicForm__checkboxContainer">
-              <span class="BasicForm__checkmark">
                 <input type="checkbox" />
-                <i class="fas fa-exclamation-circle"></i>
-                Akut ärende (åtgärdas inom 4h)
+              <span class="BasicForm__checkmark">
+                <i className="fas fa-hand-point-right"></i>
+                <i className="fas fa-exclamation-circle"></i>
+                Akut ärende? (åtgärdas inom 4h)
               </span>
             </label>
             {isAdmin === true ? (
@@ -163,7 +159,7 @@ class AddOrder extends Component {
               )}
               </div>
           ) : ('')}
-            <DateTime />
+            <DateTimePhoto />
             <div className="form-group">
               <button type="submit" className="btn btn-primary">
                 Skicka

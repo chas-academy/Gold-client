@@ -1,6 +1,5 @@
 import React, { Component } from "react"
 import './style.css'
-import img from '../../assets/img/Slice1.png'
 
 import { AddOrder, CustomerBottomNav } from '../../components'
 

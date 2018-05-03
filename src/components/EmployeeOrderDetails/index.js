@@ -1,16 +1,43 @@
 import React, { Component } from "react";
 // import { connect } from "react-redux";
-// import './style.css'
+import './style.css'
+import { EmployeeConfirmJob, EmployeeCompleteJob } from '../../components';
+
+
 
 export default class EmployeeOrderDetails extends Component {
-  constructor(props) {
-      super(props);
-  }
-  render() {
-    return (
-      <div className="users">
-            <p>orderdetails  details component</p>
+  // constructor(props) {
+  //     super(props);
 
+  // }
+
+  componentDidMount() {
+    console.log(this.props.id);
+    
+    //change buttons depending if job is been accepted or not
+  }
+
+  render() {
+    
+    const { id, Ongoing } = this.props;
+
+    const button = Ongoing ? 
+    <EmployeeCompleteJob />
+    : (
+      <EmployeeConfirmJob />
+    );
+    return (
+      <div className="EmployeeOrderDetails">
+            <p>order id: {id}</p>
+            <ul>
+              <li><h2>Jobb</h2></li>
+              <li>Tele nummer</li>
+              <li>Foton?</li>
+              <li>Adress</li>
+              <li>beskrivning</li>
+              <li>Datum</li>
+            </ul>
+              {button}
       </div>
     );
   }

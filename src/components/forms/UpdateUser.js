@@ -4,7 +4,7 @@ import React, { Component } from "react";
 // import { withRouter } from 'react-router-dom';
 
 import "./style.css";
-import { Contact, LocationSearchInput, Logo } from "../../components";
+import { LocationSearchInput } from "../../components";
 
 class UpdateUser extends Component {
   constructor(props) {
@@ -238,7 +238,7 @@ class UpdateUser extends Component {
             </div>
           </div>
           <div className="form-group">
-            {userIsNotAdmin == true ? (
+            {userIsNotAdmin === true ? (
               <button className="btn btn-danger">Radera Användare</button>
             ) : (
               ""

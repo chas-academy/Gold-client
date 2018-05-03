@@ -1,24 +1,25 @@
-import React, { Component } from "react"
-import { EmployeeTopNav, EmployeeBottomNav, EmployeeJobDetails  } from '../../components'
+import React, { Component } from "react";
+import {
+  EmployeeBottomNav,
+  EmployeeJobDetails,
+} from "../../components";
 
 export default class EmployeeJobView extends Component {
-
-  constructor(props) {
-    super(props);
-  }
+  // constructor(props) {
+  //   super(props);
+  // }
 
   render() {
-
-
+    const {
+      match: { params }
+    } = this.props;
     return (
-        <div> 
-          <div>
-            <h1></h1>
-          </div>
-              <EmployeeJobDetails/>
-            < EmployeeBottomNav />
-        </div>    
-    )
+      <div>
+        <div className="col-md-6 col-md-offset-3">
+          <EmployeeJobDetails id={params.id} />
+        </div>
+        <EmployeeBottomNav />
+      </div>
+    );
   }
-
 }
