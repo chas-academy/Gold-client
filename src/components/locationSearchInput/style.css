@@ -1,0 +1,17 @@
+.location-search-input {
+    background: rgb(255, 255, 255);
+    border: 0.5px solid rgb(206, 205, 205);;
+    box-shadow: 0 1px 2px 0 rgba(180, 180, 184, 0.068);
+    border-bottom: 2px solid rgb(224, 224, 224);    
+    color: black;
+    border-radius: 4px;
+    width: 100%;
+    line-height: 2.2;
+    padding-left: 15px;
+    margin-top: 4%;
+}
+
+.help-block {
+    color: rgb(58, 95, 165) !important;
+}
+

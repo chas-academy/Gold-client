@@ -1,0 +1,10 @@
+.EmployeeOrderDetails {
+    margin-top: 5%;
+    box-shadow: 0 2px 4px 0 rgba(77,77,79,.2);
+}
+
+.orderDetails {
+    margin: auto;
+    background-color: rgb(255, 255, 255);
+    width: 100%;
+}

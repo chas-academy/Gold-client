@@ -1,0 +1,47 @@
+.Create__button {
+    color: #0f2f56;
+    box-shadow: 0 1px 2px 0 rgba(20, 20, 20, 0.288);
+    border: 5px solid  #0f2f56;
+    background: rgba(255, 255, 255, 0.308);
+    border-radius: 50%;
+    display: flex;
+    padding: 20px;
+    font-size: 28px;
+    justify-content: center;
+    margin: auto;
+    position: absolute;
+    bottom: 12%;
+    right: 40%;
+}
+
+.AddPhotos__button {
+    color: #0f2f56;
+    box-shadow: 0 1px 2px 0 rgba(20, 20, 20, 0.288);
+    border: 5px solid  #0f2f56;
+    background: white;
+    border-radius: 50%;
+    display: flex;
+    padding: 25px;
+    font-size: 28px;
+    justify-content: center;
+    margin: 5px;
+}
+
+.AddPhotos__text {
+    color: #0f2f56;
+    margin-left: 10px;
+}
+
+.take {
+    background-color: green; 
+    text-transform: uppercase;
+    margin-bottom: 0;
+
+}
+
+
+.accept {
+    background-color: green;
+    text-transform: uppercase;
+    margin-bottom: 0;
+}
