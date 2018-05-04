@@ -80,16 +80,16 @@ class SignUp extends Component {
       lon: "18"
     }
 
-    const url = '';
+    // const url = '';
 
-    if (process.env.NODE_ENV === 'development') {
-      const url = 'http://localhost:7770';
-    } else {
-      const url = process.env.REACT_APP_API_BASE_URL;
-    }
+    // if (process.env.NODE_ENV === 'development') {
+    //   const url = 'http://localhost:7770';
+    // } else {
+    //   const url = process.env.REACT_APP_API_BASE_URL;
+    // }
     
     
-    fetch(`${url}/register`, {
+    fetch(process.env.REACT_APP_API_BASE_URL+'/register', {
       method: 'POST',
       body: JSON.stringify(regUser),
       headers: {

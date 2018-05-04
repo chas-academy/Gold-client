@@ -47,13 +47,13 @@ handleChange(event) {
 
     const url = '';
 
-    if (process.env.NODE_ENV === 'development') {
-      const url = 'http://localhost:7770';
-    } else {
-      const url = process.env.REACT_APP_API_BASE_URL;
-    }
+    // if (process.env.NODE_ENV === 'development') {
+    //   const url = 'http://localhost:7770';
+    // } else {
+    //   const url = process.env.REACT_APP_API_BASE_URL;
+    // }
     
-    fetch(`${url}/login`, {
+    fetch(process.env.REACT_APP_API_BASE_URL+'/login', {
       method: 'POST',
       body: JSON.stringify(loginUser),
       headers: {
