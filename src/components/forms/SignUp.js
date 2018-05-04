@@ -80,7 +80,16 @@ class SignUp extends Component {
       lon: "18"
     }
 
-    fetch('http://localhost:7770/register', {
+    const url = '';
+
+    if (process.env.NODE_ENV === 'production') {
+      const url = process.env.REACT_APP_API_BASE_URL;
+    } else {
+      const url = 'http://localhost:7770';
+    }
+    
+    
+    fetch(`${url}/register`, {
       method: 'POST',
       body: JSON.stringify(regUser),
       headers: {

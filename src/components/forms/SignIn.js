@@ -44,7 +44,16 @@ handleChange(event) {
       pers_org_num: this.state.number,
       password: this.state.password
     }
-    fetch('http://localhost:7770/login', {
+
+    const url = '';
+
+    if (process.env.NODE_ENV === 'production') {
+      const url = process.env.REACT_APP_API_BASE_URL;
+    } else {
+      const url = 'http://localhost:7770';
+    }
+    
+    fetch(`${url}/login`, {
       method: 'POST',
       body: JSON.stringify(loginUser),
       headers: {
