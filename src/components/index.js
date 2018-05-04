@@ -14,6 +14,7 @@ export { default as AdminTopNav } from './menus/admin-top-nav'
 export { default as AdminBottomNav } from './menus/admin-bottom-nav'
 export { default as GoogleApiWrapper } from './googleApi'
 export { default as MapContainer } from './googleApi'
+export { default as AdminHomeTop } from './adminHomeTop'
 
 
 /* ADMIN - ACCOUNTS -------------------------------------------------- */
@@ -48,11 +49,11 @@ export { default as EmployeeCompleteJob } from './buttons/EmployeeCompleteJob'
 export { default as EmployeeIncomingList } from './lists/EmployeeIncomingList'
 export { default as EmployeeActiveList } from './lists/EmployeeActiveList'
 export { default as EmployeeCompleteList} from './lists/EmployeeCompleteList'
-export { default as EmployeeJobDetails } from './EmployeeOrderDetails'
+export { default as EmployeeOrderDetails } from './employeeOrderDetails'
  
 
 // CUSTOMER 
 export { default as CustomerBottomNav } from './menus/customer-bottom-nav'
-
+export { default as CustomerOrderDetails } from './customerOrderDetails'
 
 

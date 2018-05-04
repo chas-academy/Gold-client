@@ -18,7 +18,26 @@ class EmployeeCompleteList extends Component {
 
     return (
       <div className="BasicList__container">
-        <h4> Avslutade jobb </h4>
+        <h4> Avslutade Jobb</h4>
+        <p> Här kan du se dina slutförda jobb.</p>
+        <hr />
+        <ul className="BasicList__list">
+          <li>
+              <div className="edit">
+                <p>Kund: XXXXX</p>
+                <p>datum: XXXX</p>
+                <p className="IncomingJobAccept">Slutfört</p>
+              </div>
+          </li>
+          <hr />
+          <li>
+              <div className="edit">
+              <p>Kund: XXXXX</p>
+              <p>datum: XXXX</p>
+                <p className="IncomingJobAccept">Slutfört</p>
+              </div>
+          </li>
+        </ul>
       </div>
     );
   }

@@ -7,7 +7,7 @@ const EmployeeCompleteJob = () => {
     <div>
       <form method="post" action="">
         <button typ="submit" className="btn btn-primary accept">
-          Bekräfta avslutat jobb
+          Bekräfta slutfört jobb
         </button>
       </form>
     </div>

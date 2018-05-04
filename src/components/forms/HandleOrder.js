@@ -64,6 +64,7 @@ class HandleOrder extends Component {
     return (
       <div className="col-md-6 col-md-offset-3">
         <form name="form" className="BasicForm" onSubmit={this.handleSubmit}>
+        <h5> Hantera Beställning</h5>
           <div className="form-group">
             <div className="BasicForm__check">
               <input
@@ -162,11 +163,12 @@ class HandleOrder extends Component {
                 <div className="help-block">Glöm inte fylla i adressen!</div>
               )}
           </div>
-          <label class="BasicForm__checkboxContainer">
+          <label className="BasicForm__checkboxContainer">
               <input type="checkbox" />
-              <span class="BasicForm__checkmark">
-                <i class="fas fa-exclamation-circle"></i>
-                Akut ärende (åtgärdas inom 4h)
+              <span className="BasicForm__checkmark">
+              <i className="fas fa-hand-point-right"></i>
+                <i className="fas fa-exclamation-circle"></i>
+                Akut ärende? (åtgärdas inom 4h)
               </span>
             </label>
           <DateTimePhoto />
