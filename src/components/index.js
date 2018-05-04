@@ -49,7 +49,7 @@ export { default as EmployeeCompleteJob } from './buttons/EmployeeCompleteJob'
 export { default as EmployeeIncomingList } from './lists/EmployeeIncomingList'
 export { default as EmployeeActiveList } from './lists/EmployeeActiveList'
 export { default as EmployeeCompleteList} from './lists/EmployeeCompleteList'
-export { default as EmployeeOrderDetails } from './employeeOrderDetails'
+export { default as EmployeeOrderDetails } from './EmployeeOrderDetails'
  
 
 // CUSTOMER 
