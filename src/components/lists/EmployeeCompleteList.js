@@ -19,7 +19,7 @@ class EmployeeCompleteList extends Component {
     return (
       <div className="BasicList__container">
         <h4> Avslutade Jobb</h4>
-        <p> Här samlas dina slutförda jobb.</p>
+        <p> Här kan du se dina slutförda jobb.</p>
         <hr />
         <ul className="BasicList__list">
           <li>

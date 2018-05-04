@@ -114,6 +114,8 @@
     margin-right: 20px;
     color: rgba(119, 118, 118, 0.479);
     text-transform: uppercase;
+    border:none;
+    background-color: rgba(255, 255, 255, 0);
 }
 
 .contactMarker {
