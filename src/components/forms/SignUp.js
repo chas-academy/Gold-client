@@ -60,6 +60,46 @@ class SignUp extends Component {
   handleSubmit(event) {
     event.preventDefault();
     this.setState({ submitted: true });
+
+    let type = null;
+    if (this.state.company == null) {
+      type = "private";
+    } else {
+      type = "company";
+    }
+
+    const regUser = {
+      name: this.state.name,
+      pers_org_num: this.state.number,
+      password: this.state.password,
+      type: type,
+      email: this.state.email,
+      tel: this.state.phone,
+      address: "Nåt Torg 1",
+      lat: "59",
+      lon: "18"
+    }
+
+    const url = '';
+
+    if (process.env.NODE_ENV === 'production') {
+      const url = process.env.REACT_APP_API_BASE_URL;
+    } else {
+      const url = 'http://localhost:7770';
+    }
+    
+    
+    fetch(`${url}/register`, {
+      method: 'POST',
+      body: JSON.stringify(regUser),
+      headers: {
+        "Content-Type": "application/json"
+      }
+    })
+    .then((res) => res.json())
+    .then(res => {
+      console.log(res)
+    })
   }
 
   render() {

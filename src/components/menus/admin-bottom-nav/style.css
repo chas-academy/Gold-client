@@ -1,5 +1,5 @@
 .bottomNav {
-    background-color: #3161A6;
+    background-color: #0f2f56;
     position: fixed;
     bottom: 0;
     width: 100%;
@@ -35,7 +35,7 @@
 .logout {
     background: rgba(255, 255, 255, 0);
     border: none;
-    color: rgb(206, 205, 205);
+    color:rgb(244, 244, 245);
     margin: 0;
     font-size: 26px;
     padding: 0;

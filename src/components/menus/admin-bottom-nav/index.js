@@ -20,7 +20,7 @@ class AdminBottomNav extends Component {
         <ul className="bottomNavList">
           <li>
             <Link to={`/admin/orders/incoming`}>
-                <i class="fas fa-inbox"></i>
+                <i className="fas fa-inbox"></i>
             </Link>
           </li>
           <li>
@@ -35,7 +35,7 @@ class AdminBottomNav extends Component {
           </li>
           <li>
             <button className="logout" onClick={this.logout}>
-              <i class="fas fa-sign-out-alt" />
+              <i className="fas fa-sign-out-alt" />
             </button>
           </li>
         </ul>

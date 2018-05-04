@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import {
-  EmployeeBottomNav,
-  EmployeeJobDetails,
+  CustomerBottomNav,
+  CustomerOrderDetails,
 } from "../../components";
 
-export default class EmployeeJobView extends Component {
+export default class CustomerOrderView extends Component {
   // constructor(props) {
   //   super(props);
   // }
@@ -16,9 +16,9 @@ export default class EmployeeJobView extends Component {
     return (
       <div>
         <div className="col-md-6 col-md-offset-3">
-          <EmployeeJobDetails id={params.id} />
+          <CustomerOrderDetails id={params.id} />
         </div>
-        <EmployeeBottomNav />
+        <CustomerBottomNav />
       </div>
     );
   }

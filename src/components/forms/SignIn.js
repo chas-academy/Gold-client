@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 // import { loginUser } from '../actions/auth';
 // import { connect } from 'react-redux';
 import './style.css';
-
 class SignIn extends Component {
   constructor (props) {
     super(props);
@@ -18,6 +17,10 @@ class SignIn extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
 }  
+
+componentDidMount() {
+  // console.log(token)
+}
 
 handleChange(event) {
   const { name, value } = event.target;
@@ -37,10 +40,30 @@ handleChange(event) {
     event.preventDefault();
     this.setState({ submitted: true });
 
-    // const loginUser = {
-    //   persOrgNumber: this.state.persOrgNumber,
-    //   password: this.state.password
-    // }
+    const loginUser = {
+      pers_org_num: this.state.number,
+      password: this.state.password
+    }
+
+    const url = '';
+
+    if (process.env.NODE_ENV === 'production') {
+      const url = process.env.REACT_APP_API_BASE_URL;
+    } else {
+      const url = 'http://localhost:7770';
+    }
+    
+    fetch(`${url}/login`, {
+      method: 'POST',
+      body: JSON.stringify(loginUser),
+      headers: {
+      "Content-Type": "application/json"
+      }
+    })
+    .then((res) => res.json())
+    .then(res => {
+      console.log(res)
+    });
 
     //dispatch goes here...
   }

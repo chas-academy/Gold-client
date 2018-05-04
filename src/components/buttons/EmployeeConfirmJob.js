@@ -5,7 +5,7 @@ const EmployeeConfirmJob = () => {
       return (
         <div>
           <form method="put" action="">
-            <button className="btn btn-primary take">Acceptera Jobb</button>
+            <button className="btn btn-primary take">Påbörja Jobb</button>
           </form>  
         </div>      
       );

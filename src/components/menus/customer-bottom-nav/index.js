@@ -19,7 +19,7 @@ class CustomerBottomNav extends Component {
       <nav className="CustomerBottomNav__container">
         <ul className="bottomNavList">
           <li>
-            <Link to={`/order/add`}>
+            <Link to={`/orders/add`}>
                 <i className="fas fa-shopping-cart"></i>
             </Link>
           </li>

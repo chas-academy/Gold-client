@@ -8,7 +8,7 @@ export default class CustomerOrders extends Component {
   render() {
     return (
         <div className="CustomerOrders__container">
-          <AddOrder />
+          <AddOrder isAdmin={false}/>
           <CustomerBottomNav />
         </div>
     )

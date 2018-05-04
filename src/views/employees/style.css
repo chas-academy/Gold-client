@@ -32,6 +32,10 @@
     text-align: center;
 }
 
+.fa-sign-out-alt {
+    margin-left: 10px;
+}
+
 .EmployeeHomeButtons {
     font-size: 50px;
     width: 150px;
@@ -123,6 +127,6 @@
     float: right;
     margin-top: 40px;
     margin-right: 20px;
-    color: rgba(180, 179, 179, 0.479);
+    color: rgba(20, 20, 20, 0.952);
     text-transform: uppercase;
 }
