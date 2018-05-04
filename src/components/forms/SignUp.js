@@ -82,10 +82,10 @@ class SignUp extends Component {
 
     const url = '';
 
-    if (process.env.NODE_ENV === 'production') {
-      const url = process.env.REACT_APP_API_BASE_URL;
-    } else {
+    if (process.env.NODE_ENV === 'development') {
       const url = 'http://localhost:7770';
+    } else {
+      const url = process.env.REACT_APP_API_BASE_URL;
     }
     
     
