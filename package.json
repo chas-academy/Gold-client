@@ -38,7 +38,8 @@
         "react-tabs-redux": "^2.0.1",
         "redux": "^3.7.2",
         "redux-thunk": "^2.2.0",
-        "store": "^2.0.12"
+        "store": "^2.0.12",
+        "universal-cookie": "^2.1.2"
     },
     "devDependencies": {
         "bootstrap": "^3.3.7",

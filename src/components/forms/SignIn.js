@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 // import { loginUser } from '../actions/auth';
 // import { connect } from 'react-redux';
+import Cookies from 'universal-cookie';
 import './style.css';
 class SignIn extends Component {
   constructor (props) {
@@ -53,7 +54,11 @@ handleChange(event) {
     })
     .then((res) => res.json())
     .then(res => {
-      console.log(res)
+      console.log(res);
+      const cookies = new Cookies();
+      cookies.set('token', res.token, { path: '/', maxAge: 86399 });
+      var token = cookies.get('token');
+      console.log(JSON.parse(window.atob(token.split('.')[1].replace('-', '+').replace('_', '/')))); // decoded info from token
     });
 
     //dispatch goes here...
