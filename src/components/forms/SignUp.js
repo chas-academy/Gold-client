@@ -197,7 +197,7 @@ class SignUp extends Component {
                 type="text"
                 name="phone"
                 className="form-control"
-                placeholder="Telefonnummer till kontaktperson"
+                placeholder="Telefonnummer"
                 value={phone}
                 onChange={this.handleChange}
               />
@@ -277,10 +277,6 @@ class SignUp extends Component {
           </div>
           <div className="form-group">
             <LocationSearchInput />
-            {submitted &&
-              !adress && (
-                <div className="help-block">Glöm inte fylla i adressen!</div>
-              )}
           </div>
           <div className="buttons">
             <div className="form-group">
