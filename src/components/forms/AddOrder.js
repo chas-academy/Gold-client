@@ -8,6 +8,7 @@ import {
   LocationSearchInput,
   MultipleSelect
 } from "../../components";
+import Cookies from "universal-cookie";
 
 import "./style.css";
 
@@ -16,7 +17,7 @@ class AddOrder extends Component {
     super(props);
 
     this.state = {
-      adress: "",
+      address: "",
       contact: "",
       customerId: "",
       date: "",
@@ -24,13 +25,52 @@ class AddOrder extends Component {
       employee: "",
       errorMessage: "",
       isAdmin: this.props,
+      lat: "",
+      lon: "",
       phone: "",
       photo: "",
-      submitted: ""
+      submitted: "",
+      time: ""
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
+  }
+
+  componentDidMount() {
+    const cookies = new Cookies();
+    var token = cookies.get("token");
+    const user = JSON.parse(
+      window.atob(
+        token
+          .split(".")[1]
+          .replace("-", "+")
+          .replace("_", "/")
+      )
+    );
+
+    this.setState({
+      // address: user.address,
+      contact: user.name,
+      customerId: user.id,
+      phone: user.tel
+    })
+  }
+  
+  getAddress(address, lat,  lon) {
+    this.setState({ address: address, lat: lat, lon: lon })
+  }
+
+  getDate(date) {
+    this.setState({ date: date })
+  }
+
+  getTime(time) {
+    this.setState({ time: time })
+  }
+
+  getPhoto(photo) {
+    this.setState({ photo: photo })
   }
 
   handleChange(event) {
@@ -50,6 +90,36 @@ class AddOrder extends Component {
   handleSubmit(event) {
     event.preventDefault();
     this.setState({ submitted: true });
+
+    const cookies = new Cookies()
+    const token = cookies.get('token')
+
+    const formData = {
+      client_id: this.state.customerId,
+      con_pers: this.state.contact,
+      con_tel: this.state.phone,
+      date: this.state.date,
+      time: this.state.time,
+      address: this.state.address,
+      lat: this.state.lat,
+      lon: this.state.lon,
+      description: this.state.description,
+      images: this.state.photo
+    }
+    console.log(formData)
+
+    fetch(process.env.REACT_APP_API_BASE_URL + "/orders/create", {
+      method: "POST",
+      body: JSON.stringify(formData),
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": token
+      }
+    })
+      .then(res => res.json())
+      .then(res => {
+        console.log(res);
+      });
   }
 
   render() {
@@ -67,7 +137,7 @@ class AddOrder extends Component {
 
     return (
       <div className="col-md-6 col-md-offset-3">
-        <form name="form" className="BasicForm" onSubmit={this.handleSubmit}>
+        <form name="form" className="BasicForm" onSubmit={this.handleSubmit} enctype="multipart/form-data">
           <h5> Skapa Beställning</h5>
           {isAdmin === true ? (
             <div className="form-group">
@@ -158,7 +228,7 @@ class AddOrder extends Component {
                     Glöm inte att beskriva ärendet!
                   </div>
                 )}
-                <LocationSearchInput />
+                <LocationSearchInput getAddress={this.getAddress.bind(this)} />
             <label className="BasicForm__checkboxContainer">
                 <input type="checkbox" />
               <span className="BasicForm__checkmark">
@@ -178,7 +248,7 @@ class AddOrder extends Component {
               )}
               </div>
           ) : ('')}
-            <DateTimePhoto />
+            <DateTimePhoto getDate={this.getDate.bind(this)} getTime={this.getTime.bind(this)} getPhoto={this.getPhoto.bind(this)} />
             <div className="form-group">
               <button type="submit" className="btn btn-primary">
                 Skicka

@@ -98,7 +98,7 @@ class SignUp extends Component {
     }
   }
   
-  callback(address, lat,  lon) {
+  getAddress(address, lat,  lon) {
     this.setState({ address: address, lat: lat, lon: lon })
   }
   
@@ -277,7 +277,7 @@ class SignUp extends Component {
               )}
           </div>
           <div className="form-group">
-            <LocationSearchInput callback={this.callback.bind(this)} />
+            <LocationSearchInput getAddress={this.getAddress.bind(this)} />
           </div>
           <div className="buttons">
             <div className="form-group">

@@ -40,20 +40,20 @@ export const loginUser = user => dispatch => {
   })
     .then(res => res.json())
     .then(res => {
-      console.log(res);
+      // console.log(res);
       const cookies = new Cookies();
       cookies.set("token", res.token, { path: "/", maxAge: 86399 });
-      var token = cookies.get("token");
-      console.log(
-        JSON.parse(
-          window.atob(
-            token
-              .split(".")[1]
-              .replace("-", "+")
-              .replace("_", "/")
-          )
-        )
-      ); // decoded info from token
+      // var token = cookies.get("token");
+      // console.log(
+      //   JSON.parse(
+      //     window.atob(
+      //       token
+      //         .split(".")[1]
+      //         .replace("-", "+")
+      //         .replace("_", "/")
+      //     )
+      //   )
+      // ); // decoded info from token
     });
 };
 

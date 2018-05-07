@@ -36,7 +36,7 @@ componentDidMount() {
 handleChange(event) {
   const { name, value } = event.target;
   this.setState({ [name]: value });
-
+  
   const isNumeric = /^[0-9]+$/;
 
   if (this.state.pers_org_num.match(isNumeric)) {
