@@ -1,7 +1,6 @@
 import React, { Component } from "react"
 import { Link, withRouter } from "react-router-dom"
 
-import img from '../../assets/img/Slice1.png'
 import './style.css'
 
 class CustomerHome extends Component {
@@ -19,7 +18,6 @@ class CustomerHome extends Component {
       const user = 'Adam';
     return (
         <div>
-        {/* <img src={img} className="CustomerHome__logo" height={70} alt="logotype"/> */}
             <button className="CustomerHome__logout" onClick={this.logout}>
              Logga ut
             <i className="fas fa-sign-out-alt" />
