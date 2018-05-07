@@ -28,12 +28,12 @@ export const loginError = message => ({
   message
 });
 
-export const loginUser = loginUser => dispatch => {
+export const loginUser = user => dispatch => {
   dispatch(requestLogin());
 
   return fetch(process.env.REACT_APP_API_BASE_URL + "/login", {
     method: "POST",
-    body: JSON.stringify(loginUser),
+    body: JSON.stringify(user),
     headers: {
       "Content-Type": "application/json"
     }

@@ -7,7 +7,7 @@ import './style.css';
 
 
 const mapDispatchToProps = dispatch => {
-  return { loginUser: loginUser => dispatch(loginUser(loginUser)) };
+  return { loginUser: user => dispatch(loginUser(user)) };
 };
 
 
@@ -59,13 +59,13 @@ handleChange(event) {
 
     const { pers_org_num, password } = this.state; 
 
-    const loginUser = {
+    const user = {
       pers_org_num: this.state.pers_org_num,
       password: this.state.password
     }
 
     if (pers_org_num && password) {
-      this.props.loginUser({ loginUser })
+      this.props.loginUser({ user })
       .then((res) => this.props.history.push('/home'),
       (err) => this.setState({errorMessage: 'Could not match username with password', isLoading: false }))
     }
