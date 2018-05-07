@@ -90,12 +90,16 @@ class SignUp extends Component {
       lon: this.state.lon
     }
 
-    console.log(regUser.lat, regUser.lon)
-
+    
     if ( regUser ) {
-      this.props.registerUser({regUser}).then((res) => this.setState({ success: true }),
+      this.props.registerUser({ regUser })
+      .then((res) => this.setState({ success: true }),
       (err) => this.setState({ errorMessage: 'Could not register user', submitted: false }))
     }
+  }
+  
+  callback(address, lat,  lon) {
+    this.setState({ address: address, lat: lat, lon: lon })
   }
   
   render() {
@@ -273,7 +277,7 @@ class SignUp extends Component {
               )}
           </div>
           <div className="form-group">
-            <LocationSearchInput />
+            <LocationSearchInput callback={this.callback.bind(this)} />
           </div>
           <div className="buttons">
             <div className="form-group">
