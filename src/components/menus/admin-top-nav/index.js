@@ -22,7 +22,7 @@ class AdminTopNav extends Component {
       <div>
         <h3 className="slide-menu__press"> <i className="fas fa-bars"></i></h3>
       <div>
-      <Menu className="slide-menu" width={'75%'}>
+      <Menu className="slide-menu" width={'75%'} isOpen={ true } disableOverlayClick disableCloseOnEsc noOverlay >
         <h3 className="slide-menu__header">Ärenden</h3>
           <a id="incoming" className="menu-item" href={`/admin/orders/incoming`}>                
             <i className="fas fa-inbox slide"></i>

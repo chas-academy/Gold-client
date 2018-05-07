@@ -102,3 +102,21 @@
     color: white;
     text-decoration: none;
 }
+
+@media (min-width: 800px) {
+    .slide-menu {
+      width: 26.5%!important;
+      top: 0px!important;
+      margin-top: 0;
+    }
+    .bm-burger-button {
+        display: none!important;
+    }
+    .fa-bars {
+        display: none!important;
+    }
+    .slide-menu__press {
+        display: none;
+        position: fixed!important;
+    }
+  }

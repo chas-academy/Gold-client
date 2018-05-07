@@ -40,3 +40,8 @@
     font-size: 26px;
     padding: 0;
 }
+@media (min-width: 800px) {
+    .bottomNav {
+        z-index: 9999;
+    }
+  }
