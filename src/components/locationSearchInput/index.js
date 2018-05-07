@@ -6,7 +6,10 @@ import './style.css'
 class LocationSearchInput extends React.Component {
   constructor(props) {
     super(props);  
-    this.state = { address: '' }
+    this.state = { 
+      address: '',
+      lat: '',
+      lon: '' }
   }
 
   handleChange = (address) => {
@@ -54,9 +57,9 @@ class LocationSearchInput extends React.Component {
                 )
               })}
             </div>
-            {/* {!address &&
-              <div className="help-block">Glöm inte fylla i adressen!</div>
-            } */}
+            {!address &&
+              <div className="help-block">Glöm inte fylla i adress!</div>
+            }
           </div>
         )}
       </PlacesAutocomplete>
