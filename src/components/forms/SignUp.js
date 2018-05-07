@@ -12,7 +12,9 @@ class SignUp extends Component {
 
 
     this.state = {
-      adress: "",
+      address: "",
+      lat: "",
+      lon: "",
       company: null,
       email: "",
       errorMessage: "",
@@ -30,6 +32,10 @@ class SignUp extends Component {
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
+  }
+
+  callback(address, lat,  lon) {
+    this.setState({ address: address, lat: lat, lon: lon })
   }
 
   handleChange(event) {
@@ -75,9 +81,9 @@ class SignUp extends Component {
       type: type,
       email: this.state.email,
       tel: this.state.phone,
-      address: "Nåt Torg 1",
-      lat: "59",
-      lon: "18"
+      address: this.state.address,
+      lat: this.state.lat,
+      lon: this.state.lon
     }
 
     // const url = '';
@@ -101,10 +107,10 @@ class SignUp extends Component {
       console.log(res)
     })
   }
-
+  
   render() {
     const {
-      adress,
+      address,
       company,
       email,
       errorMessage,
