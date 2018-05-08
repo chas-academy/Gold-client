@@ -31,7 +31,7 @@ export const loginError = message => ({
 export const loginUser = user => dispatch => {
   dispatch(requestLogin());
 
-  return fetch(process.env.REACT_APP_API_BASE_URL + "/login", {
+  return fetch('https://gold-api-dev.chas.school/login', {
     method: "POST",
     body: JSON.stringify(user.user),
     headers: {
@@ -81,7 +81,7 @@ export const RegisterError = message => ({
 export const registerUser = regUser => dispatch => {
   dispatch(requestRegister());
 
-  return fetch(process.env.REACT_APP_API_BASE_URL + "/register", {
+  return fetch('https://gold-api-dev.chas.school/register', {
     method: "POST",
     body: JSON.stringify(regUser.regUser),
     headers: {
