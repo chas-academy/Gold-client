@@ -12,6 +12,8 @@ const middleware = [thunk];
 
 const store = createStore(
   rootReducer,
+  //this is for checking states in redux in browser pretty useful..
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
   applyMiddleware(...middleware) 
 );
 

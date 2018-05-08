@@ -5,9 +5,9 @@ import {
   } from "./Types";
 
 
-export const fetchEmpIncomingRequest  = ({
+export const fetchEmpIncomingRequest = ()  => ({
     type: FETCH_EMP_INCOMING_REQUEST
-
+    
   });
 
 export const fetchEmpIncomingFailure = error  => ({
@@ -15,7 +15,7 @@ export const fetchEmpIncomingFailure = error  => ({
   
 });
 
-export const fetchEmpIncomingFailure = data => ({
+export const fetchEmpIncomingSucess= data => ({
     type: FETCH_EMP_INCOMING_SUCCESS,
     payload: data
 });
@@ -28,9 +28,10 @@ export const fetchEmpIncoming = (userId) => dispatch => {
     return fetch(`http://localhost:7770/users/${userId}`)
         .then(res => res.json())
         .then(data => {
-            return console.log(data)
+            console.log(data.services)
+            return dispatch(fetchEmpIncomingSucess(data.services))
         })
         .catch(err => {
-            return console.log('error occurred'+err);
+            return dispatch(fetchEmpIncomingFailure());
         })
 };
