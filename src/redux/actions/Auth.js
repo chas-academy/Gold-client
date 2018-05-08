@@ -1,3 +1,6 @@
+import Cookies from "universal-cookie";
+
+
 import {
   LOGIN_REQUEST,
   LOGIN_SUCCESS,
@@ -6,7 +9,6 @@ import {
   REGISTER_SUCCESS,
   REGISTER_FAILURE
 } from "./action-types";
-import Cookies from "universal-cookie";
 
 export const requestLogin = creds => ({
   type: LOGIN_REQUEST,
