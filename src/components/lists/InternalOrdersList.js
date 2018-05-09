@@ -1,37 +1,50 @@
 import React, { Component } from "react";
-// import { connect } from "react-redux";
+import { connect } from "react-redux";
+import { fetchOrders } from "../../redux/actions/admin/Orders";
+
 import { Link, withRouter } from "react-router-dom";
 import './style.css'
 
 
 class InternalOrdersList extends Component {
+
+  componentWillMount() { 
+    this.props.dispatch(fetchOrders());
+  }
+
   render() {
-      const orderId = 1;
-      const orderId2 = 2;
+
+    const { orders } = this.props;
+
     return (
+      orders ?
       <div className="BasicList__container">
         <h4> Interna ärenden </h4>
         <ul className="BasicList__list">
-          <li>
-            <Link to={`/admin/orders/${orderId}`}>
+          {/* {orders.map(order => (
+          <li key={order.service_id}>
+            <Link to={`/admin/orders/${order.service_id}`}>
               <div className="edit">
-                <p>Ärende: XXXX, orderId:{orderId} </p>
+                <p>Beställare : XXXX, orderId: </p>
                 <i className="fas fa-edit" />
               </div>
             </Link>
           </li>
-          <li>
-            <Link to={`/admin/orders/${orderId2}`}>
-              <div className="edit">
-                <p>Ärende: XXXX, orderId:{orderId2}</p>
-                <i className="fas fa-edit" />
-              </div>
-            </Link>
-          </li>
+          ))} */}
         </ul>
       </div>
-    );
+      : (
+        <div className="BasicList__container">
+            <h4> Interna ärenden </h4>
+          <p>Inga interna ärenden att visa</p>
+        </div>  
+      )
+        )
+    } 
   }
-}
 
-export default withRouter(InternalOrdersList);
+const mapStateToProps = state => ({ 
+  orders: state.admin.orders, 
+});
+
+export default withRouter(connect(mapStateToProps)(InternalOrdersList));

@@ -10,7 +10,6 @@ class CustomerBottomNav extends Component {
   }
 
   logout() {
-    localStorage.clear();
     this.props.history.push("/");
   }
 

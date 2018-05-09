@@ -16,65 +16,65 @@ class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isAdmin: false,
-      isCustomer: false,
-      isEmployee: false
+      isAdmin: null,
+      isCustomer: null,
+      isEmployee: null
     };
   }
-  
-  componentDidMount() {
-  
-    
-    // switch(true) {
-    //     case localStorage.getItem('admin'):
-    //         this.setState({ isAdmin: true })
-    //         break;
-    //     case localStorage.getItem('customer'):
-    //         this.setState({ isCustomer: true})
-    //         break;
-    //     case localStorage.getItem('employee'):
-    //         this.setState({ isEmployee: true})
-    //         break;
-    //     default:
-    // redirect to login
-    // }
-  }
 
-  render() {
-    // const { isAdmin, isCustomer, isEmployee } = this.state;
+  componentDidMount() {
     const cookies = new Cookies();
     var token = cookies.get("token");
-  
+
     const user = JSON.parse(
       window.atob(
         token
           .split(".")[1]
           .replace("-", "+")
           .replace("_", "/")
-      ))
-
-      console.log(user)
-
-    return (
-      // {switch (true) {
-      //     case isAdmin:
-      // <div>
-      //   <AdminTopNav />
-      //   <AdminHomeTop />
-      //   <MapContainer />
-      //   <AdminBottomNav />
-      // </div>
-      //         break;
-      //     case isCustomer:
-      // <CustomerHome />
-      //         break;
-      //     case isEmployee:
-      <EmployeeHome />
-      //         break;
-      //     default:
-      //         // redirect to login
-      // }}
+      )
     );
+
+    switch (true) {
+      case user.user_type === "admin":
+        this.setState({ isAdmin: true });
+        break;
+      case user.user_type === "employee":
+        this.setState({ isEmployee: true });
+        break;
+      case user.user_type === "customer":
+        this.setState({ isCustomer: true });
+        break;
+      default:
+        this.props.history.push("/login");
+        break;
+    }
+  }
+
+  render() {
+    const { isAdmin, isCustomer, isEmployee } = this.state;
+
+    switch (true) {
+      case isAdmin:
+        return (
+          <div>
+            <AdminTopNav />
+            <AdminHomeTop />
+            <MapContainer />
+            <AdminBottomNav />
+          </div>
+        );
+        break;
+      case isEmployee:
+        return <EmployeeHome />;
+        break;
+      case isCustomer:
+        return <CustomerHome />;
+        break;
+      default: 
+        return <p>Logga in</p>  
+        break;
+    }
   }
 }
 
