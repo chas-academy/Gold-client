@@ -34,7 +34,8 @@ class ActiveOrdersList extends Component {
       <div className="BasicList__container">
         <h4> Pågående ärenden </h4>
         <ul className="BasicList__list">
-          {/* {orders.map(order => (
+        {console.log(orders)}
+          {orders.map(order => (
           <li key={order.service_id}>
             <Link to={`/admin/orders/${order.service_id}`}>
               <div className="edit">
@@ -44,7 +45,7 @@ class ActiveOrdersList extends Component {
               </div>
             </Link>
           </li>
-          ))} */}
+          ))}
         </ul>
       </div>
       : (        

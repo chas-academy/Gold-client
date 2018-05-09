@@ -82,9 +82,9 @@
 .slide-menu__press {
     top: 0;
     z-index: 9999;
-    margin-top: 0;
+    margin-top: 10px;
     margin-bottom: 20px;
-    padding: 10px;
+    margin-left: 10px;
     color: rgb(207, 207, 207);
     font-size: 34px;
 

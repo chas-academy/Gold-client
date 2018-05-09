@@ -22,7 +22,10 @@ export const fetchUser = (token) => dispatch => {
     
     dispatch(requestUser());
   
-    return fetch('https://gold-api-dev.chas.school/users/:id', token)
+    return fetch('https://gold-api-dev.chas.school/users/:id', {
+        headers: {
+        "Authorization": token
+      }})
       .then(res => res.json())
       .then((user) => {
           return dispatch(recieveUser(user));
@@ -49,7 +52,11 @@ export const fetchUsers = (token) => dispatch => {
     
     dispatch(requestUsers());
   
-    return fetch('https://gold-api-dev.chas.school/users', token)
+    return fetch('https://gold-api-dev.chas.school/users', {
+        headers: {
+            "Authorization": token
+          }
+    })
       .then(res => res.json())
       .then((users) => {
           return dispatch(recieveUsers(users));

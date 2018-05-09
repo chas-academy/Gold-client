@@ -27,6 +27,7 @@ class EmployeeList extends Component {
     const { users } = this.props;
 
     // if type === employee
+    console.log(users);
 
     return (
       users ?

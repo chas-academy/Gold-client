@@ -24,23 +24,23 @@ class IncomingOrdersList extends Component {
   }
 
   render() {
-      const { orders } = this.props;
-     
+      const { orders } = this.props;     
     return (
       orders ?
+
       <div className="BasicList__container">
         <h4> Nya ärenden </h4>
         <ul className="BasicList__list">
-          {/* {orders.map(order => (
+          {orders.map(order => (
           <li key={order.service_id}>
             <Link to={`/admin/orders/${order.service_id}`}>
               <div className="edit">
-                <p>Beställare : XXXX, orderId: </p>
-                <i className="fas fa-edit" />
+                <p>Kontaktperson: {order.service.con_pers} </p>
+                <p> Hantera </p>
               </div>
             </Link>
           </li>
-          ))} */}
+          ))}
         </ul>
       </div>
       : (        

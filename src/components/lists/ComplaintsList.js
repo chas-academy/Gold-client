@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { fetchOrders } from "../../redux/actions/admin/Orders";
+import { fetchComplaints } from "../../redux/actions/admin/Orders";
 import Cookies from "universal-cookie";
 
 import { Link, withRouter } from "react-router-dom";
@@ -20,13 +20,11 @@ class ComplaintsList extends Component {
           .replace("_", "/")
       ))
 
-    this.props.dispatch(fetchOrders(token));
+    this.props.dispatch(fetchComplaints(token));
   }
 
   render() {
       const { orders } = this.props;
-
-      // if complaints
 
     return (
       
@@ -34,17 +32,18 @@ class ComplaintsList extends Component {
       <div className="BasicList__container">
         <h4> Reklamationer </h4>
         <ul className="BasicList__list">
-          {/* {orders.map(order => (
+          {orders.map(order => (
           <li key={order.service_id}>
+          {console.log(order)}
             <Link to={`/admin/orders/${order.service_id}`}>
               <div className="edit">
-                <p>Beställare : XXXX, orderId: </p>
-                <p>Åtgärdas av : anställd</p>
+                <p>{order.service.company_name}</p>
+                <p>status: {order.service.status}</p>
                 <i className="fas fa-edit" />
               </div>
             </Link>
           </li>
-          ))} */}
+          ))}
         </ul>
       </div>
       : (        
@@ -58,7 +57,7 @@ class ComplaintsList extends Component {
   }
 
   const mapStateToProps = state => ({ 
-    orders: state.admin.orders, 
+    orders: state.admin.complaints, 
   });
 
 export default withRouter(connect(mapStateToProps)(ComplaintsList));
