@@ -26,7 +26,7 @@ const employeeReducer = (state = initialState, action) => {
 
 
             }
-        case FETCH_EMP_INCOMING_FAILURE:
+        case FETCH_EMP_INCOMING_SUCCESS:
             return { 
                 ...state,
                 isFetching: false,

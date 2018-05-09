@@ -28,7 +28,6 @@ export const fetchEmpIncoming = (userId) => dispatch => {
     return fetch(`http://localhost:7770/users/${userId}`)
         .then(res => res.json())
         .then(data => {
-            console.log(data.services)
             return dispatch(fetchEmpIncomingSucess(data.services))
         })
         .catch(err => {

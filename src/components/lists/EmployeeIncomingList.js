@@ -6,8 +6,7 @@ import { Link, withRouter } from "react-router-dom";
 import './style.css'
 
 const mapStateToProps = state => ({
-    empIncomingList: state.employee.empIncomingList
-  
+  empIncomingList: state.employee.IncomingJobsList
 });
 
 class IncomingJobsList extends Component {
@@ -19,6 +18,7 @@ class IncomingJobsList extends Component {
 
   componentDidMount() {
     this.props.dispatch(fetchEmpIncoming(2));
+    console.log(this.props.IncomingJobsList);
   }
 
   render() {
@@ -44,11 +44,11 @@ class IncomingJobsList extends Component {
             du har anlänt till kunden med knappen "Påbörja jobb". </p>
         <hr />
         <ul className="BasicList__list">
-           {
+           {/* {
              empIncomingList.map((listItem) => {
-               <p>{listItem.con_pers}</p>
+               <p>{listItem}</p>
              })
-           }
+           } */}
           <li>
             <Link to={`/employee/orders/${jobId}`}>
               <div className="edit">
@@ -74,4 +74,6 @@ class IncomingJobsList extends Component {
   }
 }
 
-export default  connect(mapStateToProps)(IncomingJobsList)
+
+
+export default connect(mapStateToProps)(IncomingJobsList);
