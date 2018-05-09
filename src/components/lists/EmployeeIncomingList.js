@@ -36,8 +36,9 @@ class IncomingJobsList extends Component {
     const List =  incomingList.map((list) => 
     <div>
       <li>
-        <Link to={`/employee/orders/${jobId}`}>
+        <Link to={`/employee/orders/${list.employee_services.serviceId}`}>
           <div className="edit">
+            <p>{list.employee_services.serviceId}</p>
             <p>Kund: {list.con_pers}</p>
             <p>datum: {list.datetime}</p>
             <p className="IncomingJobAccept">Info</p>
@@ -48,9 +49,6 @@ class IncomingJobsList extends Component {
     </div>
     );
 
-  
-    const jobId = 1;
-    const jobId2 = 2;
     return (
       <div className="BasicList__container">
         <h5> Inkomna Jobb</h5>

@@ -15,7 +15,7 @@ export default class EmployeeOrderDetails extends Component {
 
   render() {
     const { id, Ongoing } = this.props;
-
+    console.log(id);
     return (
   <div className="BasicList__container">    
       {Ongoing ? (
