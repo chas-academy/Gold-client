@@ -91,11 +91,25 @@ class AddOrder extends Component {
     event.preventDefault();
     this.setState({ submitted: true });
 
-    const cookies = new Cookies()
-    const token = cookies.get('token')
+    const cookies = new Cookies();
+    const token = cookies.get("token");
+    const user = JSON.parse(
+      window.atob(
+        token
+          .split(".")[1]
+          .replace("-", "+")
+          .replace("_", "/")
+      )
+    );
+
+    var company_name = ''
+    if (user.customer_type && user.customer_type == "company") {
+      company_name = user.name
+    }
 
     const formData = {
       client_id: this.state.customerId,
+      company_name: company_name,
       con_pers: this.state.contact,
       con_tel: this.state.phone,
       date: this.state.date,
@@ -106,13 +120,29 @@ class AddOrder extends Component {
       description: this.state.description,
       images: this.state.photo
     }
+
+    const form = new FormData()
+    form.append('client_id', formData.client_id)
+    form.append('company_name', formData.company_name)
+    form.append('con_pers', formData.con_pers)
+    form.append('con_tel', formData.con_tel)
+    form.append('date', formData.date)
+    form.append('time', formData.time)
+    form.append('address', formData.address)
+    form.append('lat', formData.lat)
+    form.append('lon', formData.lon)
+    form.append('description', formData.description)
+    formData.images.forEach((image, i) => {
+      form.append('images[]', image, new Date().getTime()+ i + '.' + image.type.split('/')[1])
+    })
     console.log(formData)
+    
 
     fetch(process.env.REACT_APP_API_BASE_URL + "/orders/create", {
       method: "POST",
-      body: JSON.stringify(formData),
+      body: form,
       headers: {
-        "Content-Type": "application/json",
+        // "Content-Type": "multipart/form-data",
         "Authorization": token
       }
     })
@@ -137,7 +167,7 @@ class AddOrder extends Component {
 
     return (
       <div className="col-md-6 col-md-offset-3">
-        <form name="form" className="BasicForm" onSubmit={this.handleSubmit} enctype="multipart/form-data">
+        <form name="form" className="BasicForm" onSubmit={this.handleSubmit} encType="multipart/form-data">
           <h5> Skapa Beställning</h5>
           {isAdmin === true ? (
             <div className="form-group">
