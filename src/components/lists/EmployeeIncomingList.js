@@ -6,7 +6,7 @@ import { Link, withRouter } from "react-router-dom";
 import './style.css'
 
 const mapStateToProps = state => ({
-  empIncomingList: state.employee.IncomingJobsList
+  incomingList: state.employee.empIncomingList
 });
 
 class IncomingJobsList extends Component {
@@ -18,12 +18,12 @@ class IncomingJobsList extends Component {
 
   componentDidMount() {
     this.props.dispatch(fetchEmpIncoming(2));
-    console.log(this.props.IncomingJobsList);
+    console.log(this.props.incomingList);
   }
 
   render() {
-    const  {isFetching, empIncomingList } = this.props;
-
+    const  {isFetching, incomingList } = this.props;
+      console.log(incomingList);
 
     if(isFetching) {
       return (
@@ -32,6 +32,21 @@ class IncomingJobsList extends Component {
         </div>
       );
   }
+
+    const List =  incomingList.map((list) => 
+    <div>
+      <li>
+        <Link to={`/employee/orders/${jobId}`}>
+          <div className="edit">
+            <p>Kund: {list.con_pers}</p>
+            <p>datum: {list.datetime}</p>
+            <p className="IncomingJobAccept">Info</p>
+          </div>
+          </Link>
+      </li>
+      <hr />
+    </div>
+    );
 
   
     const jobId = 1;
@@ -44,30 +59,7 @@ class IncomingJobsList extends Component {
             du har anlänt till kunden med knappen "Påbörja jobb". </p>
         <hr />
         <ul className="BasicList__list">
-           {/* {
-             empIncomingList.map((listItem) => {
-               <p>{listItem}</p>
-             })
-           } */}
-          <li>
-            <Link to={`/employee/orders/${jobId}`}>
-              <div className="edit">
-                <p>Kund: XXXXX</p>
-                <p>datum: XXXX</p>
-                <p className="IncomingJobAccept">Info</p>
-              </div>
-            </Link>
-          </li>
-          <hr />
-          <li>
-            <Link to={`/employee/orders/${jobId2}`}>
-              <div className="edit">
-              <p>Kund: XXXXX</p>
-              <p>datum: XXXX</p>
-                <p className="IncomingJobAccept">Info</p>
-              </div>
-            </Link>
-          </li>
+          {List}
         </ul>
       </div>
     );
