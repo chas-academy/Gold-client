@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Cookies from "universal-cookie";
 
 import { CustomerHome, EmployeeHome } from "../views";
 
@@ -20,8 +21,10 @@ class Home extends Component {
       isEmployee: false
     };
   }
-
+  
   componentDidMount() {
+  
+    
     // switch(true) {
     //     case localStorage.getItem('admin'):
     //         this.setState({ isAdmin: true })
@@ -39,6 +42,18 @@ class Home extends Component {
 
   render() {
     // const { isAdmin, isCustomer, isEmployee } = this.state;
+    const cookies = new Cookies();
+    var token = cookies.get("token");
+  
+    const user = JSON.parse(
+      window.atob(
+        token
+          .split(".")[1]
+          .replace("-", "+")
+          .replace("_", "/")
+      ))
+
+      console.log(user)
 
     return (
       // {switch (true) {

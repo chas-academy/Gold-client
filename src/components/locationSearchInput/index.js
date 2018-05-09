@@ -6,7 +6,10 @@ import './style.css'
 class LocationSearchInput extends React.Component {
   constructor(props) {
     super(props);  
-    this.state = { address: '' }
+    this.state = { 
+      address: '',
+      lat: '',
+      lon: '' }
   }
 
   handleChange = (address) => {
@@ -16,7 +19,10 @@ class LocationSearchInput extends React.Component {
   handleSelect = (address) => {
     geocodeByAddress(address)
       .then(results => getLatLng(results[0]))
-      .then(latLng => console.log('Success', latLng))
+      .then(latLng => {
+        console.log('Success', latLng)
+        this.props.callback(this.state.address, latLng.lat, latLng.lng)
+      })
       .catch(error => console.error('Error', error))
   }
 
@@ -51,9 +57,9 @@ class LocationSearchInput extends React.Component {
                 )
               })}
             </div>
-            {/* {!address &&
-              <div className="help-block">Glöm inte fylla i adressen!</div>
-            } */}
+            {!address &&
+              <div className="help-block">Glöm inte fylla i adress!</div>
+            }
           </div>
         )}
       </PlacesAutocomplete>

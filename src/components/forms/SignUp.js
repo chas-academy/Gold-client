@@ -1,9 +1,16 @@
 import React, { Component } from 'react';
-// import { loginUser } from '../actions/auth';
-// import { connect } from 'react-redux';
+import { registerUser } from '../../redux/actions/Auth';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+
+import { LocationSearchInput } from "../../components";
 
 import './style.css';
-import { LocationSearchInput } from "../../components";
+
+
+const mapDispatchToProps = dispatch => {
+  return { registerUser: regUser => dispatch(registerUser(regUser)) };
+};
 
 
 class SignUp extends Component {
@@ -12,17 +19,20 @@ class SignUp extends Component {
 
 
     this.state = {
-      adress: "",
+      address: "",
       company: null,
       email: "",
       errorMessage: "",
+      lat: "",
+      lon: "",
       name: "",
-      number: "",
+      pers_org_num: "",
       numberError: null,
       password: "",
-      phone: "",
+      tel: "",
       privateCustomer: null,
       phoneError: null,
+      success: false,
       submitted: "",
       userIsNotAdmin: this.props,
       ValidatePassword: ""
@@ -38,13 +48,13 @@ class SignUp extends Component {
 
     const isNumeric = /^[0-9]+$/;
 
-    if (this.state.phone.match(isNumeric)) {
+    if (this.state.tel.match(isNumeric)) {
       this.setState({ phoneError: false });
     } else {
       this.setState({ phoneError: true });
     }
 
-    if (this.state.number.match(isNumeric)) {
+    if (this.state.pers_org_num.match(isNumeric)) {
       this.setState({ numberError: false });
     } else {
       this.setState({ numberError: true });
@@ -70,53 +80,44 @@ class SignUp extends Component {
 
     const regUser = {
       name: this.state.name,
-      pers_org_num: this.state.number,
+      pers_org_num: this.state.pers_org_num,
       password: this.state.password,
       type: type,
       email: this.state.email,
-      tel: this.state.phone,
-      address: "Nåt Torg 1",
-      lat: "59",
-      lon: "18"
+      tel: this.state.tel,
+      address: this.state.address,
+      lat: this.state.lat,
+      lon: this.state.lon
     }
 
-    const url = '';
-
-    if (process.env.NODE_ENV === 'production') {
-      const url = process.env.REACT_APP_API_BASE_URL;
-    } else {
-      const url = 'http://localhost:7770';
+    
+    if ( regUser ) {
+      this.props.registerUser({ regUser })
+      .then((res) => this.setState({ success: true }),
+      (err) => this.setState({ errorMessage: 'Could not register user', submitted: false }))
     }
-    
-    
-    fetch(`${url}/register`, {
-      method: 'POST',
-      body: JSON.stringify(regUser),
-      headers: {
-        "Content-Type": "application/json"
-      }
-    })
-    .then((res) => res.json())
-    .then(res => {
-      console.log(res)
-    })
   }
-
+  
+  callback(address, lat,  lon) {
+    this.setState({ address: address, lat: lat, lon: lon })
+  }
+  
   render() {
     const {
-      adress,
+      address,
       company,
       email,
       errorMessage,
       submitted,
       name,
-      number,
+      pers_org_num,
       numberError,
       password,
       passwordError,
-      phone,
+      tel,
       phoneError,
       privateCustomer,
+      success,
       ValidatePassword,
     } = this.state;
 
@@ -154,22 +155,22 @@ class SignUp extends Component {
             <div className="BasicForm__check">
               <input
                 type="text"
-                name="number"
+                name="pers_org_num"
                 className="form-control"
                 placeholder="YYMMDDXXXX / XXXXXXXXXX"
-                value={number}
+                value={pers_org_num}
                 onChange={this.handleChange}
               />
-              {number &&
+              {pers_org_num &&
                 !numberError && <i className="fas fa-check BasicForm__check" />}
             </div>
             {submitted &&
-              !number && (
+              !pers_org_num && (
                 <div className="help-block">
                   Glöm inte fylla i Person/organisationsnummer!
                 </div>
               )}
-            {number &&
+            {pers_org_num &&
               numberError && (
                 <div className="help-block">Oopa! fick du med en bokstav?</div>
               )}
@@ -195,22 +196,22 @@ class SignUp extends Component {
             <div className="BasicForm__check">
               <input
                 type="text"
-                name="phone"
+                name="tel"
                 className="form-control"
-                placeholder="Telefonnummer till kontaktperson"
-                value={phone}
+                placeholder="Telefonnummer"
+                value={tel}
                 onChange={this.handleChange}
               />
-              {phone &&
+              {tel &&
                 !phoneError && <i className="fas fa-check BasicForm__check" />}
             </div>
             {submitted &&
-              !phone && (
+              !tel && (
                 <div className="help-block">
                   Glöm inte fylla i telefonnummer!
                 </div>
               )}
-            {phone &&
+            {tel &&
               phoneError && (
                 <div className="help-block">Oopa! fick du med en bokstav?</div>
               )}
@@ -276,11 +277,7 @@ class SignUp extends Component {
               )}
           </div>
           <div className="form-group">
-            <LocationSearchInput />
-            {submitted &&
-              !adress && (
-                <div className="help-block">Glöm inte fylla i adressen!</div>
-              )}
+            <LocationSearchInput callback={this.callback.bind(this)} />
           </div>
           <div className="buttons">
             <div className="form-group">
@@ -297,4 +294,4 @@ class SignUp extends Component {
 }
 
   
-export default SignUp;
+export default connect(null, mapDispatchToProps)(SignUp);
