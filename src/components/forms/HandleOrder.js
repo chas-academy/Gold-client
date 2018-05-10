@@ -30,6 +30,20 @@ class HandleOrder extends Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
+  // componentWillMount() { 
+  //   const cookies = new Cookies();
+  //   var token = cookies.get("token");
+  //   const user = JSON.parse(
+  //     window.atob(
+  //       token
+  //         .split(".")[1]
+  //         .replace("-", "+")
+  //         .replace("_", "/")
+  //     ))
+
+  //   this.props.dispatch(fetchOrder(token));
+  // }
+
   handleChange(event) {
     const { name, value } = event.target;
     this.setState({ [name]: value });

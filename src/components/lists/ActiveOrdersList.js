@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { fetchOrders } from "../../redux/actions/admin/Orders";
+import { fetchServicesTaken } from "../../redux/actions/admin/Orders";
 import Cookies from "universal-cookie";
 
 import { Link, withRouter } from "react-router-dom";
@@ -20,22 +20,22 @@ class ActiveOrdersList extends Component {
           .replace("_", "/")
       ))
 
-    this.props.dispatch(fetchOrders(token));
+    this.props.dispatch(fetchServicesTaken(token));
   }
 
   render() {
-      const { orders } = this.props;
+      const { services } = this.props;
 
       // if taken
 
     return (
       
-      orders ?
+      services ?
       <div className="BasicList__container">
         <h4> Pågående ärenden </h4>
         <ul className="BasicList__list">
-        {console.log(orders)}
-          {orders.map(order => (
+        {console.log(services)}
+          {services.map(order => (
           <li key={order.service_id}>
             <Link to={`/admin/orders/${order.service_id}`}>
               <div className="edit">
@@ -59,7 +59,7 @@ class ActiveOrdersList extends Component {
   }
 
   const mapStateToProps = state => ({ 
-    orders: state.admin.orders, 
+    services: state.adminOrders.services, 
   });
 
 export default withRouter(connect(mapStateToProps)(ActiveOrdersList));

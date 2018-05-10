@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { fetchUsers } from "../../redux/actions/admin/Accounts";
+import { fetchEmployees } from "../../redux/actions/admin/Accounts";
 import Cookies from "universal-cookie";
 
 import { Link, withRouter } from "react-router-dom";
@@ -19,18 +19,18 @@ class EmployeeList extends Component {
           .replace("_", "/")
       ))
 
-    this.props.dispatch(fetchUsers(token));
+    this.props.dispatch(fetchEmployees(token));
   }
 
   render() {
 
-    const { users } = this.props;
+    const { employees } = this.props;
 
     // if type === employee
-    console.log(users);
+    console.log(employees);
 
     return (
-      users ?
+      employees ?
       <div className="BasicList__container">
         <h4> Anställda </h4>
         <ul className="BasicList__list">
@@ -57,7 +57,7 @@ class EmployeeList extends Component {
 }
 
 const mapStateToProps = state => ({ 
-  orders: state.admin.users, 
+  employees: state.adminAccounts.employees, 
 });
 
 export default withRouter(connect(mapStateToProps)(EmployeeList));

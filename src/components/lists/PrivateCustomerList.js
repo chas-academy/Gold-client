@@ -1,7 +1,7 @@
 
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { fetchUsers } from "../../redux/actions/admin/Accounts";
+import { fetchPrivateCustomers } from "../../redux/actions/admin/Accounts";
 import Cookies from "universal-cookie";
 
 import { Link, withRouter } from "react-router-dom";
@@ -20,19 +20,19 @@ class PrivateCustomerList extends Component {
           .replace("_", "/")
       ))
 
-    this.props.dispatch(fetchUsers(token));
+    this.props.dispatch(fetchPrivateCustomers(token));
   }
 
   render() {
 
-    const { users } = this.props;
+    const { privateCustomers } = this.props;
 
     // if type === private
 
     return (
-      users ?
+      privateCustomers ?
       <div className="BasicList__container">
-        <h4> Företag </h4>
+        <h4> Privatkunder </h4>
         <ul className="BasicList__list">
           {/* {users.map(order => (
           <li key={user.id}>
@@ -57,7 +57,7 @@ class PrivateCustomerList extends Component {
 }
 
 const mapStateToProps = state => ({ 
-  orders: state.admin.users, 
+  privateCustomers: state.adminAccounts.privateCustomers, 
 });
 
 export default withRouter(connect(mapStateToProps)(PrivateCustomerList));

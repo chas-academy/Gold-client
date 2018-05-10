@@ -1,7 +1,7 @@
 
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { fetchUsers } from "../../redux/actions/admin/Accounts";
+import { fetchCompanies } from "../../redux/actions/admin/Accounts";
 import Cookies from "universal-cookie";
 
 import { Link, withRouter } from "react-router-dom";
@@ -20,30 +20,32 @@ class CompanyList extends Component {
           .replace("_", "/")
       ))
 
-    this.props.dispatch(fetchUsers(token));
+    this.props.dispatch(fetchCompanies(token));
   }
 
   render() {
 
-    const { users } = this.props;
+    const { companies } = this.props;
 
     // if type === company
 
     return (
-      users ?
+      companies ?
       <div className="BasicList__container">
+      {console.log(companies)}
         <h4> Företag </h4>
         <ul className="BasicList__list">
-          {/* {users.map(order => (
-          <li key={user.id}>
-            <Link to={`/admin/customers/companies/${user_id}`}>
+          {companies.map((company, index) => {
+            <li key={company.user_id}>
+              <Link to={`/admin/customers/companies/${company.user_id}`}>
               <div className="edit">
-                <p> {user.name} </p>
+                <p> hej </p>
                 <i className="fas fa-edit" />
               </div>
+              })}
             </Link>
           </li>
-          ))} */}
+          })}
         </ul>
       </div>
       : (
@@ -57,7 +59,7 @@ class CompanyList extends Component {
 }
 
 const mapStateToProps = state => ({ 
-  orders: state.admin.users, 
+  companies: state.adminAccounts.companies, 
 });
 
 export default withRouter(connect(mapStateToProps)(CompanyList));

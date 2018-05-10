@@ -103,7 +103,7 @@ class MapContainer extends Component {
 }
 
 const mapStateToProps = state => ({
-  orders : state.admin.services
+  services : state.adminOrders.services
 });
 
 export default connect(mapStateToProps)(MapContainer);

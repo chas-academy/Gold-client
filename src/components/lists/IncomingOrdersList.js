@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { fetchOrders } from "../../redux/actions/admin/Orders";
+import { fetchServicesNew } from "../../redux/actions/admin/Orders";
 import Cookies from "universal-cookie";
 
 import { Link, withRouter } from "react-router-dom";
@@ -20,22 +20,27 @@ class IncomingOrdersList extends Component {
           .replace("_", "/")
       ))
 
-    this.props.dispatch(fetchOrders(token));
+    this.props.dispatch(fetchServicesNew(token));
   }
 
   render() {
-      const { orders } = this.props;     
+      const { services } = this.props;     
     return (
-      orders ?
+      services ?
 
       <div className="BasicList__container">
         <h4> Nya ärenden </h4>
         <ul className="BasicList__list">
-          {orders.map(order => (
+          {services.map(order => (
           <li key={order.service_id}>
             <Link to={`/admin/orders/${order.service_id}`}>
+            {console.log(order)}
               <div className="edit">
-                <p>Kontaktperson: {order.service.con_pers} </p>
+              {order.service.company_name ?
+                <p>Kund: {order.service.company_name} </p>
+                : (
+                  <p>Kund: {order.service.con_pers} </p>
+                )}
                 <p> Hantera </p>
               </div>
             </Link>
@@ -56,7 +61,7 @@ class IncomingOrdersList extends Component {
 
 
 const mapStateToProps = state => ({ 
-  orders: state.admin.orders, 
+  services: state.adminOrders.services, 
 });
 
 export default withRouter(connect(mapStateToProps)(IncomingOrdersList));

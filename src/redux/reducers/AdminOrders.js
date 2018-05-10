@@ -31,7 +31,6 @@ import {
     FETCH_COMPLAINTS_FAILURE,
 } from '../actions/admin/Action-types'
 
-
 const initialState = {
     isfetching: false,
     services: [],
@@ -43,10 +42,10 @@ const initialState = {
     internalOrder: {},
     internalOrders: [],
     complaint: {},
-    complaints: []
+    complaints: [],
 };
 
-const adminReducer = (state = initialState, action) => {
+const adminOrdersReducer = (state = initialState, action) => {
     switch (action.type) {
         case FETCH_SERVICES_START:
         return {
@@ -208,9 +207,10 @@ const adminReducer = (state = initialState, action) => {
               ...state,
               isfetching: false
            };
-        default:
-            return state;
-    }
+           default:
+           return state;
+   }
 }
 
-export default adminReducer;
+export default adminOrdersReducer;
+

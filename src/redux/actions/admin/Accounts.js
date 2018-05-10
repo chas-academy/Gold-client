@@ -1,4 +1,13 @@
 import { 
+    FETCH_CUSTOMERS_COMPANIES_START, 
+    FETCH_CUSTOMERS_COMPANIES_SUCCESS, 
+    FETCH_CUSTOMERS_COMPANIES_FAILURE,
+    FETCH_CUSTOMERS_PRIVATE_START, 
+    FETCH_CUSTOMERS_PRIVATE_SUCCESS, 
+    FETCH_CUSTOMERS_PRIVATE_FAILURE,
+    FETCH_EMPLOYEES_START, 
+    FETCH_EMPLOYEES_SUCCESS, 
+    FETCH_EMPLOYEES_FAILURE,
     FETCH_USER_START, 
     FETCH_USER_SUCCESS, 
     FETCH_USER_FAILURE,
@@ -67,4 +76,89 @@ export const fetchUsers = (token) => dispatch => {
       });
   };
 
+/* ------------ EMPLOYEES --------------- */    
+export const requestEmployees = () => ({
+    type: FETCH_EMPLOYEES_START
+});
 
+export const recieveEmployees = users => ({
+    type: FETCH_EMPLOYEES_SUCCESS,
+    payload: users
+});
+
+export const fetchEmployees = (token) => dispatch => {
+    
+    dispatch(requestEmployees());
+  
+    return fetch('https://gold-api-dev.chas.school/employees', {
+        headers: {
+        "Authorization": token
+      }})
+      .then(res => res.json())
+      .then((users) => {
+          return dispatch(recieveEmployees(users));
+      })
+      .catch(response => {
+          console.error('An error occured when fetching the employee')
+          return dispatch({ type: FETCH_EMPLOYEES_FAILURE })
+      });
+  }; 
+
+
+
+  /* ------------ PRIVATE CUSTOMERS --------------- */    
+export const requestPrivateCustomers = () => ({
+    type: FETCH_CUSTOMERS_PRIVATE_START
+});
+
+export const recievePrivateCustomers = users => ({
+    type: FETCH_CUSTOMERS_PRIVATE_SUCCESS,
+    payload: users
+});
+
+export const fetchPrivateCustomers = (token) => dispatch => {
+    
+    dispatch(requestPrivateCustomers());
+  
+    return fetch('https://gold-api-dev.chas.school/customers/privates', {
+        headers: {
+        "Authorization": token
+      }})
+      .then(res => res.json())
+      .then((users) => {
+          return dispatch(recievePrivateCustomers(users));
+      })
+      .catch(response => {
+          console.error('An error occured when fetching the private customers')
+          return dispatch({ type: FETCH_CUSTOMERS_PRIVATE_FAILURE })
+      });
+  }; 
+
+
+    /* ------------  COMPANIES --------------- */    
+export const requestCompanies = () => ({
+    type: FETCH_CUSTOMERS_COMPANIES_START
+});
+
+export const recieveCompanies = companies => ({
+    type: FETCH_CUSTOMERS_COMPANIES_SUCCESS,
+    payload: companies
+});
+
+export const fetchCompanies = (token) => dispatch => {
+    
+    dispatch(requestCompanies());
+  
+    return fetch('https://gold-api-dev.chas.school/customers/companies', {
+        headers: {
+        "Authorization": token
+      }})
+      .then(res => res.json())
+      .then((companies) => {
+          return dispatch(recieveCompanies(companies));
+      })
+      .catch(response => {
+          console.error('An error occured when fetching the companies')
+          return dispatch({ type: FETCH_CUSTOMERS_COMPANIES_FAILURE })
+      });
+  }; 

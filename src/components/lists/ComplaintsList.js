@@ -24,15 +24,15 @@ class ComplaintsList extends Component {
   }
 
   render() {
-      const { orders } = this.props;
+      const { complaints } = this.props;
 
     return (
       
-      orders ?
+      complaints ?
       <div className="BasicList__container">
         <h4> Reklamationer </h4>
         <ul className="BasicList__list">
-          {orders.map(order => (
+          {complaints.map(order => (
           <li key={order.service_id}>
           {console.log(order)}
             <Link to={`/admin/orders/${order.service_id}`}>
@@ -57,7 +57,7 @@ class ComplaintsList extends Component {
   }
 
   const mapStateToProps = state => ({ 
-    orders: state.admin.complaints, 
+    complaints: state.adminOrders.complaints, 
   });
 
 export default withRouter(connect(mapStateToProps)(ComplaintsList));
