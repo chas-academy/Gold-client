@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { fetchServicesTaken } from "../../redux/actions/admin/Orders";
+import { Tabs, TabLink, TabContent } from "react-tabs-redux";
 import Cookies from "universal-cookie";
 
 import { Link, withRouter } from "react-router-dom";
@@ -18,27 +19,67 @@ class ActiveOrdersList extends Component {
   render() {
       const { services } = this.props;
 
-      // if taken
-
     return (
       
       services ?
       <div className="BasicList__container">
         <h4> Pågående ärenden </h4>
-        <ul className="BasicList__list">
-        {console.log(services)}
-          {services.map(order => (
-          <li key={order.service_id}>
-            <Link to={`/admin/orders/${order.service_id}`}>
-              <div className="edit">
-                <p>Beställare : XXXX, orderId: </p>
-                <p>Åtgärdas av : anställd</p>
-                <i className="fas fa-edit" />
-              </div>
-            </Link>
-          </li>
-          ))}
-        </ul>
+        <Tabs>
+        <div className="history-tabs">
+              <TabLink className="history-tablink" to="beställningar">
+                Beställningar
+              </TabLink>
+              <TabLink className="history-tablink" to="reklamationer">
+                Reklamationer
+              </TabLink>
+              <TabLink className="history-tablink" to="Interna">
+                Interna 
+              </TabLink>
+            </div>
+          <TabContent for="beställningar">
+          <ul className="BasicList__list">
+              {services.map(order => (
+                <li key={order.service_id}>
+                {console.log(order)}
+                  <Link to={`/admin/orders/${order.service_id}`}>
+                    <div className="edit">
+                      <p>Beställare : XXXX, orderId: </p>
+                    </div>
+                  </Link>
+                </li>
+                ))}       
+          </ul>
+          </TabContent>
+          <TabContent for="reklamatinoer">
+          <ul className="BasicList__list">
+              {services.map(order => (
+                <li key={order.service_id}>
+                {console.log(order)}
+                  <Link to={`/admin/orders/${order.service_id}`}>
+                    <div className="edit">
+                      <p>Beställare : XXXX, orderId: </p>
+                    </div>
+                  </Link>
+                </li>
+                ))}
+          </ul>
+          </TabContent>
+          <TabContent for="interna">
+          <ul className="BasicList__list">
+              {services.map(order => (
+                <li key={order.service_id}>
+                {console.log(order)}
+                  <Link to={`/admin/orders/${order.service_id}`}>
+                    <div className="edit">
+                      <p>Beställare : XXXX, orderId: </p>
+                      <i className="fas fa-exclamation-triangle"></i> Skapa Reklamation
+                    </div>
+                  </Link>
+                </li>
+                ))}
+          </ul>
+          </TabContent>
+        </Tabs>
       </div>
       : (        
         <div className="BasicList__container">
