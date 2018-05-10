@@ -18,9 +18,14 @@ class MultipleSelect extends Component {
   }
 
   handleChange = (selectedOption) => {
-    this.setState({ selectedOption });
-    console.log(`Selected: ${selectedOption.label}`);
+    const employeeId = [];
+    
+    selectedOption.map(id => {
+      employeeId.push(id.value)
+    })
+    this.setState({ selectedOption: employeeId });
   }
+
   render() {
   	const { selectedOption } = this.state;
     const { employees } = this.props;

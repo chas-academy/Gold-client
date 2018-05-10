@@ -29,7 +29,11 @@ class ComplaintsList extends Component {
           {console.log(order)}
             <Link to={`/admin/orders/${order.service_id}`}>
               <div className="edit">
+              {order.service.company_name ?
                 <p>{order.service.company_name}</p>
+                :(
+                  <p>{order.service.con_pers}</p>
+                )}
                 <p>status: {order.service.status}</p>
                 <i className="fas fa-edit" />
               </div>

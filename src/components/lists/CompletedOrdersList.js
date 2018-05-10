@@ -1,5 +1,6 @@
 import React, { Component } from "react"
 import { connect } from "react-redux";
+import { Tabs, TabLink, TabContent } from "react-tabs-redux";
 import { fetchServicesDone } from "../../redux/actions/admin/Orders";
 import Cookies from "universal-cookie";
 
@@ -37,6 +38,7 @@ class CompletedOrdersList extends Component {
       const { isAdmin } = this.state;
       const { services } = this.props;
     
+      console.log(services);
       return (
     services ?
       <div className="BasicList__container">
@@ -45,6 +47,7 @@ class CompletedOrdersList extends Component {
             {isAdmin === true ?
             services.map(order => (
               <li key={order.service_id}>
+              {console.log(order)}
                 <Link to={`/admin/orders/${order.service_id}`}>
                   <div className="edit">
                     <p>Beställare : XXXX, orderId: </p>
