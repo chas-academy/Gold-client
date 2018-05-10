@@ -6,7 +6,8 @@ import { Link, withRouter } from "react-router-dom";
 import './style.css'
 
 const mapStateToProps = state => ({
-  incomingList: state.employee.empIncomingList
+  incomingList: state.employee.empIncomingList,
+  isFetching: state.employee.isFetching
 });
 
 class IncomingJobsList extends Component {
