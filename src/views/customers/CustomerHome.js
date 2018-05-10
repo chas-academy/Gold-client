@@ -9,8 +9,7 @@ class CustomerHome extends Component {
         this.logout = this.logout.bind(this);
       }
 
-    logout() {
-        localStorage.clear();
+    logout(event) {
         this.props.history.push("/");
       }
 
@@ -19,7 +18,7 @@ class CustomerHome extends Component {
     return (
         <div>
             <button className="CustomerHome__logout" onClick={this.logout}>
-             Logga ut
+                Logga ut
             <i className="fas fa-sign-out-alt" />
             </button>
         <div className="CustomerHome__menu">

@@ -8,9 +8,7 @@ export default class Order extends Component {
     return (
         <div> 
             <AdminTopNav />
-                <div className="Admin__div">
                 <HandleOrder />
-                </div>
             <AdminBottomNav />
         </div>    
     )
