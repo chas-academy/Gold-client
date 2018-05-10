@@ -14,14 +14,6 @@ class InternalOrdersList extends Component {
     componentWillMount() { 
       const cookies = new Cookies();
       var token = cookies.get("token");
-      const user = JSON.parse(
-        window.atob(
-          token
-            .split(".")[1]
-            .replace("-", "+")
-            .replace("_", "/")
-        ))
-  
     this.props.dispatch(fetchInternalOrders(token));
   }
 

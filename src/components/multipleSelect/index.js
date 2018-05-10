@@ -1,4 +1,8 @@
 import React, { Component } from 'react'
+import { connect } from "react-redux";
+import { fetchEmployees } from "../../redux/actions/admin/Accounts";
+import Cookies from "universal-cookie";
+
 import Select from 'react-select'
 import 'react-select/dist/react-select.css';
 
@@ -7,13 +11,21 @@ class MultipleSelect extends Component {
     selectedOption: '',
   }
 
+  componentWillMount() { 
+    const cookies = new Cookies();
+    var token = cookies.get("token");
+    this.props.dispatch(fetchEmployees(token));
+  }
+
   handleChange = (selectedOption) => {
     this.setState({ selectedOption });
     console.log(`Selected: ${selectedOption.label}`);
   }
   render() {
   	const { selectedOption } = this.state;
+    const { employees } = this.props;
 
+    console.log(employees)
     return (
       <Select
         multi={true}
@@ -21,13 +33,18 @@ class MultipleSelect extends Component {
         placeholder="Välj Anställd"
         value={selectedOption}
         onChange={this.handleChange}
-        options={[
-          { value: 'one', label: 'One' },
-          { value: 'two', label: 'Two' },
-        ]}
+        options={ 
+          employees.map(employee => (
+            { value: employee.id, label: employee.name }
+          ))
+        }
       />
     );
   }
 }
 
-export default MultipleSelect
+const mapStateToProps = state => ({ 
+  employees: state.adminAccounts.employees, 
+});
+
+export default connect(mapStateToProps)(MultipleSelect)

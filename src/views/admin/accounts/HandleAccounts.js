@@ -9,9 +9,7 @@ export default class HandleAccounts extends Component {
     return (
         <div> 
             <AdminTopNav />
-                <div className="Admin__div">
                     <UpdateUser />
-                </div>
             <AdminBottomNav />
         </div>    
     )

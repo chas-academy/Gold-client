@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import { fetchOrders } from "../../redux/actions/admin/Orders";
+// import { fetchOrders } from "../../redux/actions/admin/Orders";
 
-import Cookies from "universal-cookie";
+// import Cookies from "universal-cookie";
 
 import './style.css'
 

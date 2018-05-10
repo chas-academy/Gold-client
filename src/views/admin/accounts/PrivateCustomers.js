@@ -8,10 +8,8 @@ export default class PrivateCustomers extends Component {
     return (
         <div> 
             <AdminTopNav />
-            <div className="Admin__div">
                 <PrivateCustomerList />
                 <CreateUser />
-            </div>    
             <AdminBottomNav />
         </div>    
     )

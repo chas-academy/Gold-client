@@ -7,10 +7,8 @@ export default class Employees extends Component {
     return (
       <div>
         <AdminTopNav />
-        <div className="Admin__div">
           <EmployeeList />
           <CreateUser />
-        </div>  
         <AdminBottomNav />
       </div>
     );

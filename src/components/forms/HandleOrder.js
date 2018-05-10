@@ -69,7 +69,6 @@ class HandleOrder extends Component {
       customerId,
       phone,
       phoneError,
-      adress,
       description,
       employee,
       errorMessage
