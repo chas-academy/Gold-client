@@ -71,6 +71,24 @@ class Home extends Component {
       }
     }
     return (
+      // {switch (true) {
+      //     case isAdmin:
+      <div>
+        <AdminTopNav />
+        <AdminHomeTop />
+        <MapContainer />
+        <AdminBottomNav />
+      </div>
+      //         break;
+      //     case isCustomer:
+      // <CustomerHome />
+      //         break;
+      //     case isEmployee:
+      //<EmployeeHome />
+      //         break;
+      //     default:
+      //         // redirect to login
+      // }}
       renderSwitch()
     );
   }
