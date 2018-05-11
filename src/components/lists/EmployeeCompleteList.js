@@ -34,21 +34,21 @@ class EmployeeCompleteList extends Component {
     );
 }
 
-  const finishList = completedList.map((list) => 
-  <div>
-    <li>
-      <Link to={`/employee/orders/${list.employee_services.serviceId}`}>
-        <div className="edit">
-          <p>{list.employee_services.serviceId}</p>
-          <p>Kund: {list.con_pers}</p>
-          <p>datum: {list.datetime}</p>
-          <p className="IncomingJobAccept">Info</p>
-        </div>
-        </Link>
-    </li>
-    <hr />
-  </div>
-  );
+const finishList =  completedList.map((complete) => 
+<div>
+  <li>
+    <Link to={`/employee/orders/${complete.employee_services.serviceId}`}>
+      <div className="edit">
+        <p>{complete.employee_services.serviceId}</p>
+        <p>Kund: {complete.con_pers}</p>
+        <p>datum: {complete.datetime}</p>
+        <p className="IncomingJobAccept">Info</p>
+      </div>
+      </Link>
+  </li>
+  <hr />
+</div>
+);
 
     return (
       <div className="BasicList__container">
@@ -56,7 +56,7 @@ class EmployeeCompleteList extends Component {
         <p> Här kan du se dina slutförda jobb.</p>
         <hr />
         <ul className="BasicList__list">
-          {/* {finishList} */}
+           {finishList}
         </ul>
       </div>
     );

@@ -1,18 +1,47 @@
 import React, { Component } from "react";
-// import { connect } from "react-redux"
-import { withRouter } from "react-router-dom";
+import { connect } from "react-redux"
+import { fetchEmpActive } from '../../redux/actions/employees';
+import { withRouter, Link } from "react-router-dom";
 import { EmployeeOrderDetails } from '../../components'
 
 import "./style.css";
 
-class EmployeeActiveList extends Component {
-  // constructor(props) {
-  //   super(props);
-  // }
+const mapStateToProps = state => ({
+  activeList: state.employee.empActiveList,
+  isFetching: state.employee.isFetching
+});
 
-  componentDidMount() {}
+class EmployeeActiveList extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {}
+  }
+
+  componentDidMount() {
+    this.props.dispatch(fetchEmpActive(2));
+    console.log(this.props.activeList);
+  }
 
   render() {
+    const  {isFetching, activeList } = this.props;
+
+    const ongoingList =  activeList.map((active) => 
+    <div>
+      <li>
+        <Link to={`/employee/orders/${active.employee_services.serviceId}`}>
+          <div className="edit">
+            <p>{active.employee_services.serviceId}</p>
+            <p>Kund: {active.con_pers}</p>
+            <p>datum: {active.datetime}</p>
+            <p className="IncomingJobAccept">Info</p>
+          </div>
+          </Link>
+      </li>
+      <hr />
+    </div>
+    );
+
+
     return (
       <div className="BasicList__container">
         <h4> Slutför Jobb</h4>
@@ -20,13 +49,14 @@ class EmployeeActiveList extends Component {
           en bekräftelse till kunden med tidpunkt och foton. </p>
         <hr />
         <ul className="BasicList__list">
-          <li>
+          {ongoingList}
+          {/* <li>
             <EmployeeOrderDetails Ongoing={true}/>
-          </li>
+          </li> */}
         </ul>  
       </div>    
     );
   }
 }
 
-export default withRouter(EmployeeActiveList);
+export default connect(mapStateToProps)(EmployeeActiveList);

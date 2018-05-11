@@ -4,7 +4,10 @@ import {
     FETCH_EMP_INCOMING_FAILURE,
     FETCH_EMP_DONE_REQUEST,
     FETCH_EMP_DONE_SUCCESS,
-    FETCH_EMP_DONE_FAILURE
+    FETCH_EMP_DONE_FAILURE,
+    FETCH_EMP_ACTIVE_REQUEST,
+    FETCH_EMP_ACTIVE_SUCCESS,
+    FETCH_EMP_ACTIVE_FAILURE
   } from "./Types";
 
 
@@ -66,5 +69,35 @@ export const fetchEmpFinished = (userId) => dispatch => {
         })
         .catch(err => {
             return dispatch(fetchEmpFinishedFailure());
+        })
+};
+
+
+export const fetchEmpActiveRequest = ()  => ({
+    type: FETCH_EMP_ACTIVE_REQUEST
+    
+  });
+
+export const fetchEmpActiveFailure = error  => ({
+    type: FETCH_EMP_ACTIVE_FAILURE
+  
+});
+
+export const fetchEmpActiveSucess= data => ({
+    type: FETCH_EMP_ACTIVE_SUCCESS,
+    payload: data
+});
+
+export const fetchEmpActive = (userId) => dispatch => {
+    dispatch(fetchEmpActiveRequest());
+
+
+    return fetch(`http://localhost:7770/users/${userId}/taken`)
+        .then(res => res.json())
+        .then(data => {
+            return dispatch(fetchEmpActiveSucess(data.services))
+        })
+        .catch(err => {
+            return dispatch(fetchEmpActiveFailure());
         })
 };
