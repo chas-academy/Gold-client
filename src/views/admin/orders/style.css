@@ -1,0 +1,10 @@
+.Admin__div {
+    margin-top: 5%;
+}
+
+@media (min-width: 800px) {
+    .Admin__div {
+        width: 73.5%;
+        margin-left: 26.5%;
+    }
+}
