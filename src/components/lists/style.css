@@ -3,10 +3,10 @@
     margin: auto;
     left: 0;
     right: 0;
-    margin-top: 15px;
     background-color: rgba(197, 197, 197, 0.055);
     box-shadow: 0 2px 4px 0 rgba(77,77,79,.2);
     padding-bottom: 15px;
+    z-index: 10;
 }
 
 .BasicList__container > h4 {

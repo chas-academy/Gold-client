@@ -1,40 +1,98 @@
 import React, { Component } from "react";
-// import { connect } from "react-redux";
+import { connect } from "react-redux";
+import { fetchServicesTaken } from "../../redux/actions/admin/Orders";
+import { Tabs, TabLink, TabContent } from "react-tabs-redux";
+import Cookies from "universal-cookie";
+
 import { Link, withRouter } from "react-router-dom";
 import './style.css'
 
 
 class ActiveOrdersList extends Component {
+
+  componentWillMount() { 
+    const cookies = new Cookies();
+    var token = cookies.get("token");
+    this.props.dispatch(fetchServicesTaken(token));
+  }
+
   render() {
-      const orderId = 1;
-      const orderId2 = 2;
+      const { services } = this.props;
+
     return (
       
+      services ?
       <div className="BasicList__container">
         <h4> Pågående ärenden </h4>
-        <ul>
-          <li>
-            <Link to={`/admin/orders/${orderId}`}>
-              <div className="edit">
-                    <p>OrderId:{orderId} </p>
-                    <p>Tilldelad: Anställd </p>
-                <i className="fas fa-edit" />
-              </div>
-            </Link>
-          </li>
-          <li>
-            <Link to={`/admin/orders/${orderId2}`}>
-              <div className="edit">
-                <p>OrderId:{orderId2} </p>
-                <p>Tilldelad: Anställd </p>
-                <i className="fas fa-edit" />
-              </div>
-            </Link>
-          </li>
-        </ul>
+        <Tabs>
+        <div className="history-tabs">
+              <TabLink className="history-tablink" to="beställningar">
+                Beställningar
+              </TabLink>
+              <TabLink className="history-tablink" to="reklamationer">
+                Reklamationer
+              </TabLink>
+              <TabLink className="history-tablink" to="Interna">
+                Interna 
+              </TabLink>
+            </div>
+          <TabContent for="beställningar">
+          <ul className="BasicList__list">
+              {services.map(order => (
+                <li key={order.service_id}>
+                {console.log(order)}
+                  <Link to={`/admin/orders/${order.service_id}`}>
+                    <div className="edit">
+                      <p>Beställare : XXXX, orderId: </p>
+                    </div>
+                  </Link>
+                </li>
+                ))}       
+          </ul>
+          </TabContent>
+          <TabContent for="reklamatinoer">
+          <ul className="BasicList__list">
+              {services.map(order => (
+                <li key={order.service_id}>
+                {console.log(order)}
+                  <Link to={`/admin/orders/${order.service_id}`}>
+                    <div className="edit">
+                      <p>Beställare : XXXX, orderId: </p>
+                    </div>
+                  </Link>
+                </li>
+                ))}
+          </ul>
+          </TabContent>
+          <TabContent for="interna">
+          <ul className="BasicList__list">
+              {services.map(order => (
+                <li key={order.service_id}>
+                {console.log(order)}
+                  <Link to={`/admin/orders/${order.service_id}`}>
+                    <div className="edit">
+                      <p>Beställare : XXXX, orderId: </p>
+                      <i className="fas fa-exclamation-triangle"></i> Skapa Reklamation
+                    </div>
+                  </Link>
+                </li>
+                ))}
+          </ul>
+          </TabContent>
+        </Tabs>
       </div>
-    );
+      : (        
+        <div className="BasicList__container">
+          <h4> Pågående ärenden </h4>
+          <p>Inga pågående ärenden att visa</p>
+        </div>  
+         )
+      )
+    } 
   }
-}
 
-export default withRouter(ActiveOrdersList);
+  const mapStateToProps = state => ({ 
+    services: state.adminOrders.services, 
+  });
+
+export default withRouter(connect(mapStateToProps)(ActiveOrdersList));

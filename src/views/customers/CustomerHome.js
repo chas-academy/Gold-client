@@ -1,7 +1,7 @@
 import React, { Component } from "react"
 import { Link, withRouter } from "react-router-dom"
+import Cookies from "universal-cookie";
 
-import img from '../../assets/img/Slice1.png'
 import './style.css'
 
 class CustomerHome extends Component {
@@ -10,22 +10,29 @@ class CustomerHome extends Component {
         this.logout = this.logout.bind(this);
       }
 
-    logout() {
-        localStorage.clear();
+    logout(event) {
         this.props.history.push("/");
       }
 
   render() {
-      const user = 'Adam';
+    const cookies = new Cookies();
+    var token = cookies.get("token");
+    const user = JSON.parse(
+      window.atob(
+        token
+          .split(".")[1]
+          .replace("-", "+")
+          .replace("_", "/")
+      )
+    );
     return (
         <div>
-        {/* <img src={img} className="CustomerHome__logo" height={70} alt="logotype"/> */}
             <button className="CustomerHome__logout" onClick={this.logout}>
-             Logga ut
+                Logga ut
             <i className="fas fa-sign-out-alt" />
             </button>
         <div className="CustomerHome__menu">
-            <h3 className="CustomerHome__welcome">Välkommen {user}!</h3>
+            <h3 className="CustomerHome__welcome">Välkommen {user.name}!</h3>
             <div>
                 <button className="CustomerHome__buttons">
                 <Link to={`/orders/add`}>

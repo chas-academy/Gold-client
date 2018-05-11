@@ -1,17 +1,27 @@
 import React, { Component } from 'react';
-// import { loginUser } from '../actions/auth';
-// import { connect } from 'react-redux';
-import Cookies from 'universal-cookie';
+import { loginUser } from '../../redux/actions/Auth';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+
 import './style.css';
+
+
+const mapDispatchToProps = dispatch => {
+  return { loginUser: user => dispatch(loginUser(user)) };
+};
+
+
 class SignIn extends Component {
   constructor (props) {
     super(props);
 
     this.state = {
-      number: '',
+      pers_org_num: '',
       password: '',
       passwordError: null,
       numberError: null,
+      isLoading: false,
+      isAuthenticated: false
       // errorMessage: '',
      };
 
@@ -26,13 +36,19 @@ componentDidMount() {
 handleChange(event) {
   const { name, value } = event.target;
   this.setState({ [name]: value });
-
+  
   const isNumeric = /^[0-9]+$/;
 
-  if (this.state.number.match(isNumeric)) {
+  if (this.state.pers_org_num.match(isNumeric)) {
     this.setState({ numberError: false });
   } else {
     this.setState({ numberError: true });
+  }
+
+  if (this.state.password.length >= 7) {
+    this.setState({ passwordError: false });
+  } else {
+    this.setState({ passwordError: true });
   }
 
 }
@@ -41,46 +57,34 @@ handleChange(event) {
     event.preventDefault();
     this.setState({ submitted: true });
 
-    const loginUser = {
-      pers_org_num: this.state.number,
+    const { pers_org_num, password } = this.state; 
+
+    const user = {
+      pers_org_num: this.state.pers_org_num,
       password: this.state.password
     }
 
-    const url = '';
+    if (pers_org_num && password) {
+      this.props.loginUser({ user })
+      .then((res) => {
+        if (!res) {
+          this.props.history.push('/home')
+        } else {
+          this.setState({errorMessage: res, isLoading: false })
+        }
+      })
+    }
 
-    // if (process.env.NODE_ENV === 'development') {
-    //   const url = 'http://localhost:7770';
-    // } else {
-    //   const url = process.env.REACT_APP_API_BASE_URL;
-    // }
-    
-    fetch(process.env.REACT_APP_API_BASE_URL+'/login', {
-      method: 'POST',
-      body: JSON.stringify(loginUser),
-      headers: {
-      "Content-Type": "application/json"
-      }
-    })
-    .then((res) => res.json())
-    .then(res => {
-      console.log(res);
-      const cookies = new Cookies();
-      cookies.set('token', res.token, { path: '/', maxAge: 86399 });
-      var token = cookies.get('token');
-      console.log(JSON.parse(window.atob(token.split('.')[1].replace('-', '+').replace('_', '/')))); // decoded info from token
-    });
-
-    //dispatch goes here...
   }
 
     render() {
       const {
-        number,
+        pers_org_num,
         submitted,
         numberError,
         password,
-        // passwordError,
-        // errorMessage,
+        passwordError,
+        errorMessage,
       } = this.state;
 
     return (
@@ -92,22 +96,22 @@ handleChange(event) {
             <div className="BasicForm__check">
               <input
                 type="text"
-                name="number"
+                name="pers_org_num"
                 className="form-control"
                 placeholder="YYMMDDXXXX / XXXXXXXXXX"
-                value={number}
+                value={pers_org_num}
                 onChange={this.handleChange}
               />
-              {number &&
+              {pers_org_num &&
                 !numberError && <i className="fas fa-check BasicForm__check" />}
             </div>
             {submitted &&
-              !number && (
+              !pers_org_num && (
                 <div className="help-block">
                   Glöm inte fylla i Person/organisationsnummer!
                 </div>
               )}
-            {number &&
+            {pers_org_num &&
               numberError && (
                 <div className="help-block">Oopa! fick du med en bokstav?</div>
               )}
@@ -128,11 +132,17 @@ handleChange(event) {
                   <i className="fas fa-check BasicForm__check" />
                 )}
             </div>
+              {password && passwordError  &&
+                <div className="help-block">Lösenordet måste vara minst 8 tecken långt</div>
+                }
           </div>  
               <div className="form-group">
               <button className="btn btn-primary">
                 Logga in
               </button>
+              {errorMessage &&
+                <div className="help-block">{errorMessage}</div>  
+              }
             </div>  
           </form>    
       </div>           
@@ -141,4 +151,4 @@ handleChange(event) {
 
 }
   
-export default SignIn;
+export default withRouter(connect(null, mapDispatchToProps)(SignIn));

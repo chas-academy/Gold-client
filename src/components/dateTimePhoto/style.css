@@ -9,8 +9,8 @@
 
 
 .react-datepicker__month-container {
-    width: 300px;
-    height: 300px;
+    width: 343px;
+    height: auto;
 }
 
 .react-datepicker__month, .react-datepicker__current-month {
@@ -29,7 +29,7 @@
 }
 
 .react-datepicker-popper[data-placement^="top"] {
-    transform: translate3d(36px, 65px, 0px) !important;
+    transform: translate3d(0px, 380px, 0px) !important;
 }
 
 
