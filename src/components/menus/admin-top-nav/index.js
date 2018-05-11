@@ -40,20 +40,20 @@ openMenu(event) {
         </button>
       <Menu isOpen={open} customBurgerIcon={ false } noOverlay className="slide-menu" width={'85%'}>
         <h3 className="slide-menu__header">Ärenden</h3>
-          <a id="incoming" className="menu-item" href={`/admin/orders/incoming`}>                
+          <a id="incoming" className="menu-item" href={`/admin/services/incoming`}>                
             <i className="fas fa-inbox slide"></i>
             Nya
           </a>
-          <a id="incoming" className="menu-item" href={`/admin/orders/handled`}>                
-            <i className="fas fa-inbox slide"></i>
+          <a id="incoming" className="menu-item" href={`/admin/services/assigned`}>                
+          <i className="fas fa-arrow-right slide"></i>
             Hanterade
           </a>
-          <a id="active" className="menu-item" href={`/admin/orders/active`}>
+          <a id="active" className="menu-item" href={`/admin/services/active`}>
           < i className="fas fa-clock slide"></i>
             Pågående
           </a>
           <a id="active" className="menu-item" href={`/admin/orders`}>
-          < i className="fas fa-clock slide"></i>
+          <i className="fas fa-list slide"></i>
             Beställningar
           </a>
           <a id="internal" className="menu-item" href={`/admin/orders/internal`}>
@@ -62,7 +62,7 @@ openMenu(event) {
           <a id="complaints" className="menu-item" href={`/admin/orders/complaints`}>
             <i className="fas fa-exclamation-triangle slide"></i>
             Reklamationer</a>
-          <a id="completed" className="menu-item" href={`/admin/orders/completed`}>
+          <a id="completed" className="menu-item" href={`/admin/services/completed`}>
             <i className="fas fa-history slide"></i>
             Avslutade
           </a> 

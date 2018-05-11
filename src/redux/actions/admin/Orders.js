@@ -5,6 +5,9 @@ import {
   FETCH_SERVICES_NEW_START,
   FETCH_SERVICES_NEW_SUCCESS,
   FETCH_SERVICES_NEW_FAILURE,
+  FETCH_SERVICES_ASSIGNED_START,
+  FETCH_SERVICES_ASSIGNED_SUCCESS,
+  FETCH_SERVICES_ASSIGNED_FAILURE,
   FETCH_SERVICES_TAKEN_START,
   FETCH_SERVICES_TAKEN_SUCCESS,
   FETCH_SERVICES_TAKEN_FAILURE,
@@ -31,37 +34,34 @@ import {
   FETCH_COMPLAINTS_FAILURE
 } from "./Action-types";
 
-
 /* ------------ SERVICES --------------- */
 
 export const requestServices = () => ({
-    type: FETCH_SERVICES_START
-  });
-  
-  export const recieveServices = orders => ({
-    type: FETCH_SERVICES_SUCCESS,
-    payload: orders
-  });
-  
-  export const fetchServices = token => dispatch => {
-    dispatch(requestServices());
-  
-    debugger;
-    return fetch("https://gold-api-dev.chas.school/services", {
-      headers: {
-        Authorization: token
-      }
-    })
-      .then(res => res.json())
-      .then(orders => {
-        return dispatch(recieveServices(orders));
-      })
-      .catch(response => {
-        console.error("An error occured when fetching the services");
-        return dispatch({ type: FETCH_SERVICES_FAILURE });
-      });
-  };
+  type: FETCH_SERVICES_START
+});
 
+export const recieveServices = orders => ({
+  type: FETCH_SERVICES_SUCCESS,
+  payload: orders
+});
+
+export const fetchServices = token => dispatch => {
+  dispatch(requestServices());
+
+  return fetch("https://gold-api-dev.chas.school/services", {
+    headers: {
+      Authorization: token
+    }
+  })
+    .then(res => res.json())
+    .then(orders => {
+      return dispatch(recieveServices(orders));
+    })
+    .catch(response => {
+      console.error("An error occured when fetching the services");
+      return dispatch({ type: FETCH_SERVICES_FAILURE });
+    });
+};
 
 /* ------------ SERVICES NEW --------------- */
 
@@ -92,8 +92,34 @@ export const fetchServicesNew = token => dispatch => {
     });
 };
 
+/* ------------ SERVICES ASSIGNED --------------- */
 
+export const requestServicesAssigned = () => ({
+  type: FETCH_SERVICES_ASSIGNED_START
+});
 
+export const recieveServicesAssigned = orders => ({
+  type: FETCH_SERVICES_ASSIGNED_SUCCESS,
+  payload: orders
+});
+
+export const fetchServicesAssigned = token => dispatch => {
+  dispatch(requestServicesAssigned());
+
+  return fetch("https://gold-api-dev.chas.school/services/assigned", {
+    headers: {
+      Authorization: token
+    }
+  })
+    .then(res => res.json())
+    .then(orders => {
+      return dispatch(recieveServicesAssigned(orders));
+    })
+    .catch(response => {
+      console.error("An error occured when fetching the order");
+      return dispatch({ type: FETCH_SERVICES_ASSIGNED_FAILURE });
+    });
+};
 
 /* ------------ SERVICES TAKEN --------------- */
 
@@ -124,8 +150,6 @@ export const fetchServicesTaken = token => dispatch => {
     });
 };
 
-
-
 /* ------------ SERVICES DONE --------------- */
 
 export const requestServicesDone = () => ({
@@ -154,9 +178,6 @@ export const fetchServicesDone = token => dispatch => {
       return dispatch({ type: FETCH_SERVICES_DONE_FAILURE });
     });
 };
-
-
-
 
 /* ------------ ORDER --------------- */
 
@@ -187,9 +208,6 @@ export const fetchOrder = token => dispatch => {
     });
 };
 
-
-
-
 /* ------------ ORDERS --------------- */
 
 export const requestOrders = () => ({
@@ -218,10 +236,6 @@ export const fetchOrders = token => dispatch => {
       return dispatch({ type: FETCH_ORDERS_FAILURE });
     });
 };
-
-
-
-
 
 /* ------------ INTERNAL ORDER --------------- */
 
@@ -252,10 +266,6 @@ export const fetchInternalOrder = token => dispatch => {
     });
 };
 
-
-
-
-
 /* ------------INTERNAL ORDERS --------------- */
 
 export const requestInternalOrders = () => ({
@@ -285,10 +295,6 @@ export const fetchInternalOrders = token => dispatch => {
     });
 };
 
-
-
-
-
 /* ------------ COMPLAINT --------------- */
 
 export const requestComplaint = () => ({
@@ -303,7 +309,6 @@ export const recieveComplaint = order => ({
 export const fetchComplaint = token => dispatch => {
   dispatch(requestComplaint());
 
-  debugger;
   return fetch("https://gold-api-dev.chas.school/complaints/:id", {
     headers: {
       Authorization: token
@@ -318,10 +323,6 @@ export const fetchComplaint = token => dispatch => {
       return dispatch({ type: FETCH_COMPLAINT_FAILURE });
     });
 };
-
-
-
-
 
 /* ------------ COMPLAINTS --------------- */
 

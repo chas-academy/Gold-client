@@ -5,6 +5,9 @@ import {
     FETCH_SERVICES_NEW_START,
     FETCH_SERVICES_NEW_SUCCESS,
     FETCH_SERVICES_NEW_FAILURE,
+    FETCH_SERVICES_ASSIGNED_START,
+    FETCH_SERVICES_ASSIGNED_SUCCESS,
+    FETCH_SERVICES_ASSIGNED_FAILURE,
     FETCH_SERVICES_TAKEN_START,
     FETCH_SERVICES_TAKEN_SUCCESS,
     FETCH_SERVICES_TAKEN_FAILURE,
@@ -35,6 +38,7 @@ const initialState = {
     isfetching: false,
     services: [],
     servicesNew: [],
+    servicesAssigned: [],
     servicesTaken: [],
     servicesDone: [],
     order: {},
@@ -79,6 +83,22 @@ const adminOrdersReducer = (state = initialState, action) => {
             ...state,
             isfetching: false
          };
+         case FETCH_SERVICES_ASSIGNED_START:
+         return {
+             ...state,
+             isfetching: true
+          };
+         case FETCH_SERVICES_ASSIGNED_SUCCESS:
+         return {
+             ...state,
+             isfetching: false,
+             servicesAssigned: action.payload
+          };
+         case FETCH_SERVICES_ASSIGNED_FAILURE:
+         return {
+             ...state,
+             isfetching: false
+          };
          case FETCH_SERVICES_TAKEN_START:
          return {
              ...state,

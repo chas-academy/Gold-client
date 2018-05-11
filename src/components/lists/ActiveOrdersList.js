@@ -5,94 +5,110 @@ import { Tabs, TabLink, TabContent } from "react-tabs-redux";
 import Cookies from "universal-cookie";
 
 import { Link, withRouter } from "react-router-dom";
-import './style.css'
-
+import "./style.css";
 
 class ActiveOrdersList extends Component {
-
-  componentWillMount() { 
+  componentWillMount() {
     const cookies = new Cookies();
     var token = cookies.get("token");
     this.props.dispatch(fetchServicesTaken(token));
   }
 
   render() {
-      const { services } = this.props;
+    const { servicesTaken } = this.props;
 
+    const TakenOrders = servicesTaken.filter(
+      order => order.order_type === "order"
+    );
+    const TakenComplaints = servicesTaken.filter(
+      order => order.order_type === "complaint"
+    );
+    const TakenInternalOrders = servicesTaken.filter(
+      order => order.order_type === "int_order"
+    );
     return (
-      
-      services ?
       <div className="BasicList__container">
         <h4> Pågående ärenden </h4>
         <Tabs>
-        <div className="history-tabs">
-              <TabLink className="history-tablink" to="beställningar">
-                Beställningar
-              </TabLink>
-              <TabLink className="history-tablink" to="reklamationer">
-                Reklamationer
-              </TabLink>
-              <TabLink className="history-tablink" to="Interna">
-                Interna 
-              </TabLink>
-            </div>
+          <div className="history-tabs">
+            <TabLink className="history-tablink" to="beställningar">
+              Beställningar
+            </TabLink>
+            <TabLink className="history-tablink" to="reklamationer">
+              Reklamationer
+            </TabLink>
+            <TabLink className="history-tablink" to="Interna">
+              Interna
+            </TabLink>
+          </div>
           <TabContent for="beställningar">
-          <ul className="BasicList__list">
-              {services.map(order => (
-                <li key={order.service_id}>
-                {console.log(order)}
-                  <Link to={`/admin/orders/${order.service_id}`}>
-                    <div className="edit">
-                      <p>Beställare : XXXX, orderId: </p>
-                    </div>
-                  </Link>
-                </li>
-                ))}       
-          </ul>
-          </TabContent>
-          <TabContent for="reklamatinoer">
-          <ul className="BasicList__list">
-              {services.map(order => (
-                <li key={order.service_id}>
-                {console.log(order)}
-                  <Link to={`/admin/orders/${order.service_id}`}>
-                    <div className="edit">
-                      <p>Beställare : XXXX, orderId: </p>
-                    </div>
-                  </Link>
-                </li>
+            {TakenOrders ? (
+              <ul className="BasicList__list">
+                {TakenOrders.map(order => (
+                  <li key={order.service_id}>
+                    {console.log(order)}
+                    <Link to={`/admin/orders/${order.service_id}`}>
+                      <div className="edit">
+                        <p>Beställare : XXXX, orderId: </p>
+                      </div>
+                    </Link>
+                  </li>
                 ))}
-          </ul>
+              </ul>
+            ) : (
+              <div className="BasicList__container">
+                <p>Inga pågående ärenden att visa</p>
+              </div>
+            )}
           </TabContent>
-          <TabContent for="interna">
-          <ul className="BasicList__list">
-              {services.map(order => (
-                <li key={order.service_id}>
-                {console.log(order)}
-                  <Link to={`/admin/orders/${order.service_id}`}>
-                    <div className="edit">
-                      <p>Beställare : XXXX, orderId: </p>
-                      <i className="fas fa-exclamation-triangle"></i> Skapa Reklamation
-                    </div>
-                  </Link>
-                </li>
+          <TabContent for="reklamationer">
+            {TakenComplaints ? (
+              <ul className="BasicList__list">
+                {TakenComplaints.map(order => (
+                  <li key={order.service_id}>
+                    {console.log(order)}
+                    <Link to={`/admin/orders/${order.service_id}`}>
+                      <div className="edit">
+                        <p>Beställare : XXXX, orderId: </p>
+                      </div>
+                    </Link>
+                  </li>
                 ))}
-          </ul>
+              </ul>
+            ) : (
+              <div className="BasicList__container">
+                <p>Inga pågående reklamationer att visa</p>
+              </div>
+            )}
+          </TabContent>
+          <TabContent for="Interna">
+            {TakenInternalOrders ? (
+              <ul className="BasicList__list">
+                {TakenInternalOrders.map(order => (
+                  <li key={order.service_id}>
+                    {console.log(order)}
+                    <Link to={`/admin/orders/${order.service_id}`}>
+                      <div className="edit">
+                        <p>Beställare : XXXX, orderId: </p>
+                      </div>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <div className="BasicList__container">
+                <p>Inga pågående interna ärenden att visa</p>
+              </div>
+            )}
           </TabContent>
         </Tabs>
       </div>
-      : (        
-        <div className="BasicList__container">
-          <h4> Pågående ärenden </h4>
-          <p>Inga pågående ärenden att visa</p>
-        </div>  
-         )
-      )
-    } 
+    );
   }
+}
 
-  const mapStateToProps = state => ({ 
-    services: state.adminOrders.services, 
-  });
+const mapStateToProps = state => ({
+  servicesTaken: state.adminOrders.servicesTaken
+});
 
 export default withRouter(connect(mapStateToProps)(ActiveOrdersList));

@@ -1,30 +1,34 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { fetchServicesNew } from "../../redux/actions/admin/Orders";
+import { fetchServicesAssigned } from "../../redux/actions/admin/Orders";
 import { Tabs, TabLink, TabContent } from "react-tabs-redux";
-
 import Cookies from "universal-cookie";
+
 import { Link, withRouter } from "react-router-dom";
 import "./style.css";
 
-class IncomingOrdersList extends Component {
+class AssignedOrdersList extends Component {
   componentWillMount() {
     const cookies = new Cookies();
     var token = cookies.get("token");
-    this.props.dispatch(fetchServicesNew(token));
+    this.props.dispatch(fetchServicesAssigned(token));
   }
 
   render() {
-    const { servicesNew } = this.props;
-    const newOrders = servicesNew.filter(order => order.order_type === "order");
-    const newComplaints = servicesNew.filter(
+    const { servicesAssigned } = this.props;
+    const assignedOrders = servicesAssigned.filter(
+      order => order.order_type === "order"
+    );
+    const assignedComplaints = servicesAssigned.filter(
       order => order.order_type === "complaint"
     );
-
+    const assignedInternalOrders = servicesAssigned.filter(
+      order => order.order_type === "int_order"
+    );
 
     return (
       <div className="BasicList__container">
-        <h4> Nya ärenden </h4>
+        <h4> Hanterade ärenden </h4>
         <Tabs>
           <div className="history-tabs">
             <TabLink className="history-tablink" to="beställningar">
@@ -33,11 +37,38 @@ class IncomingOrdersList extends Component {
             <TabLink className="history-tablink" to="reklamationer">
               Reklamationer
             </TabLink>
+            <TabLink className="history-tablink" to="Interna">
+              Interna
+            </TabLink>
           </div>
           <TabContent for="beställningar">
-            {newOrders.length ? (
+            {assignedOrders.length ? (
               <ul className="BasicList__list">
-                {newOrders.map(order => (
+                {assignedOrders.map(order => (
+                  <li key={order.id}>
+                    <Link to={`/admin/orders/${order.id}`}>
+                      <div className="edit">
+                        {order.company_name ? (
+                          <p>Kund: {order.company_name} </p>
+                        ) : (
+                          <p>Kund: {order.con_pers} </p>
+                        )}
+                        <p> Anställd: {} </p>
+                      </div>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <div className="BasicList__container">
+                <p>Inga beställningar att visa</p>
+              </div>
+            )}
+          </TabContent>
+          <TabContent for="reklamationer">
+            {assignedComplaints.length ? (
+              <ul className="BasicList__list">
+                {assignedComplaints.map(order => (
                   <li key={order.id}>
                     <Link to={`/admin/orders/${order.id}`}>
                       {console.log(order)}
@@ -47,7 +78,7 @@ class IncomingOrdersList extends Component {
                         ) : (
                           <p>Kund: {order.con_pers} </p>
                         )}
-                        <p> Hantera </p>
+                        <p> Anställd: {} </p>
                       </div>
                     </Link>
                   </li>
@@ -55,15 +86,14 @@ class IncomingOrdersList extends Component {
               </ul>
             ) : (
               <div className="BasicList__container">
-                <h4> Nya ärenden </h4>
-                <p>Inga nya ärenden att visa</p>
+                <p>Inga reklamationer att visa</p>
               </div>
             )}
           </TabContent>
-          <TabContent for="reklamationer">
-          {newComplaints.length ? (
+          <TabContent for="Interna">
+          {assignedInternalOrders.length ? (
             <ul className="BasicList__list">
-              {newComplaints.map(order => (
+              {assignedInternalOrders.map(order => (
                 <li key={order.id}>
                   <Link to={`/admin/orders/${order.id}`}>
                     {console.log(order)}
@@ -73,16 +103,15 @@ class IncomingOrdersList extends Component {
                       ) : (
                         <p>Kund: {order.con_pers} </p>
                       )}
-                      <p> Hantera </p>
+                      <p> Anställd: {} </p>
                     </div>
                   </Link>
                 </li>
               ))}
             </ul>
-          ) : (
+        ) : (
               <div className="BasicList__container">
-                <h4> Nya ärenden </h4>
-                <p>Inga nya reklamationer att visa</p>
+                <p>Inga interna ärenden att visa</p>
               </div>
             )}
           </TabContent>
@@ -93,7 +122,7 @@ class IncomingOrdersList extends Component {
 }
 
 const mapStateToProps = state => ({
-  servicesNew: state.adminOrders.servicesNew
+  servicesAssigned: state.adminOrders.servicesAssigned
 });
 
-export default withRouter(connect(mapStateToProps)(IncomingOrdersList));
+export default withRouter(connect(mapStateToProps)(AssignedOrdersList));

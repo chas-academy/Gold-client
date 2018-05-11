@@ -1,33 +1,29 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { fetchComplaints } from "../../redux/actions/admin/Orders";
+import { fetchOrders } from "../../redux/actions/admin/Orders";
 import Cookies from "universal-cookie";
 import { Tabs, TabLink, TabContent } from "react-tabs-redux";
 
 import { Link, withRouter } from "react-router-dom";
-import './style.css'
+import "./style.css";
 
-
-class ComplaintsList extends Component {
-
-  componentWillMount() { 
+class OrdersList extends Component {
+  componentWillMount() {
     const cookies = new Cookies();
     var token = cookies.get("token");
-    this.props.dispatch(fetchComplaints(token));
+    this.props.dispatch(fetchOrders(token));
   }
 
   render() {
-      const { complaints } = this.props;
+    const { orders } = this.props;
 
-      const AssignedComplaints = complaints.filter(order => order.service.status === "assigned");
-      const TakenComplaints = complaints.filter(order => order.service.status === "taken");
-      const DoneComplaints = complaints.filter(order => order.service.status === "done");
-  
+    const AssignedOrders = orders.filter(order => order.service.status === "assigned");
+    const TakenOrders = orders.filter(order => order.service.status === "taken");
+    const DoneOrders = orders.filter(order => order.service.adminOrdersstatus === "done");
 
     return (
-      
       <div className="BasicList__container">
-        <h4> Reklamationer </h4>
+        <h4> Beställningar </h4>
         <Tabs>
           <div className="history-tabs">
             <TabLink className="history-tablink" to="hanterade">
@@ -41,9 +37,9 @@ class ComplaintsList extends Component {
             </TabLink>
           </div>
           <TabContent for="hanterade">
-            {AssignedComplaints.length ? (
+            {AssignedOrders.length ? (
               <ul className="BasicList__list">
-                {AssignedComplaints.map(order => (
+                {AssignedOrders.map(order => (
                   <li key={order.service_id}>
                     <Link to={`/admin/orders/${order.service_id}`}>
                       <div className="edit">
@@ -66,9 +62,9 @@ class ComplaintsList extends Component {
             )}
           </TabContent>
           <TabContent for="pågående">
-            {TakenComplaints.length ? (
+            {TakenOrders.length ? (
               <ul className="BasicList__list">
-                {TakenComplaints.map(order => (
+                {AssignedOrders.map(order => (
                   <li key={order.service_id}>
                     <Link to={`/admin/orders/${order.service_id}`}>
                       <div className="edit">
@@ -77,7 +73,7 @@ class ComplaintsList extends Component {
                         ) : (
                           <p>{order.service.con_pers}</p>
                         )}
-                        <p>Anställd: {}</p>
+                        <p>status: {order.service.status}</p>
                         <i className="fas fa-edit" />
                       </div>
                     </Link>
@@ -91,10 +87,11 @@ class ComplaintsList extends Component {
             )}
           </TabContent>
           <TabContent for="avslutade">
-            {DoneComplaints.length ? (
+            {DoneOrders.length ? (
               <ul className="BasicList__list">
-                {DoneComplaints.map(order => (
+                {AssignedOrders.map(order => (
                   <li key={order.service_id}>
+                    {console.log(order)}
                     <Link to={`/admin/orders/${order.service_id}`}>
                       <div className="edit">
                         {order.service.company_name ? (
@@ -102,7 +99,7 @@ class ComplaintsList extends Component {
                         ) : (
                           <p>{order.service.con_pers}</p>
                         )}
-                        <p>Anställd: {}</p>
+                        <p>status: {order.service.status}</p>
                         <i className="fas fa-edit" />
                       </div>
                     </Link>
@@ -115,14 +112,14 @@ class ComplaintsList extends Component {
               </div>
             )}
           </TabContent>
-          </Tabs>
-        </div>  
-         )
-    } 
+        </Tabs>
+      </div>
+    );
   }
+}
 
-  const mapStateToProps = state => ({ 
-    complaints: state.adminOrders.complaints, 
-  });
+const mapStateToProps = state => ({
+  orders: state.adminOrders.orders
+});
 
-export default withRouter(connect(mapStateToProps)(ComplaintsList));
+export default withRouter(connect(mapStateToProps)(OrdersList));
