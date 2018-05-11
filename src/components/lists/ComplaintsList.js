@@ -12,32 +12,28 @@ class ComplaintsList extends Component {
   componentWillMount() { 
     const cookies = new Cookies();
     var token = cookies.get("token");
-    const user = JSON.parse(
-      window.atob(
-        token
-          .split(".")[1]
-          .replace("-", "+")
-          .replace("_", "/")
-      ))
-
     this.props.dispatch(fetchComplaints(token));
   }
 
   render() {
-      const { orders } = this.props;
+      const { complaints } = this.props;
 
     return (
       
-      orders ?
+      complaints ?
       <div className="BasicList__container">
         <h4> Reklamationer </h4>
         <ul className="BasicList__list">
-          {orders.map(order => (
+          {complaints.map(order => (
           <li key={order.service_id}>
           {console.log(order)}
             <Link to={`/admin/orders/${order.service_id}`}>
               <div className="edit">
+              {order.service.company_name ?
                 <p>{order.service.company_name}</p>
+                :(
+                  <p>{order.service.con_pers}</p>
+                )}
                 <p>status: {order.service.status}</p>
                 <i className="fas fa-edit" />
               </div>
@@ -57,7 +53,7 @@ class ComplaintsList extends Component {
   }
 
   const mapStateToProps = state => ({ 
-    orders: state.admin.complaints, 
+    complaints: state.adminOrders.complaints, 
   });
 
 export default withRouter(connect(mapStateToProps)(ComplaintsList));

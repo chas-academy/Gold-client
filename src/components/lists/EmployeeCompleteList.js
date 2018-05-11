@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import { fetchOrders } from "../../redux/actions/admin/Orders";
+// import { fetchOrders } from "../../redux/actions/admin/Orders";
 
-import Cookies from "universal-cookie";
+// import Cookies from "universal-cookie";
 
 import './style.css'
 
@@ -13,19 +13,19 @@ class EmployeeCompleteList extends Component {
   //   super(props);
   // }
 
-  componentWillMount() { 
-    const cookies = new Cookies();
-    var token = cookies.get("token");
-    const user = JSON.parse(
-      window.atob(
-        token
-          .split(".")[1]
-          .replace("-", "+")
-          .replace("_", "/")
-      ))
+  // componentWillMount() { 
+  //   const cookies = new Cookies();
+  //   var token = cookies.get("token");
+  //   const user = JSON.parse(
+  //     window.atob(
+  //       token
+  //         .split(".")[1]
+  //         .replace("-", "+")
+  //         .replace("_", "/")
+  //     ))
 
-    this.props.dispatch(fetchOrders(token));
-  }
+  //   this.props.dispatch(fetchOrders(token));
+  // }
 
   render() {
     const { orders } = this.props;
@@ -62,7 +62,6 @@ class EmployeeCompleteList extends Component {
 }
 
 const mapStateToProps = state => ({ 
-  orders: state.admin.orders, 
 });
 
 export default withRouter(connect(mapStateToProps)(EmployeeCompleteList));

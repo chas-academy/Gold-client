@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import { connect } from "react-redux";
-import { fetchOrders } from "../../redux/actions/admin/Orders";
+import { Tabs, TabLink, TabContent } from "react-tabs-redux";
+import { fetchServicesDone } from "../../redux/actions/admin/Orders";
 import Cookies from "universal-cookie";
 
 import { Link, withRouter } from "react-router-dom";
@@ -15,7 +16,6 @@ class CompletedOrdersList extends Component {
     }
   }
 
-
   componentWillMount() { 
     const cookies = new Cookies();
     var token = cookies.get("token");
@@ -27,7 +27,7 @@ class CompletedOrdersList extends Component {
           .replace("_", "/")
       ))
 
-    this.props.dispatch(fetchOrders(token));
+    this.props.dispatch(fetchServicesDone(token));
 
     if(user.user_type === 'admin') {
       this.setState({ isAdmin: true })
@@ -35,28 +35,38 @@ class CompletedOrdersList extends Component {
     }
   render() {
       const { isAdmin } = this.state;
-      const { orders } = this.props;
+      const { services } = this.props;
+
+      const { servicesDone } = this.props; 
+      const completedOrders = servicesDone.filter(order => order.order_type === 'order')    
+      const completedComplaints = servicesDone.filter(order => order.order_type === 'complaint')    
+      const completedInternalOrders = servicesDone.filter(order => order.order_type === 'int_order')    
+
     
+      console.log(services);
       return (
-    orders ?
+    services ?
       <div className="BasicList__container">
         <h4>Avslutade ärenden</h4>
-        <ul className="BasicList__list">
-            {isAdmin === true ?
-            orders.map(order => (
-              <li key={order.service_id}>
-                <Link to={`/admin/orders/${order.service_id}`}>
-                  <div className="edit">
-                    <p>Beställare : XXXX, orderId: </p>
-                    <i className="fas fa-exclamation-triangle"></i> Skapa Reklamation
-                  </div>
-                </Link>
-              </li>
-              ))
-            : ( 
-              orders.map(order => (
+        <Tabs>
+        <div className="history-tabs">
+              <TabLink className="history-tablink" to="beställningar">
+                Beställningar
+              </TabLink>
+              <TabLink className="history-tablink" to="reklamationer">
+                Reklamationer
+              </TabLink>
+              <TabLink className="history-tablink" to="Interna">
+                Interna 
+              </TabLink>
+            </div>
+          <TabContent for="beställningar">
+          <ul className="BasicList__list">
+              {isAdmin === true ?
+              services.map(order => (
                 <li key={order.service_id}>
-                  <Link to={`/orders/${order.service_id}`}>
+                {console.log(order)}
+                  <Link to={`/admin/orders/${order.service_id}`}>
                     <div className="edit">
                       <p>Beställare : XXXX, orderId: </p>
                       <i className="fas fa-exclamation-triangle"></i> Skapa Reklamation
@@ -64,9 +74,81 @@ class CompletedOrdersList extends Component {
                   </Link>
                 </li>
                 ))
-              )
-            }
-        </ul>
+              : ( 
+                services.map(order => (
+                  <li key={order.service_id}>
+                    <Link to={`/orders/${order.service_id}`}>
+                      <div className="edit">
+                        <p>Beställare : XXXX, orderId: </p>
+                        <i className="fas fa-exclamation-triangle"></i> Skapa Reklamation
+                      </div>
+                    </Link>
+                  </li>
+                  ))
+                )
+              }
+          </ul>
+          </TabContent>
+          <TabContent for="reklamatinoer">
+          <ul className="BasicList__list">
+              {isAdmin === true ?
+              services.map(order => (
+                <li key={order.service_id}>
+                {console.log(order)}
+                  <Link to={`/admin/orders/${order.service_id}`}>
+                    <div className="edit">
+                      <p>Beställare : XXXX, orderId: </p>
+                      <i className="fas fa-exclamation-triangle"></i> Skapa Reklamation
+                    </div>
+                  </Link>
+                </li>
+                ))
+              : ( 
+                services.map(order => (
+                  <li key={order.service_id}>
+                    <Link to={`/orders/${order.service_id}`}>
+                      <div className="edit">
+                        <p>Beställare : XXXX, orderId: </p>
+                        <i className="fas fa-exclamation-triangle"></i> Skapa Reklamation
+                      </div>
+                    </Link>
+                  </li>
+                  ))
+                )
+              }
+          </ul>
+          </TabContent>
+          <TabContent for="interna">
+          <ul className="BasicList__list">
+              {isAdmin === true ?
+              services.map(order => (
+                <li key={order.service_id}>
+                {console.log(order)}
+                  <Link to={`/admin/orders/${order.service_id}`}>
+                    <div className="edit">
+                      <p>Beställare : XXXX, orderId: </p>
+                      <i className="fas fa-exclamation-triangle"></i> Skapa Reklamation
+                    </div>
+                  </Link>
+                </li>
+                ))
+              : ( 
+                services.map(order => (
+                  <li key={order.service_id}>
+                    <Link to={`/orders/${order.service_id}`}>
+                      <div className="edit">
+                        <p>Beställare : XXXX, orderId: </p>
+                        <i className="fas fa-exclamation-triangle"></i> Skapa Reklamation
+                      </div>
+                    </Link>
+                  </li>
+                  ))
+                )
+              }
+          </ul>
+          </TabContent>
+
+        </Tabs>
       </div>
       : (
         <div className="BasicList__container">
@@ -79,7 +161,7 @@ class CompletedOrdersList extends Component {
 }
 
 const mapStateToProps = state => ({ 
-  orders: state.admin.orders, 
+  services: state.adminOrders.services, 
 });
 
 

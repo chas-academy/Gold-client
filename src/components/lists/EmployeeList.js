@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { fetchUsers } from "../../redux/actions/admin/Accounts";
+import { fetchEmployees } from "../../redux/actions/admin/Accounts";
 import Cookies from "universal-cookie";
 
 import { Link, withRouter } from "react-router-dom";
@@ -11,39 +11,27 @@ class EmployeeList extends Component {
   componentWillMount() { 
     const cookies = new Cookies();
     var token = cookies.get("token");
-    const user = JSON.parse(
-      window.atob(
-        token
-          .split(".")[1]
-          .replace("-", "+")
-          .replace("_", "/")
-      ))
-
-    this.props.dispatch(fetchUsers(token));
+    this.props.dispatch(fetchEmployees(token));
   }
 
   render() {
 
-    const { users } = this.props;
-
-    // if type === employee
-    console.log(users);
-
+    const { employees } = this.props;
     return (
-      users ?
+      employees ?
       <div className="BasicList__container">
         <h4> Anställda </h4>
         <ul className="BasicList__list">
-          {/* {users.map(order => (
-          <li key={user.id}>
-            <Link to={`/admin/userss/${user_id}`}>
+          {employees.map(employee => (
+          <li key={employee.id}>
+            <Link to={`/admin/users/${employee.id}`}>
               <div className="edit">
-                <p> {user.name} </p>
-                <i className="fas fa-edit" />
+                <p> {employee.name} </p>
+                <i className="fas fa-cog"></i>
               </div>
             </Link>
           </li>
-          ))} */}
+          ))}
         </ul>
       </div>
       : (
@@ -57,7 +45,7 @@ class EmployeeList extends Component {
 }
 
 const mapStateToProps = state => ({ 
-  orders: state.admin.users, 
+  employees: state.adminAccounts.employees, 
 });
 
 export default withRouter(connect(mapStateToProps)(EmployeeList));

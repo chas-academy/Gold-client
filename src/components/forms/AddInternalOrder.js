@@ -71,11 +71,11 @@ class AddInternalOrder extends Component {
                 </div>
               )}
           </div>
-          <label class="BasicForm__checkboxContainer">
+          <label className="BasicForm__checkboxContainer">
             <input type="checkbox" />
-            <span class="BasicForm__checkmark">
+            <span className="BasicForm__checkmark">
               <i className="fas fa-hand-point-right"></i>
-              <i class="fas fa-exclamation-circle" />
+              <i className="fas fa-exclamation-circle" />
               Akut ärende? (åtgärdas inom 4h)
             </span>
           </label>

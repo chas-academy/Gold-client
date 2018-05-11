@@ -16,15 +16,6 @@ class MapContainer extends Component {
   componentWillMount() {
     const cookies = new Cookies();
     var token = cookies.get("token");
-    const user = JSON.parse(
-      window.atob(
-        token
-          .split(".")[1]
-          .replace("-", "+")
-          .replace("_", "/")
-      )
-    );
-
     this.props.dispatch(fetchServices(token));
   }
 
@@ -103,7 +94,7 @@ class MapContainer extends Component {
 }
 
 const mapStateToProps = state => ({
-  orders : state.admin.services
+  services : state.adminOrders.services
 });
 
 export default connect(mapStateToProps)(MapContainer);

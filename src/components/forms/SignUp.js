@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { registerUser } from '../../redux/actions/Auth';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
 
 import { LocationSearchInput } from "../../components";
 
@@ -123,8 +122,8 @@ class SignUp extends Component {
   
   render() {
     const {
+      company,
       address,
-      customer_type,
       email,
       errorMessage,
       submitted,
@@ -135,7 +134,7 @@ class SignUp extends Component {
       passwordError,
       tel,
       phoneError,
-      success,
+      privateCustomer,
       ValidatePassword,
     } = this.state;
 

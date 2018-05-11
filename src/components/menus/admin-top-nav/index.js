@@ -44,9 +44,17 @@ openMenu(event) {
             <i className="fas fa-inbox slide"></i>
             Nya
           </a>
+          <a id="incoming" className="menu-item" href={`/admin/orders/handled`}>                
+            <i className="fas fa-inbox slide"></i>
+            Hanterade
+          </a>
           <a id="active" className="menu-item" href={`/admin/orders/active`}>
           < i className="fas fa-clock slide"></i>
             Pågående
+          </a>
+          <a id="active" className="menu-item" href={`/admin/orders`}>
+          < i className="fas fa-clock slide"></i>
+            Beställningar
           </a>
           <a id="internal" className="menu-item" href={`/admin/orders/internal`}>
             <i className="fas fa-envelope-open slide"></i>

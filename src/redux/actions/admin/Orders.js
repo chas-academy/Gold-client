@@ -69,9 +69,9 @@ export const requestServicesNew = () => ({
   type: FETCH_SERVICES_NEW_START
 });
 
-export const recieveServicesNew = orders => ({
+export const recieveServicesNew = servicesNew => ({
   type: FETCH_SERVICES_NEW_SUCCESS,
-  payload: orders
+  payload: servicesNew
 });
 
 export const fetchServicesNew = token => dispatch => {
@@ -83,8 +83,8 @@ export const fetchServicesNew = token => dispatch => {
     }
   })
     .then(res => res.json())
-    .then(orders => {
-      return dispatch(recieveServicesNew(orders));
+    .then(servicesNew => {
+      return dispatch(recieveServicesNew(servicesNew));
     })
     .catch(response => {
       console.error("An error occured when fetching the order");
@@ -109,7 +109,6 @@ export const recieveServicesTaken = orders => ({
 export const fetchServicesTaken = token => dispatch => {
   dispatch(requestServicesTaken());
 
-  debugger;
   return fetch("https://gold-api-dev.chas.school/services/taken", {
     headers: {
       Authorization: token
@@ -141,7 +140,6 @@ export const recieveServicesDone = orders => ({
 export const fetchServicesDone = token => dispatch => {
   dispatch(requestServicesDone());
 
-  debugger;
   return fetch("https://gold-api-dev.chas.school/services/done", {
     headers: {
       Authorization: token
@@ -174,7 +172,6 @@ export const recieveOrder = order => ({
 export const fetchOrder = token => dispatch => {
   dispatch(requestOrder());
 
-  debugger;
   return fetch("https://gold-api-dev.chas.school/orders/:id", {
     headers: {
       Authorization: token

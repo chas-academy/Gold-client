@@ -4,10 +4,6 @@ import './style.css'
 import { CustomerBottomNav, CompletedOrdersList } from '../../components'
 
 export default class CustomerHistory extends Component {
-    constructor (props) {
-        super(props);
-    
-    } 
 
   render() {
     return (
