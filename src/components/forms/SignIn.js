@@ -36,7 +36,7 @@ componentDidMount() {
 handleChange(event) {
   const { name, value } = event.target;
   this.setState({ [name]: value });
-
+  
   const isNumeric = /^[0-9]+$/;
 
   if (this.state.pers_org_num.match(isNumeric)) {
@@ -66,8 +66,13 @@ handleChange(event) {
 
     if (pers_org_num && password) {
       this.props.loginUser({ user })
-      .then((res) => this.props.history.push('/home'),
-      (err) => this.setState({errorMessage: 'Could not match username with password', isLoading: false }))
+      .then((res) => {
+        if (!res) {
+          this.props.history.push('/home')
+        } else {
+          this.setState({errorMessage: res, isLoading: false })
+        }
+      })
     }
 
   }

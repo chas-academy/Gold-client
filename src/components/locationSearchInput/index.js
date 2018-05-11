@@ -21,7 +21,7 @@ class LocationSearchInput extends React.Component {
       .then(results => getLatLng(results[0]))
       .then(latLng => {
         console.log('Success', latLng)
-        this.props.callback(this.state.address, latLng.lat, latLng.lng)
+        this.props.getAddress(this.state.address, latLng.lat, latLng.lng)
       })
       .catch(error => console.error('Error', error))
   }

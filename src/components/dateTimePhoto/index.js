@@ -11,17 +11,30 @@ class DateTimePhoto extends Component {
     super(props);
     this.state = {
       startDate: moment(),
-      time: ''
+      date: '',
+      time: '',
+      photo: ''
     };
     
     this.handleChange = this.handleChange.bind(this);
   }
 
-  handleChange(date, event) {
+  handleChange(date) {
+    this.setState({ startDate: date, date: date.format('Y-MM-DD') });
+  }
 
-    this.setState({
-      startDate: date,
-    });
+  setDate() {
+    this.setState({ date: this.state.startDate.format('Y-MM-DD') });
+    this.props.getDate(this.state.date)
+  }
+
+  setTime(time) {
+    this.setState({ time: time.target.value })
+    this.props.getTime(this.state.time)
+  }
+
+  setPhoto(photo) {
+    this.props.getPhoto(photo)
   }
 
   render() {
@@ -29,29 +42,34 @@ class DateTimePhoto extends Component {
     return (
       <div className="DateTime__container">
           <div className="DateTime__buttons">
-            <button className="AddPhotos__button">
+            <button type="button" className="AddPhotos__button">
               <i className="fas fa-calendar-alt" />
             </button>
             <DatePicker
               selected={this.state.startDate}
               onChange={this.handleChange}
+              dateFormat='Y-MM-DD'
+              onBlur={this.setDate.bind(this)}
             />
           </div>
 
           <div className="DateTime__buttons">
-            <button className="AddPhotos__button">
+            <button type="button" className="AddPhotos__button">
               <i className="fas fa-clock" />
             </button>   
             <input
               className="DateTime__input"
-              type="text"
+              type="time"
               name="time"
               placeholder="HH:MM"
               value={time}
-              onChange={this.handleChange}
+              onChange={this.setTime.bind(this)}
+              onBlur={this.setTime.bind(this)}
             />
           </div>
-            <AddPhotos />
+            <AddPhotos
+            setPhoto={this.setPhoto.bind(this)}
+            />
       </div>
     );
   }

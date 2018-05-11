@@ -42,20 +42,12 @@ export const loginUser = user => dispatch => {
   })
     .then(res => res.json())
     .then(res => {
-      console.log(res);
-      const cookies = new Cookies();
-      cookies.set("token", res.token, { path: "/", maxAge: 86399 });
-      var token = cookies.get("token");
-      console.log(
-        JSON.parse(
-          window.atob(
-            token
-              .split(".")[1]
-              .replace("-", "+")
-              .replace("_", "/")
-          )
-        )
-      ); // decoded info from token
+      if (res.error) {
+        return res.error
+      } else {
+        const cookies = new Cookies();
+        cookies.set("token", res.token, { path: "/", maxAge: 86399 });
+      }
     });
 };
 
@@ -83,7 +75,17 @@ export const RegisterError = message => ({
 export const registerUser = regUser => dispatch => {
   dispatch(requestRegister());
 
-  return fetch('https://gold-api-dev.chas.school/register', {
+  var error = { name: "ValidationError", errors: [] }
+  if (regUser.regUser.pers_org_num.length < 10 || regUser.regUser.pers_org_num.length > 12) {
+    error.errors.push({ message: 'Pers/Orgnummer måste vara 10-12 siffror'})
+    return fetch(process.env.REACT_APP_API_BASE_URL + "/", {}).then(() => { return error })
+  }
+  if (regUser.regUser.address.length < 1) {
+    error.errors.push({ message: ' '})
+    return fetch(process.env.REACT_APP_API_BASE_URL + "/", {}).then(() => { return error })
+  }
+
+  return fetch(process.env.REACT_APP_API_BASE_URL + "/register", {
     method: "POST",
     body: JSON.stringify(regUser.regUser),
     headers: {
@@ -92,7 +94,9 @@ export const registerUser = regUser => dispatch => {
   })
     .then(res => res.json())
     .then(res => {
-      console.log(res);
+      if (res.error) {
+        return res.error
+      }
     });
 };
 
