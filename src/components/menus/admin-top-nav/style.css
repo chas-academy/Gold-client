@@ -104,6 +104,16 @@
 }
 
 @media (min-width: 800px) {
+    #mobile-menu {
+        display: none;
+    }
+    .bm-menu {
+        height: 90.5%!important; 
+    }
+    .logo {
+        width: 65px;
+        margin: 2.7vh auto;
+    }
     .slide-menu {
       width: 26.5%!important;
       top: 0px!important;
@@ -119,4 +129,17 @@
         display: none;
         position: fixed!important;
     }
+    .slide-logout {
+        margin: 0;
+        padding: 5px 0 5px 20px;
+    }
+  }
+
+  @media (max-width: 800px) {
+      #mobile-menu {
+          display: block;
+      }
+      .slide-menu {
+          display: none;
+      }
   }
