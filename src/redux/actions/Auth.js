@@ -8,7 +8,7 @@ import {
   REGISTER_REQUEST,
   REGISTER_SUCCESS,
   REGISTER_FAILURE
-} from "./action-types";
+} from "./Action-types";
 
 export const requestLogin = creds => ({
   type: LOGIN_REQUEST,

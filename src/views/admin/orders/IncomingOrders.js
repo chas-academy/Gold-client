@@ -8,11 +8,8 @@ export default class IncomingOrders extends Component {
     return (
         <div> 
             <AdminTopNav />
-                <div className="Admin__div">
                     <IncomingOrdersList />
                     <CreateOrder />
-                </div>    
-
             <AdminBottomNav />
         </div>    
     )

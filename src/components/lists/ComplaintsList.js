@@ -1,37 +1,63 @@
-import React, { Component } from "react"
-// import { connect } from "react-redux";
-import { Link, withRouter } from "react-router-dom"
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { fetchComplaints } from "../../redux/actions/admin/Orders";
+import Cookies from "universal-cookie";
+
+import { Link, withRouter } from "react-router-dom";
 import './style.css'
 
 
 class ComplaintsList extends Component {
+
+  componentWillMount() { 
+    const cookies = new Cookies();
+    var token = cookies.get("token");
+    const user = JSON.parse(
+      window.atob(
+        token
+          .split(".")[1]
+          .replace("-", "+")
+          .replace("_", "/")
+      ))
+
+    this.props.dispatch(fetchComplaints(token));
+  }
+
   render() {
-      const orderId = 1;
-      const orderId2 = 2;
+      const { orders } = this.props;
+
     return (
+      
+      orders ?
       <div className="BasicList__container">
         <h4> Reklamationer </h4>
         <ul className="BasicList__list">
-          <li>
-            <Link to={`/admin/orders/${orderId}`}>
+          {orders.map(order => (
+          <li key={order.service_id}>
+          {console.log(order)}
+            <Link to={`/admin/orders/${order.service_id}`}>
               <div className="edit">
-                <p>Beställare : XXXX, orderId:{orderId} </p>
+                <p>{order.service.company_name}</p>
+                <p>status: {order.service.status}</p>
                 <i className="fas fa-edit" />
               </div>
             </Link>
           </li>
-          <li>
-            <Link to={`/admin/orders/${orderId2}`}>
-              <div className="edit">
-                <p>Beställare: XXXX, orderId:{orderId2}</p>
-                <i className="fas fa-edit" />
-              </div>
-            </Link>
-          </li>
+          ))}
         </ul>
       </div>
-    );
+      : (        
+        <div className="BasicList__container">
+          <h4> Reklamationer </h4>
+          <p>Inga reklamationer att visa</p>
+        </div>  
+         )
+      )
+    } 
   }
-}
 
-export default withRouter(ComplaintsList);
+  const mapStateToProps = state => ({ 
+    orders: state.admin.complaints, 
+  });
+
+export default withRouter(connect(mapStateToProps)(ComplaintsList));

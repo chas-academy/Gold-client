@@ -7,7 +7,7 @@ import {
     REGISTER_REQUEST,
     REGISTER_SUCCESS,
     REGISTER_FAILURE
-} from '../actions/action-types';
+} from '../actions/Action-types';
 
 const initialState = {
     isFetching: false,
