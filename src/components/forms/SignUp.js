@@ -123,6 +123,7 @@ class SignUp extends Component {
   render() {
     const {
       company,
+      customer_type,
       address,
       email,
       errorMessage,
