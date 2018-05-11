@@ -80,9 +80,3 @@ body {
     margin-left: 20px;
 
 }
-@media (min-width: 800px) {
-    .AdminHome {
-        width: 72.5%!important;
-        margin-left: 27%!important;
-    }
-}
