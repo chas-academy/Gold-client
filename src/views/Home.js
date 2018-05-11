@@ -16,16 +16,13 @@ class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isAdmin: null,
-      isCustomer: null,
-      isEmployee: null
+      userType: ''
     };
   }
 
   componentDidMount() {
     const cookies = new Cookies();
     var token = cookies.get("token");
-
     const user = JSON.parse(
       window.atob(
         token
@@ -34,48 +31,48 @@ class Home extends Component {
           .replace("_", "/")
       )
     );
-
-    switch (true) {
-      case user.user_type === "admin":
-        this.setState({ isAdmin: true });
-        break;
-      case user.user_type === "employee":
-        this.setState({ isEmployee: true });
-        break;
-      case user.user_type === "customer":
-        this.setState({ isCustomer: true });
-        break;
-      default:
-        this.props.history.push("/login");
-        break;
+    switch(user.user_type) {
+        case 'admin':
+            this.setState({ userType: 'admin' })
+            break;
+        case 'customer':
+            this.setState({ userType: 'customer'})
+            break;
+        case 'employee':
+            this.setState({ userType: 'employee'})
+            break;
+        default:
+            this.props.history.push('/')
     }
-
   }
 
-  render() {
-    const { isAdmin, isCustomer, isEmployee } = this.state;
+  
 
-    switch (true) {
-      case isAdmin:
-        return (
-          <div>
+  render() {
+    const { userType } = this.state;
+    function renderSwitch(state) {
+      switch(userType) {
+        case 'admin': 
+          return (<div>
             <AdminTopNav />
             <AdminHomeTop />
             <MapContainer />
             <AdminBottomNav />
-          </div>
-        );
-        break;
-      case isEmployee:
-        return <EmployeeHome />;
-        break;
-      case isCustomer:
-        return <CustomerHome />;
-        break;
-      default: 
-        return <p>Logga in</p>  
-        break;
+          </div>)
+          break;
+        case 'customer':
+          return (<CustomerHome />)
+          break;
+        case 'employee':
+          return (<EmployeeHome />)
+          break;
+        default:
+          return (<div></div>)
+      }
     }
+    return (
+      renderSwitch()
+    );
   }
 }
 

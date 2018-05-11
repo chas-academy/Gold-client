@@ -3,11 +3,11 @@ import React from "react";
 import ImageUploader from "../imageUploader";
 import "./style.css";
 
-const AddPhotos = () => {
+const AddPhotos = (props) => {
   return (
     <div>
-      <ImageUploader>
-        <button className="AddPhotos__button">
+      <ImageUploader setPhoto={props.setPhoto}>
+        <button type="button" className="AddPhotos__button">
           <i className="fas fa-camera"></i>
         </button>
         <p className="AddPhotos__text">Lägg till foto</p>
