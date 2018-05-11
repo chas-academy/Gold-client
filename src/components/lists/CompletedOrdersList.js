@@ -36,6 +36,12 @@ class CompletedOrdersList extends Component {
   render() {
       const { isAdmin } = this.state;
       const { services } = this.props;
+
+      const { servicesDone } = this.props; 
+      const completedOrders = servicesDone.filter(order => order.order_type === 'order')    
+      const completedComplaints = servicesDone.filter(order => order.order_type === 'complaint')    
+      const completedInternalOrders = servicesDone.filter(order => order.order_type === 'int_order')    
+
     
       console.log(services);
       return (

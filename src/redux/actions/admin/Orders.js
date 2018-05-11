@@ -69,9 +69,9 @@ export const requestServicesNew = () => ({
   type: FETCH_SERVICES_NEW_START
 });
 
-export const recieveServicesNew = orders => ({
+export const recieveServicesNew = servicesNew => ({
   type: FETCH_SERVICES_NEW_SUCCESS,
-  payload: orders
+  payload: servicesNew
 });
 
 export const fetchServicesNew = token => dispatch => {
@@ -83,8 +83,8 @@ export const fetchServicesNew = token => dispatch => {
     }
   })
     .then(res => res.json())
-    .then(orders => {
-      return dispatch(recieveServicesNew(orders));
+    .then(servicesNew => {
+      return dispatch(recieveServicesNew(servicesNew));
     })
     .catch(response => {
       console.error("An error occured when fetching the order");
