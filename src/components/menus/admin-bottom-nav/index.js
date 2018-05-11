@@ -6,16 +6,19 @@ import "./style.css";
 class AdminBottomNav extends Component {
   constructor(props) {
     super(props);
+
     this.logout = this.logout.bind(this);
   }
 
   logout() {
-    localStorage.clear();
     this.props.history.push("/");
   }
 
   render() {
+
     return (
+       
+    <div>
       <nav className="bottomNav">
         <ul className="bottomNavList">
           <li>
@@ -33,13 +36,9 @@ class AdminBottomNav extends Component {
               <i className="fas fa-home" />
             </Link>
           </li>
-          <li>
-            <button className="logout" onClick={this.logout}>
-              <i className="fas fa-sign-out-alt" />
-            </button>
-          </li>
         </ul>
       </nav>
+      </div>
     );
   }
 }

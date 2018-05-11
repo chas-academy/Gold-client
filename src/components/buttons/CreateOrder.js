@@ -6,7 +6,7 @@ const CreateOrder = () => {
       return (
         <Link to={`/admin/orders/add`} >
           <button className="Create__button">
-            <i class="fas fa-plus"></i>
+            <i className="fas fa-plus"></i>
           </button> 
         </Link> 
       );

@@ -10,6 +10,24 @@ class AdminTopNav extends Component {
     event.preventDefault();
   }
 
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      open: false
+    }
+
+    this.openMenu = this.openMenu.bind(this);
+  }
+
+openMenu(event) {
+  event.preventDefault();
+  if (this.state.open === true) {
+    this.setState({ open: false })
+  } else {
+    this.setState({ open: true })
+  }
+}
 
   // var isMenuOpen = function(state) {
   //   return state.isOpen;
@@ -18,6 +36,8 @@ class AdminTopNav extends Component {
   // <Menu onStateChange={ isMenuOpen } />
 
   render() {
+
+    const { open } = this.state;
     return (
 
       <div>
@@ -25,6 +45,10 @@ class AdminTopNav extends Component {
       <div>
       <Menu className="slide-menu" id="menu" width={'75%'} isOpen={ true } disableOverlayClick disableCloseOnEsc noOverlay >
        <img src={logo} alt="logo" className="logo"/>
+        <button className="slide-menu__press" onClick={this.openMenu}>
+          <i className="fas fa-bars"></i>
+        </button>
+      <Menu isOpen={open} customBurgerIcon={ false } noOverlay className="slide-menu" width={'85%'}>
         <h3 className="slide-menu__header">Ärenden</h3>
           <a id="incoming" className="menu-item" href={`/admin/orders/incoming`}>                
             <i className="fas fa-inbox slide"></i>
@@ -65,7 +89,6 @@ class AdminTopNav extends Component {
           <i className="fas fa-sign-out-alt slide" />
           Logga ut
         </a>
-
         </Menu>  
         <Menu className="slide-menu" id="mobile-menu">
         <h3 className="slide-menu__header">Ärenden</h3>
@@ -109,7 +132,6 @@ class AdminTopNav extends Component {
           Logga ut
         </a>
         </Menu>  
-      </div>
       </div>
     );
   }

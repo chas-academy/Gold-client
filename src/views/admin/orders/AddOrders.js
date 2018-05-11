@@ -9,9 +9,7 @@ export default class AddOrders extends Component {
     return (
         <div> 
             <AdminTopNav />
-            <div className="Admin__div">
                 <AddOrder />
-            </div>    
             <AdminBottomNav />
         </div>    
     )

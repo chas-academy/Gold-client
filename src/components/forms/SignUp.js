@@ -1,9 +1,16 @@
 import React, { Component } from 'react';
-// import { loginUser } from '../actions/auth';
-// import { connect } from 'react-redux';
+import { registerUser } from '../../redux/actions/Auth';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+
+import { LocationSearchInput } from "../../components";
 
 import './style.css';
-import { LocationSearchInput } from "../../components";
+
+
+const mapDispatchToProps = dispatch => {
+  return { registerUser: regUser => dispatch(registerUser(regUser)) };
+};
 
 
 class SignUp extends Component {
@@ -13,18 +20,19 @@ class SignUp extends Component {
 
     this.state = {
       address: "",
-      lat: "",
-      lon: "",
-      company: null,
       email: "",
       errorMessage: "",
+      lat: "",
+      lon: "",
       name: "",
-      number: "",
+      pers_org_num: "",
       numberError: null,
       password: "",
-      phone: "",
-      privateCustomer: null,
+      passwordError: "",
+      tel: "",
+      customer_type: "",
       phoneError: null,
+      success: false,
       submitted: "",
       userIsNotAdmin: this.props,
       ValidatePassword: ""
@@ -34,8 +42,10 @@ class SignUp extends Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
-  callback(address, lat,  lon) {
-    this.setState({ address: address, lat: lat, lon: lon })
+  handleSelectChange(event) {
+    this.setState({
+      customer_type: event.target.value
+    })
   }
 
   handleChange(event) {
@@ -44,19 +54,19 @@ class SignUp extends Component {
 
     const isNumeric = /^[0-9]+$/;
 
-    if (this.state.phone.match(isNumeric)) {
+    if (this.state.tel.match(isNumeric)) {
       this.setState({ phoneError: false });
     } else {
       this.setState({ phoneError: true });
     }
 
-    if (this.state.number.match(isNumeric)) {
+    if (this.state.pers_org_num.match(isNumeric)) {
       this.setState({ numberError: false });
     } else {
       this.setState({ numberError: true });
     }
 
-    if (this.state.password.length >= 7) {
+    if (this.state.password.length >= 6) {
       this.setState({ passwordError: false });
     } else {
       this.setState({ passwordError: true });
@@ -67,62 +77,65 @@ class SignUp extends Component {
     event.preventDefault();
     this.setState({ submitted: true });
 
-    let type = null;
-    if (this.state.company == null) {
-      type = "private";
-    } else {
-      type = "company";
-    }
-
     const regUser = {
       name: this.state.name,
-      pers_org_num: this.state.number,
+      pers_org_num: this.state.pers_org_num,
       password: this.state.password,
-      type: type,
+      passwordVal: this.state.ValidatePassword,
+      type: this.state.customer_type,
       email: this.state.email,
-      tel: this.state.phone,
+      tel: this.state.tel,
       address: this.state.address,
       lat: this.state.lat,
       lon: this.state.lon
     }
 
-    // const url = '';
-
-    // if (process.env.NODE_ENV === 'development') {
-    //   const url = 'http://localhost:7770';
-    // } else {
-    //   const url = process.env.REACT_APP_API_BASE_URL;
-    // }
-    
-    
-    fetch(process.env.REACT_APP_API_BASE_URL+'/register', {
-      method: 'POST',
-      body: JSON.stringify(regUser),
-      headers: {
-        "Content-Type": "application/json"
+    var errorMessage = ''
+    if (!this.state.numberError && !this.state.passwordError && !this.state.phoneError) {
+      if ( regUser ) {
+        this.props.registerUser({ regUser })
+        .then((res) => {
+          if (!res) {
+            this.setState({ success: true })
+          } else {
+            res.errors.forEach(error => {
+              errorMessage = error.message
+              if (error.message == "pers_org_num must be unique") {
+                errorMessage = "Pers/Orgnummer är redan taget"
+              } else if (error.message == "Validation isEmail on email failed") {
+                errorMessage = "Felaktigt email"
+              } else if (error.message == "email must be unique") {
+                errorMessage = "Email är redan tagen"
+              } else if (error.message == "tel must be unique") {
+                errorMessage = "Telefonnummer är redan tagen"
+              }
+            });
+            this.setState({ errorMessage: errorMessage, submitted: false })
+          }
+        })
       }
-    })
-    .then((res) => res.json())
-    .then(res => {
-      console.log(res)
-    })
+    }
+  }
+  
+  getAddress(address, lat,  lon) {
+    this.setState({ address: address, lat: lat, lon: lon })
   }
   
   render() {
     const {
       address,
-      company,
+      customer_type,
       email,
       errorMessage,
       submitted,
       name,
-      number,
+      pers_org_num,
       numberError,
       password,
       passwordError,
-      phone,
+      tel,
       phoneError,
-      privateCustomer,
+      success,
       ValidatePassword,
     } = this.state;
 
@@ -148,34 +161,34 @@ class SignUp extends Component {
           </div>
           <div className="form-group">
             <div className="BasicForm__check">
-              <select className="BasicForm__select">
+              <select className="BasicForm__select" onChange={this.handleSelectChange.bind(this)}>
                 <option defaultValue>Välj typ av kund </option>
-                <option value="privateCustomer">Privatkund</option>
+                <option value="private">Privatkund</option>
                 <option value="company">Företagskund</option>
               </select>  
-          {(privateCustomer || company) && <i className="fas fa-check BasicForm__check" />}
+          {(customer_type) && <i className="fas fa-check BasicForm__check" />}
             </div>
           </div>      
           <div className="form-group">
             <div className="BasicForm__check">
               <input
                 type="text"
-                name="number"
+                name="pers_org_num"
                 className="form-control"
                 placeholder="YYMMDDXXXX / XXXXXXXXXX"
-                value={number}
+                value={pers_org_num}
                 onChange={this.handleChange}
               />
-              {number &&
+              {pers_org_num &&
                 !numberError && <i className="fas fa-check BasicForm__check" />}
             </div>
             {submitted &&
-              !number && (
+              !pers_org_num && (
                 <div className="help-block">
                   Glöm inte fylla i Person/organisationsnummer!
                 </div>
               )}
-            {number &&
+            {pers_org_num &&
               numberError && (
                 <div className="help-block">Oopa! fick du med en bokstav?</div>
               )}
@@ -201,22 +214,22 @@ class SignUp extends Component {
             <div className="BasicForm__check">
               <input
                 type="text"
-                name="phone"
+                name="tel"
                 className="form-control"
                 placeholder="Telefonnummer"
-                value={phone}
+                value={tel}
                 onChange={this.handleChange}
               />
-              {phone &&
+              {tel &&
                 !phoneError && <i className="fas fa-check BasicForm__check" />}
             </div>
             {submitted &&
-              !phone && (
+              !tel && (
                 <div className="help-block">
                   Glöm inte fylla i telefonnummer!
                 </div>
               )}
-            {phone &&
+            {tel &&
               phoneError && (
                 <div className="help-block">Oopa! fick du med en bokstav?</div>
               )}
@@ -229,6 +242,7 @@ class SignUp extends Component {
                 className="form-control"
                 placeholder="Lösenord"
                 value={password}
+                minLength='6'
                 onChange={this.handleChange}
               />
               {password && passwordError &&
@@ -245,7 +259,7 @@ class SignUp extends Component {
                 )}
             </div>
                 {password && passwordError  &&
-                <div className="help-block">Lösenordet måste vara minst 8 tecken långt</div>
+                <div className="help-block">Lösenordet måste vara minst 6 tecken långt</div>
                 }
                 {!passwordError && password && password !== ValidatePassword &&
                 <div className="help-block">Bekräfta lösenordet nedan</div>
@@ -265,6 +279,7 @@ class SignUp extends Component {
                 className="form-control"
                 placeholder="Bekräfta Lösenord"
                 value={ValidatePassword}
+                minLength='6'
                 onChange={this.handleChange}
               />
               {ValidatePassword &&
@@ -282,7 +297,7 @@ class SignUp extends Component {
               )}
           </div>
           <div className="form-group">
-            <LocationSearchInput />
+            <LocationSearchInput getAddress={this.getAddress.bind(this)} />
           </div>
           <div className="buttons">
             <div className="form-group">
@@ -299,4 +314,4 @@ class SignUp extends Component {
 }
 
   
-export default SignUp;
+export default connect(null, mapDispatchToProps)(SignUp);

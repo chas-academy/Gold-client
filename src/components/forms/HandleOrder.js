@@ -158,10 +158,6 @@ class HandleOrder extends Component {
           </div>
           <div className="form-group">
             <LocationSearchInput />
-            {submitted &&
-              !adress && (
-                <div className="help-block">Glöm inte fylla i adressen!</div>
-              )}
           </div>
           <label className="BasicForm__checkboxContainer">
               <input type="checkbox" />
