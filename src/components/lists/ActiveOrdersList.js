@@ -12,10 +12,13 @@ class ActiveOrdersList extends Component {
     const cookies = new Cookies();
     var token = cookies.get("token");
     this.props.dispatch(fetchServicesTaken(token));
+    console.log(token);
   }
 
   render() {
     const { servicesTaken } = this.props;
+
+    console.log(servicesTaken);
 
     const TakenOrders = servicesTaken.filter(
       order => order.order_type === "order"
@@ -42,7 +45,7 @@ class ActiveOrdersList extends Component {
             </TabLink>
           </div>
           <TabContent for="beställningar">
-            {TakenOrders ? (
+            {TakenOrders.length ? (
               <ul className="BasicList__list">
                 {TakenOrders.map(order => (
                   <li key={order.service_id}>
@@ -62,7 +65,7 @@ class ActiveOrdersList extends Component {
             )}
           </TabContent>
           <TabContent for="reklamationer">
-            {TakenComplaints ? (
+            {TakenComplaints.length ? (
               <ul className="BasicList__list">
                 {TakenComplaints.map(order => (
                   <li key={order.service_id}>
@@ -82,7 +85,7 @@ class ActiveOrdersList extends Component {
             )}
           </TabContent>
           <TabContent for="Interna">
-            {TakenInternalOrders ? (
+            {TakenInternalOrders.length ? (
               <ul className="BasicList__list">
                 {TakenInternalOrders.map(order => (
                   <li key={order.service_id}>

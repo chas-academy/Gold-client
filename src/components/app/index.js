@@ -57,12 +57,12 @@ class App extends Component {
           <Route path='/admin/services/completed' component={CompletedOrders} />
           <Route path='/admin/services/handle' component={HandleOrders} />
           <Route path='/admin/services/:id' component={Order} />
-          <Route path='/admin/orders' component={Orders} />
           <Route path='/admin/orders/add' component={AddOrders} />
           <Route path='/admin/orders/complaints/add' component={AddComplaints} />
           <Route path='/admin/orders/complaints' component={Complaints} />
           <Route path='/admin/orders/internal/add' component={AddInternalOrders} />
           <Route path='/admin/orders/internal' component={InternalOrders} />
+          <Route path='/admin/orders' component={Orders} />
           <Route path='/employee/active' component={EmployeeActive} />
           <Route path='/employee/history' component={EmployeeHistory} />
           <Route path='/employee/incoming' component={EmployeeIncoming} />

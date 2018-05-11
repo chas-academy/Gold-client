@@ -19,7 +19,7 @@ class OrdersList extends Component {
 
     const AssignedOrders = orders.filter(order => order.service.status === "assigned");
     const TakenOrders = orders.filter(order => order.service.status === "taken");
-    const DoneOrders = orders.filter(order => order.service.adminOrdersstatus === "done");
+    const DoneOrders = orders.filter(order => order.service.status === "done");
 
     return (
       <div className="BasicList__container">
