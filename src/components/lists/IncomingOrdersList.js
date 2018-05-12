@@ -40,12 +40,11 @@ class IncomingOrdersList extends Component {
                 {newOrders.map(order => (
                   <li key={order.id}>
                     <Link to={`/admin/orders/${order.id}`}>
-                      {console.log(order)}
                       <div className="edit">
                         {order.company_name ? (
-                          <p>Kund: {order.company_name} </p>
+                          <p>{order.company_name} </p>
                         ) : (
-                          <p>Kund: {order.con_pers} </p>
+                          <p>{order.con_pers} </p>
                         )}
                         <p> Hantera </p>
                       </div>
@@ -66,12 +65,11 @@ class IncomingOrdersList extends Component {
               {newComplaints.map(order => (
                 <li key={order.id}>
                   <Link to={`/admin/orders/${order.id}`}>
-                    {console.log(order)}
                     <div className="edit">
                       {order.company_name ? (
-                        <p>Kund: {order.company_name} </p>
+                        <p>{order.company_name} </p>
                       ) : (
-                        <p>Kund: {order.con_pers} </p>
+                        <p>{order.con_pers} </p>
                       )}
                       <p> Hantera </p>
                     </div>

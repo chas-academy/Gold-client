@@ -1,78 +1,174 @@
-import React from "react";
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { fetchServicesNew } from "../../redux/actions/admin/Orders";
+import { Tabs, TabLink, TabContent } from "react-tabs-redux";
 
-import './style.css'
+import Cookies from "universal-cookie";
+import { Link, withRouter } from "react-router-dom";
+import "./style.css";
 
-const AdminHomeTop = () => {
-  return (
-    <div className="BasicList__container AdminHome">  
-        <h4> Dagens jobb </h4>
-      <ul>
-        <li className="AdminHomeTop__li">
-          <a href="admin/orders/3">
-            <i
-              className="fas fa-map-marker button-glow-new"
-              style={{ color: "red", fontSize: "18px", marginRight: '10px' }}
-            />
-          </a>{" "}
-           Stena
-        </li>
-        <li className="AdminHomeTop__li">
-          <a href="admin/orders/4">
-            <i
-              className="fas fa-map-marker button-glow-new"
-              style={{ color: "red", fontSize: "18px", marginRight: '10px' }}
-            />
-          </a>{" "}
-           Köpenhamnsvägen 5 
-        </li>
-        <li className="AdminHomeTop__li">
-          <a href="admin/orders/1">
-            <i
-              className="fas fa-map-marker button-glow-active"
-              style={{ color: "orange", fontSize: "18px", marginRight: '10px' }}
-            />
-          </a>{" "}
-           Köpenhamnsvägen 50 : Giovanna
-        </li>
-        <li className="AdminHomeTop__li">
-          <a href="admin/orders/2">
-            <i
-              className="fas fa-map-marker button-glow-active"
-              style={{ color: "orange", fontSize: "18px", marginRight: '10px' }}
-            />
-          </a>{" "}
-           Lorensborgsgatan 7 : Tommy
-        </li>
-        <li className="AdminHomeTop__li">
-          <a href="admin/orders/2">
-            <i
-              className="fas fa-map-marker "
-              style={{ color: "green", fontSize: "18px", marginRight: '10px' }}
-            />
-          </a>{" "}
-           Baltzarsgatan 3 : Karin
-        </li>
-        <li className="AdminHomeTop__li">
-          <a href="admin/orders/2">
-            <i
-              className="fas fa-map-marker "
-              style={{ color: "green", fontSize: "18px", marginRight: '10px' }}
-            />
-          </a>{" "}
-           Caroli : Ivan
-        </li>
-        <li className="AdminHomeTop__li">
-          <a href="admin/orders/2">
-            <i
-              className="fas fa-map-marker"
-              style={{ color: "green", fontSize: "18px", marginRight: '10px' }}
-            />
-          </a>{" "}
-           Södra förstadsgatan 7 : Tommy
-        </li>
-      </ul>
-    </div>
-  );
-};
+class AdminHomeTop extends Component {
+  componentWillMount() {
+    const cookies = new Cookies();
+    var token = cookies.get("token");
+    this.props.dispatch(fetchServicesNew(token));
+  }
 
-export default AdminHomeTop;
+  render() {
+    const { servicesNew } = this.props;
+    const newOrders = servicesNew.filter(order => order.order_type === "order");
+    const newComplaints = servicesNew.filter(
+      order => order.order_type === "complaint"
+    );
+
+    const color = "";
+
+    return (
+      <div className="BasicList__container AdminHome">
+        <div className="BasicList__container">
+          <h4> Dagens jobb </h4>
+          <Tabs>
+            <div className="history-tabs">
+              <TabLink className="history-tablink" to="beställningar">
+                Beställningar
+              </TabLink>
+              <TabLink className="history-tablink" to="reklamationer">
+                Reklamationer
+              </TabLink>
+            </div>
+            <TabContent for="beställningar">
+              {newOrders.length ? (
+                <ul className="BasicList__list">
+                  {newOrders.map(order => (
+                    <li key={order.id}>
+                      <Link to={`/admin/services/${order.id}`}>
+                        <div className="edit">
+                          {order.status === "new" ? (
+                            <i
+                              className="fas fa-map-marker button-glow-new"
+                              style={{
+                                color: "red",
+                                fontSize: "18px",
+                                marginRight: "10px"
+                              }}
+                            />
+                          ) : order.status === "assigned" ? (
+                            <i
+                              className="fas fa-map-marker button-glow-new"
+                              style={{
+                                color: "blue",
+                                fontSize: "18px",
+                                marginRight: "10px"
+                              }}
+                            />
+                          ) : order.status === "taken" ? (
+                            <i
+                              className="fas fa-map-marker button-glow-new"
+                              style={{
+                                color: "orange",
+                                fontSize: "18px",
+                                marginRight: "10px"
+                              }}
+                            />
+                          ) : (
+                            <i
+                              className="fas fa-map-marker button-glow-new"
+                              style={{
+                                color: "green",
+                                fontSize: "18px",
+                                marginRight: "10px"
+                              }}
+                            />
+                          )}
+                          {order.company_name ? (
+                            <p> {order.company_name} </p>
+                          ) : (
+                            <p> {order.con_pers} </p>
+                          )}
+                          <p> Hantera </p>
+                        </div>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              ) : (
+                <div className="BasicList__container">
+                  <h4> Nya ärenden </h4>
+                  <p>Inga nya ärenden att visa</p>
+                </div>
+              )}
+            </TabContent>
+            <TabContent for="reklamationer">
+              {newComplaints.length ? (
+                <ul className="BasicList__list">
+                  {newComplaints.map(order => (
+                    <li key={order.id}>
+                      <Link to={`/admin/services/${order.id}`}>
+                        <div className="edit">
+                        {order.status === "new" ? (
+                            <i
+                              className="fas fa-map-marker button-glow-new"
+                              style={{
+                                color: "red",
+                                fontSize: "18px",
+                                marginRight: "10px"
+                              }}
+                            />
+                          ) : order.status === "assigned" ? (
+                            <i
+                              className="fas fa-map-marker button-glow-new"
+                              style={{
+                                color: "blue",
+                                fontSize: "18px",
+                                marginRight: "10px"
+                              }}
+                            />
+                          ) : order.status === "taken" ? (
+                            <i
+                              className="fas fa-map-marker button-glow-new"
+                              style={{
+                                color: "orange",
+                                fontSize: "18px",
+                                marginRight: "10px"
+                              }}
+                            />
+                          ) : (
+                            <i
+                              className="fas fa-map-marker button-glow-new"
+                              style={{
+                                color: "green",
+                                fontSize: "18px",
+                                marginRight: "10px"
+                              }}
+                            />
+                          )}
+                          {order.company_name ? (
+                            <p> {order.company_name} </p>
+                          ) : (
+                            <p> {order.con_pers} </p>
+                          )}
+                          <p> Hantera </p>
+                        </div>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              ) : (
+                <div className="BasicList__container">
+                  <h4> Nya ärenden </h4>
+                  <p>Inga nya reklamationer att visa</p>
+                </div>
+              )}
+            </TabContent>
+          </Tabs>
+        </div>
+      </div>
+    );
+  }
+}
+
+const mapStateToProps = state => ({
+  servicesNew: state.adminOrders.servicesNew
+});
+
+export default withRouter(connect(mapStateToProps)(AdminHomeTop));

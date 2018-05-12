@@ -12,13 +12,10 @@ class ActiveOrdersList extends Component {
     const cookies = new Cookies();
     var token = cookies.get("token");
     this.props.dispatch(fetchServicesTaken(token));
-    console.log(token);
   }
 
   render() {
     const { servicesTaken } = this.props;
-
-    console.log(servicesTaken);
 
     const TakenOrders = servicesTaken.filter(
       order => order.order_type === "order"

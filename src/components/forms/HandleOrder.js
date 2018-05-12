@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-// import { loginUser } from '../actions/auth';
-// import { connect } from 'react-redux';
-// import { withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
+import Cookies from "universal-cookie";
+// import { fetchService } from "../../redux/actions/admin/Orders";
 
 import {
   DateTimePhoto,
@@ -30,19 +30,19 @@ class HandleOrder extends Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
-  // componentWillMount() { 
-  //   const cookies = new Cookies();
-  //   var token = cookies.get("token");
-  //   const user = JSON.parse(
-  //     window.atob(
-  //       token
-  //         .split(".")[1]
-  //         .replace("-", "+")
-  //         .replace("_", "/")
-  //     ))
+  componentWillMount() { 
+    const cookies = new Cookies();
+    var token = cookies.get("token");
+    const user = JSON.parse(
+      window.atob(
+        token
+          .split(".")[1]
+          .replace("-", "+")
+          .replace("_", "/")
+      ))
 
-  //   this.props.dispatch(fetchOrder(token));
-  // }
+    // this.props.dispatch(fetchService(this.props.match.params.id, token));
+  }
 
   handleChange(event) {
     const { name, value } = event.target;
@@ -73,6 +73,8 @@ class HandleOrder extends Component {
       employee,
       errorMessage
     } = this.state;
+
+    // const { service } = this.props; 
 
     return (
       <div className="col-md-6 col-md-offset-3">
@@ -195,4 +197,8 @@ class HandleOrder extends Component {
   }
 }
 
-export default HandleOrder;
+const mapStateToProps = state => ({
+  service: state.adminOrders.service
+});
+
+export default connect(mapStateToProps)(HandleOrder);
