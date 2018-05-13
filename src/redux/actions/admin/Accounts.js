@@ -14,6 +14,9 @@ import {
     FETCH_USERS_START, 
     FETCH_USERS_SUCCESS, 
     FETCH_USERS_FAILURE,
+    UPDATE_USER_START, 
+    UPDATE_USER_SUCCESS, 
+    UPDATE_USER_FAILURE,
  } from './Action-types';
 
 
@@ -27,11 +30,11 @@ export const recieveUser = user => ({
     payload: user
 });
 
-export const fetchUser = (token) => dispatch => {
+export const fetchUser = (id, token) => dispatch => {
     
     dispatch(requestUser());
   
-    return fetch('https://gold-api-dev.chas.school/users/:id', {
+    return fetch(`https://gold-api-dev.chas.school/users/${id}`, {
         headers: {
         "Authorization": token
       }})
@@ -44,7 +47,6 @@ export const fetchUser = (token) => dispatch => {
           return dispatch({ type: FETCH_USER_FAILURE })
       });
   }; 
-
 
 
 /* ------------ USERS --------------- */    
@@ -75,6 +77,39 @@ export const fetchUsers = (token) => dispatch => {
           return dispatch({ type: FETCH_USERS_FAILURE })
       });
   };
+
+  /* ------------ UPDATE USER --------------- */    
+  export const startUpdate = () => ({
+    type: UPDATE_USER_START
+});
+
+export const updateSuccess = user => ({
+    type: UPDATE_USER_SUCCESS,
+    payload: user
+});
+
+export const updateUser = (user, token) => dispatch => {
+
+    debugger;
+    
+    dispatch(startUpdate());
+  
+    return fetch(`https://gold-api-dev.chas.school/users/update/${user.id}`, {
+        method: "PUT",
+        body: JSON.stringify(user),
+        headers: {
+        "Authorization": token
+      }})
+      .then(res => res.json())
+      .then((user) => {
+          return dispatch(updateSuccess(user));
+      })
+      .catch(response => {
+          console.error('The user was not updated')
+          return dispatch({ type: UPDATE_USER_FAILURE })
+      });
+  }; 
+  
 
 /* ------------ EMPLOYEES --------------- */    
 export const requestEmployees = () => ({

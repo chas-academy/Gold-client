@@ -43,7 +43,7 @@ export const requestService = () => ({
   type: FETCH_SERVICE_START
 });
 
-export const recieveServices = service => ({
+export const recieveService = service => ({
   type: FETCH_SERVICE_SUCCESS,
   payload: service
 });
@@ -334,7 +334,7 @@ export const requestComplaint = () => ({
   type: FETCH_COMPLAINT_START
 });
 
-export const recieveComplaint = complaints => ({
+export const recieveComplaint = complaint => ({
   type: FETCH_COMPLAINT_SUCCESS,
   payload: complaint
 });

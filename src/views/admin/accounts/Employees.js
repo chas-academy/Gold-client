@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-// import { connect } from "react-redux";
-import { AdminTopNav, AdminBottomNav, EmployeeList, CreateUser } from "../../../components";
+import { AdminTopNav, AdminBottomNav, EmployeeList, AddUser } from "../../../components";
 
 export default class Employees extends Component {
   render() {
@@ -8,7 +7,7 @@ export default class Employees extends Component {
       <div>
         <AdminTopNav />
           <EmployeeList />
-          <CreateUser />
+          <AddUser />
         <AdminBottomNav />
       </div>
     );

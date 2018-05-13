@@ -26,7 +26,7 @@ class PrivateCustomerList extends Component {
           {privateCustomers.map(customer => (
           <li key={customer.user_id}>
           {console.log(customer)}
-            <Link to={`/admin/customers/private/${customer.user_id}`}>
+            <Link to={`/admin/accounts/${customer.user_id}`}>
               <div className="edit">
                 <p> {customer.user.name} </p>
                 <i className="fas fa-cog"></i>

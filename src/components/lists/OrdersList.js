@@ -16,11 +16,14 @@ class OrdersList extends Component {
 
   render() {
     const { orders } = this.props;
-
-    const AssignedOrders = orders.filter(order => order.service.status === "assigned");
-    const TakenOrders = orders.filter(order => order.service.status === "taken");
-    const DoneOrders = orders.filter(order => order.service.status === "done");
-
+    
+    const AssignedOrders = [];
+    const TakenOrders = [];
+    const DoneOrders = [];
+    // const AssignedOrders = orders.filter(order => order.service.status === "assigned");
+    // const TakenOrders = orders.filter(order => order.service.status === "taken");
+    // const DoneOrders = orders.filter(order => order.service.status === "done");
+    
     return (
       <div className="BasicList__container">
         <h4> Beställningar </h4>

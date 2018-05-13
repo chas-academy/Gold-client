@@ -67,19 +67,23 @@ openMenu(event) {
             Avslutade
           </a> 
         <h3 className="slide-menu__header">Konton</h3>
-          <a id="incoming" className="menu-item" href={`/admin/accounts/employees`}>
+        <a id="create" className="menu-item" href={`/admin/accounts/creates`}>
+          <i className="fas fa-plus slide"></i>
+            Skapa ny användare
+          </a>
+          <a id="employees" className="menu-item" href={`/admin/accounts/employees`}>
           <i className="fas fa-users slide"></i>
             Anställda
           </a>
-          <a id="active" className="menu-item" href={`/admin/accounts/customers/private`}>
+          <a id="privateCustomers" className="menu-item" href={`/admin/accounts/customers/private`}>
           <i className="fas fa-user slide"></i>
             Privatkunder
           </a>
-          <a id="internal" className="menu-item" href={`/admin/accounts/customers/companies`}>
+          <a id="companies" className="menu-item" href={`/admin/accounts/customers/companies`}>
             <i className="fas fa-industry slide"></i>
             Företagskunder
           </a>
-          <a id="complaints" className="menu-item" href={`/admin/accounts/profile`}>
+          <a id="myProfile" className="menu-item" href={`/admin/accounts/profile`}>
             <i className="fas fa-user-circle slide"></i>
             Min profil
           </a>

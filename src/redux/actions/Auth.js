@@ -54,21 +54,18 @@ export const loginUser = user => dispatch => {
 export const requestRegister = creds => ({
   type: REGISTER_REQUEST,
   isFetching: true,
-  authenticated: false,
   creds
 });
 
 export const recieveRegister = user => ({
   type: REGISTER_SUCCESS,
   isFetching: false,
-  authenticated: true,
   id_token: user.id_token
 });
 
 export const RegisterError = message => ({
   type: REGISTER_FAILURE,
   isFetching: false,
-  authenticated: false,
   message
 });
 

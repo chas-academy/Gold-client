@@ -22,7 +22,8 @@ export { default as UserProfile } from './profile'
 export { default as EmployeeList } from './lists/EmployeeList'
 export { default as CompanyList } from './lists/CompanyList'
 export { default as PrivateCustomerList } from './lists/PrivateCustomerList'
-export { default as CreateUser } from './buttons/CreateUser'
+export { default as CreateUser } from './forms/CreateUser'
+export { default as AddUser } from './buttons/AddUser'
 export { default as UpdateUser } from './forms/UpdateUser'
 
 

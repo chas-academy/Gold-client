@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
 import Cookies from "universal-cookie";
-// import { fetchService } from "../../redux/actions/admin/Orders";
+import { fetchService } from "../../redux/actions/admin/Orders";
 
 import {
   DateTimePhoto,
@@ -23,25 +23,44 @@ class HandleOrder extends Component {
       adress: "",
       description: "",
       employee: "",
-      errorMessage: ""
+      errorMessage: "",
+      message: '',
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.delete = this.delete.bind(this);
   }
-
+  
   componentWillMount() { 
     const cookies = new Cookies();
     var token = cookies.get("token");
     const user = JSON.parse(
       window.atob(
         token
-          .split(".")[1]
-          .replace("-", "+")
-          .replace("_", "/")
+        .split(".")[1]
+        .replace("-", "+")
+        .replace("_", "/")
       ))
+      
+      // this.props.match.params.id,
+      const id = 1;
 
-    // this.props.dispatch(fetchService(this.props.match.params.id, token));
+    this.props.dispatch(fetchService(token, id));
+  }
+  
+  componentDidMount() {
+    // const service = this.props;
+    
+    // this.status === "new" ?
+    // this.setState({ message: `Detta är ett nytt ärende`})
+    // : this.status === "assigned" ?
+    //   this.setState({ message: `Det här ärendet har du tilldelat`})
+    // : this.status === "taken" ?
+    //   this.setState({ message: `Det här ärendet åtgärdar just nu`})
+    // : this.status === "done" 
+    //   this.setState({ message: `Det här ärendet är avslutat, för mer detaljer gå till avslutade ärenden`})
+
   }
 
   handleChange(event) {
@@ -62,6 +81,10 @@ class HandleOrder extends Component {
     this.setState({ submitted: true });
   }
 
+  delete(event) {
+    event.preventDefault();
+  }
+
   render() {
     const {
       submitted,
@@ -71,15 +94,17 @@ class HandleOrder extends Component {
       phoneError,
       description,
       employee,
-      errorMessage
+      errorMessage,
+      message,
     } = this.state;
 
-    // const { service } = this.props; 
+    const { service } = this.props; 
 
     return (
       <div className="col-md-6 col-md-offset-3">
         <form name="form" className="BasicForm" onSubmit={this.handleSubmit}>
-        <h5> Hantera Beställning</h5>
+        <h5> Hantera Ärende</h5>
+        <p>{message}</p>
           <div className="form-group">
             <div className="BasicForm__check">
               <input
@@ -189,6 +214,11 @@ class HandleOrder extends Component {
                 Skicka ärende till anställd
               </button>
               {errorMessage && <div className="help-block">{errorMessage}</div>}
+            </div>
+            <div className="form-group">
+              <button className="btn btn-danger" onClick={this.delete}>
+                Radera ärende
+              </button>
             </div>
           </div>
         </form>

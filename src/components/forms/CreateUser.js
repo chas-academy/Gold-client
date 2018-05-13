@@ -1,159 +1,184 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { fetchUser, updateUser } from "../../redux/actions/admin/Accounts";
-import Cookies from "universal-cookie";
+import React, { Component } from 'react';
+import { registerUser } from '../../redux/actions/Auth';
+import { connect } from 'react-redux';
 
-import "./style.css";
 import { LocationSearchInput } from "../../components";
 
-class UpdateUser extends Component {
-  constructor(props) {
+import './style.css';
+
+
+const mapDispatchToProps = dispatch => {
+  return { registerUser: regUser => dispatch(registerUser(regUser)) };
+};
+
+
+class CreateUser extends Component {
+  constructor (props) {
     super(props);
 
+
     this.state = {
-      user: this.props,
+      address: "",
+      email: "",
       errorMessage: "",
-      phoneError: "",
-      isAdmin: "",
+      lat: "",
+      lon: "",
+      name: "",
+      pers_org_num: "",
       numberError: "",
-      adminProfile: "",
       password: "",
-      ValidatePassword: "",
+      passwordError: "",
+      tel: "",
+      customer_type: "",
+      phoneError: "",
+      success: false,
       submitted: "",
+      ValidatePassword: ""
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
-  componentWillMount() {
-    const cookies = new Cookies();
-    var token = cookies.get("token");
-    const user = JSON.parse(
-      window.atob(
-        token
-          .split(".")[1]
-          .replace("-", "+")
-          .replace("_", "/")
-      )
-    );
-
-    user.user_type === "admin" 
-    // && this.props.params.id === "profile" 
-    ? (
-      this.setState({ isAdmin: true, adminProfile: true }),
-      this.props.dispatch(fetchUser(user.id, token))
-    ) : ( 
-      this.setState({ isAdmin: false }),
-      this.props.dispatch(fetchUser(2, token))
-    )
+  handleSelectChange(event) {
+    this.setState({
+      customer_type: event.target.value
+    })
   }
 
-
-  handleSubmit(event) {
-    event.preventDefault();
+  handleChange(event) {
     const { name, value } = event.target;
     this.setState({ [name]: value });
 
-    const cookies = new Cookies();
-    var token = cookies.get("token");
+    const isNumeric = /^[0-9]+$/;
 
+    if (this.state.tel.match(isNumeric)) {
+      this.setState({ phoneError: false });
+    } else {
+      this.setState({ phoneError: true });
+    }
+
+    if (this.state.pers_org_num.match(isNumeric)) {
+      this.setState({ numberError: false });
+    } else {
+      this.setState({ numberError: true });
+    }
+
+    if (this.state.password.length >= 6) {
+      this.setState({ passwordError: false });
+    } else {
+      this.setState({ passwordError: true });
+    }
+  }
+
+  handleSubmit(event) {
+    event.preventDefault();
     this.setState({ submitted: true });
 
-    const user = this.state.user;
+    const regUser = {
+      name: this.state.name,
+      pers_org_num: this.state.pers_org_num,
+      password: this.state.password,
+      passwordVal: this.state.ValidatePassword,
+      type: this.state.customer_type,
+    }
 
     var errorMessage = ''
     if (!this.state.numberError && !this.state.passwordError && !this.state.phoneError) {
-      
-      if ( user ) {
-        this.props.dispatch(updateUser({ user, token }))
+      if ( regUser ) {
+        this.props.registerUser({ regUser })
         .then((res) => {
-          if (!res) {
+          if (res) {
             this.setState({ success: true })
+            // send email?
           } else {
-            // res.errors.forEach(error => {
-            //   errorMessage = error.message
-            //   if (error.message == "pers_org_num must be unique") {
-            //     errorMessage = "Pers/Orgnummer är redan taget"
-            //   } else if (error.message == "Validation isEmail on email failed") {
-            //     errorMessage = "Felaktigt email"
-            //   } else if (error.message == "email must be unique") {
-            //     errorMessage = "Email är redan tagen"
-            //   } else if (error.message == "tel must be unique") {
-            //     errorMessage = "Telefonnummer är redan tagen"
-            //   }
-            errorMessage = 'oops';
-          }
+            res.errors.forEach(error => {
+              errorMessage = error.message
+              if (error.message == "pers_org_num must be unique") {
+                errorMessage = "Person/Organisationsnummer är redan registrerat"
+              }
             });
             this.setState({ errorMessage: errorMessage, submitted: false })
           }
+        })
       }
     }
-
+  }
+  
+  getAddress(address, lat,  lon) {
+    this.setState({ address: address, lat: lat, lon: lon })
+  }
   
   render() {
     const {
-      adminProfile,
-      submitted,
-      passwordError,
+      company,
+      customer_type,
+      address,
+      email,
       errorMessage,
-      isAdmin,
-      password,
-      ValidatePassword,
-      phoneError,
+      submitted,
+      name,
+      pers_org_num,
       numberError,
-      type
+      password,
+      passwordError,
+      tel,
+      phoneError,
+      privateCustomer,
+      ValidatePassword,
     } = this.state;
-
-    const { user } = this.props;
 
     return (
       <div className="col-md-6 col-md-offset-3">
         <form name="form" className="BasicForm" onSubmit={this.handleSubmit}>
-          <h5> Uppdatera profil</h5>
-          {user.type === 'admin' ?
-           <p> Din profil </p>
-           : user.type === "employee" ? (
-            <p> Anställd </p>
-          ) : user.type === "customer" ? (
-            <p> Kund </p>
-          ) : (
-            ""
-          )}
+        <h5> Skapa Användare </h5>
           <div className="form-group">
             <div className="BasicForm__check">
               <input
                 type="text"
-                name="user.name"
+                name="name"
                 className="form-control"
-                placeholder="Namn"
-                value={user.name}
+                placeholder="Namn *"
+                value={name}
+                onChange={this.handleChange}
               />
-              {user.name && <i className="fas fa-check BasicForm__check" />}
+              {name && <i className="fas fa-check BasicForm__check" />}
             </div>
             {submitted &&
-              !user.name && (
+              !name && (
                 <div className="help-block">Glöm inte fylla i namnet!</div>
               )}
           </div>
           <div className="form-group">
             <div className="BasicForm__check">
+              <select className="BasicForm__select" onChange={this.handleSelectChange.bind(this)}>
+                <option defaultValue>Välj typ av kund </option>
+                <option value="private">Privatkund *</option>
+                <option value="company">Företagskund *</option>
+              </select>  
+          {(customer_type) && <i className="fas fa-check BasicForm__check" />}
+            </div>
+          </div>      
+          <div className="form-group">
+            <div className="BasicForm__check">
               <input
                 type="text"
-                name="user.pers_org_num"
+                name="pers_org_num"
                 className="form-control"
-                placeholder="YYMMDDXXXX / XXXXXXXXXX"
-                value={user.pers_org_num}
+                placeholder="pers: YYMMDDXXXX / org: XXXXXXXXXX *"
+                value={pers_org_num}
+                onChange={this.handleChange}
               />
-              {user.pers_org_num &&
+              {pers_org_num &&
                 !numberError && <i className="fas fa-check BasicForm__check" />}
             </div>
             {submitted &&
-              !user.pers_org_num && (
+              !pers_org_num && (
                 <div className="help-block">
                   Glöm inte fylla i Person/organisationsnummer!
                 </div>
               )}
-            {user.pers_org_num &&
+            {pers_org_num &&
               numberError && (
                 <div className="help-block">Oopa! fick du med en bokstav?</div>
               )}
@@ -162,15 +187,16 @@ class UpdateUser extends Component {
             <div className="BasicForm__check">
               <input
                 type="text"
-                name="user.email"
+                name="email"
                 className="form-control"
                 placeholder="Email"
-                value={user.email}
+                value={email}
+                onChange={this.handleChange}
               />
-              {user.email && <i className="fas fa-check BasicForm__check" />}
+              {email && <i className="fas fa-check BasicForm__check" />}
             </div>
             {submitted &&
-              !user.email && (
+              !email && (
                 <div className="help-block">Glöm inte fylla i email!</div>
               )}
           </div>
@@ -178,21 +204,22 @@ class UpdateUser extends Component {
             <div className="BasicForm__check">
               <input
                 type="text"
-                name="user.tel"
+                name="tel"
                 className="form-control"
                 placeholder="Telefonnummer"
-                value={user.tel}
+                value={tel}
+                onChange={this.handleChange}
               />
-              {user.tel &&
+              {tel &&
                 !phoneError && <i className="fas fa-check BasicForm__check" />}
             </div>
             {submitted &&
-              !user.tel && (
+              !tel && (
                 <div className="help-block">
                   Glöm inte fylla i telefonnummer!
                 </div>
               )}
-            {user.tel &&
+            {tel &&
               phoneError && (
                 <div className="help-block">Oopa! fick du med en bokstav?</div>
               )}
@@ -205,34 +232,28 @@ class UpdateUser extends Component {
                 className="form-control"
                 placeholder="Lösenord"
                 value={password}
+                minLength='6'
+                onChange={this.handleChange}
               />
-              {password &&
-                passwordError &&
-                password !== ValidatePassword && (
+              {password && passwordError &&
+                password !== ValidatePassword &&  (
                   <i className="fas fa-check BasicForm__passwordNotOk" />
                 )}
-              {password &&
-                password !== ValidatePassword &&
-                !passwordError && (
+              {password && password !== ValidatePassword && !passwordError && (
                   <i className="fas fa-check BasicForm__check" />
                 )}
-
+                
               {password &&
                 password === ValidatePassword && (
                   <i className="fas fa-check BasicForm__passwordOk" />
                 )}
             </div>
-            {password &&
-              passwordError && (
-                <div className="help-block">
-                  Lösenordet måste vara minst 8 tecken långt
-                </div>
-              )}
-            {!passwordError &&
-              password &&
-              password !== ValidatePassword && (
+                {password && passwordError  &&
+                <div className="help-block">Lösenordet måste vara minst 6 tecken långt</div>
+                }
+                {!passwordError && password && password !== ValidatePassword &&
                 <div className="help-block">Bekräfta lösenordet nedan</div>
-              )}
+                }
             {submitted &&
               !password && (
                 <div className="help-block">
@@ -248,13 +269,15 @@ class UpdateUser extends Component {
                 className="form-control"
                 placeholder="Bekräfta Lösenord"
                 value={ValidatePassword}
+                minLength='6'
+                onChange={this.handleChange}
               />
               {ValidatePassword &&
-                user.password !== ValidatePassword && (
+                password !== ValidatePassword && (
                   <i className="fas fa-check BasicForm__passwordNotOk" />
                 )}
               {ValidatePassword &&
-                user.password === ValidatePassword && (
+                password === ValidatePassword && (
                   <i className="fas fa-check BasicForm__passwordOk" />
                 )}
             </div>
@@ -264,26 +287,15 @@ class UpdateUser extends Component {
               )}
           </div>
           <div className="form-group">
-            <LocationSearchInput />
-            {submitted &&
-              !user.adress && (
-                <div className="help-block">Glöm inte fylla i adressen!</div>
-              )}
+            <LocationSearchInput getAddress={this.getAddress.bind(this)} />
           </div>
           <div className="buttons">
             <div className="form-group">
               <button type="submit" className="btn btn-primary">
-                Spara
+                Registrera ny användare
               </button>
               {errorMessage && <div className="help-block">{errorMessage}</div>}
             </div>
-          </div>
-          <div className="form-group">
-            {isAdmin === true && !adminProfile ? (
-              <button className="btn btn-danger">Radera Användare</button>
-            ) : (
-              ""
-            )}
           </div>
         </form>
       </div>
@@ -291,8 +303,5 @@ class UpdateUser extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  user: state.adminAccounts.user
-});
-
-export default connect(mapStateToProps)(UpdateUser);
+  
+export default connect(null, mapDispatchToProps)(CreateUser);
