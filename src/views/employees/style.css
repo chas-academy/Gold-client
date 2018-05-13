@@ -17,8 +17,10 @@
 }
 
 .tab-link-active {
-    border: 1px solid #377bb5;
+    color: black;
+    border-radius: 0 !important;
 }
+
 
 .history-tablink:hover {
     text-decoration: none;
