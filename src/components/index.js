@@ -11,6 +11,8 @@ export { default as LocationSearchInput } from './locationSearchInput'
 
 /* ADMIN - HOME ----------------------------------------------------- */
 export { default as AdminTopNav } from './menus/admin-top-nav'
+export { default as AdminTopServices } from './menus/admin-top-nav/Services'
+export { default as AdminTopAccounts } from './menus/admin-top-nav/Accounts'
 export { default as AdminBottomNav } from './menus/admin-bottom-nav'
 export { default as GoogleApiWrapper } from './googleApi'
 export { default as MapContainer } from './googleApi'

@@ -36,6 +36,7 @@ class CreateUser extends Component {
       ValidatePassword: ""
     };
 
+    this.getAddress = this.getAddress.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
   }
@@ -152,7 +153,9 @@ class CreateUser extends Component {
           <div className="form-group">
             <div className="BasicForm__check">
               <select className="BasicForm__select" onChange={this.handleSelectChange.bind(this)}>
-                <option defaultValue>Välj typ av kund </option>
+                <option defaultValue>Välj typ av användare </option>
+                <option value="admin">Admin *</option>
+                <option value="employee">Anställd *</option>
                 <option value="private">Privatkund *</option>
                 <option value="company">Företagskund *</option>
               </select>  
