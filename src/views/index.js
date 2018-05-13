@@ -20,7 +20,7 @@ export { default as AddComplaints } from './admin/orders/AddComplaints';
 export { default as CompletedOrders } from './admin/orders/CompletedOrders';
 export { default as ActiveOrders } from './admin/orders/ActiveOrders';
 export { default as AssignedOrders } from './admin/orders/AssignedOrders';
-export { default as IncomingOrders } from './admin/orders/IncomingOrders';
+export { default as IncomingServices } from './admin/orders/IncomingServices';
 export { default as InternalOrders } from './admin/orders/InternalOrders';
 export { default as AddInternalOrders } from './admin/orders/AddInternalOrders';
 

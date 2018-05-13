@@ -35,7 +35,7 @@ class AdminTopAccounts extends Component {
             <button className="slide-menu__press" onClick={this.openMenuAccounts}>
                 <i className="fas fa-users"></i>
              </button>
-          <Menu right isOpen={openAccounts} customBurgerIcon={ false } noOverlay className="slide-menu accounts" width={'85%'}>
+          <Menu right isOpen={openAccounts} customBurgerIcon={ false } noOverlay className="slide-menu accounts" width={'70%'}>
           <h3 className="slide-menu__header2">Konton</h3>
         <a id="create" className="menu-item2" href={`/admin/accounts/create`}>
             Skapa ny användare

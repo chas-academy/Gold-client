@@ -7,7 +7,7 @@ import Cookies from "universal-cookie";
 import { Link, withRouter } from "react-router-dom";
 import "./style.css";
 
-class IncomingOrdersList extends Component {
+class IncomingServicesList extends Component {
   componentWillMount() {
     const cookies = new Cookies();
     var token = cookies.get("token");
@@ -24,7 +24,7 @@ class IncomingOrdersList extends Component {
 
     return (
       <div className="BasicList__container">
-        <h4> Nya ärenden </h4>
+        <h4> Nya inkomna ärenden </h4>
         <Tabs>
           <div className="history-tabs">
             <TabLink className="history-tablink" to="beställningar">
@@ -39,7 +39,7 @@ class IncomingOrdersList extends Component {
               <ul className="BasicList__list">
                 {newOrders.map(order => (
                   <li key={order.id}>
-                    <Link to={`/admin/orders/${order.id}`}>
+                    <Link to={`/admin/services/${order.id}`}>
                       <div className="edit">
                         {order.company_name ? (
                           <p>{order.company_name} </p>
@@ -64,7 +64,7 @@ class IncomingOrdersList extends Component {
             <ul className="BasicList__list">
               {newComplaints.map(order => (
                 <li key={order.id}>
-                  <Link to={`/admin/orders/${order.id}`}>
+                  <Link to={`/admin/services/${order.id}`}>
                     <div className="edit">
                       {order.company_name ? (
                         <p>{order.company_name} </p>
@@ -94,4 +94,4 @@ const mapStateToProps = state => ({
   servicesNew: state.adminOrders.servicesNew
 });
 
-export default withRouter(connect(mapStateToProps)(IncomingOrdersList));
+export default withRouter(connect(mapStateToProps)(IncomingServicesList));

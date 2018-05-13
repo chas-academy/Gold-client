@@ -30,7 +30,7 @@ export { default as UpdateUser } from './forms/UpdateUser'
 
 
 /* ADMIN - ORDERS --------------------------------------------------- */
-export { default as IncomingOrdersList } from './lists/IncomingOrdersList'
+export { default as IncomingServicesList } from './lists/IncomingServicesList'
 export { default as InternalOrdersList } from './lists/InternalOrdersList'
 export { default as ActiveOrdersList } from './lists/ActiveOrdersList'
 export { default as AssignedOrdersList } from './lists/AssignedOrdersList'

@@ -24,7 +24,7 @@ import {
   Employees,
   HandleAccounts,
   Home,
-  IncomingOrders,
+  IncomingServices,
   InternalOrders,
   Login,
   Order,
@@ -52,7 +52,7 @@ class App extends Component {
           <Route path='/admin/accounts/customers/companies/:userId' component={HandleAccounts}/>
           <Route path='/admin/accounts/customers/companies' component={Companies} />
           <Route path='/admin/accounts/:id' component={HandleAccounts}/>
-          <Route path='/admin/services/incoming' component={IncomingOrders} />
+          <Route path='/admin/services/incoming' component={IncomingServices} />
           <Route path='/admin/services/active' component={ActiveOrders} />
           <Route path='/admin/services/assigned' component={AssignedOrders} />
           <Route path='/admin/services/completed' component={CompletedOrders} />

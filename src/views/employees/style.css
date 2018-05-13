@@ -14,11 +14,13 @@
     border-radius: 5px;
     flex: 1;
     text-align: center;
+    text-transform: uppercase;
 }
 
 .tab-link-active {
     color: black;
     border-radius: 0 !important;
+    border-bottom: 3px solid rgba(128, 128, 128, 0.185);
 }
 
 

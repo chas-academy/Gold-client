@@ -1,6 +1,7 @@
 .AdminHome {
     max-height: 300px;
     overflow: scroll;
+    margin-top: 5px;
 }
 
 .AdminHomeTop__li {

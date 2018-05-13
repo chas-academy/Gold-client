@@ -24,7 +24,7 @@ class AdminHomeTop extends Component {
     return (
       <div className="BasicList__container AdminHome">
         <div className="BasicList__container">
-          <h4> Dagens jobb </h4>
+          <h4> Dagens ärenden </h4>
           <Tabs>
             <div className="history-tabs">
               <TabLink className="history-tablink" to="beställningar">
