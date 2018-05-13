@@ -1,4 +1,7 @@
 import {
+    FETCH_SERVICE_START,
+    FETCH_SERVICE_SUCCESS,
+    FETCH_SERVICE_FAILURE,
     FETCH_SERVICES_START,
     FETCH_SERVICES_SUCCESS,
     FETCH_SERVICES_FAILURE,
@@ -36,6 +39,7 @@ import {
 
 const initialState = {
     isfetching: false,
+    service: {},
     services: [],
     servicesNew: [],
     servicesAssigned: [],
@@ -51,6 +55,22 @@ const initialState = {
 
 const adminOrdersReducer = (state = initialState, action) => {
     switch (action.type) {
+        case FETCH_SERVICE_START:
+        return {
+            ...state,
+            isfetching: true
+         };
+        case FETCH_SERVICE_SUCCESS:
+        return {
+            ...state,
+            isfetching: false,
+            service: action.payload
+         };
+        case FETCH_SERVICE_FAILURE:
+        return {
+            ...state,
+            isfetching: false
+         };
         case FETCH_SERVICES_START:
         return {
             ...state,
