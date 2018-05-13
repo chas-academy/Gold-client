@@ -71,7 +71,6 @@ class AssignedOrdersList extends Component {
                 {assignedComplaints.map(order => (
                   <li key={order.id}>
                     <Link to={`/admin/orders/${order.id}`}>
-                      {console.log(order)}
                       <div className="edit">
                         {order.company_name ? (
                           <p>Kund: {order.company_name} </p>
@@ -96,7 +95,6 @@ class AssignedOrdersList extends Component {
               {assignedInternalOrders.map(order => (
                 <li key={order.id}>
                   <Link to={`/admin/orders/${order.id}`}>
-                    {console.log(order)}
                     <div className="edit">
                       {order.company_name ? (
                         <p>Kund: {order.company_name} </p>

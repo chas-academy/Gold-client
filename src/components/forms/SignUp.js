@@ -99,14 +99,14 @@ class SignUp extends Component {
           } else {
             res.errors.forEach(error => {
               errorMessage = error.message
-              if (error.message == "pers_org_num must be unique") {
-                errorMessage = "Pers/Orgnummer är redan taget"
-              } else if (error.message == "Validation isEmail on email failed") {
-                errorMessage = "Felaktigt email"
-              } else if (error.message == "email must be unique") {
-                errorMessage = "Email är redan tagen"
-              } else if (error.message == "tel must be unique") {
-                errorMessage = "Telefonnummer är redan tagen"
+              if (error.message === "pers_org_num must be unique") {
+                errorMessage = "Detta person/organisationsnummer är redan registrerat"
+              } else if (error.message === "Validation isEmail on email failed") {
+                errorMessage = "Felaktigt ifylld email"
+              } else if (error.message === "email must be unique") {
+                errorMessage = "Denna email är redan registrerad"
+              } else if (error.message === "tel must be unique") {
+                errorMessage = "Detta telefonnummer är redan registrerat på en användare"
               }
             });
             this.setState({ errorMessage: errorMessage, submitted: false })
@@ -122,9 +122,7 @@ class SignUp extends Component {
   
   render() {
     const {
-      company,
       customer_type,
-      address,
       email,
       errorMessage,
       submitted,
@@ -135,7 +133,6 @@ class SignUp extends Component {
       passwordError,
       tel,
       phoneError,
-      privateCustomer,
       ValidatePassword,
     } = this.state;
 

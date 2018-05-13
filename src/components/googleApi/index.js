@@ -21,7 +21,6 @@ class MapContainer extends Component {
 
   render() {
     const { servicesNew } = this.props;
-    console.log(servicesNew);
 
     const NewServices = servicesNew.filter(order => order.status === "new");
     const AssignedServices = servicesNew.filter(order => order.status === "assigned");
@@ -45,6 +44,7 @@ class MapContainer extends Component {
 
            {NewServices.map(order => (
              <AnyReactComponent
+             key={order.id}
              lat={55.60587}
              lng={13.20073}
              text={
@@ -61,6 +61,7 @@ class MapContainer extends Component {
 
         {AssignedServices.map(order => (
             <AnyReactComponent
+              key={order.id}
               lat={55.60587}
               lng={13.20073}
               text={
@@ -76,6 +77,7 @@ class MapContainer extends Component {
 
           {TakenServices.map(order => (
             <AnyReactComponent
+              key={order.id}
               lat={55.70587}
               lng={13.30073}
               text={
@@ -93,6 +95,7 @@ class MapContainer extends Component {
 
         {DoneServices.map(order => (
             <AnyReactComponent
+              key={order.id}
               lat={55.80587}
               lng={13.30073}
               text={

@@ -70,7 +70,6 @@ class CompletedOrdersList extends Component {
                 {isAdmin === true
                   ? completedOrders.map(order => (
                       <li key={order.service_id}>
-                        {console.log(order)}
                         <Link to={`/admin/orders/${order.service_id}`}>
                           <div className="edit">
                             <p>Beställare : XXXX, orderId: </p>
@@ -104,7 +103,6 @@ class CompletedOrdersList extends Component {
                 {isAdmin === true
                   ? completedComplaints.map(order => (
                       <li key={order.service_id}>
-                        {console.log(order)}
                         <Link to={`/admin/orders/${order.service_id}`}>
                           <div className="edit">
                             <p>Beställare : XXXX, orderId: </p>
@@ -138,7 +136,6 @@ class CompletedOrdersList extends Component {
               {isAdmin === true
                 ? completedInternalOrders.map(order => (
                     <li key={order.service_id}>
-                      {console.log(order)}
                       <Link to={`/admin/orders/${order.service_id}`}>
                         <div className="edit">
                           <p>Beställare : XXXX, orderId: </p>

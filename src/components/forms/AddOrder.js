@@ -103,7 +103,7 @@ class AddOrder extends Component {
     );
 
     var company_name = ''
-    if (user.customer_type && user.customer_type == "company") {
+    if (user.customer_type && user.customer_type === "company") {
       company_name = user.name
     }
 

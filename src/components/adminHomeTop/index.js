@@ -21,8 +21,6 @@ class AdminHomeTop extends Component {
       order => order.order_type === "complaint"
     );
 
-    const color = "";
-
     return (
       <div className="BasicList__container AdminHome">
         <div className="BasicList__container">
@@ -85,7 +83,8 @@ class AdminHomeTop extends Component {
                           ) : (
                             <p> {order.con_pers} </p>
                           )}
-                          <p> Hantera </p>
+                            <p> Hantera </p>
+
                         </div>
                       </Link>
                     </li>

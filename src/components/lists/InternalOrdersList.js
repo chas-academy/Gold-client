@@ -47,7 +47,6 @@ class InternalOrdersList extends Component {
               <ul className="BasicList__list">
                 {AssignedInternalOrders.map(order => (
                   <li key={order.service_id}>
-                    {console.log(order)}
                     <Link to={`/admin/orders/${order.service_id}`}>
                       <div className="edit">
                         <p>Ärende skapat: {order.service.createdAt}</p>
@@ -68,7 +67,6 @@ class InternalOrdersList extends Component {
               <ul className="BasicList__list">
                 {TakenInternalOrders.map(order => (
                   <li key={order.service_id}>
-                    {console.log(order)}
                     <Link to={`/admin/orders/${order.service_id}`}>
                       <div className="edit">
                         <p>Ärende skapat: {order.service.createdAt}</p>
@@ -89,7 +87,6 @@ class InternalOrdersList extends Component {
               <ul className="BasicList__list">
                 {DoneInternalOrders.map(order => (
                   <li key={order.service_id}>
-                    {console.log(order)}
                     <Link to={`/admin/orders/${order.service_id}`}>
                       <div className="edit">
                         <p>Ärende skapat: {order.service.createdAt}</p>

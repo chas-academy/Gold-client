@@ -46,7 +46,6 @@ class ActiveOrdersList extends Component {
               <ul className="BasicList__list">
                 {TakenOrders.map(order => (
                   <li key={order.service_id}>
-                    {console.log(order)}
                     <Link to={`/admin/orders/${order.service_id}`}>
                       <div className="edit">
                         <p>Beställare : XXXX, orderId: </p>
@@ -66,7 +65,6 @@ class ActiveOrdersList extends Component {
               <ul className="BasicList__list">
                 {TakenComplaints.map(order => (
                   <li key={order.service_id}>
-                    {console.log(order)}
                     <Link to={`/admin/orders/${order.service_id}`}>
                       <div className="edit">
                         <p>Beställare : XXXX, orderId: </p>
@@ -86,7 +84,6 @@ class ActiveOrdersList extends Component {
               <ul className="BasicList__list">
                 {TakenInternalOrders.map(order => (
                   <li key={order.service_id}>
-                    {console.log(order)}
                     <Link to={`/admin/orders/${order.service_id}`}>
                       <div className="edit">
                         <p>Beställare : XXXX, orderId: </p>

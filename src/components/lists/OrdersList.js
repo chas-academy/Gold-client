@@ -94,7 +94,6 @@ class OrdersList extends Component {
               <ul className="BasicList__list">
                 {AssignedOrders.map(order => (
                   <li key={order.service_id}>
-                    {console.log(order)}
                     <Link to={`/admin/orders/${order.service_id}`}>
                       <div className="edit">
                         {order.service.company_name ? (
