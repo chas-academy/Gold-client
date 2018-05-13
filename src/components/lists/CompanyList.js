@@ -25,7 +25,7 @@ class CompanyList extends Component {
         <ul className="BasicList__list">
           {companies.map(company => (
             <li key={company.user_id}>
-              <Link to={`/admin/customers/companies/${company.user_id}`}>
+              <Link to={`/admin/accounts/${company.user_id}`}>
                 <div className="edit">
                   <p> {company.user.name} </p>
                   <i className="fas fa-cog"></i>

@@ -1,35 +1,32 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { fetchInternalOrders } from "../../redux/actions/admin/Orders";
+import { fetchOrders } from "../../redux/actions/admin/Orders";
 import Cookies from "universal-cookie";
 import { Tabs, TabLink, TabContent } from "react-tabs-redux";
 
 import { Link, withRouter } from "react-router-dom";
 import "./style.css";
 
-class InternalOrdersList extends Component {
+class OrdersList extends Component {
   componentWillMount() {
     const cookies = new Cookies();
     var token = cookies.get("token");
-    this.props.dispatch(fetchInternalOrders(token));
+    this.props.dispatch(fetchOrders(token));
   }
 
   render() {
-    const { internalOrders } = this.props;
-
-    const AssignedInternalOrders = internalOrders.filter(
-      order => order.service.status === "assigned"
-    );
-    const TakenInternalOrders = internalOrders.filter(
-      order => order.service.status === "taken"
-    );
-    const DoneInternalOrders = internalOrders.filter(
-      order => order.service.status === "done"
-    );
-
+    const { orders } = this.props;
+    
+    const AssignedOrders = [];
+    const TakenOrders = [];
+    const DoneOrders = [];
+    // const AssignedOrders = orders.filter(order => order.service.status === "assigned");
+    // const TakenOrders = orders.filter(order => order.service.status === "taken");
+    // const DoneOrders = orders.filter(order => order.service.status === "done");
+    
     return (
       <div className="BasicList__container">
-        <h4> Interna ärenden </h4>
+        <h4> Beställningar </h4>
         <Tabs>
           <div className="history-tabs">
             <TabLink className="history-tablink" to="hanterade">
@@ -43,13 +40,18 @@ class InternalOrdersList extends Component {
             </TabLink>
           </div>
           <TabContent for="hanterade">
-            {AssignedInternalOrders.length ? (
+            {AssignedOrders.length ? (
               <ul className="BasicList__list">
-                {AssignedInternalOrders.map(order => (
+                {AssignedOrders.map(order => (
                   <li key={order.service_id}>
                     <Link to={`/admin/orders/${order.service_id}`}>
                       <div className="edit">
-                        <p>Ärende skapat: {order.service.createdAt}</p>
+                        {order.service.company_name ? (
+                          <p>{order.service.company_name}</p>
+                        ) : (
+                          <p>{order.service.con_pers}</p>
+                        )}
+                        <p>Anställd: {}</p>
                         <i className="fas fa-edit" />
                       </div>
                     </Link>
@@ -63,13 +65,18 @@ class InternalOrdersList extends Component {
             )}
           </TabContent>
           <TabContent for="pågående">
-            {TakenInternalOrders.length ? (
+            {TakenOrders.length ? (
               <ul className="BasicList__list">
-                {TakenInternalOrders.map(order => (
+                {AssignedOrders.map(order => (
                   <li key={order.service_id}>
                     <Link to={`/admin/orders/${order.service_id}`}>
                       <div className="edit">
-                        <p>Ärende skapat: {order.service.createdAt}</p>
+                        {order.service.company_name ? (
+                          <p>{order.service.company_name}</p>
+                        ) : (
+                          <p>{order.service.con_pers}</p>
+                        )}
+                        <p>status: {order.service.status}</p>
                         <i className="fas fa-edit" />
                       </div>
                     </Link>
@@ -83,13 +90,18 @@ class InternalOrdersList extends Component {
             )}
           </TabContent>
           <TabContent for="avslutade">
-            {DoneInternalOrders.length ? (
+            {DoneOrders.length ? (
               <ul className="BasicList__list">
-                {DoneInternalOrders.map(order => (
+                {AssignedOrders.map(order => (
                   <li key={order.service_id}>
                     <Link to={`/admin/orders/${order.service_id}`}>
                       <div className="edit">
-                        <p>Ärende skapat: {order.service.createdAt}</p>
+                        {order.service.company_name ? (
+                          <p>{order.service.company_name}</p>
+                        ) : (
+                          <p>{order.service.con_pers}</p>
+                        )}
+                        <p>status: {order.service.status}</p>
                         <i className="fas fa-edit" />
                       </div>
                     </Link>
@@ -109,7 +121,7 @@ class InternalOrdersList extends Component {
 }
 
 const mapStateToProps = state => ({
-  internalOrders: state.adminOrders.internalOrders
+  orders: state.adminOrders.orders
 });
 
-export default withRouter(connect(mapStateToProps)(InternalOrdersList));
+export default withRouter(connect(mapStateToProps)(OrdersList));

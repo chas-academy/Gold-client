@@ -30,7 +30,6 @@ class MultipleSelect extends Component {
   	const { selectedOption } = this.state;
     const { employees } = this.props;
 
-    console.log(employees)
     return (
       <Select
         multi={true}

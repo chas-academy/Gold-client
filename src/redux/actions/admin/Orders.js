@@ -1,10 +1,16 @@
 import {
+  FETCH_SERVICE_START,
+  FETCH_SERVICE_SUCCESS,
+  FETCH_SERVICE_FAILURE,
   FETCH_SERVICES_START,
   FETCH_SERVICES_SUCCESS,
   FETCH_SERVICES_FAILURE,
   FETCH_SERVICES_NEW_START,
   FETCH_SERVICES_NEW_SUCCESS,
   FETCH_SERVICES_NEW_FAILURE,
+  FETCH_SERVICES_ASSIGNED_START,
+  FETCH_SERVICES_ASSIGNED_SUCCESS,
+  FETCH_SERVICES_ASSIGNED_FAILURE,
   FETCH_SERVICES_TAKEN_START,
   FETCH_SERVICES_TAKEN_SUCCESS,
   FETCH_SERVICES_TAKEN_FAILURE,
@@ -31,37 +37,64 @@ import {
   FETCH_COMPLAINTS_FAILURE
 } from "./Action-types";
 
+/* ------------ SERVICE --------------- */
+
+export const requestService = () => ({
+  type: FETCH_SERVICE_START
+});
+
+export const recieveService = service => ({
+  type: FETCH_SERVICE_SUCCESS,
+  payload: service
+});
+
+export const fetchService = ( token, id ) => dispatch => {
+  dispatch(requestService());
+
+  return fetch(`https://gold-api-dev.chas.school/services/${id}`, {
+    headers: {
+      Authorization: token
+    }
+  })
+    .then(res => res.json())
+    .then(service => {
+      return dispatch(recieveService(service));
+    })
+    .catch(response => {
+      console.error("An error occured when fetching the service");
+      return dispatch({ type: FETCH_SERVICE_FAILURE });
+    });
+};
+
 
 /* ------------ SERVICES --------------- */
 
 export const requestServices = () => ({
-    type: FETCH_SERVICES_START
-  });
-  
-  export const recieveServices = orders => ({
-    type: FETCH_SERVICES_SUCCESS,
-    payload: orders
-  });
-  
-  export const fetchServices = token => dispatch => {
-    dispatch(requestServices());
-  
-    debugger;
-    return fetch("https://gold-api-dev.chas.school/services", {
-      headers: {
-        Authorization: token
-      }
-    })
-      .then(res => res.json())
-      .then(orders => {
-        return dispatch(recieveServices(orders));
-      })
-      .catch(response => {
-        console.error("An error occured when fetching the services");
-        return dispatch({ type: FETCH_SERVICES_FAILURE });
-      });
-  };
+  type: FETCH_SERVICES_START
+});
 
+export const recieveServices = services => ({
+  type: FETCH_SERVICES_SUCCESS,
+  payload: services
+});
+
+export const fetchServices = token => dispatch => {
+  dispatch(requestServices());
+
+  return fetch("https://gold-api-dev.chas.school/services", {
+    headers: {
+      Authorization: token
+    }
+  })
+    .then(res => res.json())
+    .then(services => {
+      return dispatch(recieveServices(services));
+    })
+    .catch(response => {
+      console.error("An error occured when fetching the services");
+      return dispatch({ type: FETCH_SERVICES_FAILURE });
+    });
+};
 
 /* ------------ SERVICES NEW --------------- */
 
@@ -87,13 +120,39 @@ export const fetchServicesNew = token => dispatch => {
       return dispatch(recieveServicesNew(servicesNew));
     })
     .catch(response => {
-      console.error("An error occured when fetching the order");
+      console.error("An error occured when fetching the new services");
       return dispatch({ type: FETCH_SERVICES_NEW_FAILURE });
     });
 };
 
+/* ------------ SERVICES ASSIGNED --------------- */
 
+export const requestServicesAssigned = () => ({
+  type: FETCH_SERVICES_ASSIGNED_START
+});
 
+export const recieveServicesAssigned = servicesAssigned => ({
+  type: FETCH_SERVICES_ASSIGNED_SUCCESS,
+  payload: servicesAssigned
+});
+
+export const fetchServicesAssigned = token => dispatch => {
+  dispatch(requestServicesAssigned());
+
+  return fetch("https://gold-api-dev.chas.school/services/assigned", {
+    headers: {
+      Authorization: token
+    }
+  })
+    .then(res => res.json())
+    .then(servicesAssigned => {
+      return dispatch(recieveServicesAssigned(servicesAssigned));
+    })
+    .catch(response => {
+      console.error("An error occured when fetching the assigned services");
+      return dispatch({ type: FETCH_SERVICES_ASSIGNED_FAILURE });
+    });
+};
 
 /* ------------ SERVICES TAKEN --------------- */
 
@@ -101,9 +160,9 @@ export const requestServicesTaken = () => ({
   type: FETCH_SERVICES_TAKEN_START
 });
 
-export const recieveServicesTaken = orders => ({
+export const recieveServicesTaken = servicesTaken => ({
   type: FETCH_SERVICES_TAKEN_SUCCESS,
-  payload: orders
+  payload: servicesTaken
 });
 
 export const fetchServicesTaken = token => dispatch => {
@@ -115,16 +174,14 @@ export const fetchServicesTaken = token => dispatch => {
     }
   })
     .then(res => res.json())
-    .then(orders => {
-      return dispatch(recieveServicesTaken(orders));
+    .then(servicesTaken => {
+      return dispatch(recieveServicesTaken(servicesTaken));
     })
     .catch(response => {
-      console.error("An error occured when fetching the order");
+      console.error("An error occured when fetching the services taken");
       return dispatch({ type: FETCH_SERVICES_TAKEN_FAILURE });
     });
 };
-
-
 
 /* ------------ SERVICES DONE --------------- */
 
@@ -132,9 +189,9 @@ export const requestServicesDone = () => ({
   type: FETCH_SERVICES_DONE_START
 });
 
-export const recieveServicesDone = orders => ({
+export const recieveServicesDone = servicesDone => ({
   type: FETCH_SERVICES_DONE_SUCCESS,
-  payload: orders
+  payload: servicesDone
 });
 
 export const fetchServicesDone = token => dispatch => {
@@ -146,17 +203,14 @@ export const fetchServicesDone = token => dispatch => {
     }
   })
     .then(res => res.json())
-    .then(orders => {
-      return dispatch(recieveServicesDone(orders));
+    .then(servicesDone => {
+      return dispatch(recieveServicesDone(servicesDone));
     })
     .catch(response => {
-      console.error("An error occured when fetching the order");
+      console.error("An error occured when fetching the services");
       return dispatch({ type: FETCH_SERVICES_DONE_FAILURE });
     });
 };
-
-
-
 
 /* ------------ ORDER --------------- */
 
@@ -169,10 +223,10 @@ export const recieveOrder = order => ({
   payload: order
 });
 
-export const fetchOrder = token => dispatch => {
+export const fetchOrder = (token, id) => dispatch => {
   dispatch(requestOrder());
 
-  return fetch("https://gold-api-dev.chas.school/orders/:id", {
+  return fetch(`https://gold-api-dev.chas.school/orders/${id}`, {
     headers: {
       Authorization: token
     }
@@ -186,9 +240,6 @@ export const fetchOrder = token => dispatch => {
       return dispatch({ type: FETCH_ORDER_FAILURE });
     });
 };
-
-
-
 
 /* ------------ ORDERS --------------- */
 
@@ -219,32 +270,28 @@ export const fetchOrders = token => dispatch => {
     });
 };
 
-
-
-
-
 /* ------------ INTERNAL ORDER --------------- */
 
 export const requestInternalOrder = () => ({
   type: FETCH_INTERNAL_ORDER_START
 });
 
-export const recieveInternalOrder = order => ({
+export const recieveInternalOrder = internalOrder => ({
   type: FETCH_INTERNAL_ORDER_SUCCESS,
-  payload: order
+  payload: internalOrder
 });
 
-export const fetchInternalOrder = token => dispatch => {
+export const fetchInternalOrder = (token, id ) => dispatch => {
   dispatch(requestInternalOrder());
 
-  return fetch("https://gold-api-dev.chas.school/int_orders/:id", {
+  return fetch(`https://gold-api-dev.chas.school/int_orders/${id}`, {
     headers: {
       Authorization: token
     }
   })
     .then(res => res.json())
-    .then(order => {
-      return dispatch(recieveInternalOrder(order));
+    .then(internalOrder => {
+      return dispatch(recieveInternalOrder(internalOrder));
     })
     .catch(response => {
       console.error("An error occured when fetching the internal order");
@@ -252,19 +299,15 @@ export const fetchInternalOrder = token => dispatch => {
     });
 };
 
-
-
-
-
 /* ------------INTERNAL ORDERS --------------- */
 
 export const requestInternalOrders = () => ({
   type: FETCH_INTERNAL_ORDERS_START
 });
 
-export const recieveInternalOrders = orders => ({
+export const recieveInternalOrders = internalOrders => ({
   type: FETCH_INTERNAL_ORDERS_SUCCESS,
-  payload: orders
+  payload: internalOrders
 });
 
 export const fetchInternalOrders = token => dispatch => {
@@ -276,8 +319,8 @@ export const fetchInternalOrders = token => dispatch => {
     }
   })
     .then(res => res.json())
-    .then(orders => {
-      return dispatch(recieveInternalOrders(orders));
+    .then(internalOrders => {
+      return dispatch(recieveInternalOrders(internalOrders));
     })
     .catch(response => {
       console.error("An error occured when fetching the orders");
@@ -285,33 +328,28 @@ export const fetchInternalOrders = token => dispatch => {
     });
 };
 
-
-
-
-
 /* ------------ COMPLAINT --------------- */
 
 export const requestComplaint = () => ({
   type: FETCH_COMPLAINT_START
 });
 
-export const recieveComplaint = order => ({
+export const recieveComplaint = complaint => ({
   type: FETCH_COMPLAINT_SUCCESS,
-  payload: order
+  payload: complaint
 });
 
-export const fetchComplaint = token => dispatch => {
+export const fetchComplaint = (token, id ) => dispatch => {
   dispatch(requestComplaint());
 
-  debugger;
-  return fetch("https://gold-api-dev.chas.school/complaints/:id", {
+  return fetch(`https://gold-api-dev.chas.school/complaints/${id}`, {
     headers: {
       Authorization: token
     }
   })
     .then(res => res.json())
-    .then(order => {
-      return dispatch(recieveComplaint(order));
+    .then(complaint => {
+      return dispatch(recieveComplaint(complaint));
     })
     .catch(response => {
       console.error("An error occured when fetching the complaint");
@@ -319,19 +357,15 @@ export const fetchComplaint = token => dispatch => {
     });
 };
 
-
-
-
-
 /* ------------ COMPLAINTS --------------- */
 
 export const requestComplaints = () => ({
   type: FETCH_COMPLAINTS_START
 });
 
-export const recieveComplaints = orders => ({
+export const recieveComplaints = complaints => ({
   type: FETCH_COMPLAINTS_SUCCESS,
-  payload: orders
+  payload: complaints
 });
 
 export const fetchComplaints = token => dispatch => {
@@ -343,8 +377,8 @@ export const fetchComplaints = token => dispatch => {
     }
   })
     .then(res => res.json())
-    .then(orders => {
-      return dispatch(recieveComplaints(orders));
+    .then(complaints => {
+      return dispatch(recieveComplaints(complaints));
     })
     .catch(response => {
       console.error("An error occured when fetching the complaints");
