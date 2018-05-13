@@ -1,7 +1,7 @@
 .Create__button {
-    color: #0f2f56;
+    color: #3161A6;;
     box-shadow: 0 1px 2px 0 rgba(20, 20, 20, 0.288);
-    border: 5px solid  #0f2f56;
+    border: 5px solid  #3161A6;
     background: rgba(255, 255, 255, 0.308);
     border-radius: 50%;
     display: flex;
@@ -15,21 +15,25 @@
 }
 
 .AddPhotos__button {
-    color: #0f2f56;
+    color: #3161A6;;
     box-shadow: 0 1px 2px 0 rgba(20, 20, 20, 0.288);
-    border: 5px solid  #0f2f56;
+    border: 5px solid  #3161A6;
     background: white;
     border-radius: 50%;
     display: flex;
     padding: 25px;
     font-size: 28px;
     justify-content: center;
-    margin: 5px;
+    margin: 8px;
 }
 
 .AddPhotos__text {
-    color: #0f2f56;
+    color: #3161A6;
     margin-left: 10px;
+}
+
+.fa-clock, .fa-calendar-alt {
+    color: #3161A6;
 }
 
 .take {
@@ -38,7 +42,6 @@
     margin-bottom: 0;
 
 }
-
 
 .accept {
     background-color: green;

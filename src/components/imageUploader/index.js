@@ -9,9 +9,11 @@ import './style.css'
 
 const ImageUploader = (props) => {
     return (
-        <Dropzone className="ignore" onDrop={(photo) => props.setPhoto(photo)}>
-            {props.children}
-        </Dropzone>
+        <div className="DateTime__buttons">
+            <Dropzone className="ignore" onDrop={(photo) => props.setPhoto(photo)}>
+                {props.children}
+            </Dropzone>
+        </div>
 
     )
 }

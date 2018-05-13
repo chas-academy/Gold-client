@@ -5,13 +5,16 @@
     border-bottom: 2px solid rgb(224, 224, 224);    
     color: black;
     border-radius: 4px;
-    width: 100%;
+    width: 90%;
     line-height: 2.2;
     padding-left: 15px;
-    margin-top: 4%;
 }
 
 .help-block {
     color: rgb(58, 95, 165) !important;
 }
 
+
+.location-container {
+    width: 100%;
+}

@@ -7,6 +7,7 @@ class LocationSearchInput extends React.Component {
   constructor(props) {
     super(props);  
     this.state = { 
+      submitted: this.props.submitted,
       address: '',
       lat: '',
       lon: '' }
@@ -27,7 +28,7 @@ class LocationSearchInput extends React.Component {
   }
 
   render() {
-  const { address } = this.state; 
+  const { address, submitted } = this.state; 
   return (
     <div className="form-group">
       <PlacesAutocomplete
@@ -57,7 +58,7 @@ class LocationSearchInput extends React.Component {
                 )
               })}
             </div>
-            {!address &&
+            {!address && submitted &&
               <div className="help-block">Glöm inte fylla i adress!</div>
             }
           </div>

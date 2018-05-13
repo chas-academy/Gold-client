@@ -60,5 +60,6 @@ export { default as EmployeeOrderDetails } from './EmployeeOrderDetails'
 // CUSTOMER 
 export { default as CustomerBottomNav } from './menus/customer-bottom-nav'
 export { default as CustomerOrderDetails } from './customerOrderDetails'
+export { default as CustomerHistoryList } from './lists/CustomerHistoryList'
 
 

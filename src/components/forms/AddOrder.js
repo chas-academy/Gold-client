@@ -29,7 +29,7 @@ class AddOrder extends Component {
       lon: "",
       phone: "",
       photo: "",
-      submitted: "",
+      submitted: false,
       time: ""
     };
 
@@ -258,12 +258,14 @@ class AddOrder extends Component {
                     Glöm inte att beskriva ärendet!
                   </div>
                 )}
-                <LocationSearchInput getAddress={this.getAddress.bind(this)} />
+            <div className="form-group">
+                <LocationSearchInput getAddress={this.getAddress.bind(this)} submitted={submitted}/>
+            </div>
+
             <label className="BasicForm__checkboxContainer">
                 <input type="checkbox" />
               <span className="BasicForm__checkmark">
-                <i className="fas fa-hand-point-right"></i>
-                <i className="fas fa-exclamation-circle"></i>
+                <i className="fas fa-circle"></i>
                 Akut ärende? (åtgärdas inom 4h)
               </span>
             </label>

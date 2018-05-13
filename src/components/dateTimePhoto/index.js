@@ -61,7 +61,7 @@ class DateTimePhoto extends Component {
               className="DateTime__input"
               type="time"
               name="time"
-              placeholder="HH:MM"
+              placeholder=" HH:MM"
               value={time}
               onChange={this.setTime.bind(this)}
               onBlur={this.setTime.bind(this)}
