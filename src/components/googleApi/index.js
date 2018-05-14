@@ -17,7 +17,8 @@ class MapContainer extends Component {
     super(props);
 
     this.state = {
-      mapOptions: ""
+      mapOptions: "",
+      message: ""
     };
   }
 
@@ -28,12 +29,19 @@ class MapContainer extends Component {
 
     const time = moment().format("HH");
 
-    time <= 5 || time >= 22
-      ? this.setState({
+  
+    time <=3 || time >= 23 ?   
+      this.setState({
+        mapOptions: {
+          styles: stylesNight
+        },
+          message: "Κοιμήσου ρε παιδί μου! 👴🏻"
+        })
+    : time <= 5 || time >= 22 ? 
+      this.setState({
           mapOptions: {
             styles: stylesNight
-          }
-        })
+          }})
       : this.setState({
           mapOptions: {
             styles: stylesDay
@@ -46,11 +54,10 @@ class MapContainer extends Component {
     zoom: 9
   };
 
-
   render() {
     const { servicesNew } = this.props;
 
-    const { mapOptions } = this.state;
+    const { mapOptions, message } = this.state;
 
     const NewServices = servicesNew.filter(order => order.status === "new");
     const AssignedServices = servicesNew.filter(
@@ -77,22 +84,29 @@ class MapContainer extends Component {
           defaultZoom={this.props.zoom}
           options={this.state.mapOptions}
         >
-          {NewServices.map(order => (
+          {message ? (
             <AnyReactComponent
-              key={order.id}
-              lat={55.60587}
-              lng={13.20073}
-              text={
-                <a href="admin/orders/1">
-                  <i
-                    className="fas fa-map-marker button-glow-new"
-                    style={{ color: "red", fontSize: "18px" }}
-                  />
-                </a>
-              }
+              lat={55.68087}
+              lng={12.53073}
+              text={<p className="Sleep">{message}</p>}
             />
-          ))}
-
+          ) : (
+            NewServices.map(order => (
+              <AnyReactComponent
+                key={order.id}
+                lat={55.80587}
+                lng={13.20073}
+                text={
+                  <a href="admin/orders/1">
+                    <i
+                      className="fas fa-map-marker button-glow-new"
+                      style={{ color: "red", fontSize: "18px" }}
+                    />
+                  </a>
+                }
+              />
+            ))
+          )}
           {AssignedServices.map(order => (
             <AnyReactComponent
               key={order.id}
@@ -108,7 +122,6 @@ class MapContainer extends Component {
               }
             />
           ))}
-
           {TakenServices.map(order => (
             <AnyReactComponent
               key={order.id}
@@ -125,7 +138,6 @@ class MapContainer extends Component {
               }
             />
           ))}
-
           {DoneServices.map(order => (
             <AnyReactComponent
               key={order.id}
@@ -141,6 +153,7 @@ class MapContainer extends Component {
               }
             />
           ))}
+
         </GoogleMapReact>
       </div>
     );
