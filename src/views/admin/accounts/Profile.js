@@ -8,9 +8,7 @@ export default class Profile extends Component {
     return (
         <div> 
             <AdminTopNav />
-            <div className="Admin__div">
                 <UserProfile />
-            </div>    
             <AdminBottomNav />
         </div>    
     )

@@ -8,7 +8,7 @@
     box-shadow: 0 2px 4px 0 rgba(77,77,79,.2);
     padding: 20px;
     margin-bottom: 25%;
-    margin-top: 5%;
+    margin-top: 30px;
 }
 
 .BasicForm > h5 {
@@ -26,10 +26,11 @@
     padding: 15px;
     border: none;
     font-size: 15px;
-    background-color: rgba(37, 37, 37, 0.925);
+    background-color: #3161A6;
     box-shadow: 0 1px 2px 0 rgba(20, 20, 20, 0.753);
     color: rgba(250, 249, 249, 0.726);
 }
+
 
 .btn-danger {
     width: 100%;
@@ -92,15 +93,17 @@
     box-shadow: 0 1px 2px 0 rgba(180, 180, 184, 0.068);
     border-bottom: 2px solid rgb(224, 224, 224);
     border-radius: 4px;
+    margin-bottom: 14px;
 }
 
 .BasicForm__select {
     height: 35px;
     width: 100%;
+    color: black;
 }
 
 .BasicForm__check {
-    color: rgb(49, 100, 165) !important;
+    color: rgb(49, 100, 165);
     display: flex;
     align-items: center;
 }
@@ -114,7 +117,7 @@
 
 .BasicForm__check > .fa-check {
     margin-left: 10px;
-    font-size: 20px;
+    font-size: 16px;
 }
 
 .BasicForm__passwordOk {
@@ -133,6 +136,10 @@ input:focus {
 ::placeholder {
     color: rgba(14, 46, 95, 0.336) !important;
 }
+
+/* .obl::placeholder {
+    color: red !important;
+} */
 
 .BasicForm__checkboxContainer {
     display: block;
@@ -177,13 +184,7 @@ input:focus {
     display: block;
   }
 
-  .fa-exclamation-circle {
+  .fa-circle {
       margin-right: 5px;
       font-size: 18px;
-  }
-
-  .fa-hand-point-right {
-      margin-right: 5px;
-      font-size: 20px;
-      color:  #0f2f56;
   }

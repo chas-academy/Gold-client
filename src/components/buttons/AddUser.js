@@ -2,14 +2,14 @@ import React from "react"
 import { Link } from "react-router-dom"
 import "./style.css"
 
-const CreateUser = () => {
+const AddUser = () => {
       return (
-        <Link to={`/admin/accounts/add`} >
+        <Link to={`/admin/accounts/create`} >
           <button className="Create__button">
-            <i class="fas fa-plus"></i>
+            <i className="fas fa-plus"></i>
           </button>
         </Link>  
       );
 }
 
-export default CreateUser;
+export default AddUser;

@@ -9,8 +9,8 @@
 
 
 .react-datepicker__month-container {
-    width: 300px;
-    height: 300px;
+    width: 343px;
+    height: auto;
 }
 
 .react-datepicker__month, .react-datepicker__current-month {
@@ -29,7 +29,7 @@
 }
 
 .react-datepicker-popper[data-placement^="top"] {
-    transform: translate3d(36px, 65px, 0px) !important;
+    transform: translate3d(0px, 380px, 0px) !important;
 }
 
 
@@ -42,12 +42,15 @@
 
 .DateTime__buttons {
     flex-direction: column;
+    align-items: center;
 }
 
 .DateTime__input {
-    width: 90%;
+    width: 100%;
     background-color: rgba(255, 255, 255, 0.014);
     border: none;
+    text-align: center;
+    margin-left: 5px;
 }
 
 .DateTime__buttons > input::placeholder{

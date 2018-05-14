@@ -1,16 +1,13 @@
 import React, { Component } from "react";
-// import { connect } from "react-redux";
-import { AdminTopNav, AdminBottomNav, EmployeeList, CreateUser } from "../../../components";
+import { AdminTopNav, AdminBottomNav, EmployeeList, AddUser } from "../../../components";
 
 export default class Employees extends Component {
   render() {
     return (
       <div>
         <AdminTopNav />
-        <div className="Admin__div">
           <EmployeeList />
-          <CreateUser />
-        </div>  
+          <AddUser />
         <AdminBottomNav />
       </div>
     );

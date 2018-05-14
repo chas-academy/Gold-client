@@ -5,6 +5,7 @@ export { default as Register } from './Register';
 
 // Admin - accounts
 export { default as HandleAccounts } from './admin/accounts/HandleAccounts';
+export { default as CreateUsers } from './admin/accounts/CreateUsers';
 export { default as Employees } from './admin/accounts/Employees';
 export { default as Companies } from './admin/accounts/Companies';
 export { default as PrivateCustomers } from './admin/accounts/PrivateCustomers';
@@ -12,13 +13,14 @@ export { default as Profile } from './admin/accounts/Profile';
 
 // Admin - orders
 export { default as Order } from './admin/orders/Order';
+export { default as Orders } from './admin/orders/Orders';
 export { default as AddOrders } from './admin/orders/AddOrders';
 export { default as Complaints } from './admin/orders/Complaints';
 export { default as AddComplaints } from './admin/orders/AddComplaints';
 export { default as CompletedOrders } from './admin/orders/CompletedOrders';
-export { default as HandleOrders } from './admin/orders/HandleOrders';
 export { default as ActiveOrders } from './admin/orders/ActiveOrders';
-export { default as IncomingOrders } from './admin/orders/IncomingOrders';
+export { default as AssignedOrders } from './admin/orders/AssignedOrders';
+export { default as IncomingServices } from './admin/orders/IncomingServices';
 export { default as InternalOrders } from './admin/orders/InternalOrders';
 export { default as AddInternalOrders } from './admin/orders/AddInternalOrders';
 

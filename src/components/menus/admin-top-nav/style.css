@@ -1,3 +1,10 @@
+.TopNav {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    background-color: rgb(49, 100, 165);
+}
+
 .navBar {
     position: absolute;
     top: 0;
@@ -20,14 +27,6 @@
     color: rgb(45, 46, 46);  
 }
 
-.dropdown-menu {
-    left: -130px;
-    background-color:  rgba(49, 99, 165, 0.952);
-    margin-top: 20px;
-    width: 300px !important;
-    text-align: center;
-    text-transform: uppercase;
-}
 
 #app > div > div > div.navBar > li.dropdown.open > ul > li > a > a > p {
     padding: 10px;
@@ -41,9 +40,28 @@
 } 
 
 .slide-menu {
-    background-color: #0f2f56;
-    margin-top: -10px;
+    background-color:  rgba(49, 99, 165, 0.979);
+    margin-top: 0px;
     height: 100vh;
+}
+
+.accounts {
+    right: 0;
+    float:right;
+}
+
+.menu-item2 {
+    font-size: 16px;
+    padding: 30px;
+    color: white;
+    padding-right: 40px;
+    width: 100%;
+    text-align: end;
+    border-bottom: 1px solid rgba(249, 250, 252, 0.24);
+}
+
+.services {
+    left: 0;
 }
 
 .bm-overlay {
@@ -53,9 +71,10 @@
 
 .menu-item {
     font-size: 16px;
-    padding: 12px;
+    padding: 30px;
     color: white;
     padding-left: 40px;
+    border-bottom: 1px solid rgba(249, 250, 252, 0.24);
 }
 
 .menu-item:hover {
@@ -69,26 +88,43 @@
     font-size: 20px;
 }
 
+.slide2 {
+    margin-left: 15px;
+    color: rgb(207, 207, 207);
+    font-size: 20px;
+}
+
 .slide-menu__header {
     text-transform: uppercase;
-    padding-left: 20px;
-    font-size: 16px;
-    line-height: 2.5;
+    padding-left: 40px;
+    font-size: 18px;
+    line-height: 2.9;
     margin-top: 0;
-    background-color: #0a213d;
-    color: rgba(235, 235, 235, 0.418);
+    background-color: #c4c1c1;
+    color: rgba(41, 40, 40, 0.418);
+}
+
+.slide-menu__header2 {
+    text-transform: uppercase;
+    text-align: center;  
+    width: 100%;
+    padding-right: 20px;
+    font-size: 18px;
+    line-height: 2.9;
+    margin-top: 0;
+    background-color: #c4c1c1;
+    color: rgba(41, 40, 40, 0.418);
 }
 
 .slide-menu__press {
-    /* position: fixed; */
     top: 0;
     z-index: 9999;
-    width: 100%;
-    margin-top: 0;
-    padding: 20px;
-    background-color:  #0f2f56;
-    color: rgb(206, 205, 205);
-    height: 70px;
+    margin-top: 10px;
+    margin-bottom: 0px;
+    margin-left: 10px;
+    color: rgb(207, 207, 207);
+    font-size: 34px;
+
 }
 
 .slide-logout {

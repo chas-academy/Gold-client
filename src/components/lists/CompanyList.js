@@ -1,29 +1,52 @@
-import React, { Component } from 'react'
-// import { connect } from "react-redux";
-import { Link, withRouter } from 'react-router-dom'
+
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { fetchCompanies } from "../../redux/actions/admin/Accounts";
+import Cookies from "universal-cookie";
+
+import { Link, withRouter } from "react-router-dom";
 import './style.css'
 
-
 class CompanyList extends Component {
-  render() {
-      const userId = 3
 
+  componentWillMount() { 
+    const cookies = new Cookies();
+    var token = cookies.get("token");
+    this.props.dispatch(fetchCompanies(token));
+  }
+
+  render() {
+
+    const { companies } = this.props;
     return (
+      companies ?
       <div className="BasicList__container">
-        <h4> Företagskunder </h4>
+        <h4> Företag </h4>
         <ul className="BasicList__list">
-          <li>
-          <Link to={`/admin/accounts/customers/companies/${userId}`}>
-            <div className="edit">
-              <p>Stena</p>
-              <i className="fas fa-edit"></i>
-            </div> 
-          </Link>
-          </li>
+          {companies.map(company => (
+            <li key={company.user_id}>
+              <Link to={`/admin/accounts/${company.user_id}`}>
+                <div className="edit">
+                  <p> {company.user.name} </p>
+                  <i className="fas fa-cog"></i>
+                  </div>
+              </Link>
+            </li>
+              ))}
         </ul>
       </div>
-    );
+      : (
+        <div className="BasicList__container">
+          <h4> Företag </h4>
+          <p>Inga användare att visa</p>
+        </div>  
+      )
+    )
   }
 }
 
-export default withRouter(CompanyList);
+const mapStateToProps = state => ({ 
+  companies: state.adminAccounts.companies, 
+});
+
+export default withRouter(connect(mapStateToProps)(CompanyList));

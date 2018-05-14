@@ -5,6 +5,7 @@ import { withRouter, Link } from "react-router-dom";
 import Cookies from "universal-cookie";
 // import { Tabs, TabContent, TabLink } from 'react-tabs-redux';
 
+
 import './style.css'
 
 const mapStateToProps = state => ({
@@ -53,17 +54,30 @@ const finishList =  completedList.map((complete) =>
 </div>
 );
 
+
+    // if status = completed and user_id = user.id
     return (
+      orders ?
       <div className="BasicList__container">
-        <h4> Avslutade Jobb</h4>
+        <h4> Slutförda Jobb</h4>
         <p> Här kan du se dina slutförda jobb.</p>
         <hr />
         <ul className="BasicList__list">
            {finishList}
         </ul>
       </div>
+      : (
+        <div className="BasicList__container">
+        <h4> Slutförda jobb </h4>
+        <p>Inga slutförda jobb att visa</p>
+      </div>  
+      )
     );
   }
 }
 
-export default connect(mapStateToProps)(EmployeeCompleteList);
+
+const mapStateToProps = state => ({ 
+});
+
+export default withRouter(connect(mapStateToProps)(EmployeeCompleteList));

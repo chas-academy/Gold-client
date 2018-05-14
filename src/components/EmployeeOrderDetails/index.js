@@ -2,12 +2,9 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import "./style.css";
 import { EmployeeConfirmJob, EmployeeCompleteJob } from "../../components";
-import AddPhotos from "../buttons/AddPhotos";
+// import AddPhotos from "../buttons/AddPhotos";
 
 export default class EmployeeOrderDetails extends Component {
-  constructor(props) {
-    super(props);
-  }
 
   componentDidMount() {
     //change buttons depending if job is been accepted or not
@@ -15,7 +12,7 @@ export default class EmployeeOrderDetails extends Component {
 
   render() {
     const { id, Ongoing } = this.props;
-    console.log(id);
+
     return (
   <div className="BasicList__container">    
       {Ongoing ? (

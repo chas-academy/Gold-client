@@ -1,6 +1,5 @@
 import React, { Component } from "react"
-// import { connect } from "react-redux";
-import { AdminTopNav, AdminBottomNav, HandleOrder } from '../../../components'
+import { AdminTopNav, AdminBottomNav, HandleService } from '../../../components'
 
 export default class Order extends Component {
 
@@ -8,9 +7,7 @@ export default class Order extends Component {
     return (
         <div> 
             <AdminTopNav />
-                <div className="Admin__div">
-                <HandleOrder />
-                </div>
+                <HandleService id={this.props.match.params.id}/>
             <AdminBottomNav />
         </div>    
     )

@@ -43,6 +43,15 @@ class AddInternalOrder extends Component {
         <form name="form" className="BasicForm" onSubmit={this.handleSubmit}>
           <h5>Skapa Internt ärende</h5>
           <div className="form-group">
+            <MultipleSelect />
+            {submitted &&
+              !employee && (
+                <div className="help-block">
+                  Glöm inte att tilldela ärendet till rätt person
+                </div>
+              )}
+          </div>
+            <div className="form-group">
             <div className="BasicForm__check">
               <textarea
                 rows="5"
@@ -57,25 +66,14 @@ class AddInternalOrder extends Component {
             </div>
           </div>
           <div className="form-group">
-            <LocationSearchInput />
+            <LocationSearchInput submitted={submitted}/>
             {submitted &&
               !description && <div className="help-block">Fyll i adressen</div>}
           </div>
-          <div className="form-group">
-            <label>Åtgärdas av: </label>
-            <MultipleSelect />
-            {submitted &&
-              !employee && (
-                <div className="help-block">
-                  Glöm inte att tilldela ärendet till rätt person
-                </div>
-              )}
-          </div>
-          <label class="BasicForm__checkboxContainer">
+          <label className="BasicForm__checkboxContainer">
             <input type="checkbox" />
-            <span class="BasicForm__checkmark">
-              <i className="fas fa-hand-point-right"></i>
-              <i class="fas fa-exclamation-circle" />
+            <span className="BasicForm__checkmark">
+              <i className="fas fa-circle" />
               Akut ärende? (åtgärdas inom 4h)
             </span>
           </label>
