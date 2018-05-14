@@ -8,6 +8,13 @@ import { Link, withRouter } from "react-router-dom";
 import "./style.css";
 
 class IncomingServicesList extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+    };
+  }
+
+  
   componentWillMount() {
     const cookies = new Cookies();
     var token = cookies.get("token");

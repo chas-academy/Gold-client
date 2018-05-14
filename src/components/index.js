@@ -43,7 +43,7 @@ export { default as CreateInternalOrder } from './buttons/CreateInternalOrder'
 export { default as AddOrder } from './forms/AddOrder'
 export { default as AddComplaint } from './forms/AddComplaint'
 export { default as AddInternalOrder } from './forms/AddInternalOrder'
-export { default as HandleOrder } from './forms/HandleOrder'
+export { default as HandleService } from './forms/HandleService'
 export { default as OrderDetails } from './orderDetails'
 
 

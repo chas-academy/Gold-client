@@ -20,6 +20,7 @@ class UpdateUser extends Component {
       password: "",
       ValidatePassword: "",
       submitted: "",
+      id: this.props.id
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -36,15 +37,18 @@ class UpdateUser extends Component {
           .replace("_", "/")
       )
     );
-
-    user.user_type === "admin" 
-    // && this.props.params.id === "profile" 
-    ? (
+    
+    !this.state.id && user.user_type === 'admin' ? 
+    (
       this.setState({ isAdmin: true, adminProfile: true }),
       this.props.dispatch(fetchUser(user.id, token))
+     ) :  this.state.id && user.user_type === 'admin' ?
+     (
+      this.setState({ isAdmin: true }),
+      this.props.dispatch(fetchUser(this.state.id, token))
     ) : ( 
       this.setState({ isAdmin: false }),
-      this.props.dispatch(fetchUser(2, token))
+      this.props.dispatch(fetchUser(this.state.id, token))
     )
   }
 
@@ -58,7 +62,6 @@ class UpdateUser extends Component {
     var token = cookies.get("token");
 
     this.setState({ submitted: true });
-
     const user = this.state.user;
 
     var errorMessage = ''
@@ -70,20 +73,21 @@ class UpdateUser extends Component {
           if (!res) {
             this.setState({ success: true })
           } else {
-            // res.errors.forEach(error => {
-            //   errorMessage = error.message
-            //   if (error.message == "pers_org_num must be unique") {
-            //     errorMessage = "Pers/Orgnummer är redan taget"
-            //   } else if (error.message == "Validation isEmail on email failed") {
-            //     errorMessage = "Felaktigt email"
-            //   } else if (error.message == "email must be unique") {
-            //     errorMessage = "Email är redan tagen"
-            //   } else if (error.message == "tel must be unique") {
-            //     errorMessage = "Telefonnummer är redan tagen"
-            //   }
+            res.errors.forEach(error => {
+              errorMessage = error.message
+              if (error.message == "pers_org_num must be unique") {
+                errorMessage = "Pers/Orgnummer är redan taget"
+              } else if (error.message == "Validation isEmail on email failed") {
+                errorMessage = "Felaktigt email"
+              } else if (error.message == "email must be unique") {
+                errorMessage = "Email är redan tagen"
+              } else if (error.message == "tel must be unique") {
+                errorMessage = "Telefonnummer är redan tagen"
+              }
             errorMessage = 'oops';
-          }
-            });
+          })
+        }
+        });
             this.setState({ errorMessage: errorMessage, submitted: false })
           }
       }
@@ -279,7 +283,7 @@ class UpdateUser extends Component {
             </div>
           </div>
           <div className="form-group">
-            {isAdmin === true && !adminProfile ? (
+            {!adminProfile && isAdmin ? (
               <button className="btn btn-danger">Radera Användare</button>
             ) : (
               ""
