@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-// import { connect } from "react-redux";
+import { connect } from "react-redux";
 import "./style.css";
 import { EmployeeConfirmJob, EmployeeCompleteJob } from "../../components";
 // import AddPhotos from "../buttons/AddPhotos";
@@ -11,7 +11,7 @@ export default class EmployeeOrderDetails extends Component {
   }
 
   render() {
-    const { Ongoing } = this.props;
+    const { id, Ongoing } = this.props;
 
     return (
   <div className="BasicList__container">    
