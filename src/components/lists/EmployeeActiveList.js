@@ -3,6 +3,7 @@ import { connect } from "react-redux"
 import { fetchEmpActive } from '../../redux/actions/employees';
 import { withRouter, Link } from "react-router-dom";
 import { EmployeeOrderDetails } from '../../components'
+import Cookies from "universal-cookie";
 
 import "./style.css";
 
@@ -18,7 +19,9 @@ class EmployeeActiveList extends Component {
   }
 
   componentDidMount() {
-    this.props.dispatch(fetchEmpActive(2));
+    const cookies = new Cookies();
+    var token = cookies.get("token");
+    this.props.dispatch(fetchEmpActive(2,token));
     console.log(this.props.activeList);
   }
 

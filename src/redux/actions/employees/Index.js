@@ -27,11 +27,15 @@ export const fetchEmpIncomingSucess= data => ({
 });
 
 
-export const fetchEmpIncoming = (userId) => dispatch => {
+export const fetchEmpIncoming = (userId, token) => dispatch => {
     dispatch(fetchEmpIncomingRequest());
 
 
-    return fetch(`http://localhost:7770/users/${userId}/assigned`)
+    return fetch(`http://localhost:7770/users/${userId}/assigned`,{
+        headers:{
+            authorization: token 
+        },
+        })
         .then(res => res.json())
         .then(data => {
             return dispatch(fetchEmpIncomingSucess(data.services))
@@ -58,11 +62,15 @@ export const fetchEmpFinishedSucess= data => ({
 });
 
 
-export const fetchEmpFinished = (userId) => dispatch => {
+export const fetchEmpFinished = (userId, token) => dispatch => {
     dispatch(fetchEmpFinishedRequest());
 
 
-    return fetch(`http://localhost:7770/users/${userId}/done`)
+    return fetch(`http://localhost:7770/users/${userId}/done`,{
+        headers:{
+            authorization: token 
+        },
+        })
         .then(res => res.json())
         .then(data => {
             return dispatch(fetchEmpFinishedSucess(data.services))
@@ -88,11 +96,15 @@ export const fetchEmpActiveSucess= data => ({
     payload: data
 });
 
-export const fetchEmpActive = (userId) => dispatch => {
+export const fetchEmpActive = (userId, token) => dispatch => {
     dispatch(fetchEmpActiveRequest());
 
 
-    return fetch(`http://localhost:7770/users/${userId}/taken`)
+    return fetch(`http://localhost:7770/users/${userId}/taken`,{
+        headers:{
+            authorization: token 
+        },
+        })
         .then(res => res.json())
         .then(data => {
             return dispatch(fetchEmpActiveSucess(data.services))

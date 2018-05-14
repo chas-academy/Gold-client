@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { fetchEmpIncoming } from '../../redux/actions/employees';
 import { Link, withRouter } from "react-router-dom";
-
+import Cookies from "universal-cookie";
 import './style.css'
 
 const mapStateToProps = state => ({
@@ -18,7 +18,11 @@ class IncomingJobsList extends Component {
   }
 
   componentDidMount() {
-    this.props.dispatch(fetchEmpIncoming(2));
+    const cookies = new Cookies();
+    var token = cookies.get("token");
+    console.log(id);
+    console.log(token);
+    this.props.dispatch(fetchEmpIncoming(2,token));
     console.log(this.props.incomingList);
   }
 

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { fetchEmpFinished } from '../../redux/actions/employees';
 import { withRouter, Link } from "react-router-dom";
+import Cookies from "universal-cookie";
 // import { Tabs, TabContent, TabLink } from 'react-tabs-redux';
 
 import './style.css'
@@ -19,7 +20,9 @@ class EmployeeCompleteList extends Component {
   }
 
   componentDidMount() {
-    this.props.dispatch(fetchEmpFinished(2));
+    const cookies = new Cookies();
+    var token = cookies.get("token");
+    this.props.dispatch(fetchEmpFinished(2,token));
     console.log(this.props.completedList);
   }
   render() {
