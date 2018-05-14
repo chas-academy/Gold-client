@@ -49,7 +49,7 @@ class EmployeeHome extends Component {
               </Link>
             </button>
             <button className="CustomerHome__buttons">
-              <Link to={`/profile`}>
+              <Link to={`employee/profile`}>
                 <i className="fas fa-user-circle" />
                 <p className="CustomerHome__buttonText"> Redigera profil</p>
               </Link>

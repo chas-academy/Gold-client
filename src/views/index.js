@@ -30,6 +30,8 @@ export { default as EmployeeHistory} from './employees/EmployeeHistory';
 export { default as EmployeeOrderView } from './employees/EmployeeOrderView';
 export { default as EmployeeHome} from './employees/EmployeeHome';
 export { default as EmployeeActive } from './employees/EmployeeActive';
+export { default as EmployeeProfile } from './employees/EmployeeProfile';
+
 
 // Customers
 export { default as CustomerContact } from './customers/CustomerContact'

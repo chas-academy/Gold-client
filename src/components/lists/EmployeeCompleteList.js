@@ -1,17 +1,13 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { fetchEmpFinished } from '../../redux/actions/employees';
+import { fetchDone } from '../../redux/actions/employees';
 import { withRouter, Link } from "react-router-dom";
 import Cookies from "universal-cookie";
-// import { Tabs, TabContent, TabLink } from 'react-tabs-redux';
+import { Tabs, TabContent, TabLink } from 'react-tabs-redux';
 
 
 import './style.css'
 
-const mapStateToProps = state => ({
-  completedList: state.employee.empFinishedList,
-  isFetching: state.employee.isFetching
-});
 
 class EmployeeCompleteList extends Component {
 
@@ -23,61 +19,118 @@ class EmployeeCompleteList extends Component {
   componentDidMount() {
     const cookies = new Cookies();
     var token = cookies.get("token");
-    this.props.dispatch(fetchEmpFinished(2,token));
-    console.log(this.props.completedList);
-  }
-  render() {
-    const  {isFetching, completedList } = this.props;
-    console.log(completedList);
+    const user = JSON.parse(
+      window.atob(
+        token
+          .split(".")[1]
+          .replace("-", "+")
+          .replace("_", "/")
+      ));
 
-  if(isFetching) {
+    this.props.dispatch(fetchDone(user.id, token));
+  }
+
+
+  render() {
+    const  {isFetching, Done} = this.props;
+
+    const completedOrders = Done.filter(
+      order => order.order_type === "order"
+    );
+    const completedComplaints = Done.filter(
+      order => order.order_type === "complaint"
+    );
+    const completedInternalOrders = Done.filter(
+      order => order.order_type === "int_order"
+    );
+
+
     return (
       <div>
-      loading....
+        <Tabs>
+          <div className="history-tabs">
+            <TabLink className="history-tablink" to="beställningar">
+              Beställningar
+            </TabLink>
+            <TabLink className="history-tablink" to="reklamationer">
+              Reklamationer
+            </TabLink>
+            <TabLink className="history-tablink" to="Interna">
+              Interna
+            </TabLink>
+          </div>
+          <TabContent for="beställningar">
+            {completedOrders.length ? (
+              <ul className="BasicList__list">
+                {completedOrders.map(order => (
+                      <li key={order.service_id}>
+                        <Link to={`/orders/${order.service_id}`}>
+                          <div className="edit">
+                            <p>Beställare : XXXX, orderId: </p>
+                            <i className="fas fa-exclamation-triangle" /> Skapa
+                            Reklamation
+                          </div>
+                        </Link>
+                      </li>
+                    ))}
+              </ul>
+            ) : (
+              <div className="BasicList__container">
+                <p>Inga beställningar att visa</p>
+              </div>
+            )}
+          </TabContent>
+          <TabContent for="reklamationer">
+            {completedComplaints.length ? (
+              <ul className="BasicList__list">
+                {completedComplaints.map(order => (
+                      <li key={order.service_id}>
+                        <Link to={`/orders/${order.service_id}`}>
+                          <div className="edit">
+                            <p>Beställare : XXXX, orderId: </p>
+                            <i className="fas fa-exclamation-triangle" /> Skapa
+                            Reklamation
+                          </div>
+                        </Link>
+                      </li>
+                    ))}
+              </ul>
+            ) : (
+              <div className="BasicList__container">
+                <p>Inga reklamationer att visa</p>
+              </div>
+            )}
+          </TabContent>
+          <TabContent for="Interna">
+          {completedInternalOrders.length ? (
+            <ul className="BasicList__list">
+                {completedInternalOrders.map(order => (
+                    <li key={order.service_id}>
+                      <Link to={`/orders/${order.service_id}`}>
+                        <div className="edit">
+                          <p>Beställare : XXXX, orderId: </p>
+                          <i className="fas fa-exclamation-triangle" /> Skapa
+                          Reklamation
+                        </div>
+                      </Link>
+                    </li>
+                  ))}
+            </ul>
+          ) : (
+              <div className="BasicList__container">
+                <p>Inga interna ärenden att visa</p>
+              </div>
+            )}
+          </TabContent>
+        </Tabs>
       </div>
-    );
-}
-
-const finishList =  completedList.map((complete) => 
-<div>
-  <li>
-    <Link to={`/employee/orders/${complete.employee_services.serviceId}`}>
-      <div className="edit">
-        <p>{complete.employee_services.serviceId}</p>
-        <p>Kund: {complete.con_pers}</p>
-        <p>datum: {complete.datetime}</p>
-        <p className="IncomingJobAccept">Info</p>
-      </div>
-      </Link>
-  </li>
-  <hr />
-</div>
-);
-
-
-    // if status = completed and user_id = user.id
-    return (
-      orders ?
-      <div className="BasicList__container">
-        <h4> Slutförda Jobb</h4>
-        <p> Här kan du se dina slutförda jobb.</p>
-        <hr />
-        <ul className="BasicList__list">
-           {finishList}
-        </ul>
-      </div>
-      : (
-        <div className="BasicList__container">
-        <h4> Slutförda jobb </h4>
-        <p>Inga slutförda jobb att visa</p>
-      </div>  
-      )
     );
   }
 }
 
-
-const mapStateToProps = state => ({ 
+const mapStateToProps = state => ({
+  Done: state.employee.Done,
+  isFetching: state.employee.isFetching
 });
 
 export default withRouter(connect(mapStateToProps)(EmployeeCompleteList));
