@@ -8,7 +8,7 @@ export default class HandleAccounts extends Component {
     return (
         <div> 
             <AdminTopNav />
-                    <UpdateUser />
+                    <UpdateUser id={this.props.match.params.id}/>
             <AdminBottomNav />
         </div>    
     )

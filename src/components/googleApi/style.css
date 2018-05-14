@@ -35,3 +35,13 @@
     border-radius: 100%;
   }
   
+  .Sleep {
+    color: rgb(219, 109, 109);
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.712);
+    width: 330px;
+    line-height: 90px;
+    font-size: 23px;
+    font-family: 'Quicksand', sans-serif;
+    letter-spacing: 1px;
+  }

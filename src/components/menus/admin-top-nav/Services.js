@@ -34,7 +34,7 @@ class AdminTopServices extends Component {
             <button className="slide-menu__press" onClick={this.openMenuServices}>
               <i className="fas fa-bars"></i>
             </button>
-          <Menu isOpen={openServices} customBurgerIcon={ false } noOverlay className="slide-menu services" width={'85%'}>
+          <Menu isOpen={openServices} customBurgerIcon={ false } noOverlay className="slide-menu services" width={'70%'}>
             <h3 className="slide-menu__header">Ärenden</h3>
               <a id="incoming" className="menu-item" href={`/admin/services/incoming`}>                
                 <i className="fas fa-inbox slide"></i>

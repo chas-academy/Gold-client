@@ -30,7 +30,7 @@ export { default as UpdateUser } from './forms/UpdateUser'
 
 
 /* ADMIN - ORDERS --------------------------------------------------- */
-export { default as IncomingOrdersList } from './lists/IncomingOrdersList'
+export { default as IncomingServicesList } from './lists/IncomingServicesList'
 export { default as InternalOrdersList } from './lists/InternalOrdersList'
 export { default as ActiveOrdersList } from './lists/ActiveOrdersList'
 export { default as AssignedOrdersList } from './lists/AssignedOrdersList'
@@ -43,7 +43,7 @@ export { default as CreateInternalOrder } from './buttons/CreateInternalOrder'
 export { default as AddOrder } from './forms/AddOrder'
 export { default as AddComplaint } from './forms/AddComplaint'
 export { default as AddInternalOrder } from './forms/AddInternalOrder'
-export { default as HandleOrder } from './forms/HandleOrder'
+export { default as HandleService } from './forms/HandleService'
 export { default as OrderDetails } from './orderDetails'
 
 
@@ -60,5 +60,6 @@ export { default as EmployeeOrderDetails } from './EmployeeOrderDetails'
 // CUSTOMER 
 export { default as CustomerBottomNav } from './menus/customer-bottom-nav'
 export { default as CustomerOrderDetails } from './customerOrderDetails'
+export { default as CustomerHistoryList } from './lists/CustomerHistoryList'
 
 

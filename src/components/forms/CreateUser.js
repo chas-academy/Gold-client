@@ -138,7 +138,7 @@ class CreateUser extends Component {
               <input
                 type="text"
                 name="name"
-                className="form-control"
+                className="form-control obl"
                 placeholder="Namn *"
                 value={name}
                 onChange={this.handleChange}
@@ -153,13 +153,13 @@ class CreateUser extends Component {
           <div className="form-group">
             <div className="BasicForm__check">
               <select className="BasicForm__select" onChange={this.handleSelectChange.bind(this)}>
-                <option defaultValue>Välj typ av användare </option>
-                <option value="admin">Admin *</option>
-                <option value="employee">Anställd *</option>
-                <option value="private">Privatkund *</option>
-                <option value="company">Företagskund *</option>
+                <option selected disabled>Välj typ av användare * </option>
+                <option value="admin">Admin</option>
+                <option value="employee">Anställd</option>
+                <option value="private">Privatkund</option>
+                <option value="company">Företagskund</option>
               </select>  
-          {(customer_type) && <i className="fas fa-check BasicForm__check" />}
+          {customer_type && <i className="fas fa-check BasicForm__check" />}
             </div>
           </div>      
           <div className="form-group">
@@ -167,7 +167,7 @@ class CreateUser extends Component {
               <input
                 type="text"
                 name="pers_org_num"
-                className="form-control"
+                className="form-control obl"
                 placeholder="pers: YYMMDDXXXX / org: XXXXXXXXXX *"
                 value={pers_org_num}
                 onChange={this.handleChange}
@@ -232,8 +232,8 @@ class CreateUser extends Component {
               <input
                 type="password"
                 name="password"
-                className="form-control"
-                placeholder="Lösenord"
+                className="form-control obl"
+                placeholder="Lösenord *"
                 value={password}
                 minLength='6'
                 onChange={this.handleChange}
@@ -269,8 +269,8 @@ class CreateUser extends Component {
               <input
                 type="password"
                 name="ValidatePassword"
-                className="form-control"
-                placeholder="Bekräfta Lösenord"
+                className="form-control obl"
+                placeholder="Bekräfta Lösenord *"
                 value={ValidatePassword}
                 minLength='6'
                 onChange={this.handleChange}
@@ -290,8 +290,13 @@ class CreateUser extends Component {
               )}
           </div>
           <div className="form-group">
-            <LocationSearchInput getAddress={this.getAddress.bind(this)} />
+            <LocationSearchInput getAddress={this.getAddress.bind(this)} submitted={submitted}/>
           </div>
+          {!name || !customer_type || !pers_org_num || !password ||
+              !ValidatePassword ? (
+                <div className="help-block">* Dessa fält är obligatoriska</div>
+              )
+              :('')}
           <div className="buttons">
             <div className="form-group">
               <button type="submit" className="btn btn-primary">

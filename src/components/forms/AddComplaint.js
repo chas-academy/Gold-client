@@ -66,8 +66,7 @@ class AddComplaint extends Component {
           <label className="BasicForm__checkboxContainer">
               <input type="checkbox" />
               <span className="BasicForm__checkmark">
-                <i className="fas fa-hand-point-right"></i>
-                <i className="fas fa-exclamation-circle"></i>
+                <i className="fas fa-circle"></i>
                 Akut ärende? (åtgärdas inom 4h)
               </span>
             </label>
