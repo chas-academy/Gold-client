@@ -45,8 +45,9 @@
     },
     "devDependencies": {
         "bootstrap": "^3.3.7",
-        "node-sass": "^4.7.2",
-        "rebuild-node-sass": "^1.1.0"
+        "node-sass": "^4.9.0",
+        "rebuild-node-sass": "^1.1.0",
+        "sass-loader": "^7.0.1"
     },
     "scripts": {
         "rebuild-node-sass": "rebuild-node-sass",

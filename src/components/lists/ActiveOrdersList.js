@@ -55,7 +55,7 @@ class ActiveOrdersList extends Component {
                 ))}
               </ul>
             ) : (
-              <div className="BasicList__container">
+              <div className="BasicList__container inner">
                 <p>Inga pågående ärenden att visa</p>
               </div>
             )}
@@ -74,7 +74,7 @@ class ActiveOrdersList extends Component {
                 ))}
               </ul>
             ) : (
-              <div className="BasicList__container">
+              <div className="BasicList__container inner">
                 <p>Inga pågående reklamationer att visa</p>
               </div>
             )}
@@ -93,7 +93,7 @@ class ActiveOrdersList extends Component {
                 ))}
               </ul>
             ) : (
-              <div className="BasicList__container">
+              <div className="BasicList__container inner">
                 <p>Inga pågående interna ärenden att visa</p>
               </div>
             )}

@@ -52,7 +52,7 @@ class EmployeeCompleteList extends Component {
         </ul>
       </div>
       : (
-        <div className="BasicList__container">
+        <div className="BasicList__container inner">
         <h4> Slutförda jobb </h4>
         <p>Inga slutförda jobb att visa</p>
       </div>  

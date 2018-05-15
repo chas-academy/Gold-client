@@ -60,7 +60,7 @@ class ComplaintsList extends Component {
                 ))}
               </ul>
             ) : (
-              <div className="BasicList__container">
+              <div className="BasicList__container inner">
                 <p>Inga beställningar att visa</p>
               </div>
             )}
@@ -85,7 +85,7 @@ class ComplaintsList extends Component {
                 ))}
               </ul>
             ) : (
-              <div className="BasicList__container">
+              <div className="BasicList__container inner">
                 <p>Inga beställningar att visa</p>
               </div>
             )}
@@ -110,7 +110,7 @@ class ComplaintsList extends Component {
                 ))}
               </ul>
             ) : (
-              <div className="BasicList__container">
+              <div className="BasicList__container inner">
                 <p>Inga beställningar att visa</p>
               </div>
             )}

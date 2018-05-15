@@ -60,7 +60,7 @@ class IncomingServicesList extends Component {
                 ))}
               </ul>
             ) : (
-              <div className="BasicList__container">
+              <div className="BasicList__container inner">
                 <h4> Nya ärenden </h4>
                 <p>Inga nya ärenden att visa</p>
               </div>
@@ -85,7 +85,7 @@ class IncomingServicesList extends Component {
               ))}
             </ul>
           ) : (
-              <div className="BasicList__container">
+              <div className="BasicList__container inner">
                 <h4> Nya ärenden </h4>
                 <p>Inga nya reklamationer att visa</p>
               </div>

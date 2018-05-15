@@ -167,7 +167,7 @@ class AddOrder extends Component {
 
     return (
       <div className="col-md-6 col-md-offset-3">
-        <form name="form" className="BasicForm" onSubmit={this.handleSubmit} encType="multipart/form-data">
+        <form name="form" id="add-order" className="BasicForm" onSubmit={this.handleSubmit} encType="multipart/form-data">
           <h5> Skapa Beställning</h5>
           {isAdmin === true ? (
             <div className="form-group">

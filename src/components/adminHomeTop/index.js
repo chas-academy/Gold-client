@@ -23,7 +23,7 @@ class AdminHomeTop extends Component {
 
     return (
       <div className="BasicList__container AdminHome">
-        <div className="BasicList__container">
+        <div className="BasicList__container inner">
           <h4> Dagens ärenden </h4>
           <Tabs>
             <div className="history-tabs">
