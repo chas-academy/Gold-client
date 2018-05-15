@@ -32,10 +32,10 @@ class AdminTopAccounts extends Component {
         return (
     
           <div>
-            <button className="slide-menu__press" onClick={this.openMenuAccounts}>
+            <button className="slide-menu__press accounts__press" onClick={this.openMenuAccounts}>
                 <i className="fas fa-users"></i>
              </button>
-          <Menu right isOpen={openAccounts} customBurgerIcon={ false } noOverlay className="slide-menu accounts" width={'70%'}>
+          <Menu right isOpen={openAccounts} customBurgerIcon={ false } noOverlay className="slide-menu accounts" width={'100%'}>
           <h3 className="slide-menu__header2">Konton</h3>
         <a id="create" className="menu-item2" href={`/admin/accounts/create`}>
             Skapa ny användare

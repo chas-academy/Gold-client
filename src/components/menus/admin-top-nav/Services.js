@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
 import { slide as Menu } from 'react-burger-menu'
 import './style.css'
+import $ from 'jquery'; 
 
 
 class AdminTopServices extends Component {
@@ -15,7 +16,27 @@ class AdminTopServices extends Component {
   
       this.openMenuServices = this.openMenuServices.bind(this);
     }
-  
+    componentDidMount() {
+      let width = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+      if(width > '800') {
+        this.setState({ openServices: true })
+      } else {
+        this.setState({ openServices: false })
+      }
+      let btn = $('.services__press');
+      let icon = $('i');
+      $(btn).click(function() {
+        if(icon.hasClass('fa-bars')){
+          $('.fa-bars').addClass('fa-times');
+          $('.fa-bars').removeClass('fa-bars');
+        }
+        else {
+          $('.fa-times').addClass('fa-bars');
+          $('.fa-times').removeClass('fa-times');
+        }
+      });
+    }
+
     openMenuServices(event) {
         event.preventDefault();
         if (this.state.openServices === true) {
@@ -31,10 +52,10 @@ class AdminTopServices extends Component {
         return (
     
           <div>
-            <button className="slide-menu__press" onClick={this.openMenuServices}>
+            <button className="slide-menu__press services__press" onClick={this.openMenuServices}>
               <i className="fas fa-bars"></i>
             </button>
-          <Menu isOpen={openServices} customBurgerIcon={ false } noOverlay className="slide-menu services" width={'70%'}>
+          <Menu isOpen={openServices} customBurgerIcon={ false } noOverlay className="slide-menu services" width={'100%'}>
             <h3 className="slide-menu__header">Ärenden</h3>
               <a id="incoming" className="menu-item" href={`/admin/services/incoming`}>                
                 <i className="fas fa-inbox slide"></i>
@@ -62,10 +83,6 @@ class AdminTopServices extends Component {
                 <i className="fas fa-history slide"></i>
                 Avslutade
               </a> 
-              <a id="logout" className="menu-item" href={`/logout`}>
-          <i className="fas fa-sign-out-alt slide" />
-          Logga ut
-        </a>
         </Menu>  
       </div>
     );

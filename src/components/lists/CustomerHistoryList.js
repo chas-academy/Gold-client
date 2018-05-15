@@ -75,7 +75,7 @@ class CustomerHistoryList extends Component {
                     ))}
               </ul>
             ) : (
-              <div className="BasicList__container">
+              <div className="BasicList__container inner">
                 <p>Inga beställningar att visa</p>
               </div>
             )}
@@ -96,7 +96,7 @@ class CustomerHistoryList extends Component {
                     ))}
               </ul>
             ) : (
-              <div className="BasicList__container">
+              <div className="BasicList__container inner">
                 <p>Inga reklamationer att visa</p>
               </div>
             )}

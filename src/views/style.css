@@ -1,3 +1,6 @@
+*:focus {
+    outline: none;
+}
 body {
     /* background-image: url('../assets/img/background.jpg');
     background-repeat: no-repeat;
@@ -10,7 +13,6 @@ body {
     font-family: 'Quicksand', sans-serif;
 
 }
-
 .link-group {
     display: flex;
     width: 93%;
