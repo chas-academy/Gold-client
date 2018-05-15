@@ -1,18 +1,59 @@
 import React, { Component } from "react";
-// import { connect } from "react-redux";
+import { connect } from "react-redux";
+import { fetchEmpIncoming } from '../../redux/actions/employees';
 import { Link, withRouter } from "react-router-dom";
-
+import Cookies from "universal-cookie";
 import './style.css'
+
+const mapStateToProps = state => ({
+  incomingList: state.employee.empIncomingList,
+  isFetching: state.employee.isFetching
+});
 
 class IncomingJobsList extends Component {
 
-  componentDidMount() {
+  constructor(props) {
+    super(props);
+    this.state = {}
+  }
 
+  componentDidMount() {
+    const cookies = new Cookies();
+    var token = cookies.get("token");
+    console.log(id);
+    console.log(token);
+    this.props.dispatch(fetchEmpIncoming(2,token));
+    console.log(this.props.incomingList);
   }
 
   render() {
-    const jobId = 1;
-    const jobId2 = 2;
+    const  {isFetching, incomingList } = this.props;
+      console.log(incomingList);
+
+    if(isFetching) {
+      return (
+        <div>
+        loading....
+        </div>
+      );
+  }
+
+    const List =  incomingList.map((list) => 
+    <div>
+      <li>
+        <Link to={`/employee/orders/${list.employee_services.serviceId}`}>
+          <div className="edit">
+            <p>{list.employee_services.serviceId}</p>
+            <p>Kund: {list.con_pers}</p>
+            <p>datum: {list.datetime}</p>
+            <p className="IncomingJobAccept">Info</p>
+          </div>
+          </Link>
+      </li>
+      <hr />
+    </div>
+    );
+
     return (
       <div className="BasicList__container">
         <h5> Inkomna Jobb</h5>
@@ -21,29 +62,13 @@ class IncomingJobsList extends Component {
             du har anlänt till kunden med knappen "Påbörja jobb". </p>
         <hr />
         <ul className="BasicList__list">
-          <li>
-            <Link to={`/employee/orders/${jobId}`}>
-              <div className="edit">
-                <p>Kund: XXXXX</p>
-                <p>datum: XXXX</p>
-                <p className="IncomingJobAccept">Info</p>
-              </div>
-            </Link>
-          </li>
-          <hr />
-          <li>
-            <Link to={`/employee/orders/${jobId2}`}>
-              <div className="edit">
-              <p>Kund: XXXXX</p>
-              <p>datum: XXXX</p>
-                <p className="IncomingJobAccept">Info</p>
-              </div>
-            </Link>
-          </li>
+          {List}
         </ul>
       </div>
     );
   }
 }
 
-export default withRouter(IncomingJobsList);
+
+
+export default connect(mapStateToProps)(IncomingJobsList);
