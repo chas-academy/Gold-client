@@ -42,7 +42,11 @@ class UpdateUser extends Component {
     (
       this.setState({ isAdmin: true, adminProfile: true }),
       this.props.dispatch(fetchUser(user.id, token))
-     ) :  this.state.id && user.user_type === 'admin' ?
+     ) : !this.state.id ?
+     (
+      this.setState({ isAdmin: false }),
+      this.props.dispatch(fetchUser(user.id, token))
+     ) : this.state.id && user.user_type === 'admin' ?
      (
       this.setState({ isAdmin: true }),
       this.props.dispatch(fetchUser(this.state.id, token))

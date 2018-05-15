@@ -15,9 +15,6 @@ export default class EmployeeHistory extends Component {
         <div className="col-md-6 col-md-offset-3">
           <Tabs>
             <div className="history-tabs">
-              <TabLink className="history-tablink" to="inkommande">
-                Nya jobb
-              </TabLink>
               <TabLink className="history-tablink" to="pågående">
                 Pågående
               </TabLink>
@@ -25,9 +22,6 @@ export default class EmployeeHistory extends Component {
                 Avslutade
               </TabLink>
             </div>
-            <TabContent for="inkommande">
-              <EmployeeIncomingList />
-            </TabContent>
             <TabContent for="pågående">
               <EmployeeActiveList />
             </TabContent>

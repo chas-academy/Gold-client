@@ -1,16 +1,12 @@
 import React, { Component } from "react";
 import { connect } from "react-redux"
-import { fetchEmpActive } from '../../redux/actions/employees';
+import { fetchTaken } from '../../redux/actions/employees';
 import { withRouter, Link } from "react-router-dom";
 import { EmployeeOrderDetails } from '../../components'
 import Cookies from "universal-cookie";
 
 import "./style.css";
 
-const mapStateToProps = state => ({
-  activeList: state.employee.empActiveList,
-  isFetching: state.employee.isFetching
-});
 
 class EmployeeActiveList extends Component {
   constructor(props) {
@@ -21,14 +17,21 @@ class EmployeeActiveList extends Component {
   componentDidMount() {
     const cookies = new Cookies();
     var token = cookies.get("token");
-    this.props.dispatch(fetchEmpActive(2,token));
-    console.log(this.props.activeList);
+    const user = JSON.parse(
+      window.atob(
+        token
+          .split(".")[1]
+          .replace("-", "+")
+          .replace("_", "/")
+      ));
+
+    this.props.dispatch(fetchTaken(user.id, token));
   }
 
   render() {
-    const  {isFetching, activeList } = this.props;
+    const  {isFetching, Taken } = this.props;
 
-    const ongoingList =  activeList.map((active) => 
+    const ongoingList =  Taken.map((active) => 
     <div>
       <li>
         <Link to={`/employee/orders/${active.employee_services.serviceId}`}>
@@ -61,5 +64,10 @@ class EmployeeActiveList extends Component {
     );
   }
 }
+
+const mapStateToProps = state => ({
+  Taken: state.employee.Taken,
+  isFetching: state.employee.isFetching
+});
 
 export default connect(mapStateToProps)(EmployeeActiveList);

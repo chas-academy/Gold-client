@@ -21,6 +21,7 @@ import {
   EmployeeHistory,
   EmployeeIncoming,
   EmployeeOrderView,
+  EmployeeProfile,
   Employees,
   HandleAccounts,
   Home,
@@ -43,13 +44,10 @@ class App extends Component {
         <Switch>
           <Route exact path='/' component={Login} />
           <Route path='/home' component={Home} />
-          {/* <Route path='/admin/accounts/employees/:userId' component={HandleAccounts}/> */}
           <Route path='/admin/accounts/employees' component={Employees} />
           <Route path='/admin/accounts/create' component={CreateUsers}/>
           <Route path='/admin/accounts/profile' component={Profile} />  
-          {/* <Route path='/admin/accounts/customers/private/:userId' component={HandleAccounts}/> */}
           <Route path='/admin/accounts/customers/private' component={PrivateCustomers} />
-          {/* <Route path='/admin/accounts/customers/companies/:userId' component={HandleAccounts}/> */}
           <Route path='/admin/accounts/customers/companies' component={Companies} />
           <Route path='/admin/accounts/:id' component={HandleAccounts}/>
           <Route path='/admin/services/incoming' component={IncomingServices} />
@@ -65,6 +63,7 @@ class App extends Component {
           <Route path='/admin/orders' component={Orders} />
           <Route path='/employee/active' component={EmployeeActive} />
           <Route path='/employee/history' component={EmployeeHistory} />
+          <Route path='/employee/profile' component={EmployeeProfile} />
           <Route path='/employee/incoming' component={EmployeeIncoming} />
           <Route path='/employee/orders/:id' component={EmployeeOrderView} />
           <Route path='/profile' component={CustomerProfile} />
