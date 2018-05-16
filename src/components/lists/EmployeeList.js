@@ -35,7 +35,7 @@ class EmployeeList extends Component {
         </ul>
       </div>
       : (
-        <div className="BasicList__container">
+        <div className="BasicList__container inner">
           <h4>Anställda</h4>
           <p>Inga användare att visa</p>
         </div>  

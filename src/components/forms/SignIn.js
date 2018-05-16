@@ -77,7 +77,7 @@ handleChange(event) {
 
     return (
       <div className="col-md-6 col-md-offset-3">
-          <form name="form" className="BasicForm" onSubmit={this.handleSubmit}> 
+          <form name="form" className="loginForm" onSubmit={this.handleSubmit}> 
 
             <div className="form-group">
             <label className="BasicForm__label"> Email</label>

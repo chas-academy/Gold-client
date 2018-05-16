@@ -59,7 +59,7 @@ class OrdersList extends Component {
                 ))}
               </ul>
             ) : (
-              <div className="BasicList__container">
+              <div className="BasicList__container inner">
                 <p>Inga beställningar att visa</p>
               </div>
             )}
@@ -84,7 +84,7 @@ class OrdersList extends Component {
                 ))}
               </ul>
             ) : (
-              <div className="BasicList__container">
+              <div className="BasicList__container inner">
                 <p>Inga beställningar att visa</p>
               </div>
             )}
@@ -109,7 +109,7 @@ class OrdersList extends Component {
                 ))}
               </ul>
             ) : (
-              <div className="BasicList__container">
+              <div className="BasicList__container inner">
                 <p>Inga beställningar att visa</p>
               </div>
             )}

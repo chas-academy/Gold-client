@@ -1,10 +1,18 @@
-.Admin__div {
-    margin-top: 5%;
-}
-
 @media (min-width: 800px) {
-    .Admin__div {
-        width: 73.5%;
-        margin-left: 26.5%;
+    .AdminHome {
+        width: 70%!important;
+        margin-left: 30%!important;
+    }
+    .map {
+        width: 70%!important;
+        margin-left: 30%!important;
+    }
+    .BasicList__container {
+        width: 68%!important;
+        margin-left: 31%!important;
+    }
+    .inner {
+        width: 95%!important;
+        margin: auto!important;
     }
 }

@@ -69,7 +69,7 @@ class MapContainer extends Component {
     const AnyReactComponent = ({ text }) => <div>{text}</div>;
 
     return (
-      <div
+      <div className="map"
         style={{
           height: "45vh",
           width: "95%",
