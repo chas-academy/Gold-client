@@ -13,7 +13,7 @@ class UpdateUser extends Component {
     this.state = {
       user: this.props,
       errorMessage: "",
-      phoneError: "",
+      telError: "",
       isAdmin: "",
       numberError: "",
       adminProfile: "",
@@ -69,7 +69,7 @@ class UpdateUser extends Component {
     const user = this.state.user;
 
     var errorMessage = ''
-    if (!this.state.numberError && !this.state.passwordError && !this.state.phoneError) {
+    if (!this.state.passwordError && !this.state.telError) {
       
       if ( user ) {
         this.props.dispatch(updateUser({ user, token }))
@@ -108,12 +108,12 @@ class UpdateUser extends Component {
       password,
       ValidatePassword,
       phoneError,
-      numberError,
       type
     } = this.state;
 
     const { user } = this.props;
 
+    console.log(user);
     return (
       <div className="col-md-6 col-md-offset-3">
         <form name="form" className="BasicForm" onSubmit={this.handleSubmit}>
@@ -141,29 +141,6 @@ class UpdateUser extends Component {
             {submitted &&
               !user.name && (
                 <div className="help-block">Glöm inte fylla i namnet!</div>
-              )}
-          </div>
-          <div className="form-group">
-            <div className="BasicForm__check">
-              <input
-                type="text"
-                name="user.pers_org_num"
-                className="form-control"
-                placeholder="YYMMDDXXXX / XXXXXXXXXX"
-                value={user.pers_org_num}
-              />
-              {user.pers_org_num &&
-                !numberError && <i className="fas fa-check BasicForm__check" />}
-            </div>
-            {submitted &&
-              !user.pers_org_num && (
-                <div className="help-block">
-                  Glöm inte fylla i Person/organisationsnummer!
-                </div>
-              )}
-            {user.pers_org_num &&
-              numberError && (
-                <div className="help-block">Oopa! fick du med en bokstav?</div>
               )}
           </div>
           <div className="form-group">
@@ -269,13 +246,6 @@ class UpdateUser extends Component {
             {submitted &&
               !ValidatePassword && (
                 <div className="help-block">Du måste upprepa lösenordet!</div>
-              )}
-          </div>
-          <div className="form-group">
-            <LocationSearchInput />
-            {submitted &&
-              !user.adress && (
-                <div className="help-block">Glöm inte fylla i adressen!</div>
               )}
           </div>
           <div className="buttons">

@@ -39,7 +39,7 @@ class AdminHomeTop extends Component {
                 <ul className="BasicList__list">
                   {newOrders.map(order => (
                     <li key={order.id}>
-                      <Link to={`/admin/services/${order.id}`}>
+                      <Link to={`/admin/orders/${order.id}`}>
                         <div className="edit">
                           {order.status === "new" ? (
                             <i
@@ -51,15 +51,6 @@ class AdminHomeTop extends Component {
                               }}
                             />
                           ) : order.status === "assigned" ? (
-                            <i
-                              className="fas fa-map-marker button-glow-new"
-                              style={{
-                                color: "blue",
-                                fontSize: "18px",
-                                marginRight: "10px"
-                              }}
-                            />
-                          ) : order.status === "taken" ? (
                             <i
                               className="fas fa-map-marker button-glow-new"
                               style={{
@@ -102,7 +93,7 @@ class AdminHomeTop extends Component {
                 <ul className="BasicList__list">
                   {newComplaints.map(order => (
                     <li key={order.id}>
-                      <Link to={`/admin/services/${order.id}`}>
+                      <Link to={`/admin/complaints/${order.id}`}>
                         <div className="edit">
                         {order.status === "new" ? (
                             <i

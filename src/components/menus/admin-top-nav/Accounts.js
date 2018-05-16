@@ -45,6 +45,10 @@ class AdminTopAccounts extends Component {
             Anställda
           <i className="fas fa-users slide2"></i>
           </a>
+          <a id="create" className="menu-item2" href={`/admin/accounts/customers/create`}>
+            Lägg till ny Kund
+          <i className="fas fa-plus slide2"></i>
+          </a>
           <a id="privateCustomers" className="menu-item2" href={`/admin/accounts/customers/private`}>
             Privatkunder
           <i className="fas fa-user slide2"></i>

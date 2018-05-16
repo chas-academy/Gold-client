@@ -63,7 +63,6 @@ class MapContainer extends Component {
     const AssignedServices = servicesNew.filter(
       order => order.status === "assigned"
     );
-    const TakenServices = servicesNew.filter(order => order.status === "taken");
     const DoneServices = servicesNew.filter(order => order.status === "done");
 
     const Google = process.env.REACT_APP_API_KEY_GOOGLE;
@@ -115,23 +114,7 @@ class MapContainer extends Component {
               text={
                 <a href="admin/orders/1">
                   <i
-                    className="fas fa-map-marker button-glow-new"
-                    style={{ color: "red", fontSize: "18px" }}
-                  />
-                </a>
-              }
-            />
-          ))}
-          {TakenServices.map(order => (
-            <AnyReactComponent
-              key={order.id}
-              lat={55.70587}
-              lng={13.30073}
-              text={
-                <a href="admin/orders/2">
-                  {" "}
-                  <i
-                    className="fas fa-map-marker button-glow-active"
+                    className="fas fa-map-marker button-glow-assigned"
                     style={{ color: "orange", fontSize: "18px" }}
                   />
                 </a>

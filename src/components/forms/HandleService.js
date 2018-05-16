@@ -44,6 +44,7 @@ class HandleService extends Component {
         .replace("_", "/")
       ))
       
+      // if order eller if complaint
     this.props.dispatch(fetchService(token, this.state.id));
   }
   

@@ -1,175 +1,154 @@
-import React, { Component } from 'react';
-import { registerUser } from '../../redux/actions/Auth';
-import { connect } from 'react-redux';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { fetchCustomer, updateCustomer } from "../../redux/actions/admin/Accounts";
+import Cookies from "universal-cookie";
 
+import "./style.css";
 import { LocationSearchInput } from "../../components";
 
-import './style.css';
-
-
-const mapDispatchToProps = dispatch => {
-  return { registerUser: regUser => dispatch(registerUser(regUser)) };
-};
-
-
-class SignUp extends Component {
-  constructor (props) {
+class UpdateCustomer extends Component {
+  constructor(props) {
     super(props);
 
-
     this.state = {
-      address: "",
-      email: "",
+      customer: this.customer,
       errorMessage: "",
-      lat: "",
-      lon: "",
-      name: "",
-      numberError: null,
+      telError: "",
+      isAdmin: "",
+      numberError: "",
+      adminProfile: "",
       password: "",
-      passwordError: "",
-      tel: "",
-      customer_type: "",
-      phoneError: null,
-      success: false,
+      ValidatePassword: "",
       submitted: "",
-      userIsNotAdmin: this.props,
-      ValidatePassword: ""
+      id: this.props.id
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleChange = this.handleChange.bind(this);
   }
 
-  handleSelectChange(event) {
-    this.setState({
-      customer_type: event.target.value
-    })
+  componentWillMount() {
+    const cookies = new Cookies();
+    var token = cookies.get("token");
+    const user = JSON.parse(
+      window.atob(
+        token
+          .split(".")[1]
+          .replace("-", "+")
+          .replace("_", "/")
+      )
+    );
+    
+    !this.state.id && user.user_type === 'admin' ? 
+    (
+      this.setState({ isAdmin: true, adminProfile: true }),
+      this.props.dispatch(fetchCustomer(user.id, token))
+     ) : !this.state.id ?
+     (
+      this.setState({ isAdmin: false }),
+      this.props.dispatch(fetchCustomer(user.id, token))
+     ) : this.state.id && user.user_type === 'admin' ?
+     (
+      this.setState({ isAdmin: true }),
+      this.props.dispatch(fetchCustomer(this.state.id, token))
+    ) : ( 
+      this.setState({ isAdmin: false }),
+      this.props.dispatch(fetchCustomer(this.state.id, token))
+    )
   }
 
-  handleChange(event) {
-    const { name, value } = event.target;
-    this.setState({ [name]: value });
-
-    const isNumeric = /^[0-9]+$/;
-
-    if (this.state.tel.match(isNumeric)) {
-      this.setState({ phoneError: false });
-    } else {
-      this.setState({ phoneError: true });
-    }
-
-    if (this.state.password.length >= 6) {
-      this.setState({ passwordError: false });
-    } else {
-      this.setState({ passwordError: true });
-    }
-  }
 
   handleSubmit(event) {
     event.preventDefault();
-    this.setState({ submitted: true });
+    const { name, value } = event.target;
+    this.setState({ [name]: value });
 
-    const regUser = {
-      name: this.state.name,
-      password: this.state.password,
-      passwordVal: this.state.ValidatePassword,
-      type: this.state.customer_type,
-      email: this.state.email,
-      tel: this.state.tel,
-      address: this.state.address,
-      lat: this.state.lat,
-      lon: this.state.lon
-    }
+    const cookies = new Cookies();
+    var token = cookies.get("token");
+
+    this.setState({ submitted: true });
+    const customer = this.state.customer;
 
     var errorMessage = ''
     if (!this.state.numberError && !this.state.passwordError && !this.state.phoneError) {
-      if ( regUser ) {
-        this.props.registerUser({ regUser })
+      
+      if ( customer ) {
+        this.props.dispatch(updateCustomer({ customer, token }))
         .then((res) => {
           if (!res) {
             this.setState({ success: true })
           } else {
             res.errors.forEach(error => {
               errorMessage = error.message
-              if (error.message === "Validation isEmail on email failed") {
-                errorMessage = "Felaktigt ifylld email"
-              } else if (error.message === "email must be unique") {
-                errorMessage = "Denna email är redan registrerad"
-              } else if (error.message === "tel must be unique") {
-                errorMessage = "Detta telefonnummer är redan registrerat på en användare"
+              if (error.message == "Validation isEmail on email failed") {
+                errorMessage = "Felaktigt email"
+              } else if (error.message == "email must be unique") {
+                errorMessage = "Email är redan tagen"
+              } else if (error.message == "tel must be unique") {
+                errorMessage = "Telefonnummer är redan tagen"
               }
-            });
+            errorMessage = 'oops';
+          })
+        }
+        });
             this.setState({ errorMessage: errorMessage, submitted: false })
           }
-        })
       }
     }
-  }
-  
-  getAddress(address, lat,  lon) {
-    this.setState({ address: address, lat: lat, lon: lon })
-  }
+
   
   render() {
     const {
-      customer_type,
-      email,
-      errorMessage,
+      adminProfile,
       submitted,
-      name,
-      pers_org_num,
-      numberError,
-      password,
       passwordError,
-      tel,
-      phoneError,
+      errorMessage,
+      isAdmin,
+      password,
       ValidatePassword,
+      telError,
+      numberError,
+      type
     } = this.state;
+
+    const { customer } = this.props;
+
+    console.log(customer.user);
 
     return (
       <div className="col-md-6 col-md-offset-3">
         <form name="form" className="BasicForm" onSubmit={this.handleSubmit}>
+          <h5> Uppdatera kundprofil</h5>
           <div className="form-group">
             <div className="BasicForm__check">
+            {customer.user ? 
               <input
                 type="text"
-                name="name"
+                name="user.name"
                 className="form-control"
                 placeholder="Namn"
-                value={name}
-                onChange={this.handleChange}
+                value={customer.user.name}
               />
-              {name && <i className="fas fa-check BasicForm__check" />}
+              : ('')}
+              {customer.name && <i className="fas fa-check BasicForm__check" />}
             </div>
             {submitted &&
-              !name && (
+              !customer.name && (
                 <div className="help-block">Glöm inte fylla i namnet!</div>
               )}
           </div>
           <div className="form-group">
             <div className="BasicForm__check">
-              <select className="BasicForm__select" onChange={this.handleSelectChange.bind(this)}>
-                <option defaultValue>Välj typ av kund </option>
-                <option value="private">Privatkund</option>
-                <option value="company">Företagskund</option>
-              </select>  
-          {(customer_type) && <i className="fas fa-check BasicForm__check" />}
-            </div>
-          </div>      
-          <div className="form-group">
-            <div className="BasicForm__check">
               <input
                 type="text"
-                name="email"
+                name="user.email"
                 className="form-control"
                 placeholder="Email"
-                value={email}
-                onChange={this.handleChange}
+                value={customer.email}
               />
-              {email && <i className="fas fa-check BasicForm__check" />}
+              {customer.email && <i className="fas fa-check BasicForm__check" />}
             </div>
             {submitted &&
-              !email && (
+              !customer.email && (
                 <div className="help-block">Glöm inte fylla i email!</div>
               )}
           </div>
@@ -177,23 +156,22 @@ class SignUp extends Component {
             <div className="BasicForm__check">
               <input
                 type="text"
-                name="tel"
+                name="user.tel"
                 className="form-control"
                 placeholder="Telefonnummer"
-                value={tel}
-                onChange={this.handleChange}
+                value={customer.tel}
               />
-              {tel &&
-                !phoneError && <i className="fas fa-check BasicForm__check" />}
+              {customer.tel &&
+                !telError && <i className="fas fa-check BasicForm__check" />}
             </div>
             {submitted &&
-              !tel && (
+              !customer.tel && (
                 <div className="help-block">
                   Glöm inte fylla i telefonnummer!
                 </div>
               )}
-            {tel &&
-              phoneError && (
+            {customer.tel &&
+              telError && (
                 <div className="help-block">Oopa! fick du med en bokstav?</div>
               )}
           </div>
@@ -204,29 +182,35 @@ class SignUp extends Component {
                 name="password"
                 className="form-control"
                 placeholder="Lösenord"
-                value={password}
-                minLength='6'
-                onChange={this.handleChange}
+                value={customer.password}
               />
-              {password && passwordError &&
-                password !== ValidatePassword &&  (
+              {password &&
+                passwordError &&
+                password !== ValidatePassword && (
                   <i className="fas fa-check BasicForm__passwordNotOk" />
                 )}
-              {password && password !== ValidatePassword && !passwordError && (
+              {password &&
+                password !== ValidatePassword &&
+                !passwordError && (
                   <i className="fas fa-check BasicForm__check" />
                 )}
-                
+
               {password &&
                 password === ValidatePassword && (
                   <i className="fas fa-check BasicForm__passwordOk" />
                 )}
             </div>
-                {password && passwordError  &&
-                <div className="help-block">Lösenordet måste vara minst 6 tecken långt</div>
-                }
-                {!passwordError && password && password !== ValidatePassword &&
+            {password &&
+              passwordError && (
+                <div className="help-block">
+                  Lösenordet måste vara minst 8 tecken långt
+                </div>
+              )}
+            {!passwordError &&
+              password &&
+              password !== ValidatePassword && (
                 <div className="help-block">Bekräfta lösenordet nedan</div>
-                }
+              )}
             {submitted &&
               !password && (
                 <div className="help-block">
@@ -242,15 +226,13 @@ class SignUp extends Component {
                 className="form-control"
                 placeholder="Bekräfta Lösenord"
                 value={ValidatePassword}
-                minLength='6'
-                onChange={this.handleChange}
               />
               {ValidatePassword &&
-                password !== ValidatePassword && (
+                customer.password !== ValidatePassword && (
                   <i className="fas fa-check BasicForm__passwordNotOk" />
                 )}
               {ValidatePassword &&
-                password === ValidatePassword && (
+                customer.password === ValidatePassword && (
                   <i className="fas fa-check BasicForm__passwordOk" />
                 )}
             </div>
@@ -260,15 +242,26 @@ class SignUp extends Component {
               )}
           </div>
           <div className="form-group">
-            <LocationSearchInput getAddress={this.getAddress.bind(this)} />
+            <LocationSearchInput />
+            {submitted &&
+              !customer.adress && (
+                <div className="help-block">Glöm inte fylla i adressen!</div>
+              )}
           </div>
           <div className="buttons">
             <div className="form-group">
               <button type="submit" className="btn btn-primary">
-                Registrera
+                Spara
               </button>
               {errorMessage && <div className="help-block">{errorMessage}</div>}
             </div>
+          </div>
+          <div className="form-group">
+            {!adminProfile && isAdmin ? (
+              <button className="btn btn-danger">Radera Användare</button>
+            ) : (
+              ""
+            )}
           </div>
         </form>
       </div>
@@ -276,5 +269,8 @@ class SignUp extends Component {
   }
 }
 
-  
-export default connect(null, mapDispatchToProps)(SignUp);
+const mapStateToProps = state => ({
+  customer: state.adminAccounts.customer
+});
+
+export default connect(mapStateToProps)(UpdateCustomer);

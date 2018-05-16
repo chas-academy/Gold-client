@@ -18,25 +18,20 @@ class CreateUser extends Component {
 
 
     this.state = {
-      address: "",
       email: "",
       errorMessage: "",
-      lat: "",
-      lon: "",
+
       name: "",
-      pers_org_num: "",
-      numberError: "",
+
       password: "",
       passwordError: "",
       tel: "",
-      customer_type: "",
-      phoneError: "",
+      telError: "",
       success: false,
       submitted: "",
       ValidatePassword: ""
     };
 
-    this.getAddress = this.getAddress.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
   }
@@ -54,15 +49,9 @@ class CreateUser extends Component {
     const isNumeric = /^[0-9]+$/;
 
     if (this.state.tel.match(isNumeric)) {
-      this.setState({ phoneError: false });
+      this.setState({ telError: false });
     } else {
-      this.setState({ phoneError: true });
-    }
-
-    if (this.state.pers_org_num.match(isNumeric)) {
-      this.setState({ numberError: false });
-    } else {
-      this.setState({ numberError: true });
+      this.setState({ telError: true });
     }
 
     if (this.state.password.length >= 6) {
@@ -78,14 +67,14 @@ class CreateUser extends Component {
 
     const regUser = {
       name: this.state.name,
-      pers_org_num: this.state.pers_org_num,
+      email: this.state.email,
       password: this.state.password,
       passwordVal: this.state.ValidatePassword,
       type: this.state.customer_type,
     }
 
     var errorMessage = ''
-    if (!this.state.numberError && !this.state.passwordError && !this.state.phoneError) {
+    if (!this.state.numberError && !this.state.passwordError && !this.state.telError) {
       if ( regUser ) {
         this.props.registerUser({ regUser })
         .then((res) => {
@@ -106,25 +95,17 @@ class CreateUser extends Component {
     }
   }
   
-  getAddress(address, lat,  lon) {
-    this.setState({ address: address, lat: lat, lon: lon })
-  }
-  
   render() {
     const {
-      company,
       customer_type,
-      address,
       email,
       errorMessage,
       submitted,
       name,
-      pers_org_num,
-      numberError,
       password,
       passwordError,
       tel,
-      phoneError,
+      telError,
       privateCustomer,
       ValidatePassword,
     } = this.state;
@@ -156,35 +137,9 @@ class CreateUser extends Component {
                 <option selected disabled>Välj typ av användare * </option>
                 <option value="admin">Admin</option>
                 <option value="employee">Anställd</option>
-                <option value="private">Privatkund</option>
-                <option value="company">Företagskund</option>
               </select>  
           {customer_type && <i className="fas fa-check BasicForm__check" />}
             </div>
-          </div>      
-          <div className="form-group">
-            <div className="BasicForm__check">
-              <input
-                type="text"
-                name="pers_org_num"
-                className="form-control obl"
-                placeholder="pers: YYMMDDXXXX / org: XXXXXXXXXX *"
-                value={pers_org_num}
-                onChange={this.handleChange}
-              />
-              {pers_org_num &&
-                !numberError && <i className="fas fa-check BasicForm__check" />}
-            </div>
-            {submitted &&
-              !pers_org_num && (
-                <div className="help-block">
-                  Glöm inte fylla i Person/organisationsnummer!
-                </div>
-              )}
-            {pers_org_num &&
-              numberError && (
-                <div className="help-block">Oopa! fick du med en bokstav?</div>
-              )}
           </div>
           <div className="form-group">
             <div className="BasicForm__check">
@@ -192,7 +147,7 @@ class CreateUser extends Component {
                 type="text"
                 name="email"
                 className="form-control"
-                placeholder="Email"
+                placeholder="Email *"
                 value={email}
                 onChange={this.handleChange}
               />
@@ -214,7 +169,7 @@ class CreateUser extends Component {
                 onChange={this.handleChange}
               />
               {tel &&
-                !phoneError && <i className="fas fa-check BasicForm__check" />}
+                !telError && <i className="fas fa-check BasicForm__check" />}
             </div>
             {submitted &&
               !tel && (
@@ -223,7 +178,7 @@ class CreateUser extends Component {
                 </div>
               )}
             {tel &&
-              phoneError && (
+              telError && (
                 <div className="help-block">Oopa! fick du med en bokstav?</div>
               )}
           </div>
@@ -289,10 +244,8 @@ class CreateUser extends Component {
                 <div className="help-block">Du måste upprepa lösenordet!</div>
               )}
           </div>
-          <div className="form-group">
-            <LocationSearchInput getAddress={this.getAddress.bind(this)} submitted={submitted}/>
-          </div>
-          {!name || !customer_type || !pers_org_num || !password ||
+
+          {!name || !customer_type || !email || !password ||
               !ValidatePassword ? (
                 <div className="help-block">* Dessa fält är obligatoriska</div>
               )
