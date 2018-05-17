@@ -16,6 +16,7 @@ import {
 const initialState = {
   Assigned: [],
   Done: [],
+  Internal: [],
   service: {},
   isFetching: false
 };

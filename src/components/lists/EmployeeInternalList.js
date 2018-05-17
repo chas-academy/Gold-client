@@ -29,9 +29,6 @@ class EmployeeInternalList extends Component {
 
   render() {
     const { isFetching, Internal } = this.props;
-
-    console.log(Internal)
-
     return (
         <div className="BasicList__container">
           <h4>  Interna ärenden  </h4>
@@ -68,7 +65,7 @@ class EmployeeInternalList extends Component {
 }
 
 const mapStateToProps = state => ({
-  Internal: state.employee.Incoming,
+  Internal: state.employee.Internal,
   isFetching: state.employee.isFetching
 });
 
