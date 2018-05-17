@@ -73,10 +73,6 @@ export const registerUser = regUser => dispatch => {
   dispatch(requestRegister());
 
   var error = { name: "ValidationError", errors: [] }
-  if (regUser.regUser.pers_org_num.length < 10 || regUser.regUser.pers_org_num.length > 12) {
-    error.errors.push({ message: 'Pers/Orgnummer måste vara 10-12 siffror'})
-    return fetch(process.env.REACT_APP_API_BASE_URL + "/", {}).then(() => { return error })
-  }
   if (regUser.regUser.address.length < 1) {
     error.errors.push({ message: ' '})
     return fetch(process.env.REACT_APP_API_BASE_URL + "/", {}).then(() => { return error })
