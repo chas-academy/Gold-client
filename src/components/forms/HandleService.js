@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-// import { loginUser } from '../actions/auth';
-// import { connect } from 'react-redux';
-// import { withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
+import Cookies from "universal-cookie";
+import { fetchService } from "../../redux/actions/admin/Orders";
 
 import {
   DateTimePhoto,
@@ -10,7 +10,7 @@ import {
 } from "../../components";
 import "./style.css";
 
-class HandleOrder extends Component {
+class HandleService extends Component {
   constructor(props) {
     super(props);
 
@@ -23,11 +23,43 @@ class HandleOrder extends Component {
       adress: "",
       description: "",
       employee: "",
-      errorMessage: ""
+      errorMessage: "",
+      message: '',
+      id: this.props.id
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.delete = this.delete.bind(this);
+  }
+  
+  componentWillMount() { 
+    const cookies = new Cookies();
+    var token = cookies.get("token");
+    const user = JSON.parse(
+      window.atob(
+        token
+        .split(".")[1]
+        .replace("-", "+")
+        .replace("_", "/")
+      ))
+      
+      // if order eller if complaint
+    this.props.dispatch(fetchService(token, this.state.id));
+  }
+  
+  componentDidMount() {
+    const service = this.props;
+    
+    this.status === "new" ?
+    this.setState({ message: `Detta är ett nytt ärende`})
+    : this.status === "assigned" ?
+      this.setState({ message: `Det här ärendet har du tilldelat`})
+    : this.status === "taken" ?
+      this.setState({ message: `Det här ärendet åtgärdar just nu`})
+    : this.status === "done" 
+      this.setState({ message: `Det här ärendet är avslutat, för mer detaljer gå till avslutade ärenden`})
+
   }
 
   handleChange(event) {
@@ -48,6 +80,10 @@ class HandleOrder extends Component {
     this.setState({ submitted: true });
   }
 
+  delete(event) {
+    event.preventDefault();
+  }
+
   render() {
     const {
       submitted,
@@ -55,16 +91,19 @@ class HandleOrder extends Component {
       customerId,
       phone,
       phoneError,
-      adress,
       description,
       employee,
-      errorMessage
+      errorMessage,
+      message,
     } = this.state;
+
+    const { service } = this.props; 
 
     return (
       <div className="col-md-6 col-md-offset-3">
         <form name="form" className="BasicForm" onSubmit={this.handleSubmit}>
-        <h5> Hantera Beställning</h5>
+        <h5> Hantera Ärende</h5>
+        <p>{message}</p>
           <div className="form-group">
             <div className="BasicForm__check">
               <input
@@ -157,13 +196,12 @@ class HandleOrder extends Component {
               )}
           </div>
           <div className="form-group">
-            <LocationSearchInput />
+            <LocationSearchInput submitted={submitted}/>
           </div>
           <label className="BasicForm__checkboxContainer">
               <input type="checkbox" />
               <span className="BasicForm__checkmark">
-              <i className="fas fa-hand-point-right"></i>
-                <i className="fas fa-exclamation-circle"></i>
+                <i className="fas fa-circle"></i>
                 Akut ärende? (åtgärdas inom 4h)
               </span>
             </label>
@@ -175,6 +213,11 @@ class HandleOrder extends Component {
               </button>
               {errorMessage && <div className="help-block">{errorMessage}</div>}
             </div>
+            <div className="form-group">
+              <button className="btn btn-danger" onClick={this.delete}>
+                Radera ärende
+              </button>
+            </div>
           </div>
         </form>
       </div>
@@ -182,4 +225,8 @@ class HandleOrder extends Component {
   }
 }
 
-export default HandleOrder;
+const mapStateToProps = state => ({
+  service: state.adminOrders.service
+});
+
+export default connect(mapStateToProps)(HandleService);

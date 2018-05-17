@@ -1,7 +1,7 @@
 
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { fetchUsers } from "../../redux/actions/admin/Accounts";
+import { fetchCompanies } from "../../redux/actions/admin/Accounts";
 import Cookies from "universal-cookie";
 
 import { Link, withRouter } from "react-router-dom";
@@ -12,42 +12,31 @@ class CompanyList extends Component {
   componentWillMount() { 
     const cookies = new Cookies();
     var token = cookies.get("token");
-    const user = JSON.parse(
-      window.atob(
-        token
-          .split(".")[1]
-          .replace("-", "+")
-          .replace("_", "/")
-      ))
-
-    this.props.dispatch(fetchUsers(token));
+    this.props.dispatch(fetchCompanies(token));
   }
 
   render() {
 
-    const { users } = this.props;
-
-    // if type === company
-
+    const { companies } = this.props;
     return (
-      users ?
+      companies ?
       <div className="BasicList__container">
         <h4> Företag </h4>
         <ul className="BasicList__list">
-          {/* {users.map(order => (
-          <li key={user.id}>
-            <Link to={`/admin/customers/companies/${user_id}`}>
-              <div className="edit">
-                <p> {user.name} </p>
-                <i className="fas fa-edit" />
-              </div>
-            </Link>
-          </li>
-          ))} */}
+          {companies.map(company => (
+            <li key={company.user_id}>
+              <Link to={`/admin/accounts/customers/${company.user_id}`}>
+                <div className="edit">
+                  <p> {company.user.name} </p>
+                  <i className="fas fa-cog"></i>
+                  </div>
+              </Link>
+            </li>
+              ))}
         </ul>
       </div>
       : (
-        <div className="BasicList__container">
+        <div className="BasicList__container inner">
           <h4> Företag </h4>
           <p>Inga användare att visa</p>
         </div>  
@@ -57,7 +46,7 @@ class CompanyList extends Component {
 }
 
 const mapStateToProps = state => ({ 
-  orders: state.admin.users, 
+  companies: state.adminAccounts.companies, 
 });
 
 export default withRouter(connect(mapStateToProps)(CompanyList));

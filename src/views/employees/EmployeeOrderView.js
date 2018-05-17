@@ -5,18 +5,16 @@ import {
 } from "../../components";
 
 export default class EmployeeOrderView extends Component {
-  // constructor(props) {
-  //   super(props);
-  // }
+  constructor(props) {
+    super(props);
+  }
 
   render() {
-    const {
-      match: { params }
-    } = this.props;
+
     return (
       <div>
         <div className="col-md-6 col-md-offset-3">
-          <EmployeeOrderDetails id={params.id} />
+          <EmployeeOrderDetails id={this.props.match.params.id} />
         </div>
         <EmployeeBottomNav />
       </div>

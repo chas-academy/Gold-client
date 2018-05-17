@@ -1,19 +1,22 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { withRouter } from "react-router-dom";
-import { fetchOrders } from "../../redux/actions/admin/Orders";
-
+import { fetchDone } from '../../redux/actions/employees';
+import { withRouter, Link } from "react-router-dom";
 import Cookies from "universal-cookie";
+import { Tabs, TabContent, TabLink } from 'react-tabs-redux';
+
 
 import './style.css'
 
+
 class EmployeeCompleteList extends Component {
 
-  // constructor(props) {
-  //   super(props);
-  // }
+  constructor(props) {
+    super(props);
+    this.state = {}
+  }
 
-  componentWillMount() { 
+  componentDidMount() {
     const cookies = new Cookies();
     var token = cookies.get("token");
     const user = JSON.parse(
@@ -22,47 +25,112 @@ class EmployeeCompleteList extends Component {
           .split(".")[1]
           .replace("-", "+")
           .replace("_", "/")
-      ))
+      ));
 
-    this.props.dispatch(fetchOrders(token));
+    this.props.dispatch(fetchDone(user.id, token));
   }
 
-  render() {
-    const { orders } = this.props;
 
-    // if status = completed and user_id = user.id
+  render() {
+    const  {isFetching, Done} = this.props;
+
+    const completedOrders = Done.filter(
+      order => order.order_type === "order"
+    );
+    const completedComplaints = Done.filter(
+      order => order.order_type === "complaint"
+    );
+    const completedInternalOrders = Done.filter(
+      order => order.order_type === "int_order"
+    );
+
+
     return (
-      orders ?
-      <div className="BasicList__container">
-        <h4> Slutförda Jobb</h4>
-        <p> Här kan du se dina slutförda jobb.</p>
-        <hr />
-        <ul className="BasicList__list">
-        {/* {orders.map(order => (
-          <li key={order.service_id}>
-            <Link to={`/admin/orders/${order.service_id}`}>
-              <div className="edit">
-                <p>Kund: XXXXX</p>
-                <p>datum: XXXX</p>
-                <p className="IncomingJobAccept">Slutfört</p>
+      <div>
+        <Tabs>
+          <div className="history-tabs">
+            <TabLink className="history-tablink" to="beställningar">
+              Beställningar
+            </TabLink>
+            <TabLink className="history-tablink" to="reklamationer">
+              Reklamationer
+            </TabLink>
+            <TabLink className="history-tablink" to="Interna">
+              Interna
+            </TabLink>
+          </div>
+          <TabContent for="beställningar">
+            {completedOrders.length ? (
+              <ul className="BasicList__list">
+                {completedOrders.map(order => (
+                      <li key={order.service_id}>
+                        <Link to={`/orders/${order.service_id}`}>
+                          <div className="edit">
+                            <p>Beställare : XXXX, orderId: </p>
+                            <i className="fas fa-exclamation-triangle" /> Skapa
+                            Reklamation
+                          </div>
+                        </Link>
+                      </li>
+                    ))}
+              </ul>
+            ) : (
+              <div className="BasicList__container">
+                <p>Inga beställningar att visa</p>
               </div>
-            </Link>
-          </li>
-          ))} */}
-        </ul>
+            )}
+          </TabContent>
+          <TabContent for="reklamationer">
+            {completedComplaints.length ? (
+              <ul className="BasicList__list">
+                {completedComplaints.map(order => (
+                      <li key={order.service_id}>
+                        <Link to={`/orders/${order.service_id}`}>
+                          <div className="edit">
+                            <p>Beställare : XXXX, orderId: </p>
+                            <i className="fas fa-exclamation-triangle" /> Skapa
+                            Reklamation
+                          </div>
+                        </Link>
+                      </li>
+                    ))}
+              </ul>
+            ) : (
+              <div className="BasicList__container">
+                <p>Inga reklamationer att visa</p>
+              </div>
+            )}
+          </TabContent>
+          <TabContent for="Interna">
+          {completedInternalOrders.length ? (
+            <ul className="BasicList__list">
+                {completedInternalOrders.map(order => (
+                    <li key={order.service_id}>
+                      <Link to={`/orders/${order.service_id}`}>
+                        <div className="edit">
+                          <p>Beställare : XXXX, orderId: </p>
+                          <i className="fas fa-exclamation-triangle" /> Skapa
+                          Reklamation
+                        </div>
+                      </Link>
+                    </li>
+                  ))}
+            </ul>
+          ) : (
+              <div className="BasicList__container">
+                <p>Inga interna ärenden att visa</p>
+              </div>
+            )}
+          </TabContent>
+        </Tabs>
       </div>
-      : (
-        <div className="BasicList__container">
-        <h4> Slutförda jobb </h4>
-        <p>Inga slutförda jobb att visa</p>
-      </div>  
-      )
     );
   }
 }
 
-const mapStateToProps = state => ({ 
-  orders: state.admin.orders, 
+const mapStateToProps = state => ({
+  Done: state.employee.Done,
+  isFetching: state.employee.isFetching
 });
 
 export default withRouter(connect(mapStateToProps)(EmployeeCompleteList));

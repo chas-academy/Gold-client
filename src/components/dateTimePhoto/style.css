@@ -42,12 +42,15 @@
 
 .DateTime__buttons {
     flex-direction: column;
+    align-items: center;
 }
 
 .DateTime__input {
-    width: 90%;
+    width: 100%;
     background-color: rgba(255, 255, 255, 0.014);
     border: none;
+    text-align: center;
+    margin-left: 5px;
 }
 
 .DateTime__buttons > input::placeholder{

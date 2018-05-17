@@ -7,10 +7,11 @@ import './style.css'
 //   the object URL yourself whenever you don't need the preview by calling 
 //   window.URL.revokeObjectURL(file.preview); to avoid memory leaks.
 
-const ImageUploader = ({children}) => (
-    <Dropzone className="ignore" onDrop={() => console.log('file dropped')}>
-        {children}
-    </Dropzone>
-
-)
+const ImageUploader = (props) => {
+    return (
+            <Dropzone className="ignore DateTime__buttons" onDrop={(photo) => props.setPhoto(photo)}>
+                {props.children}
+            </Dropzone>
+    )
+}
 export default ImageUploader

@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
 
 import "./style.css";
-import img from "../../assets/img/Slice1.png";
 
 class EmployeeHome extends Component {
   constructor(props) {
@@ -50,7 +49,7 @@ class EmployeeHome extends Component {
               </Link>
             </button>
             <button className="CustomerHome__buttons">
-              <Link to={`/profile`}>
+              <Link to={`employee/profile`}>
                 <i className="fas fa-user-circle" />
                 <p className="CustomerHome__buttonText"> Redigera profil</p>
               </Link>

@@ -22,7 +22,7 @@ class AdminBottomNav extends Component {
       <nav className="bottomNav">
         <ul className="bottomNavList">
           <li>
-            <Link to={`/admin/orders/incoming`}>
+            <Link to={`/admin/services/incoming`}>
                 <i className="fas fa-inbox"></i>
             </Link>
           </li>

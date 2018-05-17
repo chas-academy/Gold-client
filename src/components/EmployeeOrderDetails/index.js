@@ -1,16 +1,34 @@
 import React, { Component } from "react";
-// import { connect } from "react-redux";
+import { connect } from "react-redux";
 import "./style.css";
-import { EmployeeConfirmJob, EmployeeCompleteJob } from "../../components";
-import AddPhotos from "../buttons/AddPhotos";
+import { fetchService } from "../../redux/actions/employees";
+import Cookies from "universal-cookie";
 
-export default class EmployeeOrderDetails extends Component {
+import { EmployeeConfirmJob, EmployeeCompleteJob } from "../../components";
+// import AddPhotos from "../buttons/AddPhotos";
+
+class EmployeeOrderDetails extends Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      id: this.props.id
+    }
   }
 
-  componentDidMount() {
-    //change buttons depending if job is been accepted or not
+
+  componentWillMount() { 
+    const cookies = new Cookies();
+    var token = cookies.get("token");
+    const user = JSON.parse(
+      window.atob(
+        token
+        .split(".")[1]
+        .replace("-", "+")
+        .replace("_", "/")
+      ))
+      
+    this.props.dispatch(fetchService(token, this.state.id));
   }
 
   render() {
@@ -49,3 +67,9 @@ export default class EmployeeOrderDetails extends Component {
     );
   }
 }
+
+const mapStateToProps = state => ({
+  service: state.employee.service
+});
+
+export default connect(mapStateToProps)(EmployeeOrderDetails);

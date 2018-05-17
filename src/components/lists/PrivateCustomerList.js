@@ -1,7 +1,7 @@
 
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { fetchUsers } from "../../redux/actions/admin/Accounts";
+import { fetchPrivateCustomers } from "../../redux/actions/admin/Accounts";
 import Cookies from "universal-cookie";
 
 import { Link, withRouter } from "react-router-dom";
@@ -12,42 +12,31 @@ class PrivateCustomerList extends Component {
   componentWillMount() { 
     const cookies = new Cookies();
     var token = cookies.get("token");
-    const user = JSON.parse(
-      window.atob(
-        token
-          .split(".")[1]
-          .replace("-", "+")
-          .replace("_", "/")
-      ))
-
-    this.props.dispatch(fetchUsers(token));
+    this.props.dispatch(fetchPrivateCustomers(token));
   }
 
   render() {
 
-    const { users } = this.props;
-
-    // if type === private
-
+    const { privateCustomers } = this.props;
     return (
-      users ?
+      privateCustomers ?
       <div className="BasicList__container">
-        <h4> Företag </h4>
+        <h4> Privatkunder </h4>
         <ul className="BasicList__list">
-          {/* {users.map(order => (
-          <li key={user.id}>
-            <Link to={`/admin/customers/private/${user_id}`}>
+          {privateCustomers.map(customer => (
+          <li key={customer.user_id}>
+            <Link to={`/admin/accounts/customer/${customer.user_id}`}>
               <div className="edit">
-                <p> {user.name} </p>
-                <i className="fas fa-edit" />
-              </div>
+                <p> {customer.user.name} </p>
+                <i className="fas fa-cog"></i>
+             </div>
             </Link>
           </li>
-          ))} */}
+          ))}
         </ul>
       </div>
       : (
-        <div className="BasicList__container">
+        <div className="BasicList__container inner">
           <h4> Privatkunder </h4>
           <p>Inga användare att visa</p>
         </div>  
@@ -57,7 +46,7 @@ class PrivateCustomerList extends Component {
 }
 
 const mapStateToProps = state => ({ 
-  orders: state.admin.users, 
+  privateCustomers: state.adminAccounts.privateCustomers, 
 });
 
 export default withRouter(connect(mapStateToProps)(PrivateCustomerList));

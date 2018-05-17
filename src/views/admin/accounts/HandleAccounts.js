@@ -1,17 +1,18 @@
 import React, { Component } from "react"
-// import { connect } from "react-redux";
-import { AdminTopNav, AdminBottomNav, UpdateUser } from '../../../components'
+import { AdminTopNav, AdminBottomNav, UpdateUser, UpdateCustomer } from '../../../components'
 import './style.css'
 
 export default class HandleAccounts extends Component {
 
   render() {
+
     return (
-        <div> 
+        <div>
             <AdminTopNav />
-                <div className="Admin__div">
-                    <UpdateUser />
-                </div>
+                {this.props.match.params.user === 'employees' ?
+                <UpdateUser id={this.props.match.params.id}/> 
+                : 
+                <UpdateCustomer id={this.props.match.params.id}/>}
             <AdminBottomNav />
         </div>    
     )

@@ -12,6 +12,8 @@ const middleware = [thunk];
 
 const store = createStore(
   rootReducer,
+  // //this is for checking states in store in redux in browser pretty useful..
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
   applyMiddleware(...middleware) 
 );
 
@@ -19,7 +21,7 @@ const Root = () => {
   return (
     <Provider store={store}>
       <Router>
-        <Route path='/' component={App} />
+          <Route path='/' component={App} />
       </Router>
     </Provider>
   );

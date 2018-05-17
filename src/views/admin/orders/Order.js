@@ -1,15 +1,16 @@
 import React, { Component } from "react"
-// import { connect } from "react-redux";
-import { AdminTopNav, AdminBottomNav, HandleOrder } from '../../../components'
-
+import { AdminTopNav, AdminBottomNav, HandleService } from '../../../components'
+import './fix-desktop.css'
 export default class Order extends Component {
 
   render() {
     return (
         <div> 
-            <AdminTopNav />
-                <HandleOrder />
-            <AdminBottomNav />
+            <div className="fix">
+                <AdminTopNav />
+                    <HandleService id={this.props.match.params.id}/>
+                <AdminBottomNav />
+            </div>
         </div>    
     )
 }

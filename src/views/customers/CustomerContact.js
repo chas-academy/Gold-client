@@ -1,8 +1,5 @@
 import React, { Component } from "react"
 import GoogleMapReact from 'google-map-react'
-
-import img from '../../assets/img/logo_servicebyran.png'
-
 import './style.css'
 
 import { CustomerBottomNav } from '../../components'

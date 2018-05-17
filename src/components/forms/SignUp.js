@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { registerUser } from '../../redux/actions/Auth';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
 
 import { LocationSearchInput } from "../../components";
 
@@ -20,17 +19,16 @@ class SignUp extends Component {
 
     this.state = {
       address: "",
-      company: null,
       email: "",
       errorMessage: "",
       lat: "",
       lon: "",
       name: "",
-      pers_org_num: "",
       numberError: null,
       password: "",
+      passwordError: "",
       tel: "",
-      privateCustomer: null,
+      customer_type: "",
       phoneError: null,
       success: false,
       submitted: "",
@@ -40,6 +38,12 @@ class SignUp extends Component {
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleSelectChange(event) {
+    this.setState({
+      customer_type: event.target.value
+    })
   }
 
   handleChange(event) {
@@ -54,13 +58,7 @@ class SignUp extends Component {
       this.setState({ phoneError: true });
     }
 
-    if (this.state.pers_org_num.match(isNumeric)) {
-      this.setState({ numberError: false });
-    } else {
-      this.setState({ numberError: true });
-    }
-
-    if (this.state.password.length >= 7) {
+    if (this.state.password.length >= 6) {
       this.setState({ passwordError: false });
     } else {
       this.setState({ passwordError: true });
@@ -71,18 +69,11 @@ class SignUp extends Component {
     event.preventDefault();
     this.setState({ submitted: true });
 
-    let type = null;
-    if (this.state.company == null) {
-      type = "private";
-    } else {
-      type = "company";
-    }
-
     const regUser = {
       name: this.state.name,
-      pers_org_num: this.state.pers_org_num,
       password: this.state.password,
-      type: type,
+      passwordVal: this.state.ValidatePassword,
+      type: this.state.customer_type,
       email: this.state.email,
       tel: this.state.tel,
       address: this.state.address,
@@ -90,22 +81,38 @@ class SignUp extends Component {
       lon: this.state.lon
     }
 
-    
-    if ( regUser ) {
-      this.props.registerUser({ regUser })
-      .then((res) => this.setState({ success: true }),
-      (err) => this.setState({ errorMessage: 'Could not register user', submitted: false }))
+    var errorMessage = ''
+    if (!this.state.numberError && !this.state.passwordError && !this.state.phoneError) {
+      if ( regUser ) {
+        this.props.registerUser({ regUser })
+        .then((res) => {
+          if (!res) {
+            this.setState({ success: true })
+          } else {
+            res.errors.forEach(error => {
+              errorMessage = error.message
+              if (error.message === "Validation isEmail on email failed") {
+                errorMessage = "Felaktigt ifylld email"
+              } else if (error.message === "email must be unique") {
+                errorMessage = "Denna email är redan registrerad"
+              } else if (error.message === "tel must be unique") {
+                errorMessage = "Detta telefonnummer är redan registrerat på en användare"
+              }
+            });
+            this.setState({ errorMessage: errorMessage, submitted: false })
+          }
+        })
+      }
     }
   }
   
-  callback(address, lat,  lon) {
+  getAddress(address, lat,  lon) {
     this.setState({ address: address, lat: lat, lon: lon })
   }
   
   render() {
     const {
-      address,
-      company,
+      customer_type,
       email,
       errorMessage,
       submitted,
@@ -116,14 +123,12 @@ class SignUp extends Component {
       passwordError,
       tel,
       phoneError,
-      privateCustomer,
-      success,
       ValidatePassword,
     } = this.state;
 
     return (
       <div className="col-md-6 col-md-offset-3">
-        <form name="form" className="BasicForm" onSubmit={this.handleSubmit}>
+        <form name="form" className="loginForm" onSubmit={this.handleSubmit}>
           <div className="form-group">
             <div className="BasicForm__check">
               <input
@@ -143,38 +148,14 @@ class SignUp extends Component {
           </div>
           <div className="form-group">
             <div className="BasicForm__check">
-              <select className="BasicForm__select">
+              <select className="BasicForm__select" onChange={this.handleSelectChange.bind(this)}>
                 <option defaultValue>Välj typ av kund </option>
-                <option value="privateCustomer">Privatkund</option>
+                <option value="private">Privatkund</option>
                 <option value="company">Företagskund</option>
               </select>  
-          {(privateCustomer || company) && <i className="fas fa-check BasicForm__check" />}
+          {(customer_type) && <i className="fas fa-check BasicForm__check" />}
             </div>
           </div>      
-          <div className="form-group">
-            <div className="BasicForm__check">
-              <input
-                type="text"
-                name="pers_org_num"
-                className="form-control"
-                placeholder="YYMMDDXXXX / XXXXXXXXXX"
-                value={pers_org_num}
-                onChange={this.handleChange}
-              />
-              {pers_org_num &&
-                !numberError && <i className="fas fa-check BasicForm__check" />}
-            </div>
-            {submitted &&
-              !pers_org_num && (
-                <div className="help-block">
-                  Glöm inte fylla i Person/organisationsnummer!
-                </div>
-              )}
-            {pers_org_num &&
-              numberError && (
-                <div className="help-block">Oopa! fick du med en bokstav?</div>
-              )}
-          </div>
           <div className="form-group">
             <div className="BasicForm__check">
               <input
@@ -224,6 +205,7 @@ class SignUp extends Component {
                 className="form-control"
                 placeholder="Lösenord"
                 value={password}
+                minLength='6'
                 onChange={this.handleChange}
               />
               {password && passwordError &&
@@ -240,7 +222,7 @@ class SignUp extends Component {
                 )}
             </div>
                 {password && passwordError  &&
-                <div className="help-block">Lösenordet måste vara minst 8 tecken långt</div>
+                <div className="help-block">Lösenordet måste vara minst 6 tecken långt</div>
                 }
                 {!passwordError && password && password !== ValidatePassword &&
                 <div className="help-block">Bekräfta lösenordet nedan</div>
@@ -260,6 +242,7 @@ class SignUp extends Component {
                 className="form-control"
                 placeholder="Bekräfta Lösenord"
                 value={ValidatePassword}
+                minLength='6'
                 onChange={this.handleChange}
               />
               {ValidatePassword &&
@@ -277,7 +260,7 @@ class SignUp extends Component {
               )}
           </div>
           <div className="form-group">
-            <LocationSearchInput callback={this.callback.bind(this)} />
+            <LocationSearchInput getAddress={this.getAddress.bind(this)} />
           </div>
           <div className="buttons">
             <div className="form-group">
