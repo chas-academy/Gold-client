@@ -27,12 +27,13 @@ export { default as PrivateCustomerList } from './lists/PrivateCustomerList'
 export { default as CreateUser } from './forms/CreateUser'
 export { default as AddUser } from './buttons/AddUser'
 export { default as UpdateUser } from './forms/UpdateUser'
+export { default as UpdateCustomer } from './forms/UpdateCustomer'
+export { default as CreateCustomer } from './forms/CreateCustomer'
 
 
 /* ADMIN - ORDERS --------------------------------------------------- */
 export { default as IncomingServicesList } from './lists/IncomingServicesList'
 export { default as InternalOrdersList } from './lists/InternalOrdersList'
-export { default as ActiveOrdersList } from './lists/ActiveOrdersList'
 export { default as AssignedOrdersList } from './lists/AssignedOrdersList'
 export { default as CompletedOrdersList } from './lists/CompletedOrdersList'
 export { default as ComplaintsList } from './lists/ComplaintsList'

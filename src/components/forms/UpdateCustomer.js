@@ -1,17 +1,17 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { fetchUser, updateUser } from "../../redux/actions/admin/Accounts";
+import { fetchCustomer, updateCustomer } from "../../redux/actions/admin/Accounts";
 import Cookies from "universal-cookie";
 
 import "./style.css";
 import { LocationSearchInput } from "../../components";
 
-class UpdateUser extends Component {
+class UpdateCustomer extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      user: this.props,
+      customer: this.customer,
       errorMessage: "",
       telError: "",
       isAdmin: "",
@@ -41,18 +41,18 @@ class UpdateUser extends Component {
     !this.state.id && user.user_type === 'admin' ? 
     (
       this.setState({ isAdmin: true, adminProfile: true }),
-      this.props.dispatch(fetchUser(user.id, token))
+      this.props.dispatch(fetchCustomer(user.id, token))
      ) : !this.state.id ?
      (
       this.setState({ isAdmin: false }),
-      this.props.dispatch(fetchUser(user.id, token))
+      this.props.dispatch(fetchCustomer(user.id, token))
      ) : this.state.id && user.user_type === 'admin' ?
      (
       this.setState({ isAdmin: true }),
-      this.props.dispatch(fetchUser(this.state.id, token))
+      this.props.dispatch(fetchCustomer(this.state.id, token))
     ) : ( 
       this.setState({ isAdmin: false }),
-      this.props.dispatch(fetchUser(this.state.id, token))
+      this.props.dispatch(fetchCustomer(this.state.id, token))
     )
   }
 
@@ -66,22 +66,20 @@ class UpdateUser extends Component {
     var token = cookies.get("token");
 
     this.setState({ submitted: true });
-    const user = this.state.user;
+    const customer = this.state.customer;
 
     var errorMessage = ''
-    if (!this.state.passwordError && !this.state.telError) {
+    if (!this.state.numberError && !this.state.passwordError && !this.state.phoneError) {
       
-      if ( user ) {
-        this.props.dispatch(updateUser({ user, token }))
+      if ( customer ) {
+        this.props.dispatch(updateCustomer({ customer, token }))
         .then((res) => {
           if (!res) {
             this.setState({ success: true })
           } else {
             res.errors.forEach(error => {
               errorMessage = error.message
-              if (error.message == "pers_org_num must be unique") {
-                errorMessage = "Pers/Orgnummer är redan taget"
-              } else if (error.message == "Validation isEmail on email failed") {
+              if (error.message == "Validation isEmail on email failed") {
                 errorMessage = "Felaktigt email"
               } else if (error.message == "email must be unique") {
                 errorMessage = "Email är redan tagen"
@@ -107,39 +105,34 @@ class UpdateUser extends Component {
       isAdmin,
       password,
       ValidatePassword,
-      phoneError,
+      telError,
+      numberError,
       type
     } = this.state;
 
-    const { user } = this.props;
+    const { customer } = this.props;
 
-    console.log(user);
+    console.log(customer.user);
+
     return (
       <div className="col-md-6 col-md-offset-3">
         <form name="form" className="BasicForm" onSubmit={this.handleSubmit}>
-          <h5> Uppdatera profil</h5>
-          {user.type === 'admin' ?
-           <p> Din profil </p>
-           : user.type === "employee" ? (
-            <p> Anställd </p>
-          ) : user.type === "customer" ? (
-            <p> Kund </p>
-          ) : (
-            ""
-          )}
+          <h5> Uppdatera kundprofil</h5>
           <div className="form-group">
             <div className="BasicForm__check">
+            {customer.user ? 
               <input
                 type="text"
                 name="user.name"
                 className="form-control"
                 placeholder="Namn"
-                value={user.name}
+                value={customer.user.name}
               />
-              {user.name && <i className="fas fa-check BasicForm__check" />}
+              : ('')}
+              {customer.name && <i className="fas fa-check BasicForm__check" />}
             </div>
             {submitted &&
-              !user.name && (
+              !customer.name && (
                 <div className="help-block">Glöm inte fylla i namnet!</div>
               )}
           </div>
@@ -150,12 +143,12 @@ class UpdateUser extends Component {
                 name="user.email"
                 className="form-control"
                 placeholder="Email"
-                value={user.email}
+                value={customer.email}
               />
-              {user.email && <i className="fas fa-check BasicForm__check" />}
+              {customer.email && <i className="fas fa-check BasicForm__check" />}
             </div>
             {submitted &&
-              !user.email && (
+              !customer.email && (
                 <div className="help-block">Glöm inte fylla i email!</div>
               )}
           </div>
@@ -166,19 +159,19 @@ class UpdateUser extends Component {
                 name="user.tel"
                 className="form-control"
                 placeholder="Telefonnummer"
-                value={user.tel}
+                value={customer.tel}
               />
-              {user.tel &&
-                !phoneError && <i className="fas fa-check BasicForm__check" />}
+              {customer.tel &&
+                !telError && <i className="fas fa-check BasicForm__check" />}
             </div>
             {submitted &&
-              !user.tel && (
+              !customer.tel && (
                 <div className="help-block">
                   Glöm inte fylla i telefonnummer!
                 </div>
               )}
-            {user.tel &&
-              phoneError && (
+            {customer.tel &&
+              telError && (
                 <div className="help-block">Oopa! fick du med en bokstav?</div>
               )}
           </div>
@@ -189,7 +182,7 @@ class UpdateUser extends Component {
                 name="password"
                 className="form-control"
                 placeholder="Lösenord"
-                value={password}
+                value={customer.password}
               />
               {password &&
                 passwordError &&
@@ -235,17 +228,24 @@ class UpdateUser extends Component {
                 value={ValidatePassword}
               />
               {ValidatePassword &&
-                user.password !== ValidatePassword && (
+                customer.password !== ValidatePassword && (
                   <i className="fas fa-check BasicForm__passwordNotOk" />
                 )}
               {ValidatePassword &&
-                user.password === ValidatePassword && (
+                customer.password === ValidatePassword && (
                   <i className="fas fa-check BasicForm__passwordOk" />
                 )}
             </div>
             {submitted &&
               !ValidatePassword && (
                 <div className="help-block">Du måste upprepa lösenordet!</div>
+              )}
+          </div>
+          <div className="form-group">
+            <LocationSearchInput />
+            {submitted &&
+              !customer.adress && (
+                <div className="help-block">Glöm inte fylla i adressen!</div>
               )}
           </div>
           <div className="buttons">
@@ -270,7 +270,7 @@ class UpdateUser extends Component {
 }
 
 const mapStateToProps = state => ({
-  user: state.adminAccounts.user
+  customer: state.adminAccounts.customer
 });
 
-export default connect(mapStateToProps)(UpdateUser);
+export default connect(mapStateToProps)(UpdateCustomer);

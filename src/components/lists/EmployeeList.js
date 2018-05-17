@@ -24,7 +24,7 @@ class EmployeeList extends Component {
         <ul className="BasicList__list">
           {employees.map(employee => (
           <li key={employee.id}>
-            <Link to={`/admin/accounts/${employee.id}`}>
+            <Link to={`/admin/accounts/employees/${employee.id}`}>
               <div className="edit">
                 <p> {employee.name} </p>
                 <i className="fas fa-cog"></i>

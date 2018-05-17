@@ -16,34 +16,23 @@ class SignIn extends Component {
     super(props);
 
     this.state = {
-      pers_org_num: '',
+      email: '',      
       password: '',
       passwordError: null,
-      numberError: null,
       isLoading: false,
       isAuthenticated: false
-      // errorMessage: '',
      };
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
 }  
 
-componentDidMount() {
-  // console.log(token)
-}
 
 handleChange(event) {
   const { name, value } = event.target;
   this.setState({ [name]: value });
   
   const isNumeric = /^[0-9]+$/;
-
-  if (this.state.pers_org_num.match(isNumeric)) {
-    this.setState({ numberError: false });
-  } else {
-    this.setState({ numberError: true });
-  }
 
   if (this.state.password.length >= 7) {
     this.setState({ passwordError: false });
@@ -57,14 +46,14 @@ handleChange(event) {
     event.preventDefault();
     this.setState({ submitted: true });
 
-    const { pers_org_num, password } = this.state; 
+    const { email, password } = this.state; 
 
     const user = {
-      pers_org_num: this.state.pers_org_num,
+      email: this.state.email,
       password: this.state.password
     }
 
-    if (pers_org_num && password) {
+    if (email && password) {
       this.props.loginUser({ user })
       .then((res) => {
         if (!res) {
@@ -79,9 +68,8 @@ handleChange(event) {
 
     render() {
       const {
-        pers_org_num,
+        email,
         submitted,
-        numberError,
         password,
         passwordError,
         errorMessage,
@@ -92,28 +80,22 @@ handleChange(event) {
           <form name="form" className="loginForm" onSubmit={this.handleSubmit}> 
 
             <div className="form-group">
-            <label className="BasicForm__label"> Person/organisationsnummer </label>
+            <label className="BasicForm__label"> Email</label>
             <div className="BasicForm__check">
               <input
                 type="text"
-                name="pers_org_num"
+                name="email"
                 className="form-control"
-                placeholder="YYMMDDXXXX / XXXXXXXXXX"
-                value={pers_org_num}
+                placeholder="email"
+                value={email}
                 onChange={this.handleChange}
               />
-              {pers_org_num &&
-                !numberError && <i className="fas fa-check BasicForm__check" />}
             </div>
             {submitted &&
-              !pers_org_num && (
+              !email && (
                 <div className="help-block">
-                  Glöm inte fylla i Person/organisationsnummer!
+                  Glöm inte fylla i din email!
                 </div>
-              )}
-            {pers_org_num &&
-              numberError && (
-                <div className="help-block">Oopa! fick du med en bokstav?</div>
               )}
           </div>
 

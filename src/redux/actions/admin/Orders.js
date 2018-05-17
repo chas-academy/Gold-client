@@ -51,7 +51,7 @@ export const recieveService = service => ({
 export const fetchService = ( token, id ) => dispatch => {
   dispatch(requestService());
 
-  return fetch(`https://gold-api-dev.chas.school/services/${id}`, {
+  return fetch(`${process.env.REACT_APP_API_BASE_URL}/services/${id}`, {
     headers: {
       Authorization: token
     }
@@ -81,7 +81,7 @@ export const recieveServices = services => ({
 export const fetchServices = token => dispatch => {
   dispatch(requestServices());
 
-  return fetch("https://gold-api-dev.chas.school/services", {
+  return fetch(`${process.env.REACT_APP_API_BASE_URL}/services`, {
     headers: {
       Authorization: token
     }
@@ -110,7 +110,7 @@ export const recieveServicesNew = servicesNew => ({
 export const fetchServicesNew = token => dispatch => {
   dispatch(requestServicesNew());
 
-  return fetch("https://gold-api-dev.chas.school/services/new", {
+  return fetch(`${process.env.REACT_APP_API_BASE_URL}/services/new`, {
     headers: {
       Authorization: token
     }
@@ -139,7 +139,7 @@ export const recieveServicesAssigned = servicesAssigned => ({
 export const fetchServicesAssigned = token => dispatch => {
   dispatch(requestServicesAssigned());
 
-  return fetch("https://gold-api-dev.chas.school/services/assigned", {
+  return fetch(`${process.env.REACT_APP_API_BASE_URL}/services/assigned`, {
     headers: {
       Authorization: token
     }
@@ -154,34 +154,6 @@ export const fetchServicesAssigned = token => dispatch => {
     });
 };
 
-/* ------------ SERVICES TAKEN --------------- */
-
-export const requestServicesTaken = () => ({
-  type: FETCH_SERVICES_TAKEN_START
-});
-
-export const recieveServicesTaken = servicesTaken => ({
-  type: FETCH_SERVICES_TAKEN_SUCCESS,
-  payload: servicesTaken
-});
-
-export const fetchServicesTaken = token => dispatch => {
-  dispatch(requestServicesTaken());
-
-  return fetch("https://gold-api-dev.chas.school/services/taken", {
-    headers: {
-      Authorization: token
-    }
-  })
-    .then(res => res.json())
-    .then(servicesTaken => {
-      return dispatch(recieveServicesTaken(servicesTaken));
-    })
-    .catch(response => {
-      console.error("An error occured when fetching the services taken");
-      return dispatch({ type: FETCH_SERVICES_TAKEN_FAILURE });
-    });
-};
 
 /* ------------ SERVICES DONE --------------- */
 
@@ -197,7 +169,7 @@ export const recieveServicesDone = servicesDone => ({
 export const fetchServicesDone = token => dispatch => {
   dispatch(requestServicesDone());
 
-  return fetch("https://gold-api-dev.chas.school/services/done", {
+  return fetch(`${process.env.REACT_APP_API_BASE_URL}/services/done`, {
     headers: {
       Authorization: token
     }
@@ -226,7 +198,7 @@ export const recieveOrder = order => ({
 export const fetchOrder = (token, id) => dispatch => {
   dispatch(requestOrder());
 
-  return fetch(`https://gold-api-dev.chas.school/orders/${id}`, {
+  return fetch(`${process.env.REACT_APP_API_BASE_URL}orders/${id}`, {
     headers: {
       Authorization: token
     }
@@ -255,7 +227,7 @@ export const recieveOrders = orders => ({
 export const fetchOrders = token => dispatch => {
   dispatch(requestOrders());
 
-  return fetch("https://gold-api-dev.chas.school/orders", {
+  return fetch(`${process.env.REACT_APP_API_BASE_URL}/orders`, {
     headers: {
       Authorization: token
     }
@@ -284,7 +256,7 @@ export const recieveInternalOrder = internalOrder => ({
 export const fetchInternalOrder = (token, id ) => dispatch => {
   dispatch(requestInternalOrder());
 
-  return fetch(`https://gold-api-dev.chas.school/int_orders/${id}`, {
+  return fetch(`${process.env.REACT_APP_API_BASE_URL}/int_orders/${id}`, {
     headers: {
       Authorization: token
     }
@@ -313,7 +285,7 @@ export const recieveInternalOrders = internalOrders => ({
 export const fetchInternalOrders = token => dispatch => {
   dispatch(requestInternalOrders());
 
-  return fetch("https://gold-api-dev.chas.school/int_orders", {
+  return fetch(`${process.env.REACT_APP_API_BASE_URL}/int_orders`, {
     headers: {
       Authorization: token
     }
@@ -342,7 +314,7 @@ export const recieveComplaint = complaint => ({
 export const fetchComplaint = (token, id ) => dispatch => {
   dispatch(requestComplaint());
 
-  return fetch(`https://gold-api-dev.chas.school/complaints/${id}`, {
+  return fetch(`${process.env.REACT_APP_API_BASE_URL}/complaints/${id}`, {
     headers: {
       Authorization: token
     }
@@ -371,7 +343,7 @@ export const recieveComplaints = complaints => ({
 export const fetchComplaints = token => dispatch => {
   dispatch(requestComplaints());
 
-  return fetch("https://gold-api-dev.chas.school/complaints", {
+  return fetch(`${process.env.REACT_APP_API_BASE_URL}/complaints`, {
     headers: {
       Authorization: token
     }

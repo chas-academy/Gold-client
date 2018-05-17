@@ -11,11 +11,15 @@ import {
     FETCH_USER_START, 
     FETCH_USER_SUCCESS, 
     FETCH_USER_FAILURE,
+    FETCH_CUSTOMER_START, 
+    FETCH_CUSTOMER_SUCCESS, 
+    FETCH_CUSTOMER_FAILURE,
 } from '../actions/admin/Action-types'
 
 const initialState = {
     isfetching: false,
     user: {},
+    customer: {},
     employees: [],
     companies: [],
     privateCustomers: []
@@ -55,6 +59,22 @@ const adminAccountsReducer = (state = initialState, action) => {
                 ...state,
                 isfetching: false
              };
+             case FETCH_CUSTOMER_START:
+             return {
+                 ...state,
+                 isfetching: true
+              };
+              case FETCH_CUSTOMER_SUCCESS:
+              return {
+                  ...state,
+                  isfetching: false,
+                  customer: action.payload
+               };
+              case FETCH_CUSTOMER_FAILURE:
+              return {
+                  ...state,
+                  isfetching: false
+               };
             case FETCH_CUSTOMERS_PRIVATE_START:
             return {
                ...state,

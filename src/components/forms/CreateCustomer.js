@@ -12,7 +12,7 @@ const mapDispatchToProps = dispatch => {
 };
 
 
-class SignUp extends Component {
+class CreateCustomer extends Component {
   constructor (props) {
     super(props);
 
@@ -24,18 +24,18 @@ class SignUp extends Component {
       lat: "",
       lon: "",
       name: "",
-      numberError: null,
+      numberError: "",
       password: "",
       passwordError: "",
       tel: "",
       customer_type: "",
-      phoneError: null,
+      telError: "",
       success: false,
       submitted: "",
-      userIsNotAdmin: this.props,
       ValidatePassword: ""
     };
 
+    this.getAddress = this.getAddress.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
   }
@@ -53,9 +53,9 @@ class SignUp extends Component {
     const isNumeric = /^[0-9]+$/;
 
     if (this.state.tel.match(isNumeric)) {
-      this.setState({ phoneError: false });
+      this.setState({ telError: false });
     } else {
-      this.setState({ phoneError: true });
+      this.setState({ telError: true });
     }
 
     if (this.state.password.length >= 6) {
@@ -71,14 +71,10 @@ class SignUp extends Component {
 
     const regUser = {
       name: this.state.name,
+      email: this.state.email,
       password: this.state.password,
       passwordVal: this.state.ValidatePassword,
       type: this.state.customer_type,
-      email: this.state.email,
-      tel: this.state.tel,
-      address: this.state.address,
-      lat: this.state.lat,
-      lon: this.state.lon
     }
 
     var errorMessage = ''
@@ -86,17 +82,14 @@ class SignUp extends Component {
       if ( regUser ) {
         this.props.registerUser({ regUser })
         .then((res) => {
-          if (!res) {
+          if (res) {
             this.setState({ success: true })
+            // send email?
           } else {
             res.errors.forEach(error => {
               errorMessage = error.message
-              if (error.message === "Validation isEmail on email failed") {
-                errorMessage = "Felaktigt ifylld email"
-              } else if (error.message === "email must be unique") {
-                errorMessage = "Denna email är redan registrerad"
-              } else if (error.message === "tel must be unique") {
-                errorMessage = "Detta telefonnummer är redan registrerat på en användare"
+              if (error.message == "pers_org_num must be unique") {
+                errorMessage = "Person/Organisationsnummer är redan registrerat"
               }
             });
             this.setState({ errorMessage: errorMessage, submitted: false })
@@ -112,7 +105,9 @@ class SignUp extends Component {
   
   render() {
     const {
+      company,
       customer_type,
+      address,
       email,
       errorMessage,
       submitted,
@@ -123,19 +118,21 @@ class SignUp extends Component {
       passwordError,
       tel,
       phoneError,
+      privateCustomer,
       ValidatePassword,
     } = this.state;
 
     return (
       <div className="col-md-6 col-md-offset-3">
-        <form name="form" className="loginForm" onSubmit={this.handleSubmit}>
+        <form name="form" className="BasicForm" onSubmit={this.handleSubmit}>
+        <h5> Lägg till ny kund </h5>
           <div className="form-group">
             <div className="BasicForm__check">
               <input
                 type="text"
                 name="name"
-                className="form-control"
-                placeholder="Namn"
+                className="form-control obl"
+                placeholder="Namn *"
                 value={name}
                 onChange={this.handleChange}
               />
@@ -149,11 +146,13 @@ class SignUp extends Component {
           <div className="form-group">
             <div className="BasicForm__check">
               <select className="BasicForm__select" onChange={this.handleSelectChange.bind(this)}>
-                <option defaultValue>Välj typ av kund </option>
+                <option selected disabled>Välj typ av användare * </option>
+                <option value="admin">Admin</option>
+                <option value="employee">Anställd</option>
                 <option value="private">Privatkund</option>
                 <option value="company">Företagskund</option>
               </select>  
-          {(customer_type) && <i className="fas fa-check BasicForm__check" />}
+          {customer_type && <i className="fas fa-check BasicForm__check" />}
             </div>
           </div>      
           <div className="form-group">
@@ -162,7 +161,7 @@ class SignUp extends Component {
                 type="text"
                 name="email"
                 className="form-control"
-                placeholder="Email"
+                placeholder="Email *"
                 value={email}
                 onChange={this.handleChange}
               />
@@ -202,8 +201,8 @@ class SignUp extends Component {
               <input
                 type="password"
                 name="password"
-                className="form-control"
-                placeholder="Lösenord"
+                className="form-control obl"
+                placeholder="Lösenord *"
                 value={password}
                 minLength='6'
                 onChange={this.handleChange}
@@ -239,8 +238,8 @@ class SignUp extends Component {
               <input
                 type="password"
                 name="ValidatePassword"
-                className="form-control"
-                placeholder="Bekräfta Lösenord"
+                className="form-control obl"
+                placeholder="Bekräfta Lösenord *"
                 value={ValidatePassword}
                 minLength='6'
                 onChange={this.handleChange}
@@ -260,12 +259,17 @@ class SignUp extends Component {
               )}
           </div>
           <div className="form-group">
-            <LocationSearchInput getAddress={this.getAddress.bind(this)} />
+            <LocationSearchInput getAddress={this.getAddress.bind(this)} submitted={submitted}/>
           </div>
+          {!name || !customer_type || !pers_org_num || !password ||
+              !ValidatePassword ? (
+                <div className="help-block">* Dessa fält är obligatoriska</div>
+              )
+              :('')}
           <div className="buttons">
             <div className="form-group">
               <button type="submit" className="btn btn-primary">
-                Registrera
+                Registrera ny användare
               </button>
               {errorMessage && <div className="help-block">{errorMessage}</div>}
             </div>
@@ -277,4 +281,4 @@ class SignUp extends Component {
 }
 
   
-export default connect(null, mapDispatchToProps)(SignUp);
+export default connect(null, mapDispatchToProps)(CreateCustomer);

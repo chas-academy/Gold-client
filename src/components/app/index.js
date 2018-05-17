@@ -5,7 +5,6 @@ import {
   AddComplaints,
   AddInternalOrders,
   AddOrders,
-  ActiveOrders,
   AssignedOrders,
   Companies,
   Complaints,
@@ -17,6 +16,7 @@ import {
   CustomerOrderDetails,
   CustomerProfile,
   CreateUsers,
+  CreateCustomers,
   EmployeeActive,
   EmployeeHistory,
   EmployeeIncoming,
@@ -44,17 +44,17 @@ class App extends Component {
         <Switch>
           <Route exact path='/' component={Login} />
           <Route path='/home' component={Home} />
-          <Route path='/admin/accounts/employees' component={Employees} />
           <Route path='/admin/accounts/create' component={CreateUsers}/>
           <Route path='/admin/accounts/profile' component={Profile} />  
           <Route path='/admin/accounts/customers/private' component={PrivateCustomers} />
           <Route path='/admin/accounts/customers/companies' component={Companies} />
-          <Route path='/admin/accounts/:id' component={HandleAccounts}/>
+          <Route path='/admin/accounts/customers/create' component={CreateCustomers} />
+          <Route path='/admin/accounts/:user/:id' component={HandleAccounts} />
+          <Route path='/admin/accounts/employees' component={Employees} />
+          <Route path='/admin/services/:id' component={Order} />
           <Route path='/admin/services/incoming' component={IncomingServices} />
-          <Route path='/admin/services/active' component={ActiveOrders} />
           <Route path='/admin/services/assigned' component={AssignedOrders} />
           <Route path='/admin/services/completed' component={CompletedOrders} />
-          <Route path='/admin/services/:id' component={Order} />
           <Route path='/admin/orders/add' component={AddOrders} />
           <Route path='/admin/orders/complaints/add' component={AddComplaints} />
           <Route path='/admin/orders/complaints' component={Complaints} />

@@ -65,10 +65,6 @@ class AdminTopServices extends Component {
               <i className="fas fa-arrow-right slide"></i>
                 Hanterade
               </a>
-              <a id="active" className="menu-item" href={`/admin/services/active`}>
-              < i className="fas fa-clock slide"></i>
-                Pågående
-              </a>
               <a id="active" className="menu-item" href={`/admin/orders`}>
               <i className="fas fa-list slide"></i>
                 Beställningar
