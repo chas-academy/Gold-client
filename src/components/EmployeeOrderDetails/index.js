@@ -32,15 +32,13 @@ class EmployeeOrderDetails extends Component {
   }
 
   render() {
-    const { id, Ongoing } = this.props;
+    const { service } = this.props;
+
+    console.log(service);
 
     return (
   <div className="BasicList__container">    
-      {Ongoing ? (
-          <h4>Slutför jobb</h4>
-      ) : (
-        <h4>Påbörja jobb</h4>
-      )}
+
     <div className="EmployeeOrderDetails">
           <ul className="BasicList__list orderDetails">
             <li>
@@ -52,16 +50,13 @@ class EmployeeOrderDetails extends Component {
             <li>Foton</li>
             <li>Anställd som bekräftar</li>
           </ul>
-          {Ongoing ? (
             <div>
               {/* <div className="orderDetails">
           <AddPhotos />
         </div>   */}
             <EmployeeCompleteJob />
             </div>
-          ) : (
-            <EmployeeConfirmJob />
-          )}
+
         </div>
         </div>
     );

@@ -33,10 +33,10 @@ class EmployeeHome extends Component {
               </Link>
             </button>
             <button className="CustomerHome__buttons">
-              <Link to={`/employee/active`}>
+              <Link to={`/employee/internal`}>
                 <i className="far fa-check-circle" />
                 <p className="CustomerHome__buttonText">
-                  Slutför jobb
+                  Interna ärenden
                 </p>
               </Link>
             </button>
