@@ -53,8 +53,8 @@ export { default as EmployeeBottomNav } from './menus/employee-bottom-nav'
 export { default as EmployeeConfirmJob } from './buttons/EmployeeConfirmJob'
 export { default as EmployeeCompleteJob } from './buttons/EmployeeCompleteJob'
 export { default as EmployeeIncomingList } from './lists/EmployeeIncomingList'
-export { default as EmployeeActiveList } from './lists/EmployeeActiveList'
-export { default as EmployeeCompleteList} from './lists/EmployeeCompleteList'
+export { default as EmployeeInternalList } from './lists/EmployeeInternalList'
+export { default as EmployeeHistoryList} from './lists/EmployeeHistoryList'
 export { default as EmployeeOrderDetails } from './EmployeeOrderDetails'
  
 

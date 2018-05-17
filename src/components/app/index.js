@@ -17,9 +17,9 @@ import {
   CustomerProfile,
   CreateUsers,
   CreateCustomers,
-  EmployeeActive,
   EmployeeHistory,
   EmployeeIncoming,
+  EmployeeInternal,
   EmployeeOrderView,
   EmployeeProfile,
   Employees,
@@ -61,16 +61,16 @@ class App extends Component {
           <Route path='/admin/orders/internal/add' component={AddInternalOrders} />
           <Route path='/admin/orders/internal' component={InternalOrders} />
           <Route path='/admin/orders' component={Orders} />
-          <Route path='/employee/active' component={EmployeeActive} />
           <Route path='/employee/history' component={EmployeeHistory} />
           <Route path='/employee/profile' component={EmployeeProfile} />
+          <Route path='/employee/internal' component={EmployeeInternal} />
           <Route path='/employee/incoming' component={EmployeeIncoming} />
-          <Route path='/employee/orders/:id' component={EmployeeOrderView} />
+          <Route path='/employee/services/:id' component={EmployeeOrderView} />
           <Route path='/profile' component={CustomerProfile} />
           <Route path='/complaints' component={CustomerComplaints} />
           <Route path='/history' component={CustomerHistory} />
           <Route path='/orders/add' component={CustomerOrders} />
-          <Route path='/orders/:id' component={CustomerOrderDetails} />
+          <Route path='/services/:id' component={CustomerOrderDetails} />
           <Route path='/contact' component={CustomerContact} />
           <Route path='/logout' component={Login} />
           <Route component={NotFoundPage} />  

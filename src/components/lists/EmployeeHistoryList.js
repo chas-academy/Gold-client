@@ -4,12 +4,13 @@ import { fetchDone } from '../../redux/actions/employees';
 import { withRouter, Link } from "react-router-dom";
 import Cookies from "universal-cookie";
 import { Tabs, TabContent, TabLink } from 'react-tabs-redux';
+import Moment from "react-moment";
 
 
 import './style.css'
 
 
-class EmployeeCompleteList extends Component {
+class EmployeeHistoryList extends Component {
 
   constructor(props) {
     super(props);
@@ -34,6 +35,7 @@ class EmployeeCompleteList extends Component {
   render() {
     const  {isFetching, Done} = this.props;
 
+  
     const completedOrders = Done.filter(
       order => order.order_type === "order"
     );
@@ -63,12 +65,16 @@ class EmployeeCompleteList extends Component {
             {completedOrders.length ? (
               <ul className="BasicList__list">
                 {completedOrders.map(order => (
-                      <li key={order.service_id}>
-                        <Link to={`/orders/${order.service_id}`}>
+                  <li key={order.id}>
+                  {console.log(order)}
+                        <Link to={`services/${order.id}`}>
                           <div className="edit">
-                            <p>Beställare : XXXX, orderId: </p>
-                            <i className="fas fa-exclamation-triangle" /> Skapa
-                            Reklamation
+                          {order.company_name ? (
+                          <p>{order.company_name} </p>
+                        ) : (
+                          <p>{order.con_pers} </p>
+                        )}        
+                        <p>Avslutades: <Moment format="MM/DD">{order.updatedAt}</Moment></p>
                           </div>
                         </Link>
                       </li>
@@ -84,13 +90,16 @@ class EmployeeCompleteList extends Component {
             {completedComplaints.length ? (
               <ul className="BasicList__list">
                 {completedComplaints.map(order => (
-                      <li key={order.service_id}>
-                        <Link to={`/orders/${order.service_id}`}>
-                          <div className="edit">
-                            <p>Beställare : XXXX, orderId: </p>
-                            <i className="fas fa-exclamation-triangle" /> Skapa
-                            Reklamation
-                          </div>
+                      <li key={order.id}>
+                        <Link to={`services/${order.id}`}>
+                        <div className="edit">
+                        {order.company_name ? (
+                        <p>{order.company_name} </p>
+                      ) : (
+                        <p>{order.con_pers} </p>
+                      )}        
+                      <p>Avslutades: <Moment format="MM/DD">{order.updatedAt}</Moment></p>
+                        </div>
                         </Link>
                       </li>
                     ))}
@@ -105,13 +114,16 @@ class EmployeeCompleteList extends Component {
           {completedInternalOrders.length ? (
             <ul className="BasicList__list">
                 {completedInternalOrders.map(order => (
-                    <li key={order.service_id}>
-                      <Link to={`/orders/${order.service_id}`}>
-                        <div className="edit">
-                          <p>Beställare : XXXX, orderId: </p>
-                          <i className="fas fa-exclamation-triangle" /> Skapa
-                          Reklamation
-                        </div>
+                    <li key={order.id}>
+                      <Link to={`services/${order.id}`}>
+                      <div className="edit">
+                      {order.company_name ? (
+                      <p>{order.company_name} </p>
+                    ) : (
+                      <p>{order.con_pers} </p>
+                    )}        
+                    <p>Avslutades: <Moment format="MM/DD">{order.updatedAt}</Moment></p>
+                      </div>
                       </Link>
                     </li>
                   ))}
@@ -133,4 +145,4 @@ const mapStateToProps = state => ({
   isFetching: state.employee.isFetching
 });
 
-export default withRouter(connect(mapStateToProps)(EmployeeCompleteList));
+export default withRouter(connect(mapStateToProps)(EmployeeHistoryList));
