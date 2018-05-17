@@ -56,7 +56,14 @@ export const fetchService = ( token, id ) => dispatch => {
       Authorization: token
     }
   })
-    .then(res => res.json())
+    .then(res => {
+      if(res.status === 200 ) {
+          return res.json()
+      }
+      else {
+        return dispatch({ type: FETCH_SERVICE_FAILURE })
+      }
+    })
     .then(service => {
       return dispatch(recieveService(service));
     })

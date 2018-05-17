@@ -51,6 +51,7 @@ const initialState = {
     internalOrders: [],
     complaint: {},
     complaints: [],
+    errorMessage: ""
 };
 
 const adminOrdersReducer = (state = initialState, action) => {
@@ -70,6 +71,7 @@ const adminOrdersReducer = (state = initialState, action) => {
         return {
             ...state,
             isfetching: false
+
          };
         case FETCH_SERVICES_START:
         return {
