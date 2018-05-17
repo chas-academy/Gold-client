@@ -117,7 +117,6 @@ class SignUp extends Component {
       errorMessage,
       submitted,
       name,
-      pers_org_num,
       numberError,
       password,
       passwordError,

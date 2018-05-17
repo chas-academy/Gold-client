@@ -32,9 +32,7 @@ handleChange(event) {
   const { name, value } = event.target;
   this.setState({ [name]: value });
   
-  const isNumeric = /^[0-9]+$/;
-
-  if (this.state.password.length >= 7) {
+  if (this.state.password.length >= 6) {
     this.setState({ passwordError: false });
   } else {
     this.setState({ passwordError: true });
@@ -83,10 +81,10 @@ handleChange(event) {
             <label className="BasicForm__label"> Email</label>
             <div className="BasicForm__check">
               <input
-                type="text"
+                type="email"
                 name="email"
                 className="form-control"
-                placeholder="email"
+                placeholder="example@email.com"
                 value={email}
                 onChange={this.handleChange}
               />
@@ -106,7 +104,8 @@ handleChange(event) {
                 type="password"
                 name="password"
                 className="form-control"
-                placeholder="Lösenord"
+				placeholder="Lösenord"
+				minLength='6'
                 value={password}
                 onChange={this.handleChange}
               />
@@ -115,7 +114,7 @@ handleChange(event) {
                 )}
             </div>
               {password && passwordError  &&
-                <div className="help-block">Lösenordet måste vara minst 8 tecken långt</div>
+                <div className="help-block">Lösenordet måste vara minst 6 tecken långt</div>
                 }
           </div>  
               <div className="form-group">
