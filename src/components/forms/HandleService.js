@@ -49,7 +49,7 @@ class HandleService extends Component {
   }
   
   componentDidMount() {
-    const service = this.props;
+    const { service }= this.props;
     
     this.status === "new" ?
     this.setState({ message: `Detta är ett nytt ärende`})

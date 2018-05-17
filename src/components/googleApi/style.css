@@ -30,7 +30,7 @@
     border-radius: 100%;
   }
 
-  .button-glow-active {
+  .button-glow-assigned {
     animation: glowing-active 2000ms infinite;
     border-radius: 100%;
   }

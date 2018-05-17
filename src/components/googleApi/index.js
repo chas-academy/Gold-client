@@ -6,7 +6,7 @@ import Cookies from "universal-cookie";
 import Moment from "react-moment";
 import moment from "moment";
 
-import { fetchServicesNew } from "../../redux/actions/admin/Orders";
+import { fetchServicesNew, fetchServicesAssigned, fetchServicesDone } from "../../redux/actions/admin/Orders";
 
 import "./style.css";
 import stylesDay from "./Styles-day.json";
@@ -26,6 +26,8 @@ class MapContainer extends Component {
     const cookies = new Cookies();
     var token = cookies.get("token");
     this.props.dispatch(fetchServicesNew(token));
+    this.props.dispatch(fetchServicesAssigned(token));
+    this.props.dispatch(fetchServicesDone(token));
 
     const time = moment().format("HH");
 
@@ -55,23 +57,35 @@ class MapContainer extends Component {
   };
 
   render() {
-    const { servicesNew } = this.props;
+    const { servicesNew, servicesAssigned, servicesDone } = this.props;
 
     const { mapOptions, message } = this.state;
-
+    
     const NewServices = servicesNew.filter(order => order.status === "new");
-    const AssignedServices = servicesNew.filter(
-      order => order.status === "assigned"
-    );
-    const DoneServices = servicesNew.filter(order => order.status === "done");
+    const NewOrders = NewServices.filter(order => order.order_type === 'order');
+    const NewComplaints = NewServices.filter(order => order.order_type === 'complaints');
+    
+    const AssignedServices = servicesAssigned.filter( order => order.status === "assigned");
+    const AssignedOrders = AssignedServices.filter(order => order.order_type === 'order');
+    const AssignedComplaints = AssignedServices.filter(order => order.order_type === 'complaints');
+    const AssignedInternalOrders = AssignedServices.filter(order => order.order_type === 'int_orders');
+
+    NewOrders.map(order => {
+      console.log(order.order.lat)
+    })
+    const DoneServices = servicesDone.filter(order => order.status === "done");
+    const DoneOrders = DoneServices.filter(order => order.order_type === 'order');
+    const DoneComplaints = DoneServices.filter(order => order.order_type === 'complaints');
+    const DoneInternalOrders = DoneServices.filter(order => order.order_type === 'int_orders');
 
     const Google = process.env.REACT_APP_API_KEY_GOOGLE;
     const AnyReactComponent = ({ text }) => <div>{text}</div>;
 
+    
     return (
       <div className="map"
         style={{
-          height: "45vh",
+          height: "48vh",
           width: "95%",
           margin: "auto",
           marginTop: "8px"
@@ -83,36 +97,43 @@ class MapContainer extends Component {
           defaultZoom={this.props.zoom}
           options={this.state.mapOptions}
         >
-          {message ? (
-            <AnyReactComponent
-              lat={55.68087}
-              lng={12.53073}
-              text={<p className="Sleep">{message}</p>}
-            />
-          ) : (
-            NewServices.map(order => (
+            {NewOrders.map(order => (
               <AnyReactComponent
-                key={order.id}
-                lat={55.80587}
-                lng={13.20073}
-                text={
-                  <a href="admin/orders/1">
+              key={order.id}
+              lat={order.order.lat}
+              lng={order.order.lon}
+              text={
+                <a href={`admin/orders/${order.id}`}>
                     <i
                       className="fas fa-map-marker button-glow-new"
                       style={{ color: "red", fontSize: "18px" }}
-                    />
+                      />
                   </a>
                 }
-              />
-            ))
-          )}
-          {AssignedServices.map(order => (
+                />
+            ))}
+            {NewComplaints.map(order => (
+              <AnyReactComponent
+              key={order.id}
+              lat={order.order.lat}
+              lng={order.order.lon}
+              text={
+                <a href={`admin/orders/${order.id}`}>
+                    <i
+                      className="fas fa-map-marker button-glow-new"
+                      style={{ color: "red", fontSize: "18px" }}
+                      />
+                  </a>
+                }
+                />
+            ))}
+            {AssignedOrders.map(order => (
             <AnyReactComponent
               key={order.id}
-              lat={55.60587}
-              lng={13.20073}
+              lat={order.order.lat}
+              lng={order.order.lon}
               text={
-                <a href="admin/orders/1">
+                <a href={`admin/orders/${order.id}`}>
                   <i
                     className="fas fa-map-marker button-glow-assigned"
                     style={{ color: "orange", fontSize: "18px" }}
@@ -121,22 +142,82 @@ class MapContainer extends Component {
               }
             />
           ))}
-          {DoneServices.map(order => (
+          {AssignedComplaints.map(order => (
             <AnyReactComponent
               key={order.id}
-              lat={55.80587}
-              lng={13.30073}
+              lat={order.order.lat}
+              lng={order.order.lon}
               text={
-                <a href="admin/orders/3">
+                <a href={`admin/orders/${order.id}`}>
                   <i
-                    className="fas fa-map-marker"
-                    style={{ color: "green", fontSize: "18px" }}
+                    className="fas fa-map-marker button-glow-assigned"
+                    style={{ color: "orange", fontSize: "18px" }}
                   />
                 </a>
               }
             />
           ))}
-
+          {DoneInternalOrders.map(order => (
+            <AnyReactComponent
+              key={order.id}
+              lat={order.order.lat}
+              lng={order.order.lon}
+              text={
+                <a href={`admin/orders/${order.id}`}>
+                  <i
+                    className="fas fa-map-marker button-glow-assigned"
+                    style={{ color: "orange", fontSize: "18px" }}
+                  />
+                </a>
+              }
+            />
+          ))}
+          {DoneOrders.map(order => (
+            <AnyReactComponent
+              key={order.id}
+              lat={order.order.lat}
+              lng={order.order.lon}
+              text={
+                <a href={`admin/orders/${order.id}`}>
+                  <i
+                    className="fas fa-map-marker button-glow-assigned"
+                    style={{ color: "orange", fontSize: "18px" }}
+                  />
+                </a>
+              }
+            />
+          ))}
+          {DoneComplaints.map(order => (
+            <AnyReactComponent
+              key={order.id}
+              lat={order.order.lat}
+              lng={order.order.lon}
+              text={
+                <a href={`admin/orders/${order.id}`}>
+                  <i
+                    className="fas fa-map-marker button-glow-assigned"
+                    style={{ color: "orange", fontSize: "18px" }}
+                  />
+                </a>
+              }
+            />
+          ))}
+          {DoneInternalOrders.map(order => (
+            <AnyReactComponent
+              key={order.id}
+              lat={order.order.lat}
+              lng={order.order.lon}
+              text={
+                <a href={`admin/orders/${order.id}`}>
+                  <i
+                    className="fas fa-map-marker button-glow-assigned"
+                    style={{ color: "orange", fontSize: "18px" }}
+                  />
+                </a>
+              }
+            />
+          ))
+        }
         </GoogleMapReact>
       </div>
     );
@@ -144,7 +225,10 @@ class MapContainer extends Component {
 }
 
 const mapStateToProps = state => ({
-  servicesNew: state.adminOrders.servicesNew
+  servicesNew: state.adminOrders.servicesNew,
+  servicesAssigned: state.adminOrders.servicesAssigned,
+  servicesDone: state.adminOrders.servicesDone,
+
 });
 
 export default connect(mapStateToProps)(MapContainer);

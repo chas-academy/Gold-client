@@ -39,7 +39,7 @@ class AdminHomeTop extends Component {
                 <ul className="BasicList__list">
                   {newOrders.map(order => (
                     <li key={order.id}>
-                      <Link to={`/admin/orders/${order.id}`}>
+                      <Link to={`/admin/services/${order.id}`}>
                         <div className="edit">
                           {order.status === "new" ? (
                             <i
