@@ -59,7 +59,8 @@ export const CreateUser = (id, token) => dispatch => {
       })
       .catch(response => {
           console.error('An error occured when fetching the user')
-          return dispatch({ type: CREATE_USER_FAILURE })
+          return dispatch({ type: CREATE_USER_FAILURE,
+                            message: "Kunde inte Koppla till nätverket kontrollera internetuppkoppling."})
       });
   }; 
 
@@ -88,7 +89,8 @@ export const fetchUser = (id, token) => dispatch => {
               return res.json();
           }
           else {
-              return dispatch({ type: FETCH_USER_FAILURE })
+              return dispatch({ type: FETCH_USER_FAILURE,
+                                message: "Kunde inte Koppla till nätverket kontrollera internetuppkoppling." })
           }
       })
       .then((user) => {
@@ -97,7 +99,8 @@ export const fetchUser = (id, token) => dispatch => {
       })
       .catch(response => {
           console.error('An error occured when fetching the user')
-          return dispatch({ type: FETCH_USER_FAILURE })
+          return dispatch({ type: FETCH_USER_FAILURE,
+                            message: "Kunde inte Koppla till nätverket kontrollera internetuppkoppling." })
       });
   }; 
 
@@ -126,7 +129,8 @@ export const fetchUsers = (token) => dispatch => {
               return res.json();
           }
           else {
-            return dispatch({ type: FETCH_USERS_FAILURE })
+            return dispatch({ type: FETCH_USERS_FAILURE,
+                                 message: "Kunde inte Koppla till nätverket kontrollera internetuppkoppling." })
           }
       })
       .then((users) => {
@@ -134,7 +138,8 @@ export const fetchUsers = (token) => dispatch => {
       })
       .catch(response => {
           console.error('An error occured when fetching the users')
-          return dispatch({ type: FETCH_USERS_FAILURE })
+          return dispatch({ type: FETCH_USERS_FAILURE,
+                            message: "Kunde inte Koppla till nätverket kontrollera internetuppkoppling."})
       });
   };
 
@@ -167,7 +172,8 @@ export const updateUser = (user, token) => dispatch => {
               return res.json();
           }
           else{ 
-            return dispatch({ type: UPDATE_USER_FAILURE })
+            return dispatch({ type: UPDATE_USER_FAILURE,
+                                message: "Kunde inte Koppla till nätverket kontrollera internetuppkoppling."})
           }
       })
       .then((user) => {
@@ -175,7 +181,8 @@ export const updateUser = (user, token) => dispatch => {
       })
       .catch(response => {
           console.error('The user was not updated')
-          return dispatch({ type: UPDATE_USER_FAILURE })
+          return dispatch({ type: UPDATE_USER_FAILURE,
+                            message: "kunde inte hämta användare" })
       });
   }; 
   
@@ -203,7 +210,8 @@ export const fetchEmployees = (token) => dispatch => {
               return res.json();
           }
           else {
-            return dispatch({ type: FETCH_EMPLOYEES_FAILURE })
+            return dispatch({ type: FETCH_EMPLOYEES_FAILURE,
+                                message: "Kunde inte Koppla till nätverket kontrollera internetuppkoppling." })
           }
       })
       .then((users) => {
@@ -211,7 +219,8 @@ export const fetchEmployees = (token) => dispatch => {
       })
       .catch(response => {
           console.error('An error occured when fetching the employee')
-          return dispatch({ type: FETCH_EMPLOYEES_FAILURE })
+          return dispatch({ type: FETCH_EMPLOYEES_FAILURE,
+                            message: "Något Gick fill med att hämta informationen"})
       });
   }; 
 
@@ -240,7 +249,8 @@ export const fetchPrivateCustomers = (token) => dispatch => {
               return res.json();
           }
           else {
-            return dispatch({ type: FETCH_CUSTOMERS_PRIVATE_FAILURE })
+            return dispatch({ type: FETCH_CUSTOMERS_PRIVATE_FAILURE,
+                              message: "Kunde inte Koppla till nätverket kontrollera internetuppkoppling." })
           }
       })
       .then((users) => {
@@ -248,7 +258,8 @@ export const fetchPrivateCustomers = (token) => dispatch => {
       })
       .catch(response => {
           console.error('An error occured when fetching the private customers')
-          return dispatch({ type: FETCH_CUSTOMERS_PRIVATE_FAILURE })
+          return dispatch({ type: FETCH_CUSTOMERS_PRIVATE_FAILURE,
+                            message:"det var ett problem att hämta kunder" })
       });
   }; 
 
@@ -276,7 +287,8 @@ export const fetchCompanies = (token) => dispatch => {
               return res.json();
           }
           else {
-               return dispatch({ type: FETCH_CUSTOMERS_COMPANIES_FAILURE })
+               return dispatch({ type: FETCH_CUSTOMERS_COMPANIES_FAILURE,
+                                 message:"Kunde inte Koppla till nätverket kontrollera internetuppkoppling." })
           }
       })
       .then((companies) => {
@@ -284,7 +296,8 @@ export const fetchCompanies = (token) => dispatch => {
       })
       .catch(response => {
           console.error('An error occured when fetching the companies')
-          return dispatch({ type: FETCH_CUSTOMERS_COMPANIES_FAILURE })
+          return dispatch({ type: FETCH_CUSTOMERS_COMPANIES_FAILURE,
+                            message:"Kunde inte hämta kunder företag." })
       });
   }; 
 
@@ -312,7 +325,8 @@ export const fetchCustomer = (id, token) => dispatch => {
               return res.json();
           }
           else {
-              return dispatch({ type: FETCH_CUSTOMER_FAILURE })
+              return dispatch({ type: FETCH_CUSTOMER_FAILURE,
+                                message: "Kunde inte Koppla till nätverket kontrollera internetuppkoppling." })
           }
       })
       .then((customer) => {
@@ -320,7 +334,8 @@ export const fetchCustomer = (id, token) => dispatch => {
       })
       .catch(response => {
           console.error('An error occured when fetching the customer')
-          return dispatch({ type: FETCH_CUSTOMER_FAILURE })
+          return dispatch({ type: FETCH_CUSTOMER_FAILURE,
+                            message: "Kunde inte Koppla till nätverket kontrollera internetuppkoppling." })
       });
   };
 
@@ -353,7 +368,8 @@ export const fetchCustomer = (id, token) => dispatch => {
                   return res.json();
               }
               else {
-                return dispatch({ type: UPDATE_CUSTOMER_FAILURE })
+                return dispatch({ type: UPDATE_CUSTOMER_FAILURE,
+                                    message: "Kunde inte Koppla till nätverket kontrollera internetuppkoppling." })
               }
           })
           .then((customer) => {
@@ -361,7 +377,8 @@ export const fetchCustomer = (id, token) => dispatch => {
           })
           .catch(response => {
               console.error('The customer was not updated')
-              return dispatch({ type: UPDATE_CUSTOMER_FAILURE })
+              return dispatch({ type: UPDATE_CUSTOMER_FAILURE,
+                                message:"Kunde inte uppdatera kund" })
           });
       }; 
       

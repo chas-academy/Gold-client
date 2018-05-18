@@ -224,7 +224,8 @@ export const fetchOrder = (token, id) => dispatch => {
     })
     .catch(response => {
       console.error("An error occured when fetching the order");
-      return dispatch({ type: FETCH_ORDER_FAILURE });
+      return dispatch({ type: FETCH_ORDER_FAILURE,
+                        message:"kunde inte hämta beställing" });
     });
 };
 
@@ -252,7 +253,8 @@ export const fetchOrders = token => dispatch => {
         return res.json() 
       }
       else {
-        return dispatch({ type: FETCH_ORDERS_FAILURE });
+        return dispatch({ type: FETCH_ORDERS_FAILURE,
+                        message: "Kunde inte Koppla till nätverket kontrollera internetuppkoppling." });
       }
     })
     .then(orders => {
@@ -260,7 +262,8 @@ export const fetchOrders = token => dispatch => {
     })
     .catch(response => {
       console.error("An error occured when fetching the orders");
-      return dispatch({ type: FETCH_ORDERS_FAILURE });
+      return dispatch({ type: FETCH_ORDERS_FAILURE ,
+                        message:"kunde inte hämta beställingar" });
     });
 };
 
@@ -288,7 +291,8 @@ export const fetchInternalOrder = (token, id ) => dispatch => {
         return res.json()
       }
       else {
-        return dispatch({ type: FETCH_INTERNAL_ORDER_FAILURE });
+        return dispatch({ type: FETCH_INTERNAL_ORDER_FAILURE,
+                          message:"Kunde inte Koppla till nätverket kontrollera internetuppkoppling." });
       }
     })
     .then(internalOrder => {
@@ -296,7 +300,8 @@ export const fetchInternalOrder = (token, id ) => dispatch => {
     })
     .catch(response => {
       console.error("An error occured when fetching the internal order");
-      return dispatch({ type: FETCH_INTERNAL_ORDER_FAILURE });
+      return dispatch({ type: FETCH_INTERNAL_ORDER_FAILURE,
+                        message:"det var ett problem att hämta interna beställningar"  });
     });
 };
 
@@ -324,7 +329,8 @@ export const fetchInternalOrders = token => dispatch => {
         return res.json();
       }
       else {
-        return dispatch({ type: FETCH_INTERNAL_ORDERS_FAILURE });
+        return dispatch({ type: FETCH_INTERNAL_ORDERS_FAILURE,
+                          message:"Kunde inte Koppla till nätverket kontrollera internetuppkoppling." });
       }
     })
     .then(internalOrders => {
@@ -332,7 +338,8 @@ export const fetchInternalOrders = token => dispatch => {
     })
     .catch(response => {
       console.error("An error occured when fetching the orders");
-      return dispatch({ type: FETCH_INTERNAL_ORDERS_FAILURE });
+      return dispatch({ type: FETCH_INTERNAL_ORDERS_FAILURE,
+        message:"det var ett problem att hämta interna beställningar" });
     });
 };
 
@@ -360,7 +367,8 @@ export const fetchComplaint = (token, id ) => dispatch => {
         return res.json();
       } 
       else {
-        return dispatch({ type: FETCH_COMPLAINT_FAILURE });
+        return dispatch({ type: FETCH_COMPLAINT_FAILURE,
+                          message:"Kunde inte Koppla till nätverket kontrollera internetuppkoppling." });
       }
     })
     .then(complaint => {
@@ -368,7 +376,8 @@ export const fetchComplaint = (token, id ) => dispatch => {
     })
     .catch(response => {
       console.error("An error occured when fetching the complaint");
-      return dispatch({ type: FETCH_COMPLAINT_FAILURE });
+      return dispatch({ type: FETCH_COMPLAINT_FAILURE,
+        message:"Det var problem att hämta klagomål" });
     });
 };
 
@@ -396,7 +405,8 @@ export const fetchComplaints = token => dispatch => {
         return res.json();
       }
       else {
-        return dispatch({ type: FETCH_COMPLAINTS_FAILURE });
+        return dispatch({ type: FETCH_COMPLAINTS_FAILURE,
+                          message:"Kunde inte Koppla till nätverket kontrollera internetuppkoppling."});
       }
     })
     .then(complaints => {
@@ -404,6 +414,7 @@ export const fetchComplaints = token => dispatch => {
     })
     .catch(response => {
       console.error("An error occured when fetching the complaints");
-      return dispatch({ type: FETCH_COMPLAINTS_FAILURE });
+      return dispatch({ type: FETCH_COMPLAINTS_FAILURE,
+                        message: "det var problem att hämta klagomål" });
     });
 };

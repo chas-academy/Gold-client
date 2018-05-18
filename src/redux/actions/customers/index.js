@@ -38,14 +38,7 @@ export const requestService = () => ({
         Authorization: token
       }
     })
-      .then(res => {
-        if(res.status === 200) {
-          return res.json();
-        }
-        else {
-          return dispatch({ type: FETCH_CUSTOMER_SERVICE_FAILURE })
-        }
-      })
+      .then(res => res.json())
       .then(service => {
         return dispatch(recieveService(service));
       })
@@ -75,14 +68,7 @@ export const requestService = () => ({
         Authorization: token
       }
     })
-      .then(res => {
-        if(res.status === 200){
-          return res.json();
-        }
-        else {
-          return dispatch({ type: FETCH_CUSTOMER_SERVICES_FAILURE })
-        }
-      })
+      .then(res => res.json())
       .then(services => {
         return dispatch(recieveServices(services));
       })
@@ -111,14 +97,7 @@ export const requestService = () => ({
         Authorization: token
       }
     })
-      .then(res => {
-        if(res.status === 200){
-          return res.json();
-        }
-        else {
-          return dispatch({ type: FETCH_CUSTOMER_SERVICES_NEW_FAILURE })
-        }
-      })
+      .then(res => res.json())
       .then(servicesNew => {
         return dispatch(recieveServicesNew(servicesNew));
       })
@@ -147,14 +126,7 @@ export const requestService = () => ({
         Authorization: token
       }
     })
-      .then(res => {
-        if(res.status === 200) {
-          return res.json();
-        }
-        else {
-          return dispatch({ type: FETCH_CUSTOMER_SERVICES_ASSIGNED_FAILURE })
-        }
-      })
+      .then(res => res.json())
       .then(servicesAssigned => {
         return dispatch(recieveServicesAssigned(servicesAssigned));
       })
@@ -183,14 +155,7 @@ export const requestService = () => ({
         Authorization: token
       }
     })
-      .then(res => {
-        if(res.status === 200) {
-          return res.json() 
-        }
-        else {
-          return dispatch({ type: FETCH_CUSTOMER_SERVICES_TAKEN_FAILURE });
-        }
-      })
+      .then(res => res.json())
       .then(servicesTaken => {
         return dispatch(recieveServicesTaken(servicesTaken));
       })
@@ -219,14 +184,7 @@ export const requestService = () => ({
         Authorization: token
       }
     })
-      .then(res => {
-        if(res.status === 200){
-          return res.json();
-        }
-        else {
-          return dispatch({ type: FETCH_CUSTOMER_SERVICES_DONE_FAILURE })
-        }
-      })
+      .then(res => res.json())
       .then(servicesDone => {
         return dispatch(recieveServicesDone(servicesDone));
       })

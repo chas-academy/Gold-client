@@ -56,7 +56,7 @@ const employeeReducer = (state = initialState, action) => {
       return {
         ...state,
         isFetching: false,
-        errorMessage: action.payload
+        errorMessage: action.message
       };
       case FETCH_EMP_INTERNAL_REQUEST:
       return {
@@ -73,7 +73,7 @@ const employeeReducer = (state = initialState, action) => {
       return {
         ...state,
         isFetching: false,
-        errorMessage: "failure"
+        errorMessage: action.message
       };
     case FETCH_EMP_DONE_REQUEST:
       return {
@@ -84,7 +84,7 @@ const employeeReducer = (state = initialState, action) => {
       return {
         ...state,
         isFetching: false,
-        errorMessage: "failure"
+        errorMessage: action.message
       };
     case FETCH_EMP_DONE_SUCCESS:
       return {
