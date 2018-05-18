@@ -63,7 +63,6 @@ class Home extends Component {
             <AdminTopNav />
             <AdminHomeTop />
             <MapContainer />
-            <AdminBottomNav />
           </div>)
           break;
         case 'customer':

@@ -1,5 +1,7 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import { Link, withRouter } from "react-router-dom";
+import { fetchAssigned } from "../../redux/actions/employees";
 import Cookies from "universal-cookie";
 
 import "./style.css";
@@ -35,11 +37,19 @@ class EmployeeHome extends Component {
         ))
 
         this.setState({ userName: user.name })
+        this.props.dispatch(fetchAssigned(user.id, token));
+
     }
 
   }
 
   render() {
+    const { isFetching, Assigned } = this.props;
+
+    const newOrders = Assigned.filter(order => order.order_type === "order");
+    const newComplaints = Assigned.filter(order => order.order_type === "complaint");
+    const newInternal = Assigned.filter(order => order.order_type === "int_order");
+
 
     const { userName } = this.state;
 
@@ -52,14 +62,20 @@ class EmployeeHome extends Component {
           <h3 className="CustomerHome__welcome">Välkommen {userName}!</h3>
           <div>
             <button className="CustomerHome__buttons">
-              <Link to={`/employee/incoming`}>
-                <i className="fas fa-inbox" />
+              <Link to={`/employee/incoming`} >
+                {newOrders || newComplaints !== null ? 
+                <i className="fas fa-compass new" />
+                : 
+                <i className="fas fa-compass" />}
                 <p className="CustomerHome__buttonText"> Inkomna Jobb</p>
               </Link>
             </button>
             <button className="CustomerHome__buttons">
               <Link to={`/employee/internal`}>
-                <i className="far fa-check-circle" />
+              {newInternal !== null ?
+                <i className="far fa-check-circle new" />
+                : 
+                <i className="far fa-check-circle" />}
                 <p className="CustomerHome__buttonText">
                   Interna ärenden
                 </p>
@@ -89,4 +105,9 @@ class EmployeeHome extends Component {
   }
 }
 
-export default withRouter(EmployeeHome);
+const mapStateToProps = state => ({
+  Assigned: state.employee.Assigned,
+  isFetching: state.employee.isFetching
+});
+
+export default withRouter(connect(mapStateToProps)(EmployeeHome));

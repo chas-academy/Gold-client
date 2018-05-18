@@ -58,6 +58,7 @@ export const fetchService = ( token, id ) => dispatch => {
   })
     .then(res => res.json())
     .then(service => {
+      console.log(service)
       return dispatch(recieveService(service));
     })
     .catch(response => {

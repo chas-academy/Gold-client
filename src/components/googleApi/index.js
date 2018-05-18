@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import GoogleMapReact from "google-map-react";
+import { AdminBottomNav } from '../../components';
 
 import Cookies from "universal-cookie";
 import Moment from "react-moment";
@@ -31,15 +32,7 @@ class MapContainer extends Component {
 
     const time = moment().format("HH");
 
-  
-    time <=3 || time >= 23 ?   
-      this.setState({
-        mapOptions: {
-          styles: stylesNight
-        },
-          message: "Κοιμήσου ρε παιδί μου! 👴🏻"
-        })
-    : time <= 5 || time >= 22 ? 
+     time <= 5 || time >= 22 ? 
       this.setState({
           mapOptions: {
             styles: stylesNight
@@ -52,7 +45,7 @@ class MapContainer extends Component {
   }
 
   static defaultProps = {
-    center: { lat: 55.5873503, lng: 12.9814429 },
+    center: { lat: 59.334591, lng: 18.063240 },
     zoom: 9
   };
 
@@ -61,18 +54,18 @@ class MapContainer extends Component {
 
     const { mapOptions, message } = this.state;
     
+    
     const NewServices = servicesNew.filter(order => order.status === "new");
     const NewOrders = NewServices.filter(order => order.order_type === 'order');
     const NewComplaints = NewServices.filter(order => order.order_type === 'complaints');
     
+   
     const AssignedServices = servicesAssigned.filter( order => order.status === "assigned");
     const AssignedOrders = AssignedServices.filter(order => order.order_type === 'order');
     const AssignedComplaints = AssignedServices.filter(order => order.order_type === 'complaints');
     const AssignedInternalOrders = AssignedServices.filter(order => order.order_type === 'int_orders');
 
-    NewOrders.map(order => {
-      console.log(order.order.lat)
-    })
+
     const DoneServices = servicesDone.filter(order => order.status === "done");
     const DoneOrders = DoneServices.filter(order => order.order_type === 'order');
     const DoneComplaints = DoneServices.filter(order => order.order_type === 'complaints');
@@ -103,7 +96,7 @@ class MapContainer extends Component {
               lat={order.order.lat}
               lng={order.order.lon}
               text={
-                <a href={`admin/orders/${order.id}`}>
+                <a href={`admin/services/${order.id}`}>
                     <i
                       className="fas fa-map-marker button-glow-new"
                       style={{ color: "red", fontSize: "18px" }}
@@ -118,7 +111,7 @@ class MapContainer extends Component {
               lat={order.order.lat}
               lng={order.order.lon}
               text={
-                <a href={`admin/orders/${order.id}`}>
+                <a href={`admin/services/${order.id}`}>
                     <i
                       className="fas fa-map-marker button-glow-new"
                       style={{ color: "red", fontSize: "18px" }}
@@ -133,7 +126,7 @@ class MapContainer extends Component {
               lat={order.order.lat}
               lng={order.order.lon}
               text={
-                <a href={`admin/orders/${order.id}`}>
+                <a href={`admin/services/${order.id}`}>
                   <i
                     className="fas fa-map-marker button-glow-assigned"
                     style={{ color: "orange", fontSize: "18px" }}
@@ -148,7 +141,7 @@ class MapContainer extends Component {
               lat={order.order.lat}
               lng={order.order.lon}
               text={
-                <a href={`admin/orders/${order.id}`}>
+                <a href={`admin/services/${order.id}`}>
                   <i
                     className="fas fa-map-marker button-glow-assigned"
                     style={{ color: "orange", fontSize: "18px" }}
@@ -157,13 +150,13 @@ class MapContainer extends Component {
               }
             />
           ))}
-          {DoneInternalOrders.map(order => (
+          {AssignedInternalOrders.map(order => (
             <AnyReactComponent
               key={order.id}
               lat={order.order.lat}
               lng={order.order.lon}
               text={
-                <a href={`admin/orders/${order.id}`}>
+                <a href={`admin/services/${order.id}`}>
                   <i
                     className="fas fa-map-marker button-glow-assigned"
                     style={{ color: "orange", fontSize: "18px" }}
@@ -178,10 +171,10 @@ class MapContainer extends Component {
               lat={order.order.lat}
               lng={order.order.lon}
               text={
-                <a href={`admin/orders/${order.id}`}>
+                <a href={`admin/services/${order.id}`}>
                   <i
-                    className="fas fa-map-marker button-glow-assigned"
-                    style={{ color: "orange", fontSize: "18px" }}
+                    className="fas fa-map-marker"
+                    style={{ color: "green", fontSize: "18px" }}
                   />
                 </a>
               }
@@ -193,10 +186,10 @@ class MapContainer extends Component {
               lat={order.order.lat}
               lng={order.order.lon}
               text={
-                <a href={`admin/orders/${order.id}`}>
+                <a href={`admin/services/${order.id}`}>
                   <i
-                    className="fas fa-map-marker button-glow-assigned"
-                    style={{ color: "orange", fontSize: "18px" }}
+                    className="fas fa-map-marker"
+                    style={{ color: "green", fontSize: "18px" }}
                   />
                 </a>
               }
@@ -208,10 +201,10 @@ class MapContainer extends Component {
               lat={order.order.lat}
               lng={order.order.lon}
               text={
-                <a href={`admin/orders/${order.id}`}>
+                <a href={`admin/services/${order.id}`}>
                   <i
-                    className="fas fa-map-marker button-glow-assigned"
-                    style={{ color: "orange", fontSize: "18px" }}
+                    className="fas fa-map-marker"
+                    style={{ color: "green", fontSize: "18px" }}
                   />
                 </a>
               }
@@ -219,6 +212,7 @@ class MapContainer extends Component {
           ))
         }
         </GoogleMapReact>
+        <AdminBottomNav servicesNew={servicesNew}/>
       </div>
     );
   }

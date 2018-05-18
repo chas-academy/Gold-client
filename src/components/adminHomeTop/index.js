@@ -41,34 +41,6 @@ class AdminHomeTop extends Component {
                     <li key={order.id}>
                       <Link to={`/admin/services/${order.id}`}>
                         <div className="edit">
-                          {order.status === "new" ? (
-                            <i
-                              className="fas fa-map-marker button-glow-new"
-                              style={{
-                                color: "red",
-                                fontSize: "18px",
-                                marginRight: "10px"
-                              }}
-                            />
-                          ) : order.status === "assigned" ? (
-                            <i
-                              className="fas fa-map-marker button-glow-new"
-                              style={{
-                                color: "orange",
-                                fontSize: "18px",
-                                marginRight: "10px"
-                              }}
-                            />
-                          ) : (
-                            <i
-                              className="fas fa-map-marker button-glow-new"
-                              style={{
-                                color: "green",
-                                fontSize: "18px",
-                                marginRight: "10px"
-                              }}
-                            />
-                          )}
                           {order.company_name ? (
                             <p> {order.company_name} </p>
                           ) : (
@@ -95,43 +67,6 @@ class AdminHomeTop extends Component {
                     <li key={order.id}>
                       <Link to={`/admin/complaints/${order.id}`}>
                         <div className="edit">
-                        {order.status === "new" ? (
-                            <i
-                              className="fas fa-map-marker button-glow-new"
-                              style={{
-                                color: "red",
-                                fontSize: "18px",
-                                marginRight: "10px"
-                              }}
-                            />
-                          ) : order.status === "assigned" ? (
-                            <i
-                              className="fas fa-map-marker button-glow-new"
-                              style={{
-                                color: "blue",
-                                fontSize: "18px",
-                                marginRight: "10px"
-                              }}
-                            />
-                          ) : order.status === "taken" ? (
-                            <i
-                              className="fas fa-map-marker button-glow-new"
-                              style={{
-                                color: "orange",
-                                fontSize: "18px",
-                                marginRight: "10px"
-                              }}
-                            />
-                          ) : (
-                            <i
-                              className="fas fa-map-marker button-glow-new"
-                              style={{
-                                color: "green",
-                                fontSize: "18px",
-                                marginRight: "10px"
-                              }}
-                            />
-                          )}
                           {order.company_name ? (
                             <p> {order.company_name} </p>
                           ) : (

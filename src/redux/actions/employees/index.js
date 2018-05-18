@@ -102,8 +102,7 @@ export const fetchInternal = (userId, token) => dispatch => {
   })
     .then(res => res.json())
     .then(internal => {
-      console.log(internal)
-      return dispatch(fetchInternalSuccess(internal.services));
+      return dispatch(fetchInternalSuccess(internal));
     })
     .catch(err => {
       return dispatch(fetchInternalFailure());

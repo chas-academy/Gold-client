@@ -15,18 +15,26 @@ class EmployeeBottomNav extends Component {
   }
 
   render() {
+
+    const { newOrders, newComplaints, newInternal } = this.props;
     return (
       <nav className="bottomNav">
         <ul className="bottomNavList">
           <li>
             <Link to={`/employee/incoming`}>
-                <i className="fas fa-inbox"></i>
+            {newOrders || newComplaints !== null ? 
+                <i className="fas fa-compass new" />
+                : 
+                <i className="fas fa-compass" />}
             </Link>
           </li>
           <li>
-            <Link to={`/employee/history`}>
-            <i className="fas fa-history"></i>
-            </Link>
+          <Link to={`/employee/internal`}>
+            {newInternal !== null ?
+              <i className="far fa-check-circle new" />
+              : 
+              <i className="far fa-check-circle" />}
+          </Link>
           </li>
           <li>
             <Link to={`/home`}>

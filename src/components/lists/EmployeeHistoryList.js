@@ -66,7 +66,6 @@ class EmployeeHistoryList extends Component {
               <ul className="BasicList__list">
                 {completedOrders.map(order => (
                   <li key={order.id}>
-                  {console.log(order)}
                         <Link to={`services/${order.id}`}>
                           <div className="edit">
                           {order.company_name ? (

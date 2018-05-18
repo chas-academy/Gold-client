@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { fetchInternal } from "../../redux/actions/employees";
+import { fetchAssigned } from "../../redux/actions/employees";
 import { Link, withRouter } from "react-router-dom";
 import { Tabs, TabLink, TabContent } from "react-tabs-redux";
+import { EmployeeBottomNav } from '../../components';
 import Cookies from "universal-cookie";
 import "./style.css";
 
@@ -24,11 +25,17 @@ class EmployeeInternalList extends Component {
       )
     );
 
-    this.props.dispatch(fetchInternal(user.id, token));
+    this.props.dispatch(fetchAssigned(user.id, token));
   }
 
   render() {
-    const { isFetching, Internal } = this.props;
+
+    const { isFetching, Assigned } = this.props;
+    
+    const newInternal = Assigned.filter(order => order.order_type === "int_order");
+    const newOrders = Assigned.filter(order => order.order_type === "order");
+    const newComplaints = Assigned.filter(order => order.order_type === "complaint");
+ 
     return (
         <div className="BasicList__container">
           <h4>  Interna ärenden  </h4>
@@ -37,35 +44,52 @@ class EmployeeInternalList extends Component {
         </p>
         <hr />
 
-              {Internal.length ? (
+              {newInternal !== null ? (
                 <ul className="BasicList__list">
-                  {Internal.map(order => (
-                    <li key={order.id}>
-                      <Link to={`/admin/services/${order.id}`}>
-                        <div className="edit">
-                          {order.company_name ? (
-                            <p>{order.company_name} </p>
-                          ) : (
-                            <p>{order.con_pers} </p>
-                          )}
+                    {newInternal.length ? (
+                      newInternal.map(order => (
+                      <li key={order.id}>
+                        <Link to={`/admin/services/${order.id}`}>
+                          <div className="edit">
+                            {order.company_name ? (
+                              <p>{order.company_name} </p>
+                              ) : (
+                              <p>{order.con_pers} </p>
+                              )}
+                            <p> Hantera </p>
+                          </div>
+                        </Link>
+                      </li>
+                      ))
+                    ) : (
+                      <li key={newInternal.id}>
+                      <Link to={`/admin/services/${newInternal.id}`}>
+                      <div className="edit">
+                          {newInternal.company_name ? (
+                            <p>{newInternal.company_name} </p>
+                            ) : (
+                            <p>{newInternal.con_pers} </p>
+                            )}
                           <p> Hantera </p>
                         </div>
                       </Link>
-                    </li>
-                  ))}
-                </ul>
-              ) : (
-                <div className="BasicList__container">
-                  <p>Inga interna ärenden att hantera </p>
-                </div>
-              )}
-        </div>
-    );
+                      </li> 
+                      )}
+                    </ul>  
+                  ) : (
+                    <div className="BasicList__container">
+                      <p>Inga interna ärenden att hantera </p>
+                    </div>
+                  )
+            }
+            <EmployeeBottomNav />
+          </div>
+      )
   }
 }
 
 const mapStateToProps = state => ({
-  Internal: state.employee.Internal,
+  Assigned: state.employee.Assigned,
   isFetching: state.employee.isFetching
 });
 

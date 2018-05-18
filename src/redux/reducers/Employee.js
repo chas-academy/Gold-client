@@ -64,7 +64,7 @@ const employeeReducer = (state = initialState, action) => {
       return {
         ...state,
         isFetching: false,
-        Incomingt: action.payload
+        Internal: action.payload
       };
     case FETCH_EMP_INTERNAL_FAILURE:
       return {

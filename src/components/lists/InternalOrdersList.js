@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { fetchInternalOrders } from "../../redux/actions/admin/Orders";
 import Cookies from "universal-cookie";
 import { Tabs, TabLink, TabContent } from "react-tabs-redux";
+import { EmployeeBottomNav } from '../../components';
 
 import { Link, withRouter } from "react-router-dom";
 import "./style.css";
@@ -12,6 +13,7 @@ class InternalOrdersList extends Component {
     const cookies = new Cookies();
     var token = cookies.get("token");
     this.props.dispatch(fetchInternalOrders(token));
+    
   }
 
   render() {

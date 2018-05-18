@@ -134,3 +134,16 @@
     color: rgba(20, 20, 20, 0.952);
     text-transform: uppercase;
 }
+
+.new {
+    color: rgb(211, 211, 211);
+    animation: glowing-employee-new 2000ms infinite;
+    border-radius: 100%;
+}
+
+@keyframes glowing-employee-new {
+    0% { box-shadow: 0 0 -10px rgb(228, 227, 226); }
+    40% { box-shadow: 0 0 30px rgb(228, 227, 226); }
+    60% { box-shadow: 0 0 30px  rgb(228, 227, 226); }
+    100% { box-shadow: 0 0 -10px rgb(228, 227, 226); }
+  }
