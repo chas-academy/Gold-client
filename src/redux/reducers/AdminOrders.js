@@ -51,6 +51,7 @@ const initialState = {
     internalOrders: [],
     complaint: {},
     complaints: [],
+    errorMessage: null
 };
 
 const adminOrdersReducer = (state = initialState, action) => {
@@ -69,12 +70,13 @@ const adminOrdersReducer = (state = initialState, action) => {
         case FETCH_SERVICE_FAILURE:
         return {
             ...state,
-            isfetching: false
+            isfetching: false,
+            errorMessage: action.message
          };
         case FETCH_SERVICES_START:
         return {
             ...state,
-            isfetching: true
+            isfetching: true,
          };
         case FETCH_SERVICES_SUCCESS:
         return {
@@ -85,7 +87,8 @@ const adminOrdersReducer = (state = initialState, action) => {
         case FETCH_SERVICES_FAILURE:
         return {
             ...state,
-            isfetching: false
+            isfetching: false,
+            errorMessage: action.message
          };
         case FETCH_SERVICES_NEW_START:
         return {
@@ -101,7 +104,8 @@ const adminOrdersReducer = (state = initialState, action) => {
         case FETCH_SERVICES_NEW_FAILURE:
         return {
             ...state,
-            isfetching: false
+            isfetching: false,
+            errorMessage: action.message
          };
          case FETCH_SERVICES_ASSIGNED_START:
          return {
@@ -117,7 +121,8 @@ const adminOrdersReducer = (state = initialState, action) => {
          case FETCH_SERVICES_ASSIGNED_FAILURE:
          return {
              ...state,
-             isfetching: false
+             isfetching: false,
+             errorMessage: action.message
           };
          case FETCH_SERVICES_TAKEN_START:
          return {
@@ -133,7 +138,8 @@ const adminOrdersReducer = (state = initialState, action) => {
          case FETCH_SERVICES_TAKEN_FAILURE:
          return {
              ...state,
-             isfetching: false
+             isfetching: false,
+             errorMessage: action.message
           };
           case FETCH_SERVICES_DONE_START:
           return {
@@ -149,7 +155,8 @@ const adminOrdersReducer = (state = initialState, action) => {
           case FETCH_SERVICES_DONE_FAILURE:
           return {
               ...state,
-              isfetching: false
+              isfetching: false,
+              errorMessage: action.message
            };
         case FETCH_ORDER_START:
         return {
@@ -165,7 +172,8 @@ const adminOrdersReducer = (state = initialState, action) => {
         case FETCH_ORDER_FAILURE:
         return {
             ...state,
-            isfetching: false
+            isfetching: false,
+            errorMessage: action.message
          };
         case FETCH_ORDERS_START:
             return {
@@ -181,7 +189,8 @@ const adminOrdersReducer = (state = initialState, action) => {
         case FETCH_ORDERS_FAILURE:
         return {
             ...state,
-            isfetching: false
+            isfetching: false,
+            errorMessage: action.message
          };
          case FETCH_INTERNAL_ORDER_START:
          return {
@@ -213,7 +222,8 @@ const adminOrdersReducer = (state = initialState, action) => {
          case FETCH_INTERNAL_ORDERS_FAILURE:
          return {
              ...state,
-             isfetching: false
+             isfetching: false,
+             errorMessage: action.message
           };
           case FETCH_COMPLAINT_START:
           return {
@@ -229,7 +239,8 @@ const adminOrdersReducer = (state = initialState, action) => {
           case FETCH_COMPLAINT_FAILURE:
           return {
               ...state,
-              isfetching: false
+              isfetching: false,
+              errorMessage: action.message
            };
           case FETCH_COMPLAINTS_START:
               return {
@@ -245,7 +256,8 @@ const adminOrdersReducer = (state = initialState, action) => {
           case FETCH_COMPLAINTS_FAILURE:
           return {
               ...state,
-              isfetching: false
+              isfetching: false,
+              errorMessage: action.message
            };
            default:
            return state;

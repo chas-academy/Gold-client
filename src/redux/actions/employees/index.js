@@ -12,6 +12,7 @@ import {
   FETCH_EMP_DONE_SUCCESS,
   FETCH_EMP_DONE_FAILURE
 } from "./Types";
+import { RSA_NO_PADDING } from "constants";
 
 /* ------------ SERVICE --------------- */
 
@@ -32,13 +33,22 @@ export const fetchService = ( token, id ) => dispatch => {
       Authorization: token
     }
   })
-    .then(res => res.json())
+    .then(res => {
+      if(res.status === 200){
+        return res.json();
+      }
+      else {
+        return dispatch({ type: FETCH_SERVICE_FAILURE,
+                          message:"Kunde inte Koppla till nätverket kontrollera internetuppkoppling."});
+      }
+    })
     .then(service => {
       return dispatch(recieveService(service));
     })
     .catch(response => {
       console.error("An error occured when fetching the service");
-      return dispatch({ type: FETCH_SERVICE_FAILURE });
+      return dispatch({ type: FETCH_SERVICE_FAILURE,
+                        message:"kunde inte hämta ärende."});
     });
 };
 
@@ -55,7 +65,9 @@ export const fetchAssignedSuccess = services => ({
 });
 
 export const fetchAssignedFailure = error => ({
-  type: FETCH_EMP_ASSIGNED_FAILURE
+  type: FETCH_EMP_ASSIGNED_FAILURE,
+  message: error
+
 });
 
 export const fetchAssigned = (userId, token) => dispatch => {
@@ -66,12 +78,24 @@ export const fetchAssigned = (userId, token) => dispatch => {
       authorization: token
     }
   })
-    .then(res => res.json())
+    .then(res => {
+      if(res.status === 200){
+        return res.json()
+        
+      }
+      else {
+        return res.json()
+        .then(data => {
+          return dispatch(fetchAssignedFailure(data.error));
+        })
+        
+      }
+    })
     .then(services => {
       return dispatch(fetchAssignedSuccess(services.services));
     })
     .catch(err => {
-      return dispatch(fetchAssignedFailure());
+      return dispatch(fetchAssignedFailure("det uppståd et problem att hämta ärenden"));
     });
 };
 
@@ -89,7 +113,8 @@ export const fetchInternalSuccess = internal => ({
 });
 
 export const fetchInternalFailure = error => ({
-  type: FETCH_EMP_INTERNAL_FAILURE
+  type: FETCH_EMP_INTERNAL_FAILURE,
+  message: error
 });
 
 export const fetchInternal = (userId, token) => dispatch => {
@@ -100,12 +125,19 @@ export const fetchInternal = (userId, token) => dispatch => {
       authorization: token
     }
   })
-    .then(res => res.json())
+    .then(res => {
+      if(res.status === 200){
+        return res.json();
+      }
+      else {
+        return dispatch(fetchInternalFailure("Kunde inte Koppla till nätverket kontrollera internetuppkoppling."));
+      }
+    })
     .then(internal => {
       return dispatch(fetchInternalSuccess(internal));
     })
     .catch(err => {
-      return dispatch(fetchInternalFailure());
+      return dispatch(fetchInternalFailure("kunde inte hämta interna ärenden"));
     });
 };
 
@@ -118,7 +150,8 @@ export const fetchDoneRequest = () => ({
 });
 
 export const fetchDoneFailure = error => ({
-  type: FETCH_EMP_DONE_FAILURE
+  type: FETCH_EMP_DONE_FAILURE,
+  message: error
 });
 
 export const fetchDoneSuccess = services => ({
@@ -134,12 +167,19 @@ export const fetchDone = (userId, token) => dispatch => {
       authorization: token
     }
   })
-    .then(res => res.json())
+    .then(res => {
+      if(res.status === 200) {
+        return res.json();
+      }
+      else {
+        return dispatch(fetchDoneFailure("Kunde inte Koppla till nätverket kontrollera internetuppkoppling."));
+      }
+    })
     .then(services => {
       return dispatch(fetchDoneSuccess(services.services));
     })
     .catch(err => {
-      return dispatch(fetchDoneFailure());
+      return dispatch(fetchDoneFailure("Det uppståd ett problem att hämta färdiga ärenden"));
     });
 };
 

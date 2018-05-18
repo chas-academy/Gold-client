@@ -46,13 +46,21 @@ export const CreateUser = (id, token) => dispatch => {
         headers: {
         "Authorization": token
       }})
-      .then(res => res.json())
+      .then(res => {
+          if(res.status === 200){
+              return res.json();
+          }
+          else {
+              return dispatch({ type: CREATE_USER_FAILURE })
+          }
+      })
       .then((user) => {
           return dispatch(SaveUser(user));
       })
       .catch(response => {
           console.error('An error occured when fetching the user')
-          return dispatch({ type: CREATE_USER_FAILURE })
+          return dispatch({ type: CREATE_USER_FAILURE,
+                            message: "Kunde inte Koppla till nätverket kontrollera internetuppkoppling."})
       });
   }; 
 
@@ -76,14 +84,23 @@ export const fetchUser = (id, token) => dispatch => {
         headers: {
         "Authorization": token
       }})
-      .then(res => res.json())
+      .then(res => {
+          if(res.status === 200){
+              return res.json();
+          }
+          else {
+              return dispatch({ type: FETCH_USER_FAILURE,
+                                message: "Kunde inte Koppla till nätverket kontrollera internetuppkoppling." })
+          }
+      })
       .then((user) => {
           return dispatch(recieveUser(user));
           debugger;
       })
       .catch(response => {
           console.error('An error occured when fetching the user')
-          return dispatch({ type: FETCH_USER_FAILURE })
+          return dispatch({ type: FETCH_USER_FAILURE,
+                            message: "Kunde inte Koppla till nätverket kontrollera internetuppkoppling." })
       });
   }; 
 
@@ -107,13 +124,22 @@ export const fetchUsers = (token) => dispatch => {
             "Authorization": token
           }
     })
-      .then(res => res.json())
+      .then(res => {
+          if(res.status === 200){
+              return res.json();
+          }
+          else {
+            return dispatch({ type: FETCH_USERS_FAILURE,
+                                 message: "Kunde inte Koppla till nätverket kontrollera internetuppkoppling." })
+          }
+      })
       .then((users) => {
           return dispatch(recieveUsers(users));
       })
       .catch(response => {
           console.error('An error occured when fetching the users')
-          return dispatch({ type: FETCH_USERS_FAILURE })
+          return dispatch({ type: FETCH_USERS_FAILURE,
+                            message: "Kunde inte Koppla till nätverket kontrollera internetuppkoppling."})
       });
   };
 
@@ -141,13 +167,22 @@ export const updateUser = (user, token) => dispatch => {
         headers: {
         "Authorization": token
       }})
-      .then(res => res.json())
+      .then(res => {
+          if(res.status === 200){
+              return res.json();
+          }
+          else{ 
+            return dispatch({ type: UPDATE_USER_FAILURE,
+                                message: "Kunde inte Koppla till nätverket kontrollera internetuppkoppling."})
+          }
+      })
       .then((user) => {
           return dispatch(updateSuccess(user));
       })
       .catch(response => {
           console.error('The user was not updated')
-          return dispatch({ type: UPDATE_USER_FAILURE })
+          return dispatch({ type: UPDATE_USER_FAILURE,
+                            message: "kunde inte hämta användare" })
       });
   }; 
   
@@ -170,13 +205,22 @@ export const fetchEmployees = (token) => dispatch => {
         headers: {
         "Authorization": token
       }})
-      .then(res => res.json())
+      .then(res => {
+          if(res.status === 200) {
+              return res.json();
+          }
+          else {
+            return dispatch({ type: FETCH_EMPLOYEES_FAILURE,
+                                message: "Kunde inte Koppla till nätverket kontrollera internetuppkoppling." })
+          }
+      })
       .then((users) => {
           return dispatch(recieveEmployees(users));
       })
       .catch(response => {
           console.error('An error occured when fetching the employee')
-          return dispatch({ type: FETCH_EMPLOYEES_FAILURE })
+          return dispatch({ type: FETCH_EMPLOYEES_FAILURE,
+                            message: "Något Gick fill med att hämta informationen"})
       });
   }; 
 
@@ -200,13 +244,22 @@ export const fetchPrivateCustomers = (token) => dispatch => {
         headers: {
         "Authorization": token
       }})
-      .then(res => res.json())
+      .then(res => {
+          if(res.status === 200){
+              return res.json();
+          }
+          else {
+            return dispatch({ type: FETCH_CUSTOMERS_PRIVATE_FAILURE,
+                              message: "Kunde inte Koppla till nätverket kontrollera internetuppkoppling." })
+          }
+      })
       .then((users) => {
           return dispatch(recievePrivateCustomers(users));
       })
       .catch(response => {
           console.error('An error occured when fetching the private customers')
-          return dispatch({ type: FETCH_CUSTOMERS_PRIVATE_FAILURE })
+          return dispatch({ type: FETCH_CUSTOMERS_PRIVATE_FAILURE,
+                            message:"det var ett problem att hämta kunder" })
       });
   }; 
 
@@ -229,13 +282,22 @@ export const fetchCompanies = (token) => dispatch => {
         headers: {
         "Authorization": token
       }})
-      .then(res => res.json())
+      .then(res => {
+          if(res.status === 200){
+              return res.json();
+          }
+          else {
+               return dispatch({ type: FETCH_CUSTOMERS_COMPANIES_FAILURE,
+                                 message:"Kunde inte Koppla till nätverket kontrollera internetuppkoppling." })
+          }
+      })
       .then((companies) => {
           return dispatch(recieveCompanies(companies));
       })
       .catch(response => {
           console.error('An error occured when fetching the companies')
-          return dispatch({ type: FETCH_CUSTOMERS_COMPANIES_FAILURE })
+          return dispatch({ type: FETCH_CUSTOMERS_COMPANIES_FAILURE,
+                            message:"Kunde inte hämta kunder företag." })
       });
   }; 
 
@@ -258,13 +320,22 @@ export const fetchCustomer = (id, token) => dispatch => {
         headers: {
         "Authorization": token
       }})
-      .then(res => res.json())
+      .then(res => {
+          if(res.status === 200){
+              return res.json();
+          }
+          else {
+              return dispatch({ type: FETCH_CUSTOMER_FAILURE,
+                                message: "Kunde inte Koppla till nätverket kontrollera internetuppkoppling." })
+          }
+      })
       .then((customer) => {
           return dispatch(recieveCustomer(customer));
       })
       .catch(response => {
           console.error('An error occured when fetching the customer')
-          return dispatch({ type: FETCH_CUSTOMER_FAILURE })
+          return dispatch({ type: FETCH_CUSTOMER_FAILURE,
+                            message: "Kunde inte Koppla till nätverket kontrollera internetuppkoppling." })
       });
   };
 
@@ -292,13 +363,22 @@ export const fetchCustomer = (id, token) => dispatch => {
             headers: {
             "Authorization": token
           }})
-          .then(res => res.json())
+          .then(res => {
+              if(res.status === 200) {
+                  return res.json();
+              }
+              else {
+                return dispatch({ type: UPDATE_CUSTOMER_FAILURE,
+                                    message: "Kunde inte Koppla till nätverket kontrollera internetuppkoppling." })
+              }
+          })
           .then((customer) => {
               return dispatch(updateCustomerSuccess(customer));
           })
           .catch(response => {
               console.error('The customer was not updated')
-              return dispatch({ type: UPDATE_CUSTOMER_FAILURE })
+              return dispatch({ type: UPDATE_CUSTOMER_FAILURE,
+                                message:"Kunde inte uppdatera kund" })
           });
       }; 
       
