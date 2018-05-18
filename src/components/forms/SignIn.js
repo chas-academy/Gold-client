@@ -54,7 +54,7 @@ handleChange(event) {
     if (email && password) {
       this.props.loginUser({ user })
       .then((res) => {
-        if (res.status != 200) {
+        if (!res) {
           this.props.history.push('/home')
         } else {
           this.setState({errorMessage: res, isLoading: false })

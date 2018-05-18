@@ -22,7 +22,8 @@ const initialState = {
     customer: {},
     employees: [],
     companies: [],
-    privateCustomers: []
+    privateCustomers: [],
+    errorMessage: null
 };
 
 const adminAccountsReducer = (state = initialState, action) => {

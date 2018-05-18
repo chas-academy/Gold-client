@@ -46,7 +46,14 @@ export const CreateUser = (id, token) => dispatch => {
         headers: {
         "Authorization": token
       }})
-      .then(res => res.json())
+      .then(res => {
+          if(res.status === 200){
+              return res.json();
+          }
+          else {
+              return dispatch({ type: CREATE_USER_FAILURE })
+          }
+      })
       .then((user) => {
           return dispatch(SaveUser(user));
       })
@@ -76,7 +83,14 @@ export const fetchUser = (id, token) => dispatch => {
         headers: {
         "Authorization": token
       }})
-      .then(res => res.json())
+      .then(res => {
+          if(res.status === 200){
+              return res.json();
+          }
+          else {
+              return dispatch({ type: FETCH_USER_FAILURE })
+          }
+      })
       .then((user) => {
           return dispatch(recieveUser(user));
           debugger;
@@ -107,7 +121,14 @@ export const fetchUsers = (token) => dispatch => {
             "Authorization": token
           }
     })
-      .then(res => res.json())
+      .then(res => {
+          if(res.status === 200){
+              return res.json();
+          }
+          else {
+            return dispatch({ type: FETCH_USERS_FAILURE })
+          }
+      })
       .then((users) => {
           return dispatch(recieveUsers(users));
       })
@@ -141,7 +162,14 @@ export const updateUser = (user, token) => dispatch => {
         headers: {
         "Authorization": token
       }})
-      .then(res => res.json())
+      .then(res => {
+          if(res.status === 200){
+              return res.json();
+          }
+          else{ 
+            return dispatch({ type: UPDATE_USER_FAILURE })
+          }
+      })
       .then((user) => {
           return dispatch(updateSuccess(user));
       })
@@ -170,7 +198,14 @@ export const fetchEmployees = (token) => dispatch => {
         headers: {
         "Authorization": token
       }})
-      .then(res => res.json())
+      .then(res => {
+          if(res.status === 200) {
+              return res.json();
+          }
+          else {
+            return dispatch({ type: FETCH_EMPLOYEES_FAILURE })
+          }
+      })
       .then((users) => {
           return dispatch(recieveEmployees(users));
       })
@@ -200,7 +235,14 @@ export const fetchPrivateCustomers = (token) => dispatch => {
         headers: {
         "Authorization": token
       }})
-      .then(res => res.json())
+      .then(res => {
+          if(res.status === 200){
+              return res.json();
+          }
+          else {
+            return dispatch({ type: FETCH_CUSTOMERS_PRIVATE_FAILURE })
+          }
+      })
       .then((users) => {
           return dispatch(recievePrivateCustomers(users));
       })
@@ -229,7 +271,14 @@ export const fetchCompanies = (token) => dispatch => {
         headers: {
         "Authorization": token
       }})
-      .then(res => res.json())
+      .then(res => {
+          if(res.status === 200){
+              return res.json();
+          }
+          else {
+               return dispatch({ type: FETCH_CUSTOMERS_COMPANIES_FAILURE })
+          }
+      })
       .then((companies) => {
           return dispatch(recieveCompanies(companies));
       })
@@ -258,7 +307,14 @@ export const fetchCustomer = (id, token) => dispatch => {
         headers: {
         "Authorization": token
       }})
-      .then(res => res.json())
+      .then(res => {
+          if(res.status === 200){
+              return res.json();
+          }
+          else {
+              return dispatch({ type: FETCH_CUSTOMER_FAILURE })
+          }
+      })
       .then((customer) => {
           return dispatch(recieveCustomer(customer));
       })
@@ -292,7 +348,14 @@ export const fetchCustomer = (id, token) => dispatch => {
             headers: {
             "Authorization": token
           }})
-          .then(res => res.json())
+          .then(res => {
+              if(res.status === 200) {
+                  return res.json();
+              }
+              else {
+                return dispatch({ type: UPDATE_CUSTOMER_FAILURE })
+              }
+          })
           .then((customer) => {
               return dispatch(updateCustomerSuccess(customer));
           })
