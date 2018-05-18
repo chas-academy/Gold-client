@@ -40,7 +40,15 @@ export const loginUser = user => dispatch => {
       "Content-Type": "application/json"
     }
   })
-    .then(res => res.json())
+    .then(res => {
+      if(res.status === 200) {
+        return res.json();
+      }
+      else {
+        console.log("connection")
+        dispatch(loginError("could not connect to server check you internet connection"));
+      }
+    })
     .then(res => {
       if (res.error) {
         dispatch(loginError(res.error))
