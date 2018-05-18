@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { fetchAssigned } from "../../redux/actions/employees";
 import { Link, withRouter } from "react-router-dom";
-import { Tabs, TabLink, TabContent } from "react-tabs-redux";
 import Cookies from "universal-cookie";
+import { EmployeeBottomNav } from '../../components';
 import "./style.css";
 
 class EmployeeIncomingList extends Component {
@@ -11,6 +11,7 @@ class EmployeeIncomingList extends Component {
     super(props);
     this.state = {};
   }
+
 
   componentDidMount() {
     const cookies = new Cookies();
@@ -43,9 +44,6 @@ class EmployeeIncomingList extends Component {
           kunden med knappen "Påbörja jobb".
         </p>
         <hr />
-
-        
-        <h4> Beställningar </h4>
               {newOrders.length ? (
                 <ul className="BasicList__list">
                   {newOrders.map(order => (
@@ -92,30 +90,7 @@ class EmployeeIncomingList extends Component {
                   <p>Inga nya reklamationer</p>
                 </div>
               )}
-
-        <h4> Interna ärenden </h4>
-              {newInternal.length ? (
-                <ul className="BasicList__list">
-                  {newInternal.map(order => (
-                    <li key={order.id}>
-                      <Link to={`services/${order.id}`}>
-                        <div className="edit">
-                          {order.company_name ? (
-                            <p>{order.company_name} </p>
-                          ) : (
-                            <p>{order.con_pers} </p>
-                          )}
-                          <p> Hantera </p>
-                        </div>
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              ) : (
-                <div className="BasicList__container">
-                  <p>Inga nya interna ärenden</p>
-                </div>
-              )}
+              <EmployeeBottomNav newOrders={newOrders} newComplaints={newComplaints} newInternal={newInternal}/>
         </div>
     );
   }

@@ -190,3 +190,10 @@ input:focus {
       margin-top: 0 !important; }
   #add-order {
     margin-top: 20px !important; } }
+
+
+.BasicForm__ChangeTime {
+  margin-bottom: -50px;
+  text-align: center;
+  width: 100%;
+}

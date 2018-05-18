@@ -3,9 +3,10 @@ import { connect } from "react-redux";
 import "./style.css";
 import { fetchService } from "../../redux/actions/employees";
 import Cookies from "universal-cookie";
+import Moment from "react-moment";
 
 import { EmployeeConfirmJob, EmployeeCompleteJob } from "../../components";
-// import AddPhotos from "../buttons/AddPhotos";
+import AddPhotos from "../buttons/AddPhotos";
 
 class EmployeeOrderDetails extends Component {
   constructor(props) {
@@ -34,30 +35,36 @@ class EmployeeOrderDetails extends Component {
   render() {
     const { service } = this.props;
 
-    console.log(service);
-
     return (
   <div className="BasicList__container">    
 
+    {service.order_type === 'order' ?
     <div className="EmployeeOrderDetails">
           <ul className="BasicList__list orderDetails">
             <li>
-              <h3>Kund</h3>
+              {service.company_name ?
+              <h3>{service.company_name}</h3>
+              : <h3>{service.con_pers}</h3>
+            }
+              <hr/>
             </li>
-            <li>Datum</li>
-            <li>Adress</li>
-            <li>beskrivning</li>
+            <li><Moment format="DD/MM  HH:MM">{service.datetime}</Moment></li>
+            <li>Adress: {service.order.address}</li>
+            <hr/>
+            <li>Beskrivning: {service.order.description} </li>
+            <hr/>
+
             <li>Foton</li>
-            <li>Anställd som bekräftar</li>
           </ul>
             <div>
-              {/* <div className="orderDetails">
-          <AddPhotos />
-        </div>   */}
+              <div className="employee__addPhoto">
+                <AddPhotos />
+              </div>  
             <EmployeeCompleteJob />
             </div>
 
         </div>
+        : ('')}
         </div>
     );
   }

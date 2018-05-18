@@ -13,7 +13,8 @@ class DateTimePhoto extends Component {
       startDate: moment(),
       date: '',
       time: '',
-      photo: ''
+      photo: '',
+      admin: this.props.admin
     };
     
     this.handleChange = this.handleChange.bind(this);
@@ -38,21 +39,31 @@ class DateTimePhoto extends Component {
   }
 
   render() {
-    const { time } = this.state;
+    const { time, admin } = this.state;
+    
     return (
       <div className="DateTime__container">
           <div className="DateTime__buttons">
             <button type="button" className="AddPhotos__button">
               <i className="fas fa-calendar-alt" />
             </button>
+
+          {this.admin = false ?
             <DatePicker
               selected={this.state.startDate}
               onChange={this.handleChange}
               dateFormat='Y-MM-DD'
               onBlur={this.setDate.bind(this)}
             />
-          </div>
+            : 
+            <DatePicker
+            selected={this.state.startDate}
+            onChange={this.handleChange}
+            dateFormat='Y-MM-DD'
+            onBlur={this.setDate.bind(this)}
+          />}
 
+          </div>
           <div className="DateTime__buttons">
             <button type="button" className="AddPhotos__button">
               <i className="fas fa-clock" />
@@ -67,9 +78,11 @@ class DateTimePhoto extends Component {
               onBlur={this.setTime.bind(this)}
             />
           </div>
+          {this.admin = false ?
             <AddPhotos
             setPhoto={this.setPhoto.bind(this)}
             />
+            : ('')}
       </div>
     );
   }

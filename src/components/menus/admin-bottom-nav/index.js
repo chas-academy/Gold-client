@@ -16,6 +16,7 @@ class AdminBottomNav extends Component {
 
   render() {
 
+
     return (
        
     <div>
@@ -23,12 +24,13 @@ class AdminBottomNav extends Component {
         <ul className="bottomNavList">
           <li>
             <Link to={`/admin/services/incoming`}>
-                <i className="fas fa-inbox"></i>
+                <i className="fas fa-inbox" />
             </Link>
           </li>
           <li>
             <Link to={`/admin/orders/complaints`}>
-            <i className="fas fa-exclamation-triangle"></i>
+
+             <i className="fas fa-exclamation-circle"></i>
             </Link>
           </li>
           <li>

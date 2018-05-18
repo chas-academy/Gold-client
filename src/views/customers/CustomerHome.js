@@ -1,74 +1,92 @@
-import React, { Component } from "react"
-import { Link, withRouter } from "react-router-dom"
+import React, { Component } from "react";
+import { Link, withRouter } from "react-router-dom";
 import Cookies from "universal-cookie";
 
-import './style.css'
+import "./style.css";
 
 class CustomerHome extends Component {
-    constructor(props) {
-        super(props);
-        this.logout = this.logout.bind(this);
-      }
+  constructor(props) {
+    super(props);
 
-    logout(event) {
-        this.props.history.push("/");
-      }
+    this.state = {
+      userName: ""
+    };
 
-  render() {
-    const cookies = new Cookies();
-    var token = cookies.get("token");
-    const user = JSON.parse(
-      window.atob(
-        token
-          .split(".")[1]
-          .replace("-", "+")
-          .replace("_", "/")
-      )
-    );
-    return (
-        <div>
-            <button className="CustomerHome__logout" onClick={this.logout}>
-                Logga ut
-            <i className="fas fa-sign-out-alt" />
-            </button>
-        <div className="CustomerHome__menu">
-            <h3 className="CustomerHome__welcome">Välkommen {user.name}!</h3>
-            <div>
-                <button className="CustomerHome__buttons">
-                <Link to={`/orders/add`}>
-                    <i className="fas fa-shopping-cart"></i>
-                    <p className="CustomerHome__buttonText"> Beställ tjänst</p>
-                </Link>    
-                </button>
-                <button className="CustomerHome__buttons">
-                <Link to={`/complaints`}>
-                    <i className="fas fa-exclamation-triangle"></i>
-                    <p className="CustomerHome__buttonText"> Reklamera</p>
-                </Link>    
-                </button>
-            </div>
-            <div>
-                <button className="CustomerHome__buttons">
-                <Link to={`/history`}>
-                    <i className="fas fa-history"></i>
-                    <p className="CustomerHome__buttonText"> Beställningshistorik</p>
-                </Link>    
-                </button>
-                <button className="CustomerHome__buttons">
-                <Link to={`/profile`}>
-                    <i className="fas fa-user-circle"></i>
-                <p className="CustomerHome__buttonText"> Redigera profil</p>
-                </Link>    
-                </button>
-            </div>
-        </div>    
-                <Link to={`/contact`}>
-                    <p className="CustomerHome__contact">Hittar du inte det du söker? Kontakta oss!</p>
-                </Link>
-                </div>
-    )
+    this.logOut = this.logOut.bind(this);
   }
 
+  logOut(event) {
+    const cookies = new Cookies();
+    cookies.remove("token");
+  }
+
+  componentDidMount() {
+    const cookies = new Cookies();
+    var token = cookies.get("token");
+
+    if (token) {
+      const user = JSON.parse(
+        window.atob(
+          token
+            .split(".")[1]
+            .replace("-", "+")
+            .replace("_", "/")
+        )
+      );
+
+      this.setState({ userName: user.name });
+    }
+  }
+
+  render() {
+    const { userName } = this.state;
+    return (
+      <div>
+        <a href="/logout" onClick={this.logOut}>
+          Logga ut
+        </a>
+        <div className="CustomerHome__menu">
+          <h3 className="CustomerHome__welcome">Välkommen {userName}!</h3>
+          <div>
+            <button className="CustomerHome__buttons">
+              <Link to={`/orders/add`}>
+                <i className="fas fa-shopping-cart" />
+                <p className="CustomerHome__buttonText"> Beställ tjänst</p>
+              </Link>
+            </button>
+            <button className="CustomerHome__buttons">
+              <Link to={`/complaints`}>
+                <i className="fas fa-exclamation-triangle" />
+                <p className="CustomerHome__buttonText"> Reklamera</p>
+              </Link>
+            </button>
+          </div>
+          <div>
+            <button className="CustomerHome__buttons">
+              <Link to={`/history`}>
+                <i className="fas fa-history" />
+                <p className="CustomerHome__buttonText">
+                  {" "}
+                  Beställningshistorik
+                </p>
+              </Link>
+            </button>
+            <button className="CustomerHome__buttons">
+              <Link to={`/profile`}>
+                <i className="fas fa-user-circle" />
+                <p className="CustomerHome__buttonText"> Redigera profil</p>
+              </Link>
+            </button>
+          </div>
+        </div>
+        <Link to={`/contact`}>
+          <p className="CustomerHome__contact">
+            Hittar du inte det du söker? Kontakta oss!
+          </p>
+        </Link>
+      </div>
+    );
+  }
 }
 
-export default withRouter(CustomerHome)
+export default withRouter(CustomerHome);

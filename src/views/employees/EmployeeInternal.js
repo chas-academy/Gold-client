@@ -7,7 +7,6 @@ export default class EmployeeInternal extends Component {
     return (
         <div>
             <EmployeeInternalList/>
-            <EmployeeBottomNav/>
         </div>    
     )
   }

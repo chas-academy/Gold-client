@@ -29,6 +29,8 @@ class LocationSearchInput extends React.Component {
 
   render() {
   const { address, submitted } = this.state; 
+
+  console.log(address);
   return (
     <div className="form-group">
       <PlacesAutocomplete

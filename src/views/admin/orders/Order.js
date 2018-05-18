@@ -9,7 +9,7 @@ export default class Order extends Component {
             <div className="fix">
                 <AdminTopNav />
                     <HandleService id={this.props.match.params.id}/>
-                <AdminBottomNav />
+                    <AdminBottomNav />
             </div>
         </div>    
     )

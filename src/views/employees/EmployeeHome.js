@@ -1,40 +1,81 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import { Link, withRouter } from "react-router-dom";
+import { fetchAssigned } from "../../redux/actions/employees";
+import Cookies from "universal-cookie";
 
 import "./style.css";
 
 class EmployeeHome extends Component {
   constructor(props) {
     super(props);
-    this.logout = this.logout.bind(this);
+
+    this.state = {
+      userName: ''
+    }
+
+    this.logOut = this.logOut.bind(this);
   }
 
-  logout() {
-    localStorage.clear();
-    this.props.history.push("/");
+  logOut(event){
+    const cookies = new Cookies();
+    cookies.remove("token")
+  }
+
+  componentDidMount() {
+
+    const cookies = new Cookies();
+    var token = cookies.get("token");
+    
+    if (token) {
+      const user = JSON.parse(
+        window.atob(
+          token
+            .split(".")[1]
+            .replace("-", "+")
+            .replace("_", "/")
+        ))
+
+        this.setState({ userName: user.name })
+        this.props.dispatch(fetchAssigned(user.id, token));
+
+    }
+
   }
 
   render() {
-    const user = "Adam";
+    const { isFetching, Assigned } = this.props;
+
+    const newOrders = Assigned.filter(order => order.order_type === "order");
+    const newComplaints = Assigned.filter(order => order.order_type === "complaint");
+    const newInternal = Assigned.filter(order => order.order_type === "int_order");
+
+
+    const { userName } = this.state;
+
     return (
       <div>
-        {/* <img src={img} className="CustomerHome__logo" height={70} alt="logotype" /> */}
-        <button className="CustomerHome__logout" onClick={this.logout}>
-          Logga ut
-          <i className="fas fa-sign-out-alt" />
-        </button>
+            <a href="/logout" onClick={this.logOut}>
+                Logga ut
+            </a>
         <div className="CustomerHome__menu">
-          <h3 className="CustomerHome__welcome">Välkommen {user}!</h3>
+          <h3 className="CustomerHome__welcome">Välkommen {userName}!</h3>
           <div>
             <button className="CustomerHome__buttons">
-              <Link to={`/employee/incoming`}>
-                <i className="fas fa-inbox" />
+              <Link to={`/employee/incoming`} >
+                {newOrders || newComplaints !== null ? 
+                <i className="fas fa-compass new" />
+                : 
+                <i className="fas fa-compass" />}
                 <p className="CustomerHome__buttonText"> Inkomna Jobb</p>
               </Link>
             </button>
             <button className="CustomerHome__buttons">
               <Link to={`/employee/internal`}>
-                <i className="far fa-check-circle" />
+              {newInternal !== null ?
+                <i className="far fa-check-circle new" />
+                : 
+                <i className="far fa-check-circle" />}
                 <p className="CustomerHome__buttonText">
                   Interna ärenden
                 </p>
@@ -64,4 +105,9 @@ class EmployeeHome extends Component {
   }
 }
 
-export default withRouter(EmployeeHome);
+const mapStateToProps = state => ({
+  Assigned: state.employee.Assigned,
+  isFetching: state.employee.isFetching
+});
+
+export default withRouter(connect(mapStateToProps)(EmployeeHome));
