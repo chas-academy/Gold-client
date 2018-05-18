@@ -18,7 +18,8 @@ const initialState = {
   Done: [],
   Internal: [],
   service: {},
-  isFetching: false
+  isFetching: false,
+  errorMessage: null,
 };
 
 const employeeReducer = (state = initialState, action) => {
@@ -37,7 +38,8 @@ const employeeReducer = (state = initialState, action) => {
     case FETCH_SERVICE_FAILURE:
       return {
         ...state,
-        isfetching: false
+        isfetching: false,
+        errorMessage:action.message
       };
     case FETCH_EMP_ASSIGNED_REQUEST:
       return {
@@ -53,7 +55,8 @@ const employeeReducer = (state = initialState, action) => {
     case FETCH_EMP_ASSIGNED_FAILURE:
       return {
         ...state,
-        isFetching: false
+        isFetching: false,
+        errorMessage: action.payload
       };
       case FETCH_EMP_INTERNAL_REQUEST:
       return {
@@ -64,12 +67,13 @@ const employeeReducer = (state = initialState, action) => {
       return {
         ...state,
         isFetching: false,
-        Internal: action.payload
+        Incoming: action.payload
       };
     case FETCH_EMP_INTERNAL_FAILURE:
       return {
         ...state,
-        isFetching: false
+        isFetching: false,
+        errorMessage: "failure"
       };
     case FETCH_EMP_DONE_REQUEST:
       return {
@@ -79,7 +83,8 @@ const employeeReducer = (state = initialState, action) => {
     case FETCH_EMP_DONE_FAILURE:
       return {
         ...state,
-        isFetching: false
+        isFetching: false,
+        errorMessage: "failure"
       };
     case FETCH_EMP_DONE_SUCCESS:
       return {

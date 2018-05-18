@@ -12,6 +12,7 @@ import {
   FETCH_EMP_DONE_SUCCESS,
   FETCH_EMP_DONE_FAILURE
 } from "./Types";
+import { RSA_NO_PADDING } from "constants";
 
 /* ------------ SERVICE --------------- */
 
@@ -32,7 +33,14 @@ export const fetchService = ( token, id ) => dispatch => {
       Authorization: token
     }
   })
-    .then(res => res.json())
+    .then(res => {
+      if(res.status === 200){
+        return res.json();
+      }
+      else {
+        return dispatch({ type: FETCH_SERVICE_FAILURE });
+      }
+    })
     .then(service => {
       return dispatch(recieveService(service));
     })
@@ -66,7 +74,14 @@ export const fetchAssigned = (userId, token) => dispatch => {
       authorization: token
     }
   })
-    .then(res => res.json())
+    .then(res => {
+      if(res.status === 200){
+        return res.json();
+      }
+      else {
+        return dispatch(fetchAssignedFailure());
+      }
+    })
     .then(services => {
       return dispatch(fetchAssignedSuccess(services.services));
     })
@@ -100,7 +115,14 @@ export const fetchInternal = (userId, token) => dispatch => {
       authorization: token
     }
   })
-    .then(res => res.json())
+    .then(res => {
+      if(res.status === 200){
+        return res.json();
+      }
+      else {
+        return dispatch(fetchInternalFailure());
+      }
+    })
     .then(internal => {
       return dispatch(fetchInternalSuccess(internal));
     })
@@ -134,7 +156,14 @@ export const fetchDone = (userId, token) => dispatch => {
       authorization: token
     }
   })
-    .then(res => res.json())
+    .then(res => {
+      if(res.status === 200) {
+        return res.json();
+      }
+      else {
+        return dispatch(fetchDoneFailure());
+      }
+    })
     .then(services => {
       return dispatch(fetchDoneSuccess(services.services));
     })
