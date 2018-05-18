@@ -51,6 +51,7 @@ const initialState = {
     internalOrders: [],
     complaint: {},
     complaints: [],
+    errorMessage: null
 };
 
 const adminOrdersReducer = (state = initialState, action) => {

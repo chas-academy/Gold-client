@@ -175,7 +175,14 @@ export const fetchServicesDone = token => dispatch => {
       Authorization: token
     }
   })
-    .then(res => res.json())
+    .then(res => {
+      if(res.status === 200) {
+        return res.json();
+      }
+      else {
+        return dispatch({ type: FETCH_SERVICES_DONE_FAILURE });
+      }
+    })
     .then(servicesDone => {
       return dispatch(recieveServicesDone(servicesDone));
     })
@@ -204,7 +211,14 @@ export const fetchOrder = (token, id) => dispatch => {
       Authorization: token
     }
   })
-    .then(res => res.json())
+    .then(res => {
+      if(res.status === 200) {
+        return res.json()
+      }
+      else {
+        return dispatch({ type: FETCH_ORDER_FAILURE });
+      }
+    })
     .then(order => {
       return dispatch(recieveOrder(order));
     })
@@ -233,7 +247,14 @@ export const fetchOrders = token => dispatch => {
       Authorization: token
     }
   })
-    .then(res => res.json())
+    .then(res => {
+      if(res.status === 200) {
+        return res.json() 
+      }
+      else {
+        return dispatch({ type: FETCH_ORDERS_FAILURE });
+      }
+    })
     .then(orders => {
       return dispatch(recieveOrders(orders));
     })
@@ -262,7 +283,14 @@ export const fetchInternalOrder = (token, id ) => dispatch => {
       Authorization: token
     }
   })
-    .then(res => res.json())
+    .then(res => {
+      if(res.status === 200){
+        return res.json()
+      }
+      else {
+        return dispatch({ type: FETCH_INTERNAL_ORDER_FAILURE });
+      }
+    })
     .then(internalOrder => {
       return dispatch(recieveInternalOrder(internalOrder));
     })
@@ -291,7 +319,14 @@ export const fetchInternalOrders = token => dispatch => {
       Authorization: token
     }
   })
-    .then(res => res.json())
+    .then(res => {
+      if(res.status === 200) {
+        return res.json();
+      }
+      else {
+        return dispatch({ type: FETCH_INTERNAL_ORDERS_FAILURE });
+      }
+    })
     .then(internalOrders => {
       return dispatch(recieveInternalOrders(internalOrders));
     })
@@ -320,7 +355,14 @@ export const fetchComplaint = (token, id ) => dispatch => {
       Authorization: token
     }
   })
-    .then(res => res.json())
+    .then(res => {
+      if(res.status === 200){
+        return res.json();
+      } 
+      else {
+        return dispatch({ type: FETCH_COMPLAINT_FAILURE });
+      }
+    })
     .then(complaint => {
       return dispatch(recieveComplaint(complaint));
     })
@@ -349,7 +391,14 @@ export const fetchComplaints = token => dispatch => {
       Authorization: token
     }
   })
-    .then(res => res.json())
+    .then(res => {
+      if(res.status === 200){
+        return res.json();
+      }
+      else {
+        return dispatch({ type: FETCH_COMPLAINTS_FAILURE });
+      }
+    })
     .then(complaints => {
       return dispatch(recieveComplaints(complaints));
     })
