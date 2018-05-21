@@ -143,5 +143,3 @@ export const fetchDone = (userId, token) => dispatch => {
       return dispatch(fetchDoneFailure());
     });
 };
-
-

@@ -7,9 +7,11 @@ export default class CustomerProfile extends Component {
 
   render() {
     return (
+      <div className="fix-customer">
         <div className="customerOrder">
           <UserProfile />
           <CustomerBottomNav />
+        </div>
         </div>
     )
   }
