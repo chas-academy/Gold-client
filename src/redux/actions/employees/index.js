@@ -182,5 +182,3 @@ export const fetchDone = (userId, token) => dispatch => {
       return dispatch(fetchDoneFailure("Det uppståd ett problem att hämta färdiga ärenden"));
     });
 };
-
-

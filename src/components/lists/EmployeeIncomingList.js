@@ -35,6 +35,8 @@ class EmployeeIncomingList extends Component {
     const newComplaints = Assigned.filter(order => order.order_type === "complaint");
     const newInternal = Assigned.filter(order => order.order_type === "int_order");
 
+    
+
     return (
         <div className="BasicList__container">
           <h4> nya ärenden  </h4>

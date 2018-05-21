@@ -7,6 +7,7 @@ import {
   EmployeeHistoryList
 } from "../../components";
 import "./style.css";
+import './fix-desktop-emp.css';
 
 export default class EmployeeHistory extends Component {
   render() {

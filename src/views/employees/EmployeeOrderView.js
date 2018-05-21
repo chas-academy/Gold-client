@@ -12,7 +12,7 @@ export default class EmployeeOrderView extends Component {
   render() {
 
     return (
-      <div>
+      <div className="fix-employee">
         <div className="col-md-6 col-md-offset-3">
           <EmployeeOrderDetails id={this.props.match.params.id} />
         </div>
