@@ -42,9 +42,6 @@ class CustomerHome extends Component {
     const { userName } = this.state;
     return (
       <div>
-        <a href="/logout" onClick={this.logOut}>
-          Logga ut
-        </a>
         <div className="CustomerHome__menu">
           <h3 className="CustomerHome__welcome">Välkommen {userName}!</h3>
           <div>
@@ -78,6 +75,11 @@ class CustomerHome extends Component {
               </Link>
             </button>
           </div>
+        </div>
+        <div className="btn-container">
+          <a href="/logout" onClick={this.logOut} className="btn-logout">
+            Logga ut
+          </a>
         </div>
         <Link to={`/contact`}>
           <p className="CustomerHome__contact">
