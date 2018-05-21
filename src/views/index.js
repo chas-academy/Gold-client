@@ -26,10 +26,10 @@ export { default as AddInternalOrders } from './admin/orders/AddInternalOrders';
 
 // Employee
 export { default as EmployeeIncoming } from './employees/EmployeeIncoming';
+export { default as EmployeeInternal } from './employees/EmployeeInternal';
 export { default as EmployeeHistory} from './employees/EmployeeHistory';
 export { default as EmployeeOrderView } from './employees/EmployeeOrderView';
 export { default as EmployeeHome} from './employees/EmployeeHome';
-export { default as EmployeeActive } from './employees/EmployeeActive';
 export { default as EmployeeProfile } from './employees/EmployeeProfile';
 
 

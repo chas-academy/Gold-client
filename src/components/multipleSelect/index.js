@@ -33,7 +33,7 @@ class MultipleSelect extends Component {
     return (
       <Select
         multi={true}
-        name="form-field-name"
+        name="employees[]"
         placeholder="Välj Anställd"
         value={selectedOption}
         onChange={this.handleChange}

@@ -27,7 +27,7 @@ export const loginError = message => ({
   type: LOGIN_FAILURE,
   isFetching: false,
   authenticated: false,
-  message
+  message:message
 });
 
 export const loginUser = user => dispatch => {
@@ -40,9 +40,18 @@ export const loginUser = user => dispatch => {
       "Content-Type": "application/json"
     }
   })
-    .then(res => res.json())
+    .then(res => {
+      if(res.status === 200) {
+        return res.json();
+      }
+      else {
+        console.log("connection")
+        dispatch(loginError("could not connect to server check you internet connection"));
+      }
+    })
     .then(res => {
       if (res.error) {
+        dispatch(loginError(res.error))
         return res.error
       } else {
         const cookies = new Cookies();
@@ -66,7 +75,7 @@ export const recieveRegister = user => ({
 export const RegisterError = message => ({
   type: REGISTER_FAILURE,
   isFetching: false,
-  message
+  message:message
 });
 
 export const registerUser = regUser => dispatch => {
@@ -88,7 +97,12 @@ export const registerUser = regUser => dispatch => {
     .then(res => res.json())
     .then(res => {
       if (res.error) {
+        dispatch(RegisterError(res.error))
         return res.error
+      }
+      else {
+        const cookies = new Cookies();
+        cookies.set("token", res.token, { path: "/", maxAge: 86399 });
       }
     });
 };

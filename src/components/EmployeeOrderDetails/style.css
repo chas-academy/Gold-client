@@ -7,4 +7,9 @@
     margin: auto;
     background-color: rgb(255, 255, 255);
     width: 100%;
+    align-content: center;
+}
+
+.employee__addPhoto {
+    margin-left: 35%;
 }

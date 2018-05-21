@@ -58,6 +58,7 @@ export const fetchService = ( token, id ) => dispatch => {
   })
     .then(res => res.json())
     .then(service => {
+      console.log(service)
       return dispatch(recieveService(service));
     })
     .catch(response => {
@@ -174,7 +175,14 @@ export const fetchServicesDone = token => dispatch => {
       Authorization: token
     }
   })
-    .then(res => res.json())
+    .then(res => {
+      if(res.status === 200) {
+        return res.json();
+      }
+      else {
+        return dispatch({ type: FETCH_SERVICES_DONE_FAILURE });
+      }
+    })
     .then(servicesDone => {
       return dispatch(recieveServicesDone(servicesDone));
     })
@@ -203,13 +211,21 @@ export const fetchOrder = (token, id) => dispatch => {
       Authorization: token
     }
   })
-    .then(res => res.json())
+    .then(res => {
+      if(res.status === 200) {
+        return res.json()
+      }
+      else {
+        return dispatch({ type: FETCH_ORDER_FAILURE });
+      }
+    })
     .then(order => {
       return dispatch(recieveOrder(order));
     })
     .catch(response => {
       console.error("An error occured when fetching the order");
-      return dispatch({ type: FETCH_ORDER_FAILURE });
+      return dispatch({ type: FETCH_ORDER_FAILURE,
+                        message:"kunde inte hämta beställing" });
     });
 };
 
@@ -232,13 +248,22 @@ export const fetchOrders = token => dispatch => {
       Authorization: token
     }
   })
-    .then(res => res.json())
+    .then(res => {
+      if(res.status === 200) {
+        return res.json() 
+      }
+      else {
+        return dispatch({ type: FETCH_ORDERS_FAILURE,
+                        message: "Kunde inte Koppla till nätverket kontrollera internetuppkoppling." });
+      }
+    })
     .then(orders => {
       return dispatch(recieveOrders(orders));
     })
     .catch(response => {
       console.error("An error occured when fetching the orders");
-      return dispatch({ type: FETCH_ORDERS_FAILURE });
+      return dispatch({ type: FETCH_ORDERS_FAILURE ,
+                        message:"kunde inte hämta beställingar" });
     });
 };
 
@@ -261,13 +286,22 @@ export const fetchInternalOrder = (token, id ) => dispatch => {
       Authorization: token
     }
   })
-    .then(res => res.json())
+    .then(res => {
+      if(res.status === 200){
+        return res.json()
+      }
+      else {
+        return dispatch({ type: FETCH_INTERNAL_ORDER_FAILURE,
+                          message:"Kunde inte Koppla till nätverket kontrollera internetuppkoppling." });
+      }
+    })
     .then(internalOrder => {
       return dispatch(recieveInternalOrder(internalOrder));
     })
     .catch(response => {
       console.error("An error occured when fetching the internal order");
-      return dispatch({ type: FETCH_INTERNAL_ORDER_FAILURE });
+      return dispatch({ type: FETCH_INTERNAL_ORDER_FAILURE,
+                        message:"det var ett problem att hämta interna beställningar"  });
     });
 };
 
@@ -290,13 +324,22 @@ export const fetchInternalOrders = token => dispatch => {
       Authorization: token
     }
   })
-    .then(res => res.json())
+    .then(res => {
+      if(res.status === 200) {
+        return res.json();
+      }
+      else {
+        return dispatch({ type: FETCH_INTERNAL_ORDERS_FAILURE,
+                          message:"Kunde inte Koppla till nätverket kontrollera internetuppkoppling." });
+      }
+    })
     .then(internalOrders => {
       return dispatch(recieveInternalOrders(internalOrders));
     })
     .catch(response => {
       console.error("An error occured when fetching the orders");
-      return dispatch({ type: FETCH_INTERNAL_ORDERS_FAILURE });
+      return dispatch({ type: FETCH_INTERNAL_ORDERS_FAILURE,
+        message:"det var ett problem att hämta interna beställningar" });
     });
 };
 
@@ -319,13 +362,22 @@ export const fetchComplaint = (token, id ) => dispatch => {
       Authorization: token
     }
   })
-    .then(res => res.json())
+    .then(res => {
+      if(res.status === 200){
+        return res.json();
+      } 
+      else {
+        return dispatch({ type: FETCH_COMPLAINT_FAILURE,
+                          message:"Kunde inte Koppla till nätverket kontrollera internetuppkoppling." });
+      }
+    })
     .then(complaint => {
       return dispatch(recieveComplaint(complaint));
     })
     .catch(response => {
       console.error("An error occured when fetching the complaint");
-      return dispatch({ type: FETCH_COMPLAINT_FAILURE });
+      return dispatch({ type: FETCH_COMPLAINT_FAILURE,
+        message:"Det var problem att hämta klagomål" });
     });
 };
 
@@ -348,12 +400,21 @@ export const fetchComplaints = token => dispatch => {
       Authorization: token
     }
   })
-    .then(res => res.json())
+    .then(res => {
+      if(res.status === 200){
+        return res.json();
+      }
+      else {
+        return dispatch({ type: FETCH_COMPLAINTS_FAILURE,
+                          message:"Kunde inte Koppla till nätverket kontrollera internetuppkoppling."});
+      }
+    })
     .then(complaints => {
       return dispatch(recieveComplaints(complaints));
     })
     .catch(response => {
       console.error("An error occured when fetching the complaints");
-      return dispatch({ type: FETCH_COMPLAINTS_FAILURE });
+      return dispatch({ type: FETCH_COMPLAINTS_FAILURE,
+                        message: "det var problem att hämta klagomål" });
     });
 };

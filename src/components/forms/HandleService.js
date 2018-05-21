@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { connect } from 'react-redux';
 import Cookies from "universal-cookie";
 import { fetchService } from "../../redux/actions/admin/Orders";
+import Moment from 'react-moment';
+
 
 import {
   DateTimePhoto,
@@ -15,14 +17,9 @@ class HandleService extends Component {
     super(props);
 
     this.state = {
+      admin: true,
       submitted: "",
-      contact: "",
-      customerId: "",
-      phone: "",
-      phoneError: null,
-      adress: "",
-      description: "",
-      employee: "",
+      employee: [],
       errorMessage: "",
       message: '',
       id: this.props.id
@@ -44,35 +41,13 @@ class HandleService extends Component {
         .replace("_", "/")
       ))
       
-      // if order eller if complaint
-    this.props.dispatch(fetchService(token, this.state.id));
+      this.props.dispatch(fetchService(token, this.state.id));
   }
   
-  componentDidMount() {
-    const service = this.props;
-    
-    this.status === "new" ?
-    this.setState({ message: `Detta är ett nytt ärende`})
-    : this.status === "assigned" ?
-      this.setState({ message: `Det här ärendet har du tilldelat`})
-    : this.status === "taken" ?
-      this.setState({ message: `Det här ärendet åtgärdar just nu`})
-    : this.status === "done" 
-      this.setState({ message: `Det här ärendet är avslutat, för mer detaljer gå till avslutade ärenden`})
-
-  }
 
   handleChange(event) {
     const { name, value } = event.target;
     this.setState({ [name]: value });
-
-    const isNumeric = /^[0-9]+$/;
-
-    if (this.state.phone.match(isNumeric)) {
-      this.setState({ phoneError: false });
-    } else {
-      this.setState({ phoneError: true });
-    }
   }
 
   handleSubmit(event) {
@@ -86,86 +61,40 @@ class HandleService extends Component {
 
   render() {
     const {
-      submitted,
-      contact,
-      customerId,
-      phone,
-      phoneError,
-      description,
+      admin,
       employee,
+      submitted,
+      telError,
       errorMessage,
-      message,
     } = this.state;
 
+
     const { service } = this.props; 
+
+    const description= '';
+
+    if (service.order) {
+      this.description = service.order.description
+    } else if (service.internal_order) {
+      this.description = service.internal_order.description
+    } else {
+      this.description = 'hej'
+    }
+
+    const theTime = <Moment format="HH:mm" >{service.datetime}</Moment>;
 
     return (
       <div className="col-md-6 col-md-offset-3">
         <form name="form" className="BasicForm" onSubmit={this.handleSubmit}>
         <h5> Hantera Ärende</h5>
-        <p>{message}</p>
-          <div className="form-group">
-            <div className="BasicForm__check">
-              <input
-                type="text"
-                name="contact"
-                className="form-control"
-                placeholder="Kontakperson"
-                value={contact}
-                onChange={this.handleChange}
-              />
-              {contact && <i className="fas fa-check BasicForm__check" />}
-            </div>
-            {submitted &&
-              !contact && (
-                <div className="help-block">
-                  Glöm inte fylla i kontakperson!
-                </div>
-              )}
-          </div>
-          <div className="form-group">
-            <div className="BasicForm__check">
-              <input
-                type="text"
-                name="customerId"
-                className="form-control"
-                placeholder="Kundnummer"
-                value={customerId}
-                onChange={this.handleChange}
-              />
-              {customerId && <i className="fas fa-check BasicForm__check" />}
-            </div>
-            {submitted &&
-              !customerId && (
-                <div className="help-block">
-                  Glöm inte fylla i kontakperson!
-                </div>
-              )}
-          </div>
-          <div className="form-group">
-            <div className="BasicForm__check">
-              <input
-                type="text"
-                name="phone"
-                className="form-control"
-                placeholder="Telefonnummer till kontaktperson"
-                value={phone}
-                onChange={this.handleChange}
-              />
-              {phone &&
-                !phoneError && <i className="fas fa-check BasicForm__check" />}
-            </div>
-            {submitted &&
-              !phone && (
-                <div className="help-block">
-                  Glöm inte fylla i telefonnummer!
-                </div>
-              )}
-            {phone &&
-              phoneError && (
-                <div className="help-block">Oopa! fick du med en bokstav?</div>
-              )}
-          </div>
+      <hr />
+        {service.company_name ?
+        <p> Kund: {service.company_name} </p>
+        : <p> Kund: {service.con_pers} </p>}
+          <p> tel: {service.con_tel} </p>
+          <p> datum: <Moment format="DD/MM" >{service.datetime}</Moment></p>
+          <p> tid: <Moment format="HH:mm" >{service.datetime}</Moment></p>
+
           <div className="form-group">
             <div className="BasicForm__check">
               <textarea
@@ -174,18 +103,20 @@ class HandleService extends Component {
                 className="BasicForm__textArea"
                 name="description"
                 placeholder="Detaljerad beskrivning av ärendet"
-                value={description}
+                value={this.description}
                 onChange={this.handleChange}
               />
-              {description && <i className="fas fa-check BasicForm__check" />}
+              {this.description && <i className="fas fa-check BasicForm__check" />}
             </div>
             {submitted &&
-              !description && (
+              !this.description && (
                 <div className="help-block">
                   Glöm inte att beskriva ärendet!
                 </div>
               )}
           </div>
+          <p className="BasicForm__ChangeTime">Byte av datum eller tid</p>
+          <DateTimePhoto admin={admin} />
           <div className="form-group">
             <MultipleSelect />
             {submitted &&
@@ -195,17 +126,6 @@ class HandleService extends Component {
                 </div>
               )}
           </div>
-          <div className="form-group">
-            <LocationSearchInput submitted={submitted}/>
-          </div>
-          <label className="BasicForm__checkboxContainer">
-              <input type="checkbox" />
-              <span className="BasicForm__checkmark">
-                <i className="fas fa-circle"></i>
-                Akut ärende? (åtgärdas inom 4h)
-              </span>
-            </label>
-          <DateTimePhoto />
           <div className="buttons">
             <div className="form-group">
               <button type="submit" className="btn btn-primary">

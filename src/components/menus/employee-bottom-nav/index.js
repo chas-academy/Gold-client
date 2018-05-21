@@ -1,31 +1,40 @@
 import React, { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
+import Cookies from 'universal-cookie';
 
 
 class EmployeeBottomNav extends Component {
   constructor(props) {
     super(props);
-    this.logout = this.logout.bind(this);
+    this.logOut = this.logOut.bind(this);
   }
 
-  logout() {
-    localStorage.clear();
-    this.props.history.push("/");
+  logOut(event){
+    const cookies = new Cookies();
+    cookies.remove("token")
   }
 
   render() {
+
+    const { newOrders, newComplaints, newInternal } = this.props;
     return (
       <nav className="bottomNav">
         <ul className="bottomNavList">
           <li>
             <Link to={`/employee/incoming`}>
-                <i className="fas fa-inbox"></i>
+            {newOrders || newComplaints !== null ? 
+                <i className="fas fa-compass new" />
+                : 
+                <i className="fas fa-compass" />}
             </Link>
           </li>
           <li>
-            <Link to={`/employee/history`}>
-            <i className="fas fa-history"></i>
-            </Link>
+          <Link to={`/employee/internal`}>
+            {newInternal !== null ?
+              <i className="far fa-check-circle new" />
+              : 
+              <i className="far fa-check-circle" />}
+          </Link>
           </li>
           <li>
             <Link to={`/home`}>
@@ -33,7 +42,7 @@ class EmployeeBottomNav extends Component {
             </Link>
           </li>
           <li>
-            <button className="logout" onClick={this.logout}>
+            <button className="logout" onClick={this.logOut}>
               <i className="fas fa-sign-out-alt" />
             </button>
           </li>

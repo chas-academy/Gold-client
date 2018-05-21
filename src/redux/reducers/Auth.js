@@ -11,7 +11,8 @@ import {
 
 const initialState = {
     isFetching: false,
-    isauthenticated: false
+    isauthenticated: false,
+    errorMessage: null
 };
 
 const authReducer = (state = initialState, action) => {

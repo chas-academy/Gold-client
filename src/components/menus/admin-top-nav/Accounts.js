@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Cookies from 'universal-cookie';
 
 import { withRouter } from 'react-router-dom'
 import { slide as Menu } from 'react-burger-menu'
@@ -14,6 +15,8 @@ class AdminTopAccounts extends Component {
       }
   
       this.openMenuAccounts = this.openMenuAccounts.bind(this);
+      this.logOut = this.logOut.bind(this);
+
     }
 
     openMenuAccounts(event) {
@@ -25,8 +28,13 @@ class AdminTopAccounts extends Component {
         }
       }
 
+      logOut(event){
+        const cookies = new Cookies();
+        cookies.remove("token")
+      }
 
       render() {
+
 
         const { openAccounts } = this.state;
         return (
@@ -61,7 +69,7 @@ class AdminTopAccounts extends Component {
             Min profil
             <i className="fas fa-user-circle slide2"></i>
           </a>
-        <a id="logout" className="menu-item2" href={`/logout`}>
+        <a id="logout" className="menu-item2" href={`/logout`} onClick={this.logOut}>
           Logga ut
           <i className="fas fa-sign-out-alt slide2" />
         </a>

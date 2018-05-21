@@ -1,16 +1,18 @@
 import React, { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
+import Cookies from 'universal-cookie';
 
 import "./style.css";
 
 class CustomerBottomNav extends Component {
   constructor(props) {
     super(props);
-    this.logout = this.logout.bind(this);
+    this.logOut = this.logout.bind(this);
   }
 
-  logout() {
-    this.props.history.push("/");
+  logOut(event){
+    const cookies = new Cookies();
+    cookies.remove("token")
   }
 
   render() {
@@ -33,7 +35,7 @@ class CustomerBottomNav extends Component {
             </Link>
           </li>
           <li>
-            <button className="logout" onClick={this.logout}>
+            <button className="logout" onClick={this.logOut}>
               <i className="fas fa-sign-out-alt" />
             </button>
           </li>

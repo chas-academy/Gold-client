@@ -2,23 +2,24 @@ import {
   FETCH_SERVICE_START,
   FETCH_SERVICE_SUCCESS,
   FETCH_SERVICE_FAILURE,
-  FETCH_EMP_INCOMING_REQUEST,
-  FETCH_EMP_INCOMING_SUCCESS,
-  FETCH_EMP_INCOMING_FAILURE,
-  FETCH_EMP_TAKEN_REQUEST,
-  FETCH_EMP_TAKEN_SUCCESS,
-  FETCH_EMP_TAKEN_FAILURE,
+  FETCH_EMP_ASSIGNED_REQUEST,
+  FETCH_EMP_ASSIGNED_SUCCESS,
+  FETCH_EMP_ASSIGNED_FAILURE,
+  FETCH_EMP_INTERNAL_REQUEST,
+  FETCH_EMP_INTERNAL_SUCCESS,
+  FETCH_EMP_INTERNAL_FAILURE,
   FETCH_EMP_DONE_REQUEST,
   FETCH_EMP_DONE_SUCCESS,
   FETCH_EMP_DONE_FAILURE
 } from "../actions/employees/Types";
 
 const initialState = {
-  Incoming: [],
-  Taken: [],
+  Assigned: [],
   Done: [],
+  Internal: [],
   service: {},
-  isFetching: false
+  isFetching: false,
+  errorMessage: null,
 };
 
 const employeeReducer = (state = initialState, action) => {
@@ -37,39 +38,42 @@ const employeeReducer = (state = initialState, action) => {
     case FETCH_SERVICE_FAILURE:
       return {
         ...state,
-        isfetching: false
+        isfetching: false,
+        errorMessage:action.message
       };
-    case FETCH_EMP_INCOMING_REQUEST:
+    case FETCH_EMP_ASSIGNED_REQUEST:
       return {
         ...state,
         isFetching: true
       };
-    case FETCH_EMP_INCOMING_SUCCESS:
+    case FETCH_EMP_ASSIGNED_SUCCESS:
       return {
         ...state,
         isFetching: false,
-        Incomingt: action.payload
+        Assigned: action.payload
       };
-    case FETCH_EMP_INCOMING_FAILURE:
+    case FETCH_EMP_ASSIGNED_FAILURE:
       return {
         ...state,
-        isFetching: false
+        isFetching: false,
+        errorMessage: action.message
       };
-    case FETCH_EMP_TAKEN_REQUEST:
+      case FETCH_EMP_INTERNAL_REQUEST:
       return {
         ...state,
         isFetching: true
       };
-    case FETCH_EMP_TAKEN_FAILURE:
-      return {
-        ...state,
-        isFetching: false
-      };
-    case FETCH_EMP_TAKEN_SUCCESS:
+    case FETCH_EMP_INTERNAL_SUCCESS:
       return {
         ...state,
         isFetching: false,
-        Taken: action.payload
+        Incoming: action.payload
+      };
+    case FETCH_EMP_INTERNAL_FAILURE:
+      return {
+        ...state,
+        isFetching: false,
+        errorMessage: action.message
       };
     case FETCH_EMP_DONE_REQUEST:
       return {
@@ -79,7 +83,8 @@ const employeeReducer = (state = initialState, action) => {
     case FETCH_EMP_DONE_FAILURE:
       return {
         ...state,
-        isFetching: false
+        isFetching: false,
+        errorMessage: action.message
       };
     case FETCH_EMP_DONE_SUCCESS:
       return {

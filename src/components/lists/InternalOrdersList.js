@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { fetchInternalOrders } from "../../redux/actions/admin/Orders";
 import Cookies from "universal-cookie";
 import { Tabs, TabLink, TabContent } from "react-tabs-redux";
+import { EmployeeBottomNav } from '../../components';
 
 import { Link, withRouter } from "react-router-dom";
 import "./style.css";
@@ -12,6 +13,7 @@ class InternalOrdersList extends Component {
     const cookies = new Cookies();
     var token = cookies.get("token");
     this.props.dispatch(fetchInternalOrders(token));
+    
   }
 
   render() {
@@ -33,10 +35,7 @@ class InternalOrdersList extends Component {
         <Tabs>
           <div className="history-tabs">
             <TabLink className="history-tablink" to="hanterade">
-              Hanterade
-            </TabLink>
-            <TabLink className="history-tablink" to="pågående">
-              Pågående
+              Skapade
             </TabLink>
             <TabLink className="history-tablink" to="avslutade">
               Avslutade
@@ -46,26 +45,6 @@ class InternalOrdersList extends Component {
             {AssignedInternalOrders.length ? (
               <ul className="BasicList__list">
                 {AssignedInternalOrders.map(order => (
-                  <li key={order.service_id}>
-                    <Link to={`/admin/orders/${order.service_id}`}>
-                      <div className="edit">
-                        <p>Ärende skapat: {order.service.createdAt}</p>
-                        <i className="fas fa-edit" />
-                      </div>
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            ) : (
-              <div className="BasicList__container inner">
-                <p>Inga beställningar att visa</p>
-              </div>
-            )}
-          </TabContent>
-          <TabContent for="pågående">
-            {TakenInternalOrders.length ? (
-              <ul className="BasicList__list">
-                {TakenInternalOrders.map(order => (
                   <li key={order.service_id}>
                     <Link to={`/admin/orders/${order.service_id}`}>
                       <div className="edit">

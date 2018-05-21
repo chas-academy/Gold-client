@@ -22,7 +22,8 @@ const initialState = {
     customer: {},
     employees: [],
     companies: [],
-    privateCustomers: []
+    privateCustomers: [],
+    errorMessage: null
 };
 
 const adminAccountsReducer = (state = initialState, action) => {
@@ -41,7 +42,8 @@ const adminAccountsReducer = (state = initialState, action) => {
             case FETCH_USER_FAILURE:
             return {
                 ...state,
-                isfetching: false
+                isfetching: false,
+                errorMessage: action.message
              };
            case FETCH_EMPLOYEES_START:
            return {
@@ -57,7 +59,8 @@ const adminAccountsReducer = (state = initialState, action) => {
             case FETCH_EMPLOYEES_FAILURE:
             return {
                 ...state,
-                isfetching: false
+                isfetching: false,
+                errorMessage: action.message
              };
              case FETCH_CUSTOMER_START:
              return {
@@ -73,7 +76,8 @@ const adminAccountsReducer = (state = initialState, action) => {
               case FETCH_CUSTOMER_FAILURE:
               return {
                   ...state,
-                  isfetching: false
+                  isfetching: false,
+                  errorMessage: action.message
                };
             case FETCH_CUSTOMERS_PRIVATE_START:
             return {
@@ -89,7 +93,8 @@ const adminAccountsReducer = (state = initialState, action) => {
             case FETCH_CUSTOMERS_PRIVATE_FAILURE:
             return {
                 ...state,
-                isfetching: false
+                isfetching: false,
+                errorMessage: action.message
              };
              case FETCH_CUSTOMERS_COMPANIES_START:
              return {
@@ -105,7 +110,8 @@ const adminAccountsReducer = (state = initialState, action) => {
              case FETCH_CUSTOMERS_COMPANIES_FAILURE:
              return {
                  ...state,
-                 isfetching: false
+                 isfetching: false,
+                 errorMessage: action.message
               };
             default:
             return state;
