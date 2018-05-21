@@ -1,0 +1,13 @@
+.AdminHome {
+    max-height: 300px;
+    overflow: hidden;
+    margin-top: 5px;
+}
+.tab-content {
+    max-height: 150px!important;
+    overflow: scroll;
+}
+.AdminHomeTop__li {
+    margin: 5px;
+}
+
