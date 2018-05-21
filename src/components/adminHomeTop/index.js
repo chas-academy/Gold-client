@@ -31,7 +31,7 @@ class AdminHomeTop extends Component {
                 Reklamationer
               </TabLink>
             </div>
-            <TabContent for="beställningar">
+            <TabContent for="beställningar" className="orders-list-fml">
               {newOrders.length ? (
                 <ul className="BasicList__list">
                   {newOrders.map(order => (
