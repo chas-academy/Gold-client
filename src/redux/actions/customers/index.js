@@ -33,7 +33,7 @@ export const requestService = () => ({
   export const fetchService = ( token, id ) => dispatch => {
     dispatch(requestService());
   
-    return fetch(`https://gold-api-dev.chas.school/services/${id}`, {
+    return fetch(`${process.env.REACT_APP_API_BASE_URL}/services/${id}`, {
       headers: {
         Authorization: token
       }
@@ -63,7 +63,7 @@ export const requestService = () => ({
   export const fetchServices = token => dispatch => {
     dispatch(requestServices());
   
-    return fetch("https://gold-api-dev.chas.school/services", {
+    return fetch(`${process.env.REACT_APP_API_BASE_URL}/services`, {
       headers: {
         Authorization: token
       }
@@ -92,7 +92,7 @@ export const requestService = () => ({
   export const fetchServicesNew = token => dispatch => {
     dispatch(requestServicesNew());
   
-    return fetch("https://gold-api-dev.chas.school/services/new", {
+    return fetch(`${process.env.REACT_APP_API_BASE_URL}/services/new`, {
       headers: {
         Authorization: token
       }
@@ -121,7 +121,7 @@ export const requestService = () => ({
   export const fetchServicesAssigned = token => dispatch => {
     dispatch(requestServicesAssigned());
   
-    return fetch("https://gold-api-dev.chas.school/services/assigned", {
+    return fetch(`${process.env.REACT_APP_API_BASE_URL}/services/assigned`, {
       headers: {
         Authorization: token
       }
@@ -150,7 +150,7 @@ export const requestService = () => ({
   export const fetchServicesTaken = token => dispatch => {
     dispatch(requestServicesTaken());
   
-    return fetch("https://gold-api-dev.chas.school/services/taken", {
+    return fetch(`${process.env.REACT_APP_API_BASE_URL}/taken`, {
       headers: {
         Authorization: token
       }
@@ -179,7 +179,7 @@ export const requestService = () => ({
   export const fetchServicesDone = token => dispatch => {
     dispatch(requestServicesDone());
   
-    return fetch("https://gold-api-dev.chas.school/services/done", {
+    return fetch(`${process.env.REACT_APP_API_BASE_URL}/done`, {
       headers: {
         Authorization: token
       }

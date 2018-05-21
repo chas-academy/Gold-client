@@ -80,7 +80,7 @@ export const fetchUser = (id, token) => dispatch => {
     
     dispatch(requestUser());
   
-    return fetch(`https://gold-api-dev.chas.school/users/${id}`, {
+    return fetch(`${process.env.REACT_APP_API_BASE_URL}/users/${id}`, {
         headers: {
         "Authorization": token
       }})
@@ -316,7 +316,7 @@ export const fetchCustomer = (id, token) => dispatch => {
     
     dispatch(requestCustomer());
   
-    return fetch(`https://gold-api-dev.chas.school/customers/${id}`, {
+    return fetch(`${process.env.REACT_APP_API_BASE_URL}/customers/${id}`, {
         headers: {
         "Authorization": token
       }})

@@ -33,9 +33,6 @@ class ComplaintsList extends Component {
             <TabLink className="history-tablink" to="hanterade">
               Hanterade
             </TabLink>
-            <TabLink className="history-tablink" to="pågående">
-              Pågående
-            </TabLink>
             <TabLink className="history-tablink" to="avslutade">
               Avslutade
             </TabLink>
@@ -45,32 +42,7 @@ class ComplaintsList extends Component {
               <ul className="BasicList__list">
                 {AssignedComplaints.map(order => (
                   <li key={order.service_id}>
-                    <Link to={`/admin/orders/${order.service_id}`}>
-                      <div className="edit">
-                        {order.service.company_name ? (
-                          <p>{order.service.company_name}</p>
-                        ) : (
-                          <p>{order.service.con_pers}</p>
-                        )}
-                        <p>Anställd: {}</p>
-                        <i className="fas fa-edit" />
-                      </div>
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            ) : (
-              <div className="BasicList__container inner">
-                <p>Inga beställningar att visa</p>
-              </div>
-            )}
-          </TabContent>
-          <TabContent for="pågående">
-            {TakenComplaints.length ? (
-              <ul className="BasicList__list">
-                {TakenComplaints.map(order => (
-                  <li key={order.service_id}>
-                    <Link to={`/admin/orders/${order.service_id}`}>
+                    <Link to={`/admin/services/${order.service_id}`}>
                       <div className="edit">
                         {order.service.company_name ? (
                           <p>{order.service.company_name}</p>
@@ -95,7 +67,7 @@ class ComplaintsList extends Component {
               <ul className="BasicList__list">
                 {DoneComplaints.map(order => (
                   <li key={order.service_id}>
-                    <Link to={`/admin/orders/${order.service_id}`}>
+                    <Link to={`/admin/services/${order.service_id}`}>
                       <div className="edit">
                         {order.service.company_name ? (
                           <p>{order.service.company_name}</p>

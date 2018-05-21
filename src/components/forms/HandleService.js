@@ -71,30 +71,45 @@ class HandleService extends Component {
 
     const { service } = this.props; 
 
-    const description= '';
+    const description = '';
+    const photos = [];
+    const type = '';
 
     if (service.order) {
-      this.description = service.order.description
+      this.type = "Beställning";
+      this.description = service.order.description;
+      this.photos = service.order.image_path;
     } else if (service.internal_order) {
-      this.description = service.internal_order.description
-    } else {
-      this.description = 'hej'
-    }
+      this.type = "Internt ärende"
+      this.description = service.internal_order.description;
+      this.photos = service.internal_order.image_path;
+    } else if (service.complaint) {
+      this.type = "Reklamation"
+      this.description = service.complaint.description;
+    } else (
+      this.description = "Ingen beskrivning av ärendet"
+    )
 
     const theTime = <Moment format="HH:mm" >{service.datetime}</Moment>;
-
+    
     return (
       <div className="col-md-6 col-md-offset-3">
         <form name="form" className="BasicForm" onSubmit={this.handleSubmit}>
-        <h5> Hantera Ärende</h5>
+        <h5> Hantera {this.type}</h5>
       <hr />
         {service.company_name ?
-        <p> Kund: {service.company_name} </p>
+        <div>
+          <p> Kund: {service.company_name} </p>
+          <p> Kontaktperson: {service.con_pers} </p>
+        </div>
         : <p> Kund: {service.con_pers} </p>}
           <p> tel: {service.con_tel} </p>
           <p> datum: <Moment format="DD/MM" >{service.datetime}</Moment></p>
           <p> tid: <Moment format="HH:mm" >{service.datetime}</Moment></p>
-
+          {/* {this.photos.map(photo => {
+            <img src={photo} />
+            console.log(photo)
+          })} */}
           <div className="form-group">
             <div className="BasicForm__check">
               <textarea
