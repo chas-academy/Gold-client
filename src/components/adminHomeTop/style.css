@@ -3,7 +3,7 @@
     overflow: hidden;
     margin-top: 5px;
 }
-.tab-content {
+.orders-list-fml {
     max-height: 150px!important;
     overflow: scroll;
 }
