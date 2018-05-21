@@ -79,6 +79,10 @@ class AdminTopServices extends Component {
                 <i className="fas fa-history slide"></i>
                 Avslutade
               </a> 
+              <a id="logout" className="menu-item" href={`/logout`} onClick={this.logOut}>
+                <i className="fas fa-sign-out-alt slide" />
+                Logga ut
+              </a>
         </Menu>  
       </div>
     );

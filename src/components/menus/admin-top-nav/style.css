@@ -120,15 +120,16 @@
 @media (min-width: 800px) {
   .fa-sign-out-alt {
     margin-left: 2px !important; }
+  .services {
+    transition: none !important; }
   .slide-menu {
-    transition: none !important;
     width: 30% !important;
     height: 82vh !important; }
   .menu-item {
     padding: 3.64vh; }
   .services__press {
     visibility: hidden; }
-  .slide-menu__header {
+  .slide-menu__header, .slide-menu__header2 {
     color: #F2F2F2;
     background: none;
     font-size: 18px;
