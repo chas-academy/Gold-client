@@ -107,23 +107,4 @@ export const registerUser = regUser => dispatch => {
     });
 };
 
-//     const request = {
-//         method: 'post',
-//         headers: { 'Content-Type': 'application/json' },
-//         body: JSON.stringify(user)
-//     }
 
-//     return fetch('/auth/register', request)
-//     .then(res => res.json()
-//     .then(user => ({ user, res }))
-//     .then(({ user, res }) => {
-//         if (!res.ok ) {
-//             dispatch(loginError(user.message))
-//             return Promise.reject(user)
-//         } else {
-//             localStorage.setItem('userId', user.user._id);
-//             localStorage.setItem('username', user.user.username);
-//             localStorage.setItem('token', user.token)
-//         }
-//         }).catch(err => console.error('Could not register user'))
-//     )}

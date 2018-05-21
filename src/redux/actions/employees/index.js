@@ -28,7 +28,7 @@ export const recieveService = service => ({
 export const fetchService = ( token, id ) => dispatch => {
   dispatch(requestService());
 
-  return fetch(`https://gold-api-dev.chas.school/services/${id}`, {
+  return fetch(`${process.env.REACT_APP_API_BASE_URL}/services/${id}`, {
     headers: {
       Authorization: token
     }
@@ -73,7 +73,7 @@ export const fetchAssignedFailure = error => ({
 export const fetchAssigned = (userId, token) => dispatch => {
   dispatch(fetchAssignedRequest());
 
-  return fetch(`https://gold-api-dev.chas.school/employee/${userId}/assigned`, {
+  return fetch(`${process.env.REACT_APP_API_BASE_URL}/employee/${userId}/assigned`, {
     headers: {
       authorization: token
     }
@@ -120,7 +120,7 @@ export const fetchInternalFailure = error => ({
 export const fetchInternal = (userId, token) => dispatch => {
   dispatch(fetchInternalRequest());
 
-  return fetch(`https://gold-api-dev.chas.school/employee/${userId}/assignedInt`, {
+  return fetch(`${process.env.REACT_APP_API_BASE_URL}/employee/${userId}/assignedInt`, {
     headers: {
       authorization: token
     }
@@ -162,7 +162,7 @@ export const fetchDoneSuccess = services => ({
 export const fetchDone = (userId, token) => dispatch => {
   dispatch(fetchDoneRequest());
 
-  return fetch(`https://gold-api-dev.chas.school/employee/${userId}/done`, {
+  return fetch(`${process.env.REACT_APP_API_BASE_URL}/employee/${userId}/done`, {
     headers: {
       authorization: token
     }

@@ -51,10 +51,10 @@ class App extends Component {
           <Route path='/admin/accounts/customers/create' component={CreateCustomers} />
           <Route path='/admin/accounts/:user/:id' component={HandleAccounts} />
           <Route path='/admin/accounts/employees' component={Employees} />
-          <Route path='/admin/services/:id' component={Order} />
           <Route path='/admin/services/incoming' component={IncomingServices} />
           <Route path='/admin/services/assigned' component={AssignedOrders} />
           <Route path='/admin/services/completed' component={CompletedOrders} />
+          <Route path='/admin/services/:id' component={Order} />
           <Route path='/admin/orders/add' component={AddOrders} />
           <Route path='/admin/orders/complaints/add' component={AddComplaints} />
           <Route path='/admin/orders/complaints' component={Complaints} />
