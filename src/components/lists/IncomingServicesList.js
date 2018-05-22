@@ -22,7 +22,12 @@ class IncomingServicesList extends Component {
   }
 
   render() {
-    const { servicesNew } = this.props;
+    const { servicesNew, isFetching } = this.props;
+
+    if(isFetching) {
+      return <i class="fas fa-circle-notch fa-spin"></i>;
+    }
+    
     const newOrders = servicesNew.filter(order => order.order_type === "order");
     const newComplaints = servicesNew.filter(
       order => order.order_type === "complaint"
@@ -103,7 +108,8 @@ class IncomingServicesList extends Component {
 }
 
 const mapStateToProps = state => ({
-  servicesNew: state.adminOrders.servicesNew
+  servicesNew: state.adminOrders.servicesNew,
+  isFetching: state.adminOrder.isFetching
 });
 
 export default withRouter(connect(mapStateToProps)(IncomingServicesList));

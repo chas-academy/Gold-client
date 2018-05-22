@@ -28,6 +28,10 @@ class EmployeeActiveList extends Component {
   render() {
     const  {isFetching, Taken } = this.props;
 
+    if(isFetching) {
+      return <i class="fas fa-circle-notch fa-spin"></i>
+    }
+
     const ongoingList =  Taken.map((active) => 
     <div>
       <li>

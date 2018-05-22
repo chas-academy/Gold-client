@@ -16,7 +16,12 @@ class EmployeeList extends Component {
 
   render() {
 
-    const { employees } = this.props;
+    const { employees, isFetching } = this.props;
+
+    if(isFetching) {
+      return <i class="fas fa-circle-notch fa-spin"></i>;
+    }
+    
     return (
       employees ?
       <div className="BasicList__container">
@@ -45,7 +50,8 @@ class EmployeeList extends Component {
 }
 
 const mapStateToProps = state => ({ 
-  employees: state.adminAccounts.employees, 
+  employees: state.adminAccounts.employees,
+  isFetching: state.adminAccounts.isFetching 
 });
 
 export default withRouter(connect(mapStateToProps)(EmployeeList));

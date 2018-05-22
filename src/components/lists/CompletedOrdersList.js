@@ -37,7 +37,11 @@ class CompletedOrdersList extends Component {
   render() {
     const { isAdmin } = this.state;
 
-    const { servicesDone } = this.props;
+    const { servicesDone, isFetching } = this.props;
+
+    if(isFetching) {
+      return <i class="fas fa-circle-notch fa-spin"></i>;
+    }
 
     const completedOrders = servicesDone.filter(
       order => order.order_type === "order"
@@ -170,7 +174,8 @@ class CompletedOrdersList extends Component {
 }
 
 const mapStateToProps = state => ({
-  servicesDone: state.adminOrders.servicesDone
+  servicesDone: state.adminOrders.servicesDone,
+  isFetching: state.adminOrders.isFetching
 });
 
 export default withRouter(connect(mapStateToProps)(CompletedOrdersList));

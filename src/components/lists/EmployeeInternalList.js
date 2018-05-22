@@ -31,6 +31,10 @@ class EmployeeInternalList extends Component {
   render() {
 
     const { isFetching, Assigned } = this.props;
+
+    if(isFetching) {
+      return <i class="fas fa-circle-notch fa-spin"></i>;
+    }
     
     const newInternal = Assigned.filter(order => order.order_type === "int_order");
     const newOrders = Assigned.filter(order => order.order_type === "order");

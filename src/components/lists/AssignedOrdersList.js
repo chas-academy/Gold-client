@@ -15,7 +15,12 @@ class AssignedOrdersList extends Component {
   }
 
   render() {
-    const { servicesAssigned } = this.props;
+    const { servicesAssigned, isFetching } = this.props;
+
+    if(isFetching) {
+      return <i class="fas fa-circle-notch fa-spin"></i>;
+    }
+    
     const assignedOrders = servicesAssigned.filter(
       order => order.order_type === "order"
     );
@@ -131,7 +136,8 @@ class AssignedOrdersList extends Component {
 }
 
 const mapStateToProps = state => ({
-  servicesAssigned: state.adminOrders.servicesAssigned
+  servicesAssigned: state.adminOrders.servicesAssigned,
+  isFetching: state.admin.isFetching
 });
 
 export default withRouter(connect(mapStateToProps)(AssignedOrdersList));

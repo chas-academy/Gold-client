@@ -34,7 +34,11 @@ class CustomerHistoryList extends Component {
 
   render() {
 
-    const { servicesDone } = this.props;
+    const { servicesDone, isFetching } = this.props;
+
+    if(isFetching) {
+      return <i class="fas fa-circle-notch fa-spin"></i>;
+    }
 
     const completedOrders = [];
     const completedComplaints = [];
@@ -108,6 +112,7 @@ class CustomerHistoryList extends Component {
 }
 
 const mapStateToProps = state => ({
+     isFetching: state.customers.isFetching
 //   servicesDone: state.customers.servicesDone
 });
 
