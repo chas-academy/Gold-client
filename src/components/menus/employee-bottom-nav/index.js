@@ -23,7 +23,7 @@ class EmployeeBottomNav extends Component {
           <li>
             <Link to={`/employee/incoming`}>
             {newOrders || newComplaints !== null ? 
-                <i className="fas fa-compass new" />
+                <i className="fas fa-compass employeeNew" />
                 : 
                 <i className="fas fa-compass" />}
             </Link>
@@ -31,7 +31,7 @@ class EmployeeBottomNav extends Component {
           <li>
           <Link to={`/employee/internal`}>
             {newInternal !== null ?
-              <i className="far fa-check-circle new" />
+              <i className="far fa-check-circle employeeNew" />
               : 
               <i className="far fa-check-circle" />}
           </Link>
