@@ -78,11 +78,9 @@ class DateTimePhoto extends Component {
               onBlur={this.setTime.bind(this)}
             />
           </div>
-          {this.admin = false ?
             <AddPhotos
             setPhoto={this.setPhoto.bind(this)}
             />
-            : ('')}
       </div>
     );
   }

@@ -20,7 +20,7 @@ import {
     FETCH_USER_UPDATE_START,
     FETCH_USER_UPDATE_SUCCESS,
     FETCH_USER_UPDATE_FAILURE
-} from "..actions/customers/Action-types"
+} from "../actions/customers/Action-types"
 
 const initialState = {
     services: [],

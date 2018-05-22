@@ -16,6 +16,7 @@
 }
 .CustomerHome__menu {
     width: 100%;
+    margin-top: 60px;
     position: absolute;
     color: rgb(63, 62, 62);
     text-align: center;
@@ -43,7 +44,7 @@
 .CustomerHome__welcome {
     color: #424242;
     margin-bottom: 10px;
-    margin-top: 80px;
+    margin-top: 120px;
     font-size: 26px;
     letter-spacing: 0.4px;
 }
@@ -95,7 +96,7 @@
 .contactInfo {
     font-size: 50px;
     text-align: center;
-    margin-top: 5px;
+    margin-top: 35px;
 }
 
 .contactInfo > a {

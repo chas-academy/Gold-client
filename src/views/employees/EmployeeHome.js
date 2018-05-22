@@ -55,16 +55,13 @@ class EmployeeHome extends Component {
 
     return (
       <div>
-            <a href="/logout" onClick={this.logOut}>
-                Logga ut
-            </a>
         <div className="CustomerHome__menu">
           <h3 className="CustomerHome__welcome">Välkommen {userName}!</h3>
           <div>
             <button className="CustomerHome__buttons">
               <Link to={`/employee/incoming`} >
                 {newOrders || newComplaints !== null ? 
-                <i className="fas fa-compass new" />
+                <i className="fas fa-compass employeeNew" />
                 : 
                 <i className="fas fa-compass" />}
                 <p className="CustomerHome__buttonText"> Inkomna Jobb</p>
@@ -73,7 +70,7 @@ class EmployeeHome extends Component {
             <button className="CustomerHome__buttons">
               <Link to={`/employee/internal`}>
               {newInternal !== null ?
-                <i className="far fa-check-circle new" />
+                <i className="far fa-check-circle employeeNew" />
                 : 
                 <i className="far fa-check-circle" />}
                 <p className="CustomerHome__buttonText">

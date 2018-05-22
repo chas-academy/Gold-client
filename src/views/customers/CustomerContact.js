@@ -22,7 +22,6 @@ export default class CustomerContact extends Component {
         return (
           <div className="fix-customer">
           <div className="fix">
-                <h4> Har du fårgor eller funderingar? Kontakta oss gärna! </h4>
               <div className="contactInfo">
                     <a href="tel:+4640260260">
                       <i className="fas fa-phone contact"></i>
