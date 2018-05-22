@@ -17,7 +17,11 @@ class InternalOrdersList extends Component {
   }
 
   render() {
-    const { internalOrders } = this.props;
+    const { internalOrders, isFetching } = this.props;
+
+    if(isFetching) {
+      return <i class="fas fa-circle-notch fa-spin"></i>;
+    }
 
     const AssignedInternalOrders = internalOrders.filter(
       order => order.service.status === "assigned"
@@ -88,7 +92,8 @@ class InternalOrdersList extends Component {
 }
 
 const mapStateToProps = state => ({
-  internalOrders: state.adminOrders.internalOrders
+  internalOrders: state.adminOrders.internalOrders,
+  isFetching: state.adminOrders.isFetching
 });
 
 export default withRouter(connect(mapStateToProps)(InternalOrdersList));

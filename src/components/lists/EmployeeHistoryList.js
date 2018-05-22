@@ -35,6 +35,10 @@ class EmployeeHistoryList extends Component {
   render() {
     const  {isFetching, Done} = this.props;
 
+    if(isFetching) {
+      return <i class="fas fa-circle-notch fa-spin"></i>;
+    }
+
   
     const completedOrders = Done.filter(
       order => order.order_type === "order"

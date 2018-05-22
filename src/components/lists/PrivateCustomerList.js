@@ -17,7 +17,12 @@ class PrivateCustomerList extends Component {
 
   render() {
 
-    const { privateCustomers } = this.props;
+    const { privateCustomers, isFetching } = this.props;
+
+    if(isFetching) {
+      return <i class="fas fa-circle-notch fa-spin"></i>;
+    }
+    
     return (
       privateCustomers ?
       <div className="BasicList__container">
@@ -46,7 +51,8 @@ class PrivateCustomerList extends Component {
 }
 
 const mapStateToProps = state => ({ 
-  privateCustomers: state.adminAccounts.privateCustomers, 
+  privateCustomers: state.adminAccounts.privateCustomers,
+  isFetching: state.adminAccounts.isFetching 
 });
 
 export default withRouter(connect(mapStateToProps)(PrivateCustomerList));

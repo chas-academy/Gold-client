@@ -15,7 +15,12 @@ class OrdersList extends Component {
   }
 
   render() {
-    const { orders } = this.props;
+    const { orders, isFetching } = this.props;
+    
+    if(isFetching) {
+      return <i class="fas fa-circle-notch fa-spin"></i>;
+    }
+
     
     const AssignedOrders = [];
     const TakenOrders = [];
@@ -121,7 +126,8 @@ class OrdersList extends Component {
 }
 
 const mapStateToProps = state => ({
-  orders: state.adminOrders.orders
+  orders: state.adminOrders.orders,
+  isFetching: state.adminOrders.isFetching
 });
 
 export default withRouter(connect(mapStateToProps)(OrdersList));

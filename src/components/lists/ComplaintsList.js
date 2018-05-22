@@ -17,7 +17,11 @@ class ComplaintsList extends Component {
   }
 
   render() {
-      const { complaints } = this.props;
+      const { complaints, isFetching } = this.props;
+
+      if(isFetching) {
+        return <i class="fas fa-circle-notch fa-spin"></i>;
+      }
 
       const AssignedComplaints = complaints.filter(order => order.service.status === "assigned");
       const TakenComplaints = complaints.filter(order => order.service.status === "taken");
@@ -95,6 +99,7 @@ class ComplaintsList extends Component {
 
   const mapStateToProps = state => ({ 
     complaints: state.adminOrders.complaints, 
+    isFetching: state.adminOrders.isFetching
   });
 
 export default withRouter(connect(mapStateToProps)(ComplaintsList));

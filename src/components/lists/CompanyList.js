@@ -17,7 +17,12 @@ class CompanyList extends Component {
 
   render() {
 
-    const { companies } = this.props;
+    const { companies, isFetching } = this.props;
+
+    if(isFetching) {
+      return <i class="fas fa-circle-notch fa-spin"></i>;
+    }
+    
     return (
       companies ?
       <div className="BasicList__container">
@@ -46,7 +51,8 @@ class CompanyList extends Component {
 }
 
 const mapStateToProps = state => ({ 
-  companies: state.adminAccounts.companies, 
+  companies: state.adminAccounts.companies,
+  isFetching: state.adminAccounts.isFetching 
 });
 
 export default withRouter(connect(mapStateToProps)(CompanyList));
