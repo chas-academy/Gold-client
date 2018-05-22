@@ -2,10 +2,7 @@ import React, { Component } from "react";
 import GoogleMapReact from "google-map-react";
 import { AdminBottomNav } from '../../components';
 
-import Cookies from "universal-cookie";
-import Moment from "react-moment";
 import moment from "moment";
-
 
 import "./style.css";
 import stylesDay from "./Styles-day.json";
@@ -43,10 +40,7 @@ class MapContainer extends Component {
   };
 
   render() {
-    const { servicesNew, servicesAssigned, servicesDone } = this.props;
-
-    const { mapOptions, message } = this.state;
-    
+    const { servicesNew, servicesAssigned, servicesDone } = this.props;    
   
     const NewServices = servicesNew.filter(order => order.status === "new");
     const NewOrders = NewServices.filter(order => order.order_type === 'order');
@@ -72,9 +66,9 @@ class MapContainer extends Component {
       <div className="map"
         style={{
           height: "48vh",
-          width: "95%",
+          width: "98%",
           margin: "auto",
-          marginTop: "8px"
+          marginTop: "8px",
         }}
       >
         <GoogleMapReact

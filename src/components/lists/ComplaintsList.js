@@ -24,7 +24,6 @@ class ComplaintsList extends Component {
       }
 
       const AssignedComplaints = complaints.filter(order => order.service.status === "assigned");
-      const TakenComplaints = complaints.filter(order => order.service.status === "taken");
       const DoneComplaints = complaints.filter(order => order.service.status === "done");
   
 

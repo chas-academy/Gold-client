@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import { registerUser } from '../../redux/actions/Auth';
 import { connect } from 'react-redux';
 
-import { LocationSearchInput } from "../../components";
-
 import './style.css';
 
 
@@ -84,7 +82,7 @@ class CreateUser extends Component {
           } else {
             res.errors.forEach(error => {
               errorMessage = error.message
-              if (error.message == "pers_org_num must be unique") {
+              if (error.message === "pers_org_num must be unique") {
                 errorMessage = "Person/Organisationsnummer är redan registrerat"
               }
             });
@@ -106,7 +104,6 @@ class CreateUser extends Component {
       passwordError,
       tel,
       telError,
-      privateCustomer,
       ValidatePassword,
     } = this.state;
 

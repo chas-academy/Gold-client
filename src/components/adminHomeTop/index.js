@@ -1,15 +1,9 @@
 import React, { Component } from "react";
-import { connect } from "react-redux";
 import { Tabs, TabLink, TabContent } from "react-tabs-redux";
-
-import Cookies from "universal-cookie";
 import { Link, withRouter } from "react-router-dom";
 import "./style.css";
 
 class AdminHomeTop extends Component {
-  constructor(props) {
-    super(props);
-  }
 
   render() {
     const { servicesNew } = this.props;
@@ -18,7 +12,6 @@ class AdminHomeTop extends Component {
       order => order.order_type === "complaint"
     );
 
-    const { services } = this.props;
     return (
       <div className="BasicList__container AdminHome">
           <h4> Dagens ärenden </h4>

@@ -11,15 +11,12 @@ import {
   FETCH_SERVICES_ASSIGNED_START,
   FETCH_SERVICES_ASSIGNED_SUCCESS,
   FETCH_SERVICES_ASSIGNED_FAILURE,
-  FETCH_SERVICES_TAKEN_START,
-  FETCH_SERVICES_TAKEN_SUCCESS,
-  FETCH_SERVICES_TAKEN_FAILURE,
   FETCH_SERVICES_DONE_START,
   FETCH_SERVICES_DONE_SUCCESS,
   FETCH_SERVICES_DONE_FAILURE,
-  FETCH_SERVICE_HANDLE_START,
-  FETCH_SERVICE_HANDLE_SUCCESS,
-  FETCH_SERVICE_HANDLE_FAILURE,
+  SERVICE_HANDLE_START,
+  SERVICE_HANDLE_SUCCESS,
+  SERVICE_HANDLE_FAILURE,
   FETCH_ORDER_START,
   FETCH_ORDER_SUCCESS,
   FETCH_ORDER_FAILURE,
@@ -199,11 +196,11 @@ export const fetchServicesDone = token => dispatch => {
 /* ------------ SERVICES HANDLE --------------- */
 
 export const requestServicesHandle = () => ({
-  type: FETCH_SERVICE_HANDLE_START
+  type: SERVICE_HANDLE_START
 });
 
 export const ServicesHandleSuccess = servicesHandle => ({
-  type: FETCH_SERVICE_HANDLE_SUCCESS,
+  type: SERVICE_HANDLE_SUCCESS,
   payload: servicesHandle
 });
 
@@ -223,12 +220,12 @@ export const fetchServicesHandle = (token, id, form) => dispatch => {
       if (res.message) {
         return dispatch(ServicesHandleSuccess(res.message));
       } else {
-        return dispatch({ type: FETCH_SERVICE_HANDLE_FAILURE, payload: res.error });
+        return dispatch({ type: SERVICE_HANDLE_FAILURE, payload: res.error });
       }
     })
     .catch(response => {
       console.error("An error occured when fetching the services");
-      return dispatch({ type: FETCH_SERVICE_HANDLE_FAILURE, payload: response.message });
+      return dispatch({ type: SERVICE_HANDLE_FAILURE, payload: response.message });
     });
 };
 

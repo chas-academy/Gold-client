@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import { EmployeeBottomNav, EmployeeInternalList } from '../../components'
+import { EmployeeInternalList } from '../../components'
 
 export default class EmployeeInternal extends Component {
 

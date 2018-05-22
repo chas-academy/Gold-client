@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import { fetchInternalOrders } from "../../redux/actions/admin/Orders";
 import Cookies from "universal-cookie";
 import { Tabs, TabLink, TabContent } from "react-tabs-redux";
-import { EmployeeBottomNav } from '../../components';
 
 import { Link, withRouter } from "react-router-dom";
 import "./style.css";
@@ -25,9 +24,6 @@ class InternalOrdersList extends Component {
 
     const AssignedInternalOrders = internalOrders.filter(
       order => order.service.status === "assigned"
-    );
-    const TakenInternalOrders = internalOrders.filter(
-      order => order.service.status === "taken"
     );
     const DoneInternalOrders = internalOrders.filter(
       order => order.service.status === "done"
@@ -86,6 +82,7 @@ class InternalOrdersList extends Component {
             )}
           </TabContent>
         </Tabs>
+
       </div>
     );
   }

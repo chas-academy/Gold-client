@@ -39,7 +39,7 @@ class DateTimePhoto extends Component {
   }
 
   render() {
-    const { time, admin } = this.state;
+    const { time } = this.state;
     
     return (
       <div className="DateTime__container">

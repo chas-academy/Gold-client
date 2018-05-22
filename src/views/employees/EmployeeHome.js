@@ -44,7 +44,7 @@ class EmployeeHome extends Component {
   }
 
   render() {
-    const { isFetching, Assigned } = this.props;
+    const { Assigned } = this.props;
 
     const newOrders = Assigned.filter(order => order.order_type === "order");
     const newComplaints = Assigned.filter(order => order.order_type === "complaint");
@@ -104,7 +104,6 @@ class EmployeeHome extends Component {
 
 const mapStateToProps = state => ({
   Assigned: state.employee.Assigned,
-  isFetching: state.employee.isFetching
 });
 
 export default withRouter(connect(mapStateToProps)(EmployeeHome));

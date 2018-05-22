@@ -40,15 +40,13 @@ class CustomerHistoryList extends Component {
       return <i class="fas fa-circle-notch fa-spin"></i>;
     }
 
-    const completedOrders = [];
-    const completedComplaints = [];
 
-    // const completedOrders = servicesDone.filter(
-    //   order => order.order_type === "order"
-    // );
-    // const completedComplaints = servicesDone.filter(
-    //   order => order.order_type === "complaint"
-    // );
+    const completedOrders = servicesDone.filter(
+      order => order.order_type === "order"
+    );
+    const completedComplaints = servicesDone.filter(
+      order => order.order_type === "complaint"
+    );
 
 
     return (
@@ -112,8 +110,8 @@ class CustomerHistoryList extends Component {
 }
 
 const mapStateToProps = state => ({
-     isFetching: state.customers.isFetching
-//   servicesDone: state.customers.servicesDone
+     isFetching: state.customers.isFetching,
+    servicesDone: state.customers.servicesDone
 });
 
 export default withRouter(connect(mapStateToProps)(CustomerHistoryList));

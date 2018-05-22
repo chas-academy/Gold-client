@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { fetchAssigned } from "../../redux/actions/employees";
 import { Link, withRouter } from "react-router-dom";
-import { Tabs, TabLink, TabContent } from "react-tabs-redux";
 import { EmployeeBottomNav } from '../../components';
 import Cookies from "universal-cookie";
 import "./style.css";
@@ -37,8 +36,6 @@ class EmployeeInternalList extends Component {
     }
     
     const newInternal = Assigned.filter(order => order.order_type === "int_order");
-    const newOrders = Assigned.filter(order => order.order_type === "order");
-    const newComplaints = Assigned.filter(order => order.order_type === "complaint");
  
     return (
         <div className="BasicList__container">

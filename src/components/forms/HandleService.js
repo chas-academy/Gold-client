@@ -10,8 +10,8 @@ import moment from "moment";
 import {
   DateTimePhoto,
   MultipleSelect,
-  LocationSearchInput
 } from "../../components";
+
 import "./style.css";
 
 class HandleService extends Component {
@@ -39,14 +39,7 @@ class HandleService extends Component {
   componentWillMount() { 
     const cookies = new Cookies();
     var token = cookies.get("token");
-    const user = JSON.parse(
-      window.atob(
-        token
-        .split(".")[1]
-        .replace("-", "+")
-        .replace("_", "/")
-      ))
-      this.setState({ token: token })
+    this.setState({ token: token })
     this.props.dispatch(fetchService(token, this.state.id));
   }
   
@@ -70,7 +63,7 @@ class HandleService extends Component {
     if (this.state.employees.length > 0) {
       this.props.dispatch(fetchServicesHandle(this.state.token, this.state.id, form))
       .then((res) => {
-        if (res.type == "FETCH_SERVICE_HANDLE_SUCCESS") {
+        if (res.type === "SERVICE_HANDLE_SUCCESS") {
           this.setState({ message: res.payload })
         } else {
           console.log(res)
@@ -93,8 +86,13 @@ class HandleService extends Component {
   getEmps(emps) {
     this.setState({ employees: emps })
     
-    this.state.date == null ? this.setState({ date: moment(this.props.service.datetime).format('Y-MM-DD') }) : ('')
-    this.state.time == null ? this.setState({ time: moment(this.props.service.datetime).format('HH:mm') }) : ('')
+    this.state.date === null ? 
+    this.setState({ date: moment(this.props.service.datetime).format('Y-MM-DD') }) 
+    : ('')
+
+    this.state.time === null ? 
+    this.setState({ time: moment(this.props.service.datetime).format('HH:mm') }) 
+    : ('')
 
     if (this.props.service.order) {
       (this.state.description == null ? this.setState({ description: this.props.service.order.description }) : (''))
@@ -114,16 +112,11 @@ class HandleService extends Component {
       admin,
       employees,
       submitted,
-      telError,
       errorMessage,
     } = this.state;
 
 
     const { service } = this.props; 
-
-    const description = '';
-    const photos = [];
-    const type = '';
 
     if (service.order) {
       this.type = "Beställning";
@@ -139,9 +132,6 @@ class HandleService extends Component {
     } else (
       this.description = "Ingen beskrivning av ärendet"
     )
-    // console.log(this.props.service)
-
-    const theTime = <Moment format="HH:mm" >{service.datetime}</Moment>;
     
     return (
       <div className="col-md-6 col-md-offset-3">

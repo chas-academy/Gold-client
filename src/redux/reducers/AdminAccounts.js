@@ -17,7 +17,7 @@ import {
 } from '../actions/admin/Action-types'
 
 const initialState = {
-    isfetching: false,
+    isFetching: false,
     user: {},
     customer: {},
     employees: [],
@@ -31,86 +31,86 @@ const adminAccountsReducer = (state = initialState, action) => {
            case FETCH_USER_START:
            return {
                ...state,
-               isfetching: true
+               isFetching: true
             };
             case FETCH_USER_SUCCESS:
             return {
                 ...state,
-                isfetching: false,
+                isFetching: false,
                 user: action.payload
              };
             case FETCH_USER_FAILURE:
             return {
                 ...state,
-                isfetching: false,
+                isFetching: false,
                 errorMessage: action.message
              };
            case FETCH_EMPLOYEES_START:
            return {
                ...state,
-               isfetching: true
+               isFetching: true
             };
             case FETCH_EMPLOYEES_SUCCESS:
             return {
                 ...state,
-                isfetching: false,
+                isFetching: false,
                 employees: action.payload
              };
             case FETCH_EMPLOYEES_FAILURE:
             return {
                 ...state,
-                isfetching: false,
+                isFetching: false,
                 errorMessage: action.message
              };
              case FETCH_CUSTOMER_START:
              return {
                  ...state,
-                 isfetching: true
+                 isFetching: true
               };
               case FETCH_CUSTOMER_SUCCESS:
               return {
                   ...state,
-                  isfetching: false,
+                  isFetching: false,
                   customer: action.payload
                };
               case FETCH_CUSTOMER_FAILURE:
               return {
                   ...state,
-                  isfetching: false,
+                  isFetching: false,
                   errorMessage: action.message
                };
             case FETCH_CUSTOMERS_PRIVATE_START:
             return {
                ...state,
-               isfetching: true
+               isFetching: true
             };
             case FETCH_CUSTOMERS_PRIVATE_SUCCESS:
             return {
                 ...state,
-                isfetching: false,
+                isFetching: false,
                 privateCustomers: action.payload
              };
             case FETCH_CUSTOMERS_PRIVATE_FAILURE:
             return {
                 ...state,
-                isfetching: false,
+                isFetching: false,
                 errorMessage: action.message
              };
              case FETCH_CUSTOMERS_COMPANIES_START:
              return {
                 ...state,
-                isfetching: true
+                isFetching: true
              };
              case FETCH_CUSTOMERS_COMPANIES_SUCCESS:
              return {
                  ...state,
-                 isfetching: false,
+                 isFetching: false,
                  companies: action.payload
               };
              case FETCH_CUSTOMERS_COMPANIES_FAILURE:
              return {
                  ...state,
-                 isfetching: false,
+                 isFetching: false,
                  errorMessage: action.message
               };
             default:

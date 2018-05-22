@@ -15,7 +15,6 @@ import {
   FETCH_SERVICE_COMPLETE_SUCCESS,
   FETCH_SERVICE_COMPLETE_FAILURE
 } from "./Types";
-import { RSA_NO_PADDING } from "constants";
 
 /* ------------ SERVICE --------------- */
 

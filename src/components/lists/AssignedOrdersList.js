@@ -137,7 +137,7 @@ class AssignedOrdersList extends Component {
 
 const mapStateToProps = state => ({
   servicesAssigned: state.adminOrders.servicesAssigned,
-  isFetching: state.admin.isFetching
+  isFetching: state.adminOrders.isFetching
 });
 
 export default withRouter(connect(mapStateToProps)(AssignedOrdersList));

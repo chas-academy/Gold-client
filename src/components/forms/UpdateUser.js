@@ -4,7 +4,6 @@ import { fetchUser, updateUser } from "../../redux/actions/admin/Accounts";
 import Cookies from "universal-cookie";
 
 import "./style.css";
-import { LocationSearchInput } from "../../components";
 
 class UpdateUser extends Component {
   constructor(props) {
@@ -79,14 +78,12 @@ class UpdateUser extends Component {
           } else {
             res.errors.forEach(error => {
               errorMessage = error.message
-              if (error.message == "pers_org_num must be unique") {
-                errorMessage = "Pers/Orgnummer är redan taget"
-              } else if (error.message == "Validation isEmail on email failed") {
-                errorMessage = "Felaktigt email"
-              } else if (error.message == "email must be unique") {
-                errorMessage = "Email är redan tagen"
-              } else if (error.message == "tel must be unique") {
-                errorMessage = "Telefonnummer är redan tagen"
+              if (error.message === "Validation isEmail on email failed") {
+                errorMessage = "Felaktigt ifylld email"
+              } else if (error.message === "email must be unique") {
+                errorMessage = "Denna email är redan registrerad"
+              } else if (error.message === "tel must be unique") {
+                errorMessage = "Telefonnummer är redan registrerat"
               }
             errorMessage = 'oops';
           })
@@ -108,12 +105,10 @@ class UpdateUser extends Component {
       password,
       ValidatePassword,
       phoneError,
-      type
     } = this.state;
 
     const { user } = this.props;
 
-    console.log(user);
     return (
       <div className="col-md-6 col-md-offset-3">
         <form name="form" className="BasicForm" onSubmit={this.handleSubmit}>

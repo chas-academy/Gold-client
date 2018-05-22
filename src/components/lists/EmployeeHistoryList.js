@@ -5,7 +5,7 @@ import { withRouter, Link } from "react-router-dom";
 import Cookies from "universal-cookie";
 import { Tabs, TabContent, TabLink } from 'react-tabs-redux';
 import Moment from "react-moment";
-
+import { EmployeeBottomNav } from '../../components';
 
 import './style.css'
 
@@ -138,6 +138,7 @@ class EmployeeHistoryList extends Component {
             )}
           </TabContent>
         </Tabs>
+        <EmployeeBottomNav />
       </div>
     );
   }

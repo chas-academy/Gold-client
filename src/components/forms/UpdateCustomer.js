@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { fetchCustomer, updateCustomer } from "../../redux/actions/admin/Accounts";
 import Cookies from "universal-cookie";
+import { LocationSearchInput } from "../../components";
+import { fetchCustomer, updateCustomer } from "../../redux/actions/admin/Accounts";
 
 import "./style.css";
-import { LocationSearchInput } from "../../components";
 
 class UpdateCustomer extends Component {
   constructor(props) {
@@ -79,11 +79,11 @@ class UpdateCustomer extends Component {
           } else {
             res.errors.forEach(error => {
               errorMessage = error.message
-              if (error.message == "Validation isEmail on email failed") {
+              if (error.message === "Validation isEmail on email failed") {
                 errorMessage = "Felaktigt email"
-              } else if (error.message == "email must be unique") {
+              } else if (error.message === "email must be unique") {
                 errorMessage = "Email är redan tagen"
-              } else if (error.message == "tel must be unique") {
+              } else if (error.message === "tel must be unique") {
                 errorMessage = "Telefonnummer är redan tagen"
               }
             errorMessage = 'oops';
@@ -105,14 +105,10 @@ class UpdateCustomer extends Component {
       isAdmin,
       password,
       ValidatePassword,
-      telError,
-      numberError,
-      type
-    } = this.state;
+      telError
+   } = this.state;
 
     const { customer } = this.props;
-
-    console.log(customer.user);
 
     return (
       <div className="col-md-6 col-md-offset-3">

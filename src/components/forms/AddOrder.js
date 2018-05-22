@@ -1,14 +1,13 @@
 import React, { Component } from "react";
 import { createOrder } from '../../redux/actions/customers/Services';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+import Cookies from "universal-cookie";
 
 import {
 	DateTimePhoto,
 	LocationSearchInput,
 	MultipleSelect
 } from "../../components";
-import Cookies from "universal-cookie";
 
 import "./style.css";
 
@@ -55,7 +54,6 @@ class AddOrder extends Component {
 		);
 
 		this.setState({
-			// address: user.address,
 			contact: user.name,
 			customerId: user.id,
 			phone: user.tel
@@ -146,7 +144,7 @@ class AddOrder extends Component {
 			form
 		})
 		.then((res) => {
-			if (res.type == "FETCH_ORDER_CREATE_SUCCESS") {
+			if (res.type === "FETCH_ORDER_CREATE_SUCCESS") {
 				this.setState({ success: true })
 				this.setState({ successMessage: res.payload })
 			} else {

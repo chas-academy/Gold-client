@@ -1,5 +1,6 @@
 .AdminHome {
-    max-height: 300px;
+    min-height: 275px;
+    max-height: 275px;
     overflow: hidden;
     margin-top: 5px;
 }
