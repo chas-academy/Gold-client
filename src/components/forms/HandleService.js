@@ -2,7 +2,9 @@ import React, { Component } from "react";
 import { connect } from 'react-redux';
 import Cookies from "universal-cookie";
 import { fetchService } from "../../redux/actions/admin/Orders";
+import { fetchServicesHandle } from "../../redux/actions/admin/Orders";
 import Moment from 'react-moment';
+import moment from "moment";
 
 
 import {
@@ -19,10 +21,14 @@ class HandleService extends Component {
     this.state = {
       admin: true,
       submitted: "",
-      employee: [],
       errorMessage: "",
       message: '',
-      id: this.props.id
+      date: null,
+      time: null,
+      description: null,
+      employees: [],
+      id: this.props.id,
+      token: null,
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -40,20 +46,64 @@ class HandleService extends Component {
         .replace("-", "+")
         .replace("_", "/")
       ))
-      
-      this.props.dispatch(fetchService(token, this.state.id));
+      this.setState({ token: token })
+    this.props.dispatch(fetchService(token, this.state.id));
   }
   
 
   handleChange(event) {
     const { name, value } = event.target;
     this.setState({ [name]: value });
+    this.props.service.order.description = value
   }
 
   handleSubmit(event) {
     event.preventDefault();
+
+    const form = {
+      date: this.state.date,
+      time: this.state.time,
+      description: this.state.description,
+      employees: this.state.employees
+    }
+
+    if (this.state.employees.length > 0) {
+      this.props.dispatch(fetchServicesHandle(this.state.token, this.state.id, form))
+      .then((res) => {
+        if (res.type == "FETCH_ORDER_CREATE_SUCCESS") {
+          this.setState({ message: res.payload })
+        } else {
+          console.log(res)
+          this.setState({ errorMessage: res.payload })
+        }
+      })
+    }
+
     this.setState({ submitted: true });
   }
+
+  getDate(date) {
+		this.setState({ date: date })
+	}
+
+  getTime(time) {
+		this.setState({ time: time })
+	}
+
+  getEmps(emps) {
+    this.setState({ employees: emps })
+    
+    this.state.date == null ? this.setState({ date: moment(this.props.service.datetime).format('Y-MM-DD') }) : ('')
+    this.state.time == null ? this.setState({ time: moment(this.props.service.datetime).format('HH:mm') }) : ('')
+
+    if (this.props.service.order) {
+      (this.state.description == null ? this.setState({ description: this.props.service.order.description }) : (''))
+    } else if (this.props.service.int_order) {
+      (this.state.description == null ? this.setState({ description: this.props.service.int_order.description }) : (''))
+    } else if (this.props.service.complaint) {
+      (this.state.description == null ? this.setState({ description: this.props.service.complaint.description }) : (''))
+    }
+	}
 
   delete(event) {
     event.preventDefault();
@@ -62,7 +112,7 @@ class HandleService extends Component {
   render() {
     const {
       admin,
-      employee,
+      employees,
       submitted,
       telError,
       errorMessage,
@@ -89,6 +139,7 @@ class HandleService extends Component {
     } else (
       this.description = "Ingen beskrivning av ärendet"
     )
+    // console.log(this.props.service)
 
     const theTime = <Moment format="HH:mm" >{service.datetime}</Moment>;
     
@@ -131,11 +182,11 @@ class HandleService extends Component {
               )}
           </div>
           <p className="BasicForm__ChangeTime">Byte av datum eller tid</p>
-          <DateTimePhoto admin={admin} />
+          <DateTimePhoto admin={admin} getDate={this.getDate.bind(this)} getTime={this.getTime.bind(this)} />
           <div className="form-group">
-            <MultipleSelect />
+            <MultipleSelect getEmps={this.getEmps.bind(this)} />
             {submitted &&
-              !employee && (
+              !employees && (
                 <div className="help-block">
                   Glöm inte att tilldela ärendet till rätt person
                 </div>
@@ -160,8 +211,9 @@ class HandleService extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  service: state.adminOrders.service
+const mapStateToProps = dispatch => ({
+  service: dispatch.adminOrders.service,
+  // handleOrder: dispatch.fetchServicesHandle
 });
 
 export default connect(mapStateToProps)(HandleService);

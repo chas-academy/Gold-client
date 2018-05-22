@@ -7,7 +7,7 @@ import "./style.css";
 class CustomerBottomNav extends Component {
   constructor(props) {
     super(props);
-    this.logOut = this.logout.bind(this);
+    this.logOut = this.logOut.bind(this);
   }
 
   logOut(event){
@@ -35,9 +35,9 @@ class CustomerBottomNav extends Component {
             </Link>
           </li>
           <li>
-            <button className="logout" onClick={this.logOut}>
+            <a href="/logout" className="logout" onClick={this.logOut}>
               <i className="fas fa-sign-out-alt" />
-            </button>
+            </a>
           </li>
         </ul>
       </nav>
