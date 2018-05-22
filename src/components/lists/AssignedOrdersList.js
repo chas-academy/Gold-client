@@ -49,9 +49,12 @@ class AssignedOrdersList extends Component {
                     <Link to={`/admin/orders/${order.id}`}>
                       <div className="edit">
                         {order.company_name ? (
-                          <p>Kund: {order.company_name} </p>
+                          <div>
+                          <p>{order.company_name} </p>
+                          <p>{order.con_pers} </p>
+                          </div>
                         ) : (
-                          <p>Kund: {order.con_pers} </p>
+                          <p>{order.con_pers} </p>
                         )}
                         <p> Anställd: {} </p>
                       </div>
@@ -73,9 +76,12 @@ class AssignedOrdersList extends Component {
                     <Link to={`/admin/orders/${order.id}`}>
                       <div className="edit">
                         {order.company_name ? (
-                          <p>Kund: {order.company_name} </p>
+                          <div>
+                            <p> {order.company_name} </p>
+                            <p> {order.con_pers} </p>
+                          </div>
                         ) : (
-                          <p>Kund: {order.con_pers} </p>
+                          <p> {order.con_pers} </p>
                         )}
                         <p> Anställd: {} </p>
                       </div>
@@ -97,9 +103,14 @@ class AssignedOrdersList extends Component {
                   <Link to={`/admin/orders/${order.id}`}>
                     <div className="edit">
                       {order.company_name ? (
-                        <p>Kund: {order.company_name} </p>
+                        <div>
+                          <p>{order.company_name} </p>
+                          {order.con_pers ?
+                          <p> Kontakt: {order.con_pers} </p>
+                          :('')}
+                        </div>
                       ) : (
-                        <p>Kund: {order.con_pers} </p>
+                        <p>{order.con_pers} </p>
                       )}
                       <p> Anställd: {} </p>
                     </div>

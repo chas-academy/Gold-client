@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { fetchServicesNew } from "../../redux/actions/admin/Orders";
 import { Tabs, TabLink, TabContent } from "react-tabs-redux";
 
 import Cookies from "universal-cookie";
@@ -8,10 +7,8 @@ import { Link, withRouter } from "react-router-dom";
 import "./style.css";
 
 class AdminHomeTop extends Component {
-  componentWillMount() {
-    const cookies = new Cookies();
-    var token = cookies.get("token");
-    this.props.dispatch(fetchServicesNew(token));
+  constructor(props) {
+    super(props);
   }
 
   render() {
@@ -21,9 +18,9 @@ class AdminHomeTop extends Component {
       order => order.order_type === "complaint"
     );
 
+    const { services } = this.props;
     return (
       <div className="BasicList__container AdminHome">
-        <div className="BasicList__container inner">
           <h4> Dagens ärenden </h4>
           <Tabs>
             <div className="history-tabs">
@@ -34,7 +31,7 @@ class AdminHomeTop extends Component {
                 Reklamationer
               </TabLink>
             </div>
-            <TabContent for="beställningar">
+            <TabContent for="beställningar" className="orders-list-fml">
               {newOrders.length ? (
                 <ul className="BasicList__list">
                   {newOrders.map(order => (
@@ -87,13 +84,8 @@ class AdminHomeTop extends Component {
             </TabContent>
           </Tabs>
         </div>
-      </div>
     );
   }
 }
 
-const mapStateToProps = state => ({
-  servicesNew: state.adminOrders.servicesNew
-});
-
-export default withRouter(connect(mapStateToProps)(AdminHomeTop));
+export default withRouter(AdminHomeTop);

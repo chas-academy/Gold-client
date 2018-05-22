@@ -25,7 +25,7 @@
   padding: 10px;
   color: #8bb1db; }
   #app div div div.navBar li.dropdown.open ul li a a:hover {
-    background-color: #000000e8;
+    background-color: #0000e8;
     text-decoration: none; }
 
 .slide-menu {
@@ -120,6 +120,8 @@
 @media (min-width: 800px) {
   .fa-sign-out-alt {
     margin-left: 2px !important; }
+  .services {
+    transition: none !important; }
   .slide-menu {
     width: 30% !important;
     height: 82vh !important; }
@@ -127,7 +129,7 @@
     padding: 3.64vh; }
   .services__press {
     visibility: hidden; }
-  .slide-menu__header {
+  .slide-menu__header, .slide-menu__header2 {
     color: #F2F2F2;
     background: none;
     font-size: 18px;

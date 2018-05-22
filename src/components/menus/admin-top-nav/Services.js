@@ -16,7 +16,7 @@ class AdminTopServices extends Component {
   
       this.openMenuServices = this.openMenuServices.bind(this);
     }
-    componentDidMount() {
+    componentDidMount(event) {
       let width = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
       if(width > '800') {
         this.setState({ openServices: true })
@@ -44,10 +44,10 @@ class AdminTopServices extends Component {
         } else {
           this.setState({ openServices: true })
         }
+        
       }
 
       render() {
-
         const { openServices } = this.state;
         return (
     
@@ -79,6 +79,10 @@ class AdminTopServices extends Component {
                 <i className="fas fa-history slide"></i>
                 Avslutade
               </a> 
+              <a id="logout" className="menu-item" href={`/logout`} onClick={this.logOut}>
+                <i className="fas fa-sign-out-alt slide" />
+                Logga ut
+              </a>
         </Menu>  
       </div>
     );

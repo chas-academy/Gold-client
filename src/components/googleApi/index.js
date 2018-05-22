@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { connect } from "react-redux";
 import GoogleMapReact from "google-map-react";
 import { AdminBottomNav } from '../../components';
 
@@ -7,7 +6,6 @@ import Cookies from "universal-cookie";
 import Moment from "react-moment";
 import moment from "moment";
 
-import { fetchServicesNew, fetchServicesAssigned, fetchServicesDone } from "../../redux/actions/admin/Orders";
 
 import "./style.css";
 import stylesDay from "./Styles-day.json";
@@ -24,11 +22,6 @@ class MapContainer extends Component {
   }
 
   componentWillMount() {
-    const cookies = new Cookies();
-    var token = cookies.get("token");
-    this.props.dispatch(fetchServicesNew(token));
-    this.props.dispatch(fetchServicesAssigned(token));
-    this.props.dispatch(fetchServicesDone(token));
 
     const time = moment().format("HH");
 
@@ -54,7 +47,7 @@ class MapContainer extends Component {
 
     const { mapOptions, message } = this.state;
     
-    
+  
     const NewServices = servicesNew.filter(order => order.status === "new");
     const NewOrders = NewServices.filter(order => order.order_type === 'order');
     const NewComplaints = NewServices.filter(order => order.order_type === 'complaints');
@@ -218,11 +211,6 @@ class MapContainer extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  servicesNew: state.adminOrders.servicesNew,
-  servicesAssigned: state.adminOrders.servicesAssigned,
-  servicesDone: state.adminOrders.servicesDone,
 
-});
 
-export default connect(mapStateToProps)(MapContainer);
+export default MapContainer;

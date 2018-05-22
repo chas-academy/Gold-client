@@ -13,6 +13,7 @@ export { default as PrivateCustomers } from './admin/accounts/PrivateCustomers';
 export { default as Profile } from './admin/accounts/Profile';
 
 // Admin - orders
+export { default as AdminHome } from './admin/AdminHome';
 export { default as Order } from './admin/orders/Order';
 export { default as Orders } from './admin/orders/Orders';
 export { default as AddOrders } from './admin/orders/AddOrders';

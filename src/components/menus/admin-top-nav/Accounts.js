@@ -69,10 +69,6 @@ class AdminTopAccounts extends Component {
             Min profil
             <i className="fas fa-user-circle slide2"></i>
           </a>
-        <a id="logout" className="menu-item2" href={`/logout`} onClick={this.logOut}>
-          Logga ut
-          <i className="fas fa-sign-out-alt slide2" />
-        </a>
         </Menu>  
       </div>
     );
