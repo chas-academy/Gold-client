@@ -7,6 +7,9 @@ import Select from 'react-select'
 import 'react-select/dist/react-select.css';
 
 class MultipleSelect extends Component {
+  constructor(props) {
+    super(props)
+  }
   state = {
     selectedOption: '',
   }
@@ -26,6 +29,10 @@ class MultipleSelect extends Component {
     this.setState({ selectedOption: employeeId });
   }
 
+  setEmp(selectedOption) {
+    this.props.getEmps(this.state.selectedOption)
+  }
+
   render() {
   	const { selectedOption } = this.state;
     const { employees } = this.props;
@@ -37,6 +44,7 @@ class MultipleSelect extends Component {
         placeholder="Välj Anställd"
         value={selectedOption}
         onChange={this.handleChange}
+        onBlur={this.setEmp.bind(this)}
         options={ 
           employees.map(employee => (
             { value: employee.id, label: employee.name }

@@ -17,6 +17,9 @@ import {
     FETCH_SERVICES_DONE_START,
     FETCH_SERVICES_DONE_SUCCESS,
     FETCH_SERVICES_DONE_FAILURE,
+    FETCH_SERVICE_HANDLE_START,
+    FETCH_SERVICE_HANDLE_SUCCESS,
+    FETCH_SERVICE_HANDLE_FAILURE,
     FETCH_ORDER_START, 
     FETCH_ORDER_SUCCESS, 
     FETCH_ORDER_FAILURE,
@@ -51,6 +54,7 @@ const initialState = {
     internalOrders: [],
     complaint: {},
     complaints: [],
+    form: {},
     errorMessage: null
 };
 

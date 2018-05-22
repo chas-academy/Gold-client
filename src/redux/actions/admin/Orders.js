@@ -17,6 +17,9 @@ import {
   FETCH_SERVICES_DONE_START,
   FETCH_SERVICES_DONE_SUCCESS,
   FETCH_SERVICES_DONE_FAILURE,
+  FETCH_SERVICE_HANDLE_START,
+  FETCH_SERVICE_HANDLE_SUCCESS,
+  FETCH_SERVICE_HANDLE_FAILURE,
   FETCH_ORDER_START,
   FETCH_ORDER_SUCCESS,
   FETCH_ORDER_FAILURE,
@@ -189,6 +192,43 @@ export const fetchServicesDone = token => dispatch => {
     .catch(response => {
       console.error("An error occured when fetching the services");
       return dispatch({ type: FETCH_SERVICES_DONE_FAILURE });
+    });
+};
+
+
+/* ------------ SERVICES HANDLE --------------- */
+
+export const requestServicesHandle = () => ({
+  type: FETCH_SERVICE_HANDLE_START
+});
+
+export const ServicesHandleSuccess = servicesHandle => ({
+  type: FETCH_SERVICE_HANDLE_SUCCESS,
+  payload: servicesHandle
+});
+
+export const fetchServicesHandle = (token, id, form) => dispatch => {
+  dispatch(requestServicesHandle());
+
+  return fetch(`${process.env.REACT_APP_API_BASE_URL}/services/${id}/handle`, {
+    method: "PUT",
+    body: JSON.stringify(form),
+    headers: {
+      Authorization: token,
+      "Content-Type": "application/json"
+    }
+  })
+    .then(res => res.json())
+    .then(res => {
+      if (res.message) {
+        return dispatch(ServicesHandleSuccess(res.message));
+      } else {
+        return dispatch({ type: FETCH_SERVICE_HANDLE_FAILURE, payload: res.error });
+      }
+    })
+    .catch(response => {
+      console.error("An error occured when fetching the services");
+      return dispatch({ type: FETCH_SERVICE_HANDLE_FAILURE, payload: response.message });
     });
 };
 
