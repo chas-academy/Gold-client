@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import "./style.css";
 import { fetchService } from "../../redux/actions/employees";
+import { fetchServiceComplete } from "../../redux/actions/employees";
 import Cookies from "universal-cookie";
 import Moment from "react-moment";
 
@@ -13,6 +14,7 @@ class EmployeeOrderDetails extends Component {
     super(props);
 
     this.state = {
+      errorMessage: "",
       id: this.props.id
     }
   }
@@ -28,11 +30,27 @@ class EmployeeOrderDetails extends Component {
         .replace("-", "+")
         .replace("_", "/")
       ))
+    
+    this.setState({ token: token })
       
     this.props.dispatch(fetchService(token, this.state.id));
   }
 
+  completeJob(e) {
+    e.preventDefault()
+    this.props.dispatch(fetchServiceComplete(this.state.token, this.state.id))
+    .then((res) => {
+      if (res.type == "FETCH_SERVICE_COMPLETE_SUCCESS") {
+        this.props.history.push("/employee/incoming")
+      } else {
+        console.log(res)
+        this.setState({ errorMessage: res.payload })
+      }
+    })
+  }
+
   render() {
+    const { errorMessage } = this.state
     const { service } = this.props;
 
     return (
@@ -60,7 +78,8 @@ class EmployeeOrderDetails extends Component {
               <div className="employee__addPhoto">
                 <AddPhotos />
               </div>  
-            <EmployeeCompleteJob />
+            <EmployeeCompleteJob completeJob={this.completeJob.bind(this)} />
+            {errorMessage && <div className="help-block">{errorMessage}</div>}
             </div>
 
         </div>

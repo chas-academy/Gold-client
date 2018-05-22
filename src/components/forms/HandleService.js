@@ -70,7 +70,7 @@ class HandleService extends Component {
     if (this.state.employees.length > 0) {
       this.props.dispatch(fetchServicesHandle(this.state.token, this.state.id, form))
       .then((res) => {
-        if (res.type == "FETCH_ORDER_CREATE_SUCCESS") {
+        if (res.type == "FETCH_SERVICE_HANDLE_SUCCESS") {
           this.setState({ message: res.payload })
         } else {
           console.log(res)

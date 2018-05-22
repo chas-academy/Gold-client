@@ -14,7 +14,7 @@ export default class EmployeeOrderView extends Component {
     return (
       <div className="fix-employee">
         <div className="col-md-6 col-md-offset-3">
-          <EmployeeOrderDetails id={this.props.match.params.id} />
+          <EmployeeOrderDetails id={this.props.match.params.id} history={this.props.history} />
         </div>
         <EmployeeBottomNav />
       </div>
