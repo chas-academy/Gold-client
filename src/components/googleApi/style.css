@@ -45,3 +45,7 @@
     font-family: 'Quicksand', sans-serif;
     letter-spacing: 1px;
   }
+
+  #app > div > div > div.map > div:nth-child(1) > div > div > div > div:nth-child(3) > a > div > img, #app > div > div > div.map > div:nth-child(1) > div > div > div > div.gmnoprint.gm-style-cc > div:nth-child(1) > div:nth-child(2), #app > div > div > div.map > div:nth-child(1) > div > div > div > div.gmnoprint.gm-style-cc > div:nth-child(2) > a, #app > div > div > div.map > div:nth-child(1) > div > div > div > div.gmnoprint.gm-style-cc > div:nth-child(2), #app > div > div > div.map > div:nth-child(1) > div > div > div > div:nth-child(5) > div > div:nth-child(1) > div:nth-child(2), #app > div > div > div.map > div:nth-child(1) > div > div > div > div:nth-child(5) > div > div:nth-child(2) > span {
+    display: none;
+  }
