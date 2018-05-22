@@ -10,7 +10,10 @@ import {
   FETCH_EMP_INTERNAL_FAILURE,
   FETCH_EMP_DONE_REQUEST,
   FETCH_EMP_DONE_SUCCESS,
-  FETCH_EMP_DONE_FAILURE
+  FETCH_EMP_DONE_FAILURE,
+  FETCH_SERVICE_COMPLETE_START,
+  FETCH_SERVICE_COMPLETE_SUCCESS,
+  FETCH_SERVICE_COMPLETE_FAILURE
 } from "./Types";
 import { RSA_NO_PADDING } from "constants";
 
@@ -180,5 +183,42 @@ export const fetchDone = (userId, token) => dispatch => {
     })
     .catch(err => {
       return dispatch(fetchDoneFailure("Det uppståd ett problem att hämta färdiga ärenden"));
+    });
+};
+
+
+/* ------------ SERVICES COMPLETE --------------- */
+
+export const requestServiceComplete = () => ({
+  type: FETCH_SERVICE_COMPLETE_START
+});
+
+export const ServiceCompleteSuccess = serviceComplete => ({
+  type: FETCH_SERVICE_COMPLETE_SUCCESS,
+  payload: serviceComplete
+});
+
+export const fetchServiceComplete = (token, id) => dispatch => {
+  dispatch(requestServiceComplete());
+
+  return fetch(`${process.env.REACT_APP_API_BASE_URL}/services/${id}/complete`, {
+    method: "PUT",
+    body: JSON.stringify(),
+    headers: {
+      Authorization: token,
+      "Content-Type": "application/json"
+    }
+  })
+    .then(res => res.json())
+    .then(res => {
+      if (res.message) {
+        return dispatch(ServiceCompleteSuccess(res.message));
+      } else {
+        return dispatch({ type: FETCH_SERVICE_COMPLETE_FAILURE, payload: res.error });
+      }
+    })
+    .catch(response => {
+      console.error("An error occured when fetching the service");
+      return dispatch({ type: FETCH_SERVICE_COMPLETE_FAILURE, payload: response.message });
     });
 };
