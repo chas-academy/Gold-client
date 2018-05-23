@@ -66,7 +66,7 @@ class EmployeeOrderDetails extends Component {
             }
               <hr/>
             </li>
-            <li><Moment format="DD/MM  HH:MM">{service.datetime}</Moment></li>
+            <li><Moment format="DD/MM  HH:mm">{service.datetime}</Moment></li>
             <li>Adress: {service.order.address}</li>
             <hr/>
             <li>Beskrivning: {service.order.description} </li>
