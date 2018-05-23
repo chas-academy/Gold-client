@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Cookies from "universal-cookie";
 import { CustomerHome, EmployeeHome, AdminHome } from "../views";
+import './style.css';
 
 class Home extends Component {
   constructor(props) {

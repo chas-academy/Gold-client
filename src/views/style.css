@@ -81,4 +81,6 @@ body {
     top: 50px;
     margin-left: 20px;
 }
-
+a {
+    display: block
+}
