@@ -45,7 +45,6 @@ class AdminHomeTop extends Component {
                 </ul>
               ) : (
                 <div className="BasicList__container">
-                  <h4> Nya ärenden </h4>
                   <p>Inga nya ärenden att visa</p>
                 </div>
               )}
@@ -70,7 +69,6 @@ class AdminHomeTop extends Component {
                 </ul>
               ) : (
                 <div className="BasicList__container">
-                  <h4> Nya ärenden </h4>
                   <p>Inga nya reklamationer att visa</p>
                 </div>
               )}
