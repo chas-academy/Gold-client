@@ -34,9 +34,11 @@
     text-decoration: none; }
 
 .slide-menu {
-  background-color: rgba(49, 99, 165, 0.979);
+  background-color: rgb(49, 99, 165);
   margin-top: 0px;
-  height: 100vh; }
+  height: 100vh; 
+  z-index: 9999;  
+}
 
 .accounts {
   right: 0;
@@ -120,7 +122,7 @@
     text-decoration: none; }
 
 .slide-menu__press i:hover {
-  color: #2d2e2e; }
+  color: #f9fafa; }
 
 @media (min-width: 800px) {
   .fa-sign-out-alt {
