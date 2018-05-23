@@ -53,7 +53,6 @@ class ComplaintsList extends Component {
                           <p>{order.service.con_pers}</p>
                         )}
                         <p>Anställd: {}</p>
-                        <i className="fas fa-edit" />
                       </div>
                     </Link>
                   </li>
@@ -78,7 +77,6 @@ class ComplaintsList extends Component {
                           <p>{order.service.con_pers}</p>
                         )}
                         <p>Anställd: {}</p>
-                        <i className="fas fa-edit" />
                       </div>
                     </Link>
                   </li>

@@ -43,7 +43,7 @@ class OrdersList extends Component {
               <ul className="BasicList__list">
                 {AssignedOrders.map(order => (
                   <li key={order.service_id}>
-                  {console.log(order.service)}
+                  {console.log(order.service.employees[0].name)}
                     <Link to={`/admin/services/${order.service_id}`}>
                       <div className="edit">
                       <p><Moment format="MM/DD HH:mm">{order.service.datetime}</Moment></p>
@@ -56,9 +56,11 @@ class OrdersList extends Component {
                           <p>{order.service.con_pers}</p>
                         )}
                         <p>Anställd: </p>
-                        {order.service.employees.map(employee => {
-                          <p>{employee.name}</p>
-                        })}
+                        <div>
+                        {order.service.employees.map(employee => (
+                            <p>{employee.name}</p>
+                        ))}
+                        </div>
                       </div>
                     </Link>
                     <hr />

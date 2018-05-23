@@ -112,6 +112,7 @@ class HandleService extends Component {
       admin,
       employees,
       submitted,
+      successMessage,
       errorMessage,
     } = this.state;
 
@@ -137,13 +138,13 @@ class HandleService extends Component {
       <div className="col-md-6 col-md-offset-3">
         <form name="form" className="BasicForm" onSubmit={this.handleSubmit}>
         <h5> Hantera {this.type}</h5>
-      <hr />
         {service.company_name ?
         <div>
-          <p> Kund: {service.company_name} </p>
-          <p> Kontaktperson: {service.con_pers} </p>
+          <h5> {service.company_name} </h5>
+          <h5> {service.con_pers} </h5>
         </div>
-        : <p> Kund: {service.con_pers} </p>}
+        : <h5> {service.con_pers} </h5>}
+        <hr />
           <p> Tel: <a href={`tel:${service.con_tel}`}> {service.con_tel} </a> </p>
           <p> Önskat datum: <Moment format="YY-MM-DD" >{service.datetime}</Moment></p>
           <p> Önskad tid: <Moment format="HH:mm" >{service.datetime}</Moment></p>
@@ -171,6 +172,8 @@ class HandleService extends Component {
                 </div>
               )}
           </div>
+          <h5>Bekeräfta datum och tid</h5>
+          <hr />
           <DateTimePhoto admin={admin} getDate={this.getDate.bind(this)} getTime={this.getTime.bind(this)} />
           <div className="form-group">
             <MultipleSelect getEmps={this.getEmps.bind(this)} />
@@ -186,7 +189,7 @@ class HandleService extends Component {
               <button type="submit" className="btn btn-primary">
                 Skicka ärende till anställd
               </button>
-              {errorMessage && <div className="help-block">{errorMessage}</div>}
+              {errorMessage && successMessage && <div className="help-block">{errorMessage}{successMessage}</div>}
             </div>
             <div className="form-group">
               <button className="btn btn-danger" onClick={this.delete}>
