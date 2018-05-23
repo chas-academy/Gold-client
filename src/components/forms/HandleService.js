@@ -21,8 +21,8 @@ class HandleService extends Component {
     this.state = {
       admin: true,
       submitted: "",
-      successMessage: "",
       errorMessage: "",
+      successMessage:'',
       message: '',
       date: null,
       time: null,
@@ -66,8 +66,8 @@ class HandleService extends Component {
       .then((res) => {
         if (res.type === "SERVICE_HANDLE_SUCCESS") {
           this.setState({ successMessage: res.payload })
-          console.log(this.props)
         } else {
+          console.log(res)
           this.setState({ errorMessage: res.payload })
         }
       })
@@ -113,7 +113,6 @@ class HandleService extends Component {
       admin,
       employees,
       submitted,
-      successMessage,
       errorMessage,
     } = this.state;
 
@@ -147,7 +146,7 @@ class HandleService extends Component {
         </div>
         : <p> Kund: {service.con_pers} </p>}
           <p> Tel: <a href={`tel:${service.con_tel}`}> {service.con_tel} </a> </p>
-          <p> Önskat datum: <Moment format="DD/MM" >{service.datetime}</Moment></p>
+          <p> Önskat datum: <Moment format="YYDDMM" >{service.datetime}</Moment></p>
           <p> Önskad tid: <Moment format="HH:mm" >{service.datetime}</Moment></p>
           {/* {this.photos.map(photo => {
             <img src={photo} />
@@ -189,7 +188,6 @@ class HandleService extends Component {
                 Skicka ärende till anställd
               </button>
               {errorMessage && <div className="help-block">{errorMessage}</div>}
-              {successMessage && <div className="help-block">{successMessage}</div>}
             </div>
             <div className="form-group">
               <button className="btn btn-danger" onClick={this.delete}>
@@ -205,7 +203,7 @@ class HandleService extends Component {
 
 const mapStateToProps = dispatch => ({
   service: dispatch.adminOrders.service,
-  successMessage: dispatch.adminOrders.successMessage
+  // handleOrder: dispatch.fetchServicesHandle
 });
 
 export default connect(mapStateToProps)(HandleService);

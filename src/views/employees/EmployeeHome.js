@@ -94,9 +94,6 @@ class EmployeeHome extends Component {
             </button>
           </div>
         </div>
-        <Link to={`/contact`}>
-            <p className="CustomerHome__contact"></p>
-        </Link>
       </div>
     );
   }
