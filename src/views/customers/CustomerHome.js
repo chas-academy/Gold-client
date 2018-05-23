@@ -45,34 +45,34 @@ class CustomerHome extends Component {
         <div className="CustomerHome__menu">
           <h3 className="CustomerHome__welcome">Välkommen {userName}!</h3>
           <div>
-              <Link to={`/orders/add`}>
             <button className="CustomerHome__buttons">
+              <Link to={`/orders/add`}>
                 <i className="fas fa-shopping-cart" />
                 <p className="CustomerHome__buttonText"> Beställ tjänst</p>
-            </button>
               </Link>
-              <Link to={`/complaints`}>
+            </button>
             <button className="CustomerHome__buttons">
+              <Link to={`/complaints`}>
                 <i className="fas fa-exclamation-triangle" />
                 <p className="CustomerHome__buttonText"> Reklamera</p>
-            </button>
               </Link>
+            </button>
           </div>
           <div>
-              <Link to={`/history`}>
             <button className="CustomerHome__buttons">
+              <Link to={`/history`}>
                 <i className="fas fa-history" />
                 <p className="CustomerHome__buttonText">
-                  Beställningshistorik
+                  Historik
                 </p>
-            </button>
               </Link>
-              <Link to={`/profile`}>
+            </button>
             <button className="CustomerHome__buttons">
+              <Link to={`/profile`}>
                 <i className="fas fa-user-circle" />
                 <p className="CustomerHome__buttonText"> Redigera profil</p>
-            </button>
               </Link>
+            </button>
           </div>
         </div>
           <div className="CustomerHome__contact">
