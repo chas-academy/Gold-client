@@ -28,21 +28,34 @@
     font-size: 14px !important;
 }
 
-.react-datepicker-popper[data-placement^="top"] {
-    transform: translate3d(0px, 380px, 0px) !important;
+#add-order > div:nth-child(5) > div.DateTime__container > div:nth-child(1) > div > div.react-datepicker-popper {
+    transform: translate3d(0px, 377px, 0px) !important;
 }
 
+.react-datepicker__triangle {
+    margin-left: -10px !important;
+}
 
 .DateTime__container {
     display: flex;
+    flex-direction: column;
     width: 100%;
-    margin-top: 25%;
     margin-bottom: 3%;
 }
 
 .DateTime__buttons {
-    flex-direction: column;
+    display: flex;
     align-items: center;
+    width: 50%;
+    margin: 5px;
+}
+
+.DateTime_small {
+    padding: 12px;
+    border-radius: 100%;
+    border: 3px solid #3161A6;
+    background-color: white;
+    font-size: 10px;
 }
 
 .DateTime__input {
@@ -50,7 +63,6 @@
     background-color: rgba(255, 255, 255, 0.014);
     border: none;
     text-align: center;
-    margin-left: 5px;
 }
 
 .DateTime__buttons > input::placeholder{
@@ -65,7 +77,7 @@
 
 .fa-calendar-alt, .fa-clock {
     color: #0f2f56;
-    font-size: 28px;
+    font-size: 20px;
 }
 
 

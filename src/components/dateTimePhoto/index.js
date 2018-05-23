@@ -43,31 +43,21 @@ class DateTimePhoto extends Component {
     
     return (
       <div className="DateTime__container">
-          <div className="DateTime__buttons">
-            <button type="button" className="AddPhotos__button">
-              <i className="fas fa-calendar-alt" />
-            </button>
-
-          {this.admin = false ?
+        <div className="DateTime__buttons">  
+          <button className="DateTime_small">    
+            <i className="fas fa-calendar-alt" />
+          </button>  
             <DatePicker
               selected={this.state.startDate}
               onChange={this.handleChange}
               dateFormat='Y-MM-DD'
               onBlur={this.setDate.bind(this)}
             />
-            : 
-            <DatePicker
-            selected={this.state.startDate}
-            onChange={this.handleChange}
-            dateFormat='Y-MM-DD'
-            onBlur={this.setDate.bind(this)}
-          />}
-
-          </div>
-          <div className="DateTime__buttons">
-            <button type="button" className="AddPhotos__button">
-              <i className="fas fa-clock" />
-            </button>   
+        </div>
+        <div className="DateTime__buttons"> 
+          <button className="DateTime_small">    
+            <i className="fas fa-clock" />
+          </button>    
             <input
               className="DateTime__input"
               type="time"
@@ -77,10 +67,8 @@ class DateTimePhoto extends Component {
               onChange={this.setTime.bind(this)}
               onBlur={this.setTime.bind(this)}
             />
-          </div>
-            <AddPhotos
-            setPhoto={this.setPhoto.bind(this)}
-            />
+          </div>  
+            <AddPhotos setPhoto={this.setPhoto.bind(this)} />
       </div>
     );
   }
