@@ -67,6 +67,7 @@ class App extends Component {
           <Route path='/employee/incoming' component={EmployeeIncoming} />
           <Route path='/employee/services/:id' component={EmployeeOrderView} />
           <Route path='/profile' component={CustomerProfile} />
+          <Route path='/complaints/:id' component={CustomerComplaints} />
           <Route path='/complaints' component={CustomerComplaints} />
           <Route path='/history' component={CustomerHistory} />
           <Route path='/orders/add' component={CustomerOrders} />

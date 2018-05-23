@@ -133,17 +133,16 @@ export const createComplaintSuccess = complaint => ({
 	payload: complaint
 });
 
-export const createComplaint = form => dispatch => {
+export const createComplaint = (form, token) => dispatch => {
 	dispatch(startCreateComplaint());
-	
-	const cookies = new Cookies();
-	const token = cookies.get('token')
-	return fetch(process.env.REACT_APP_API_BASE_URL + "/complaint/create", {
+
+	return fetch(process.env.REACT_APP_API_BASE_URL + "/complaints/create", {
 		method: "POST",
-			body: form.form,
-			headers: {
-				"Authorization": token
-			}
+		body: JSON.stringify(form),
+		headers: {
+			"Authorization": token,
+			"Content-Type": "application/json"
+		}
 	})
 	.then(res => res.json())
 	.then(res => {
@@ -153,8 +152,8 @@ export const createComplaint = form => dispatch => {
 			return dispatch(createComplaintSuccess(res.message));
 		}
 	})
-	.catch(response => {
-		return dispatch(failedCreateComplaint(response.error));
+	.catch(res => {
+		return dispatch(failedCreateComplaint(res.error));
 	});
 };
   

@@ -32,7 +32,7 @@ class CustomerOrderDetails extends Component {
 
                 </div> : ('')}
                 {service.complaint ? <div>
-                  <p><strong>Adress:</strong> {service.complaint.address}</p>
+                  <p><strong>Adress:</strong> {service.complaint.order.address}</p>
                   <p><strong>Description:</strong> {service.complaint.description}</p>
 
                 </div> : ('')}
