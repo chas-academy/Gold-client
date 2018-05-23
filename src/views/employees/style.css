@@ -19,7 +19,6 @@
 
 .tab-link-active {
     color: black;
-    border-radius: 0 !important;
     border-bottom: 3px solid rgba(128, 128, 128, 0.185);
 }
 

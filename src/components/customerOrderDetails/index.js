@@ -4,29 +4,23 @@ import { fetchService } from "../../redux/actions/customers/Services";
 import Cookies from "universal-cookie";
 import moment from "moment";
 import { withRouter } from "react-router-dom";
-// import { connect } from "react-redux";
 
 class CustomerOrderDetails extends Component {
-  constructor(props) {
-    super(props)
-  }
+
   componentDidMount() {
     const cookies = new Cookies();
     var token = cookies.get("token");
-    const user = JSON.parse(
-      window.atob(
-        token
-          .split(".")[1]
-          .replace("-", "+")
-          .replace("_", "/")
-      )
-    );
+
     this.props.dispatch(fetchService(token, this.props.id));
   }
 
   render() {
     const { isFetching, service } = this.props;
-
+    
+    if(isFetching) {
+      return <i className="fas fa-circle-notch fa-spin"></i>;
+    }
+    
     return (
       <div className="EmployeeOrderDetails">
             <ul className="BasicList__list orderDetails">

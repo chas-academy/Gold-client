@@ -1,8 +1,12 @@
 .TopNav {
   width: 100%;
+  height: 70px;
   display: flex;
+  position: fixed;
   justify-content: space-around;
-  background-color: #3164a5; }
+  background-color: #3164a5; 
+
+}
 
 .navBar {
   position: absolute;

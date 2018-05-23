@@ -20,7 +20,7 @@ class ComplaintsList extends Component {
       const { complaints, isFetching } = this.props;
 
       if(isFetching) {
-        return <i class="fas fa-circle-notch fa-spin"></i>;
+        return <i className="fas fa-circle-notch fa-spin"></i>;
       }
 
       const AssignedComplaints = complaints.filter(order => order.service.status === "assigned");
