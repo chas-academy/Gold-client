@@ -14,7 +14,6 @@ class AdminHomeTop extends Component {
 
     return (
       <div className="BasicList__container AdminHome">
-          <h4> Dagens ärenden </h4>
           <Tabs>
             <div className="history-tabs">
               <TabLink className="history-tablink" to="beställningar">
@@ -37,7 +36,6 @@ class AdminHomeTop extends Component {
                             <p> {order.con_pers} </p>
                           )}
                             <p> Hantera </p>
-
                         </div>
                       </Link>
                     </li>

@@ -39,7 +39,7 @@
 
 .menu-item2 {
   font-size: 16px;
-  padding: 30px;
+  padding: 20px;
   color: white;
   padding-right: 40px;
   width: 100%;
@@ -55,7 +55,7 @@
 
 .menu-item {
   font-size: 16px;
-  padding: 30px;
+  padding: 20px;
   color: white;
   padding-left: 40px;
   border-bottom: 1px solid rgba(249, 250, 252, 0.24); }
@@ -115,7 +115,7 @@
     text-decoration: none; }
 
 .slide-menu__press i:hover {
-  color: #2d2e2e; }
+  color: #ffffff; }
 
 @media (min-width: 800px) {
   .fa-sign-out-alt {
