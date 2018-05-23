@@ -21,6 +21,7 @@ class HandleService extends Component {
     this.state = {
       admin: true,
       submitted: "",
+      successMessage: "",
       errorMessage: "",
       message: '',
       date: null,
@@ -64,9 +65,9 @@ class HandleService extends Component {
       this.props.dispatch(fetchServicesHandle(this.state.token, this.state.id, form))
       .then((res) => {
         if (res.type === "SERVICE_HANDLE_SUCCESS") {
-          this.setState({ message: res.payload })
+          this.setState({ successMessage: res.payload })
+          console.log(this.props)
         } else {
-          console.log(res)
           this.setState({ errorMessage: res.payload })
         }
       })
@@ -112,6 +113,7 @@ class HandleService extends Component {
       admin,
       employees,
       submitted,
+      successMessage,
       errorMessage,
     } = this.state;
 
@@ -187,6 +189,7 @@ class HandleService extends Component {
                 Skicka ärende till anställd
               </button>
               {errorMessage && <div className="help-block">{errorMessage}</div>}
+              {successMessage && <div className="help-block">{successMessage}</div>}
             </div>
             <div className="form-group">
               <button className="btn btn-danger" onClick={this.delete}>
@@ -202,7 +205,7 @@ class HandleService extends Component {
 
 const mapStateToProps = dispatch => ({
   service: dispatch.adminOrders.service,
-  // handleOrder: dispatch.fetchServicesHandle
+  successMessage: dispatch.adminOrders.successMessage
 });
 
 export default connect(mapStateToProps)(HandleService);

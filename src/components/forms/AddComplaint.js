@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-// import { loginUser } from '../actions/auth';
-// import { connect } from 'react-redux';
-// import { withRouter } from 'react-router-dom';
+import Cookies from 'universal-cookie'
+import { createComplaint } from '../../redux/actions/customers/Services';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 
 import { DateTimePhoto, MultipleSelect  } from '../../components'
 
@@ -15,14 +16,44 @@ class AddComplaint extends Component {
         submitted: '',
         orderId: '',
         description: '',
+        photo: null,
         employee: '',
+        successMessage: '',
         errorMessage: '',
-        isAdmin: this.props
+        isAdmin: this.props.isAdmin
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
   }  
+
+  componentDidMount() {
+		const cookies = new Cookies();
+		var token = cookies.get("token");
+		const user = JSON.parse(
+			window.atob(
+				token
+				.split(".")[1]
+				.replace("-", "+")
+				.replace("_", "/")
+			)
+    );
+
+    this.setState({ token: token })
+    this.props.id ? this.setState({ orderId: this.props.id }) : ('')
+  }
+
+	getDate(date) {
+		this.setState({ date: date })
+	}
+
+	getTime(time) {
+		this.setState({ time: time })
+	}
+
+	getPhoto(photo) {
+		this.setState({ photo: photo })
+	}
 
   handleChange(event) {
     const { name, value } = event.target;
@@ -30,13 +61,30 @@ class AddComplaint extends Component {
   }
 
   handleSubmit(event) {
-    event.preventDefault(); 
+    event.preventDefault();
+
+    const form = {
+      order_id: this.state.orderId,
+      date: this.state.date,
+      time: this.state.time,
+      description: this.state.description,
+      // image_path: this.state.photo
+    }
+
+    this.props.dispatch(createComplaint(form, this.state.token))
+      .then((res) => {
+        if (res.type === "COMPLAINT_CREATE_SUCCESS") {
+          this.setState({ successMessage: res.payload })
+        } else {
+          this.setState({ errorMessage: res.payload })
+        }
+    })
     this.setState({ submitted: true });
 
   }
 
     render() {
-    const { isAdmin, submitted, orderId, description, employee,  errorMessage } = this.state;
+    const { isAdmin, submitted, orderId, description, employee, successMessage, errorMessage } = this.state;
 
     return (
     <div className="col-md-6 col-md-offset-3">
@@ -63,15 +111,14 @@ class AddComplaint extends Component {
             }
           </div>
           : ('')}
-            <DateTimePhoto />
+            <DateTimePhoto getDate={this.getDate.bind(this)} getTime={this.getTime.bind(this)} getPhoto={this.getPhoto.bind(this)} />
           <div className="buttons">
           <div className="form-group">
             <button type="submit" className="btn btn-primary">
               Skicka
             </button>
-              {errorMessage &&
-              <div className="help-block">{errorMessage}</div>  
-              }
+              {errorMessage && <div className="help-block">{errorMessage}</div>}
+              {successMessage && <div className="help-block">{successMessage}</div>}
               </div>
           </div>  
         </form> 
@@ -80,5 +127,9 @@ class AddComplaint extends Component {
   }
 
 }
-  
-export default AddComplaint;
+
+const mapStateToProps = dispatch => ({
+  isFetching: dispatch.customer.isFetching
+});
+
+export default connect(mapStateToProps)(AddComplaint);

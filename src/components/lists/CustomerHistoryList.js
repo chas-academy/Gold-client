@@ -72,8 +72,7 @@ class CustomerHistoryList extends Component {
                                 <p>Beställningsnummer - {order.id} <br></br> Beställare - {order.con_pers}</p>
                                 <p>Datum:<br></br>{moment(order.datetime).format('Y-MM-DD HH:mm')}</p>
                             </Link>
-                            <a><i className="fas fa-exclamation-triangle" /> Skapa
-                            Reklamation</a>
+                            <Link to={`/complaints/${order.id}`}><i className="fas fa-exclamation-triangle" /> Skapa Reklamation</Link>
                           </div>
                           <hr></hr>
                       </li>
@@ -95,8 +94,6 @@ class CustomerHistoryList extends Component {
                               <p>Beställare - {complaint.con_pers}</p>
                               <p>Datum:<br></br>{moment(complaint.datetime).format('Y-MM-DD HH:mm')}</p>
                           </Link>
-                          <a><i className="fas fa-exclamation-triangle" /> Skapa
-                          Reklamation</a>
                         </div>
                         <hr></hr>
                       </li>

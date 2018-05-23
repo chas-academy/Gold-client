@@ -55,6 +55,7 @@ const initialState = {
     complaint: {},
     complaints: [],
     form: {},
+    successMessage: null,
     errorMessage: null
 };
 
@@ -272,7 +273,7 @@ const adminOrdersReducer = (state = initialState, action) => {
             return {
                 ...state,
                 isFetching: false,
-                service: action.payload
+                successMessage: action.payload
              };
             case SERVICE_HANDLE_FAILURE:
             return {
