@@ -63,6 +63,7 @@
     background-color: rgba(255, 255, 255, 0.014);
     border: none;
     text-align: center;
+    margin-left: 15px;
 }
 
 .DateTime__buttons > input::placeholder{
