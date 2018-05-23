@@ -32,7 +32,7 @@ class EmployeeIncomingList extends Component {
     const { isFetching, Assigned } = this.props;
 
     if(isFetching) {
-      return <i class="fas fa-circle-notch fa-spin"></i>;
+      return <i className="fas fa-circle-notch fa-spin"></i>;
     }
     const newOrders = Assigned.filter(order => order.order_type === "order");
     const newComplaints = Assigned.filter(order => order.order_type === "complaint");

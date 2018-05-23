@@ -20,7 +20,7 @@ class CompanyList extends Component {
     const { companies, isFetching } = this.props;
 
     if(isFetching) {
-      return <i class="fas fa-circle-notch fa-spin"></i>;
+      return <i className="fas fa-circle-notch fa-spin"></i>;
     }
     
     return (
