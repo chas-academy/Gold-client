@@ -144,9 +144,9 @@ class HandleService extends Component {
           <p> Kontaktperson: {service.con_pers} </p>
         </div>
         : <p> Kund: {service.con_pers} </p>}
-          <p> tel: {service.con_tel} </p>
-          <p> datum: <Moment format="DD/MM" >{service.datetime}</Moment></p>
-          <p> tid: <Moment format="HH:mm" >{service.datetime}</Moment></p>
+          <p> Tel: <a href={`tel:${service.con_tel}`}> {service.con_tel} </a> </p>
+          <p> Önskat datum: <Moment format="DD/MM" >{service.datetime}</Moment></p>
+          <p> Önskad tid: <Moment format="HH:mm" >{service.datetime}</Moment></p>
           {/* {this.photos.map(photo => {
             <img src={photo} />
             console.log(photo)
@@ -171,7 +171,6 @@ class HandleService extends Component {
                 </div>
               )}
           </div>
-          <p className="BasicForm__ChangeTime">Byte av datum eller tid</p>
           <DateTimePhoto admin={admin} getDate={this.getDate.bind(this)} getTime={this.getTime.bind(this)} />
           <div className="form-group">
             <MultipleSelect getEmps={this.getEmps.bind(this)} />
