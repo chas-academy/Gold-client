@@ -21,8 +21,8 @@ class HandleService extends Component {
     this.state = {
       admin: true,
       submitted: "",
+      successMessage: "",
       errorMessage: "",
-      successMessage:'',
       message: '',
       date: null,
       time: null,
@@ -67,7 +67,6 @@ class HandleService extends Component {
         if (res.type === "SERVICE_HANDLE_SUCCESS") {
           this.setState({ successMessage: res.payload })
         } else {
-          console.log(res)
           this.setState({ errorMessage: res.payload })
         }
       })
@@ -146,7 +145,7 @@ class HandleService extends Component {
         </div>
         : <p> Kund: {service.con_pers} </p>}
           <p> Tel: <a href={`tel:${service.con_tel}`}> {service.con_tel} </a> </p>
-          <p> Önskat datum: <Moment format="YYDDMM" >{service.datetime}</Moment></p>
+          <p> Önskat datum: <Moment format="YY-MM-DD" >{service.datetime}</Moment></p>
           <p> Önskad tid: <Moment format="HH:mm" >{service.datetime}</Moment></p>
           {/* {this.photos.map(photo => {
             <img src={photo} />
@@ -203,7 +202,7 @@ class HandleService extends Component {
 
 const mapStateToProps = dispatch => ({
   service: dispatch.adminOrders.service,
-  // handleOrder: dispatch.fetchServicesHandle
+  successMessage: dispatch.adminOrders.successMessage
 });
 
 export default connect(mapStateToProps)(HandleService);
