@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { fetchEmployees } from "../../redux/actions/admin/Accounts";
 import Cookies from "universal-cookie";
-
+import { AddUser } from '../../components';
 import { Link, withRouter } from "react-router-dom";
 import './style.css'
 
@@ -27,14 +27,18 @@ class EmployeeList extends Component {
       <div className="BasicList__container">
         <h4> Anställda </h4>
         <ul className="BasicList__list">
+          <li>
+            <AddUser />
+          </li>
           {employees.map(employee => (
           <li key={employee.id}>
             <Link to={`/admin/accounts/employees/${employee.id}`}>
               <div className="edit">
                 <p> {employee.name} </p>
-                <i className="fas fa-cog"></i>
+                <i className="fas fa-cog fa-spin"></i>
               </div>
             </Link>
+            <hr />
           </li>
           ))}
         </ul>

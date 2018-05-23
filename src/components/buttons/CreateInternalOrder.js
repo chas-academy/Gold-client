@@ -6,7 +6,7 @@ const CreateInternalOrder = () => {
   return (
     <Link to={`/admin/orders/internal/add`}>
       <button className="Create__button">
-        <i className="fas fa-plus"></i>
+         <i className="fas fa-plus"></i>
       </button>
     </Link>
   );

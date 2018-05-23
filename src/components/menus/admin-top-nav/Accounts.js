@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Cookies from 'universal-cookie';
+import $ from 'jquery'; 
 
 import { withRouter } from 'react-router-dom'
 import { slide as Menu } from 'react-burger-menu'
@@ -16,7 +17,27 @@ class AdminTopAccounts extends Component {
   
       this.openMenuAccounts = this.openMenuAccounts.bind(this);
       this.logOut = this.logOut.bind(this);
+    }
 
+    componentDidMount(event) {
+      let width = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+      if(width > '800') {
+        this.setState({ openServices: true })
+      } else {
+        this.setState({ openServices: false })
+      }
+      let btn = $('.services__press');
+      let icon = $('i');
+      $(btn).click(function() {
+        if(icon.hasClass('fa-bars')){
+          $('.fa-bars').addClass('fa-times');
+          $('.fa-bars').removeClass('fa-bars');
+        }
+        else {
+          $('.fa-times').addClass('fa-bars');
+          $('.fa-times').removeClass('fa-times');
+        }
+      });
     }
 
     openMenuAccounts(event) {

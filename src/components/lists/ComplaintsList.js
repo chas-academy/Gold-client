@@ -3,8 +3,10 @@ import { connect } from "react-redux";
 import { fetchComplaints } from "../../redux/actions/admin/Orders";
 import Cookies from "universal-cookie";
 import { Tabs, TabLink, TabContent } from "react-tabs-redux";
-
+import { CreateComplaint } from '../../components';
 import { Link, withRouter } from "react-router-dom";
+import Moment from "react-moment";
+
 import './style.css'
 
 
@@ -31,6 +33,7 @@ class ComplaintsList extends Component {
       
       <div className="BasicList__container">
         <h4> Reklamationer </h4>
+        <CreateComplaint />
         <Tabs>
           <div className="history-tabs">
             <TabLink className="history-tablink" to="hanterade">
@@ -44,17 +47,27 @@ class ComplaintsList extends Component {
             {AssignedComplaints.length ? (
               <ul className="BasicList__list">
                 {AssignedComplaints.map(order => (
-                  <li key={order.service_id}>
-                    <Link to={`/admin/services/${order.service_id}`}>
+                  <li key={order.id}>
+                    <Link to={`/admin/services/${order.id}`}>
                       <div className="edit">
                         {order.service.company_name ? (
-                          <p>{order.service.company_name}</p>
+                          <div>
+                          <h5 className="customer">{order.service.company_name} </h5>
+                          <p>Kontaktperson: {order.service.con_pers} </p>
+                          </div>
                         ) : (
-                          <p>{order.service.con_pers}</p>
+                          <h5 className="customer">{order.service.con_pers} </h5>
                         )}
-                        <p>Anställd: {}</p>
+                        <Moment format="DD/MM HH:mm">{order.service.datetime}</Moment>
                       </div>
+                      <div className="employees">
+                        Tilldelat:
+                      {order.service.employees.map(employee => (
+                        <p className="employee"> {employee.name} </p>
+                      ))}
+                      </div>  
                     </Link>
+                    <hr />
                   </li>
                 ))}
               </ul>
@@ -76,8 +89,16 @@ class ComplaintsList extends Component {
                         ) : (
                           <p>{order.service.con_pers}</p>
                         )}
-                        <p>Anställd: {}</p>
                       </div>
+                      <div className="edit">
+                      <div className="employees">
+                        Avslutat av:
+                        {order.service.employees.map(employee => (
+                          <p className="employee"> {employee.name} </p>
+                        ))}
+                      </div>     
+                      <Moment format="DD/MM HH:mm">{order.service.updatedAt}</Moment>    
+                    </div>
                     </Link>
                   </li>
                 ))}

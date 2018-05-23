@@ -73,7 +73,7 @@ class AdminTopServices extends Component {
                 <i className="fas fa-envelope-open slide"></i>
                 Interna</a>
               <a id="complaints" className="menu-item" href={`/admin/orders/complaints`}>
-                <i className="fas fa-exclamation-triangle slide"></i>
+                <i className="fas fa-exclamation-circle slide"></i>
                 Reklamationer</a>
               <a id="completed" className="menu-item" href={`/admin/services/completed`}>
                 <i className="fas fa-history slide"></i>

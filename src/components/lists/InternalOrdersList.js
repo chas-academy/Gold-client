@@ -3,8 +3,10 @@ import { connect } from "react-redux";
 import { fetchInternalOrders } from "../../redux/actions/admin/Orders";
 import Cookies from "universal-cookie";
 import { Tabs, TabLink, TabContent } from "react-tabs-redux";
-
+import { CreateInternalOrder } from '../../components';
 import { Link, withRouter } from "react-router-dom";
+import Moment from "react-moment";
+
 import "./style.css";
 
 class InternalOrdersList extends Component {
@@ -32,6 +34,7 @@ class InternalOrdersList extends Component {
     return (
       <div className="BasicList__container">
         <h4> Interna ärenden </h4>
+        <CreateInternalOrder />
         <Tabs>
           <div className="history-tabs">
             <TabLink className="history-tablink" to="hanterade">
@@ -46,11 +49,17 @@ class InternalOrdersList extends Component {
               <ul className="BasicList__list">
                 {AssignedInternalOrders.map(order => (
                   <li key={order.service_id}>
-                    <Link to={`/admin/orders/${order.service_id}`}>
+                    <Link to={`/admin/services/${order.service_id}`}>
                       <div className="edit">
-                        <p>Ärende skapat: {order.service.createdAt}</p>
-                        <i className="fas fa-edit" />
+                        <p>Ärende nr: {order.service.id}</p>
+                        <p>Skapat: <Moment format="DD/MM HH:mm">{order.service.createdAt}</Moment></p>
                       </div>
+                      <div className="employees">
+                        Tilldelat:
+                      {order.service.employees.map(employee => (
+                        <p className="employee"> {employee.name} </p>
+                      ))}
+                      </div> 
                     </Link>
                   </li>
                 ))}
@@ -66,12 +75,13 @@ class InternalOrdersList extends Component {
               <ul className="BasicList__list">
                 {DoneInternalOrders.map(order => (
                   <li key={order.service_id}>
-                    <Link to={`/admin/orders/${order.service_id}`}>
+                    <Link to={`/admin/services/${order.service_id}`}>
                       <div className="edit">
-                        <p>Ärende skapat: {order.service.createdAt}</p>
-                        <i className="fas fa-edit" />
+                        <p>Ärende nr: {order.service.id}</p>
+                        <p>Avslutat: <Moment format="DD/MM HH:mm">{order.service.updatedAt}</Moment></p>
                       </div>
                     </Link>
+                    <hr />
                   </li>
                 ))}
               </ul>

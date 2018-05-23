@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { fetchServicesAssigned } from "../../redux/actions/admin/Orders";
 import { Tabs, TabLink, TabContent } from "react-tabs-redux";
 import Cookies from "universal-cookie";
+import Moment from "react-moment";
 
 import { Link, withRouter } from "react-router-dom";
 import "./style.css";
@@ -37,13 +38,16 @@ class AssignedOrdersList extends Component {
         <Tabs>
           <div className="history-tabs">
             <TabLink className="history-tablink" to="beställningar">
-              Beställningar
+              <i className="fas fa-list slide"></i>
+              <p>Beställningar</p>
             </TabLink>
             <TabLink className="history-tablink" to="reklamationer">
-              Reklamationer
+              <i className="fas fa-exclamation-circle slide"></i>
+              <p>Reklamationer</p>
             </TabLink>
             <TabLink className="history-tablink" to="Interna">
-              Interna
+              <i className="fas fa-envelope-open slide"></i>
+              <p>Interna</p>
             </TabLink>
           </div>
           <TabContent for="beställningar">
@@ -51,19 +55,26 @@ class AssignedOrdersList extends Component {
               <ul className="BasicList__list">
                 {assignedOrders.map(order => (
                   <li key={order.id}>
-                    <Link to={`/admin/orders/${order.id}`}>
+                    <Link to={`/admin/services/${order.id}`}>
                       <div className="edit">
                         {order.company_name ? (
                           <div>
-                          <p>{order.company_name} </p>
-                          <p>{order.con_pers} </p>
+                          <h5 className="customer">{order.company_name} </h5>
+                          <p>Kontaktperson: {order.con_pers} </p>
                           </div>
                         ) : (
-                          <p>{order.con_pers} </p>
+                          <h5 className="customer">{order.con_pers} </h5>
                         )}
-                        <p> Anställd: {} </p>
+                        <Moment format="DD/MM HH:mm">{order.datetime}</Moment>
                       </div>
+                      <div className="employees">
+                        Tilldelat:
+                      {order.employees.map(employee => (
+                        <p className="employee"> {employee.name} </p>
+                      ))}
+                      </div>  
                     </Link>
+                    <hr />
                   </li>
                 ))}
               </ul>
@@ -78,19 +89,26 @@ class AssignedOrdersList extends Component {
               <ul className="BasicList__list">
                 {assignedComplaints.map(order => (
                   <li key={order.id}>
-                    <Link to={`/admin/orders/${order.id}`}>
+                    <Link to={`/admin/services/${order.id}`}>
                       <div className="edit">
                         {order.company_name ? (
                           <div>
-                            <p> {order.company_name} </p>
-                            <p> {order.con_pers} </p>
+                          <h5 className="customer">{order.company_name} </h5>
+                          <p>Kontaktperson: {order.con_pers} </p>
                           </div>
                         ) : (
-                          <p> {order.con_pers} </p>
+                          <h5 className="customer">{order.con_pers} </h5>
                         )}
-                        <p> Anställd: {} </p>
+                        <Moment format="DD/MM HH:mm">{order.datetime}</Moment>
                       </div>
+                      <div className="employees">
+                        Tilldelat:
+                      {order.employees.map(employee => (
+                        <p className="employee"> {employee.name} </p>
+                      ))}
+                      </div>  
                     </Link>
+                    <hr />
                   </li>
                 ))}
               </ul>
@@ -104,23 +122,23 @@ class AssignedOrdersList extends Component {
           {assignedInternalOrders.length ? (
             <ul className="BasicList__list">
               {assignedInternalOrders.map(order => (
-                <li key={order.id}>
-                  <Link to={`/admin/orders/${order.id}`}>
-                    <div className="edit">
-                      {order.company_name ? (
-                        <div>
-                          <p>{order.company_name} </p>
-                          {order.con_pers ?
-                          <p> Kontakt: {order.con_pers} </p>
-                          :('')}
-                        </div>
-                      ) : (
-                        <p>{order.con_pers} </p>
-                      )}
-                      <p> Anställd: {} </p>
-                    </div>
-                  </Link>
-                </li>
+                  <li key={order.id}>
+                    <Link to={`/admin/services/${order.id}`}>
+                      <div className="edit">
+                          <div>
+                          <h5 className="customer"> Internt </h5>
+                          </div>
+                        <Moment format="DD/MM HH:mm">{order.datetime}</Moment>
+                      </div>
+                      <div className="employees">
+                        Tilldelat:
+                      {order.employees.map(employee => (
+                        <p className="employee"> {employee.name} </p>
+                      ))}
+                      </div>  
+                    </Link>
+                    <hr />
+                  </li>
               ))}
             </ul>
         ) : (

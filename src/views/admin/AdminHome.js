@@ -29,8 +29,8 @@ class AdminHome extends Component {
     return (
       <div>
         <AdminTopNav />
-        <AdminHomeTop servicesNew={servicesNew} />
         <MapContainer servicesNew={servicesNew} servicesAssigned={servicesAssigned} servicesDone={servicesDone} />
+        <AdminHomeTop servicesNew={servicesNew} />
       </div>
     );
   }

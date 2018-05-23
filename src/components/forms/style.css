@@ -138,9 +138,6 @@ input:focus {
 ::placeholder {
   color: rgba(14, 46, 95, 0.336) !important; }
 
-/* .obl::placeholder {
- *    color: red !important;
- *} */
 .BasicForm__checkboxContainer {
   display: block;
   position: relative;
