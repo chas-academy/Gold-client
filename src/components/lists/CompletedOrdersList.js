@@ -7,6 +7,7 @@ import Cookies from "universal-cookie";
 import { Link, withRouter } from "react-router-dom";
 import "./style.css";
 import CompletedOrders from "../../views/admin/orders/CompletedOrders";
+import moment from "moment";
 
 class CompletedOrdersList extends Component {
   constructor(props) {
@@ -37,11 +38,7 @@ class CompletedOrdersList extends Component {
   render() {
     const { isAdmin } = this.state;
 
-    const { servicesDone, isFetching } = this.props;
-
-    if(isFetching) {
-      return <i class="fas fa-circle-notch fa-spin"></i>;
-    }
+    const { isFetching, servicesDone } = this.props;
 
     const completedOrders = servicesDone.filter(
       order => order.order_type === "order"
@@ -52,6 +49,10 @@ class CompletedOrdersList extends Component {
     const completedInternalOrders = servicesDone.filter(
       order => order.order_type === "int_order"
     );
+
+    if(isFetching) {
+      return <i className="fas fa-circle-notch fa-spin"></i>
+    }
 
     return (
       <div className="BasicList__container">
@@ -73,19 +74,22 @@ class CompletedOrdersList extends Component {
               <ul className="BasicList__list">
                 {isAdmin === true
                   ? completedOrders.map(order => (
-                      <li key={order.service_id}>
-                        <Link to={`/admin/orders/${order.service_id}`}>
-                          <div className="edit">
-                            <p>Beställare : XXXX, orderId: </p>
-                            <i className="fas fa-exclamation-triangle" /> Skapa
-                            Reklamation
+                      <li key={order.id}>
+                        <div className="edit">
+                          <Link to={`/admin/services/${order.id}`}>
+                            <p>Beställningsnummer - {order.id} <br></br> Beställare - {order.company_name ? order.company_name : order.con_pers}
+                            {order.company_name ?  <span><br></br>Contact person - {order.con_pers}</span> : ('')}
+                            </p>
+                            <p>Datum:<br></br>{moment(order.datetime).format('Y-MM-DD HH:mm')}</p>
+                          </Link>
+                          <a><i className="fas fa-exclamation-triangle" /> Skapa Reklamation </a>
                           </div>
-                        </Link>
+                          <hr></hr>
                       </li>
                     ))
                   : completedOrders.map(order => (
-                      <li key={order.service_id}>
-                        <Link to={`/orders/${order.service_id}`}>
+                      <li key={order.id}>
+                        <Link to={`/orders/${order.id}`}>
                           <div className="edit">
                             <p>Beställare : XXXX, orderId: </p>
                             <i className="fas fa-exclamation-triangle" /> Skapa
@@ -106,19 +110,21 @@ class CompletedOrdersList extends Component {
               <ul className="BasicList__list">
                 {isAdmin === true
                   ? completedComplaints.map(order => (
-                      <li key={order.service_id}>
-                        <Link to={`/admin/orders/${order.service_id}`}>
+                      <li key={order.id}>
                           <div className="edit">
-                            <p>Beställare : XXXX, orderId: </p>
-                            <i className="fas fa-exclamation-triangle" /> Skapa
-                            Reklamation
+                          <Link to={`/admin/services/${order.id}`}>
+                            <p>Beställare - {order.company_name ? order.company_name : order.con_pers}
+                            {order.company_name ?  <span><br></br>Contact person - {order.con_pers}</span> : ('')}
+                            </p>
+                            <p>Datum:<br></br>{moment(order.datetime).format('Y-MM-DD HH:mm')}</p>
+                          </Link>
                           </div>
-                        </Link>
+                          <hr></hr>
                       </li>
                     ))
                   : completedComplaints.map(order => (
-                      <li key={order.service_id}>
-                        <Link to={`/orders/${order.service_id}`}>
+                      <li key={order.id}>
+                        <Link to={`/orders/${order.id}`}>
                           <div className="edit">
                             <p>Beställare : XXXX, orderId: </p>
                             <i className="fas fa-exclamation-triangle" /> Skapa
@@ -139,19 +145,21 @@ class CompletedOrdersList extends Component {
             <ul className="BasicList__list">
               {isAdmin === true
                 ? completedInternalOrders.map(order => (
-                    <li key={order.service_id}>
-                      <Link to={`/admin/orders/${order.service_id}`}>
-                        <div className="edit">
-                          <p>Beställare : XXXX, orderId: </p>
-                          <i className="fas fa-exclamation-triangle" /> Skapa
-                          Reklamation
+                    <li key={order.id}>
+                      <div className="edit">
+                        <Link to={`/admin/services/${order.id}`}>
+                          <p>Beställningsnummer - {order.id} <br></br> Beställare - {order.company_name ? order.company_name : order.con_pers}
+                          {order.company_name ?  <span><br></br>Contact person - {order.con_pers}</span> : ('')}
+                          </p>
+                          <p>Datum:<br></br>{moment(order.datetime).format('Y-MM-DD HH:mm')}</p>
+                        </Link>
                         </div>
-                      </Link>
+                        <hr></hr>
                     </li>
                   ))
                 : completedInternalOrders.map(order => (
-                    <li key={order.service_id}>
-                      <Link to={`/orders/${order.service_id}`}>
+                    <li key={order.id}>
+                      <Link to={`/orders/${order.id}`}>
                         <div className="edit">
                           <p>Beställare : XXXX, orderId: </p>
                           <i className="fas fa-exclamation-triangle" /> Skapa

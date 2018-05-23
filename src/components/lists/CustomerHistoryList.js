@@ -1,18 +1,17 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Tabs, TabLink, TabContent } from "react-tabs-redux";
-// import { fetchServicesDone } from "../../redux/actions/customers";
+import { fetchServices } from "../../redux/actions/customers/Services";
 import Cookies from "universal-cookie";
+import moment from "moment";
 
 import { Link, withRouter } from "react-router-dom";
 import "./style.css";
-import CompletedOrders from "../../views/admin/orders/CompletedOrders";
 
 class CustomerHistoryList extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-    };
+    this.state = {};
   }
 
   componentWillMount() {
@@ -27,26 +26,28 @@ class CustomerHistoryList extends Component {
       )
     );
 
-    // this.props.dispatch(fetchServicesDone(token));
+    this.props.dispatch(fetchServices(token, user.id));
   }
 
 
 
   render() {
 
-    const { servicesDone, isFetching } = this.props;
-
-    if(isFetching) {
-      return <i class="fas fa-circle-notch fa-spin"></i>;
+    const { isFetching, services } = this.props;
+    var Orders = [];
+    var Complaints = [];
+    if (services.services) {
+      Orders = services.services.filter(
+        order => order.order_type === "order"
+      );
+      Complaints = services.services.filter(
+        order => order.order_type === "complaint"
+      );
     }
-
-
-    const completedOrders = servicesDone.filter(
-      order => order.order_type === "order"
-    );
-    const completedComplaints = servicesDone.filter(
-      order => order.order_type === "complaint"
-    );
+    
+    if(isFetching) {
+      return <i className="fas fa-circle-notch fa-spin"></i>
+    }
 
 
     return (
@@ -62,17 +63,19 @@ class CustomerHistoryList extends Component {
             </TabLink>
           </div>
           <TabContent for="beställningar">
-            {completedOrders.length ? (
+            {Orders.length ? (
               <ul className="BasicList__list">
-                 {completedOrders.map(order => (
-                      <li key={order.service_id}>
-                        <Link to={`/orders/${order.service_id}`}>
+                 {Orders.map(order => (
+                      <li key={order.id}>
                           <div className="edit">
-                            <p>Beställare : XXXX, orderId: </p>
-                            <i className="fas fa-exclamation-triangle" /> Skapa
-                            Reklamation
+                            <Link to={`/services/${order.id}`}>
+                                <p>Beställningsnummer - {order.id} <br></br> Beställare - {order.con_pers}</p>
+                                <p>Datum:<br></br>{moment(order.datetime).format('Y-MM-DD HH:mm')}</p>
+                            </Link>
+                            <a><i className="fas fa-exclamation-triangle" /> Skapa
+                            Reklamation</a>
                           </div>
-                        </Link>
+                          <hr></hr>
                       </li>
                     ))}
               </ul>
@@ -83,17 +86,19 @@ class CustomerHistoryList extends Component {
             )}
           </TabContent>
           <TabContent for="reklamationer">
-            {completedComplaints.length ? (
+            {Complaints.length ? (
               <ul className="BasicList__list">
-                    {completedComplaints.map(order => (
-                      <li key={order.service_id}>
-                        <Link to={`/orders/${order.service_id}`}>
-                          <div className="edit">
-                            <p>Beställare : XXXX, orderId: </p>
-                            <i className="fas fa-exclamation-triangle" /> Skapa
-                            Reklamation
-                          </div>
-                        </Link>
+                    {Complaints.map(complaint => (
+                      <li key={complaint.id}>
+                        <div className="edit">
+                          <Link to={`/services/${complaint.id}`}>
+                              <p>Beställare - {complaint.con_pers}</p>
+                              <p>Datum:<br></br>{moment(complaint.datetime).format('Y-MM-DD HH:mm')}</p>
+                          </Link>
+                          <a><i className="fas fa-exclamation-triangle" /> Skapa
+                          Reklamation</a>
+                        </div>
+                        <hr></hr>
                       </li>
                     ))}
               </ul>
@@ -110,8 +115,8 @@ class CustomerHistoryList extends Component {
 }
 
 const mapStateToProps = state => ({
-     isFetching: state.customers.isFetching,
-    servicesDone: state.customers.servicesDone
+  services: state.customer.services,
+  isFetching: state.customer.isFetching
 });
 
 export default withRouter(connect(mapStateToProps)(CustomerHistoryList));

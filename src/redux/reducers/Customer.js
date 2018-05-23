@@ -2,15 +2,12 @@ import {
     FETCH_SERVICES_START,
     FETCH_SERVICES_SUCCESS,
     FETCH_SERVICES_FAILURE,
-    FETCH_ORDER_START,
-    FETCH_ORDER_SUCCESS,
-    FETCH_ORDER_FAILURE,
+    FETCH_SERVICE_START,
+    FETCH_SERVICE_SUCCESS,
+    FETCH_SERVICE_FAILURE,
     ORDER_CREATE_START,
     ORDER_CREATE_SUCCESS,
     ORDER_CREATE_FAILURE,
-    FETCH_COMPLAINT_START,
-    FETCH_COMPLAINT_SUCCESS,
-    FETCH_COMPLAINT_FAILURE,
     COMPLAINT_CREATE_START,
     COMPLAINT_CREATE_SUCCESS,
     COMPLAINT_CREATE_FAILURE,
@@ -21,9 +18,11 @@ import {
     USER_UPDATE_SUCCESS,
     USER_UPDATE_FAILURE
 } from "../actions/customers/Action-types"
+import { UPDATE_CUSTOMER_SUCCESS, UPDATE_CUSTOMER_FAILURE } from "../actions/admin/Action-types";
 
 const initialState = {
     services: [],
+    service: {},
     order: {},
     complaint: {},
     user: {},
@@ -50,18 +49,18 @@ const customerReducer = (state = initialState, action) => {
                 isFetching: false,
                 errorMessage: action.message
             }
-        case FETCH_ORDER_START:
+        case FETCH_SERVICE_START:
             return {
                 ...state,
                 isFetching: true,
             };
-        case FETCH_ORDER_SUCCESS:
+        case FETCH_SERVICE_SUCCESS:
             return {
                 ...state,
                 isFetching: false,
-                order: action.payload
+                service: action.payload
             };
-        case FETCH_ORDER_FAILURE:
+        case FETCH_SERVICE_FAILURE:
             return {
                 ...state,
                 isFetching: false,
@@ -79,23 +78,6 @@ const customerReducer = (state = initialState, action) => {
                 order: action.payload
             };
         case ORDER_CREATE_FAILURE:
-            return {
-                ...state,
-                isFetching: false,
-                errorMessage: action.message
-            };
-        case FETCH_COMPLAINT_START:
-            return {
-                ...state,
-                isFetching: true
-            };
-        case FETCH_COMPLAINT_SUCCESS:
-            return {
-                ...state,
-                isFetching: false,
-                complaint: action.payload
-            };
-        case FETCH_COMPLAINT_FAILURE:
             return {
                 ...state,
                 isFetching: false,
@@ -135,24 +117,24 @@ const customerReducer = (state = initialState, action) => {
                 isFetching: false,
                 errorMessage: action.message
             };
-            case USER_UPDATE_START:
+        case USER_UPDATE_START:
             return {
                 ...state,
                 isFetching: true
             };
-            case USER_UPDATE_SUCCESS:
-                return {
-                    ...state,
-                    isFetching: false,
-                    user: action.payload
-                };
-            case USER_UPDATE_FAILURE:
-                return {
-                    ...state,
-                    isFetching: false,
-                    errorMessage: action.message
-                };
-            default:
+        case UPDATE_CUSTOMER_SUCCESS:
+            return {
+                ...state,
+                isFetching: false,
+                user: action.payload
+            };
+        case UPDATE_CUSTOMER_FAILURE:
+            return {
+                ...state,
+                isFetching: false,
+                errorMessage: action.message
+            };
+        default:
             return state;
     }
 }

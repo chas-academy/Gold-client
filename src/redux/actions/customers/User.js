@@ -1,20 +1,20 @@
 import {
-	FETCH_USER_GET_START,
-	FETCH_USER_GET_SUCCESS,
-	FETCH_USER_GET_FAILURE,
-	FETCH_USER_UPDATE_START,
-	FETCH_USER_UPDATE_SUCCESS,
-	FETCH_USER_UPDATE_FAILURE
+	FETCH_USER_START,
+	FETCH_USER_SUCCESS,
+	FETCH_USER_FAILURE,
+	USER_UPDATE_START,
+	USER_UPDATE_SUCCESS,
+	USER_UPDATE_FAILURE
  } from './Action-types';
 
 
 /* ------------ GET USER --------------- */    
 export const requestUser = () => ({
-    type: FETCH_USER_GET_START
+    type: FETCH_USER_START
 });
 
 export const recieveUser = user => ({
-    type: FETCH_USER_GET_SUCCESS,
+    type: FETCH_USER_SUCCESS,
     payload: user
 });
 
@@ -32,7 +32,7 @@ export const fetchUser = (token) => dispatch => {
     })
     .catch(response => {
         console.error('An error occured when fetching the user')
-        return dispatch({ type: FETCH_USER_GET_FAILURE })
+        return dispatch({ type: FETCH_USER_FAILURE })
     });
 };
 
@@ -40,11 +40,11 @@ export const fetchUser = (token) => dispatch => {
 
 /* ------------ UPDATE USER --------------- */    
 export const startUpdateUser = () => ({
-    type: FETCH_USER_UPDATE_START
+    type: USER_UPDATE_START
 });
 
 export const updateUserSuccess = user => ({
-    type: FETCH_USER_UPDATE_SUCCESS,
+    type: USER_UPDATE_SUCCESS,
     payload: user
 });
 
@@ -62,6 +62,6 @@ export const updateUser = (token) => dispatch => {
     })
     .catch(response => {
         console.error('An error occured when fetching the user')
-        return dispatch({ type: FETCH_USER_UPDATE_FAILURE })
+        return dispatch({ type: USER_UPDATE_FAILURE, payload: response.error })
     });
 }; 
