@@ -39,7 +39,7 @@
 
 .menu-item2 {
   font-size: 16px;
-  padding: 20px;
+  padding: 30px;
   color: white;
   padding-right: 40px;
   width: 100%;
@@ -55,7 +55,7 @@
 
 .menu-item {
   font-size: 16px;
-  padding: 20px;
+  padding: 30px;
   color: white;
   padding-left: 40px;
   border-bottom: 1px solid rgba(249, 250, 252, 0.24); }
@@ -115,7 +115,7 @@
     text-decoration: none; }
 
 .slide-menu__press i:hover {
-  color: #ffffff; }
+  color: #2d2e2e; }
 
 @media (min-width: 800px) {
   .fa-sign-out-alt {
@@ -124,7 +124,7 @@
     transition: none !important; }
   .slide-menu {
     width: 30% !important;
-    height: 82vh !important; }
+    height: 86vh !important; }
   .menu-item {
     padding: 3.64vh; }
   .services__press {

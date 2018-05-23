@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+
 *:focus {
     outline: none;
 }
@@ -47,6 +49,8 @@ body {
     line-height: 0.2;
     font-size: 30px;
     letter-spacing: 2px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
 }
 
 
@@ -80,5 +84,9 @@ body {
     position: absolute;
     top: 50px;
     margin-left: 20px;
+}
+button {
+    padding: 0;
+    margin: 0;
 }
 
