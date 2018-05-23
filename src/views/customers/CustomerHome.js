@@ -76,16 +76,11 @@ class CustomerHome extends Component {
             </button>
           </div>
         </div>
-        <div className="btn-container">
-          <a href="/logout" onClick={this.logOut} className="btn-logout">
-            Logga ut
-          </a>
-        </div>
+          <div className="CustomerHome__contact">
         <Link to={`/contact`}>
-          <p className="CustomerHome__contact">
             Hittar du inte det du söker? Kontakta oss!
-          </p>
         </Link>
+          </div>
       </div>
     );
   }
