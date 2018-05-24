@@ -4,10 +4,9 @@
   border: 3px solid  #3161A6;
   background: rgba(255, 255, 255, 0.884);
   display: flex;
-  padding: 15px;
-  width: 120px;
+  padding: 25px;
   font-size: 22px;
-  border-radius: 5px;
+  border-radius: 50%;
   justify-content: center;
   margin: auto;
   right: 40%; 

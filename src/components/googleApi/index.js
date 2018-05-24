@@ -68,7 +68,8 @@ class MapContainer extends Component {
           height: "40vh",
           width: "95%",
           margin: "auto",
-          marginTop: "8px",
+          marginTop: "80px",
+          marginBottom: "20px"
         }}
       >
         <GoogleMapReact
