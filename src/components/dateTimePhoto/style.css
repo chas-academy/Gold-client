@@ -1,0 +1,89 @@
+.react-datepicker__input-container > input, .date > input {
+    background-color: rgba(255, 255, 255, 0.014);
+    border: none;
+    color: #0f2f56;
+    width: 100%;
+    position: relative;
+    text-align: center;
+}
+
+
+.react-datepicker__month-container {
+    width: 343px;
+    height: auto;
+}
+
+.react-datepicker__month, .react-datepicker__current-month {
+    font-size: 20px !important;
+    margin-bottom: 5px;
+}
+
+.react-datepicker__header {
+    height: 70px;
+}
+
+.react-datepicker__day, .react-datepicker__day-name, .react-datepicker__day, .react-datepicker__time-name {
+    width: 3.2rem !important;
+    height: 3.2rem;
+    font-size: 14px !important;
+}
+
+#add-order > div:nth-child(5) > div.DateTime__container > div:nth-child(1) > div > div.react-datepicker-popper {
+    transform: translate3d(0px, 377px, 0px) !important;
+}
+
+.react-datepicker__triangle {
+    margin-left: -10px !important;
+}
+
+.DateTime__container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 3%;
+}
+
+.DateTime__buttons {
+    display: flex;
+    align-items: center;
+    width: 50%;
+    margin: 5px;
+}
+
+.DateTime_small {
+    padding: 12px;
+    border-radius: 100%;
+    border: 3px solid #3161A6;
+    background-color: white;
+    font-size: 10px;
+}
+
+.DateTime__input {
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.014);
+    border: none;
+    text-align: center;
+    margin-left: 15px;
+}
+
+.DateTime__buttons > input::placeholder{
+    text-align: center;
+}
+
+.DateTime__calendar {
+    display: flex;
+    align-items: baseline;
+}
+
+
+.fa-calendar-alt, .fa-clock {
+    color: #0f2f56;
+    font-size: 20px;
+}
+
+
+
+
+
+
+
