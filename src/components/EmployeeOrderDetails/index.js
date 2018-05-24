@@ -53,7 +53,7 @@ class EmployeeOrderDetails extends Component {
     const { service } = this.props;
 
     return (
-  <div className="BasicList__container">    
+  <div>    
     {service.order_type === 'order' ?
             service.status === "done" ?
             <div className="EmployeeOrderDetails">
@@ -113,7 +113,7 @@ class EmployeeOrderDetails extends Component {
                     <hr/>
                   </li>
                   <li>Datum: <Moment format="DD/MM  HH:mm">{service.datetime}</Moment></li>
-                  <li>Adress: {service.order.address}</li>
+                  <li>Adress: {service.complaint.order.address}</li>
                   <hr/>
                   <li>Avslutat: <Moment format="DD/MM  HH:mm">{service.updatedAt}</Moment> </li>
                   <hr/>
@@ -163,7 +163,7 @@ class EmployeeOrderDetails extends Component {
                   <hr/>
                 </li>
                 <li>Datum: <Moment format="DD/MM  HH:mm">{service.datetime}</Moment></li>
-                <li>Adress: {service.order.address}</li>
+                <li>Adress: {service.internal_order.address}</li>
                 <hr/>
                 <li>Avslutat: <Moment format="DD/MM  HH:mm">{service.updatedAt}</Moment> </li>
                 <hr/>
