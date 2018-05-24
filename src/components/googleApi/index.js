@@ -65,7 +65,7 @@ class MapContainer extends Component {
     return (
       <div className="map"
         style={{
-          height: "40vh",
+          height: "45vh",
           width: "100%",
           margin: "auto",
           marginTop: "0px",

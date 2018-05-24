@@ -33,7 +33,7 @@ export const loginError = message => ({
 export const loginUser = user => dispatch => {
   dispatch(requestLogin());
 
-  return fetch('https://gold-api-dev.chas.school/login', {
+  return fetch(process.env.REACT_APP_API_BASE_URL+`/login`, {
     method: "POST",
     body: JSON.stringify(user.user),
     headers: {
@@ -45,7 +45,6 @@ export const loginUser = user => dispatch => {
         return res.json();
       }
       else {
-        console.log("connection")
         dispatch(loginError("could not connect to server check you internet connection"));
       }
     })
