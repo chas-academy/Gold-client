@@ -39,7 +39,7 @@ class AddComplaint extends Component {
 			)
     );
 
-    this.setState({ token: token })
+    this.setState({ token: token, userId: user.id })
     this.props.id ? this.setState({ orderId: this.props.id }) : ('')
   }
 
@@ -64,6 +64,8 @@ class AddComplaint extends Component {
     event.preventDefault();
 
     const form = {
+      client_id: this.state.userId,
+      is_admin: this.state.isAdmin,
       order_id: this.state.orderId,
       date: this.state.date,
       time: this.state.time,
@@ -75,6 +77,7 @@ class AddComplaint extends Component {
       .then((res) => {
         if (res.type === "COMPLAINT_CREATE_SUCCESS") {
           this.setState({ successMessage: res.payload })
+          this.setState({ errorMessage: '' })
         } else {
           this.setState({ errorMessage: res.payload })
         }
