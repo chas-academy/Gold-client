@@ -83,7 +83,10 @@ class CustomerHistoryList extends Component {
                                   )
                                 )}
                             </Link>
-                            <Link to={`/complaints/${order.id}`}><i className="fas fa-exclamation-triangle" /> Skapa Reklamation</Link>
+                            {order.status == "done" ?
+                              <Link to={`/complaints/${order.id}`}><i className="fas fa-exclamation-triangle" /> Skapa Reklamation</Link>
+                              : ('')
+                            }
                           </div>
                           <hr></hr>
                       </li>
