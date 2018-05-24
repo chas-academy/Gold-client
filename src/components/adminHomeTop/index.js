@@ -19,10 +19,10 @@ class AdminHomeTop extends Component {
           <Tabs>
             <div className="history-tabs">
               <TabLink className="history-tablink" to="beställningar">
-                Beställningar
+                NYA
               </TabLink>
               <TabLink className="history-tablink" to="reklamationer">
-                Reklamationer
+                REKLAMATIONER
               </TabLink>
             </div>
             <TabContent for="beställningar" className="orders-list">
@@ -37,11 +37,17 @@ class AdminHomeTop extends Component {
                       <Link to={`/admin/services/${order.id}`}>
                         <div className="edit">
                           {order.company_name ? (
-                            <p> <Moment format="DD/MM HH:mm">{order.datetime}</Moment> beställare: {order.company_name} </p>
+                            <div className="top_new">
+                            <p className="top_date"> <Moment format="DD/MM HH:mm">{order.datetime}</Moment> </p>
+                            <h5 className="top_name"> {order.company_name} </h5>
+                            </div>
                           ) : (
-                            <p> <Moment format="DD/MM HH:mm">{order.datetime}</Moment> beställare: {order.con_pers} </p>
+                            <div className="top_new">
+                            <p className="top_date"> <Moment format="DD/MM HH:mm">{order.datetime}</Moment></p>
+                            <h5 className="top_name"> {order.con_pers} </h5>
+                            </div>
                           )}
-                            <p> Hantera </p>
+                            <p className="top_handle"> Hantera </p>
                         </div>
                       </Link>
                       <hr />
@@ -65,11 +71,17 @@ class AdminHomeTop extends Component {
                       <Link to={`/admin/complaints/${order.id}`}>
                         <div className="edit">
                           {order.company_name ? (
-                            <p> <Moment format="DD/MM HH:mm">{order.datetime}</Moment> beställare: {order.company_name} </p>
+                            <div className="top_new">
+                              <p className="top_date"> <Moment format="DD/MM HH:mm">{order.datetime}</Moment> </p>
+                              <h5 className="top_name">{order.company_name} </h5>
+                            </div>
                           ) : (
-                            <p> <Moment format="DD/MM HH:mm">{order.datetime}</Moment> beställare: {order.con_pers} </p>
+                            <div className="top_new">
+                              <p className="top_date"> <Moment format="DD/MM HH:mm">{order.datetime}</Moment> </p>
+                              <h5 className="top_name">{order.con_pers} </h5>
+                            </div>
                           )}
-                          <p> Hantera </p>
+                          <p className="top_handle"> Hantera </p>
                         </div>
                       </Link>
                       <hr />
