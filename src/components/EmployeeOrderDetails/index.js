@@ -111,6 +111,30 @@ class EmployeeOrderDetails extends Component {
             </div>
 
         </div>
+        : service.order_type === 'int_order' ?
+        <div className="EmployeeOrderDetails">
+          <ul className="BasicList__list orderDetails">
+            <li>
+              <h2 className="Order_header">Internt ärende</h2>
+              <hr/>
+            </li>
+            {console.log(service)}
+            <li>Åtgärdas: <Moment format="DD/MM  HH:mm">{service.datetime}</Moment></li>
+            <li>Adress: {service.internal_order.address}</li>
+            <hr/>
+            <li>Beskrivning: {service.internal_order.description} </li>
+            <hr/>
+
+              <div className="employee__addPhoto">
+                <AddPhotos />
+              </div>  
+          </ul>
+            <div>
+            <EmployeeCompleteJob completeJob={this.completeJob.bind(this)} />
+            {errorMessage && <div className="help-block">{errorMessage}</div>}
+            </div>
+
+        </div>
         : ('')}
         </div>
     );

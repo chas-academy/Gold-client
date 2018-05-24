@@ -4,6 +4,8 @@ import { fetchAssigned } from "../../redux/actions/employees";
 import { Link, withRouter } from "react-router-dom";
 import Cookies from "universal-cookie";
 import { EmployeeBottomNav } from '../../components';
+import Moment from "react-moment";
+
 import "./style.css";
 
 class EmployeeIncomingList extends Component {
@@ -44,7 +46,7 @@ class EmployeeIncomingList extends Component {
         <div className="BasicList__container">
           <h4> nya ärenden  </h4>
         <p>
-          Här samlas interna ärenden som ska hanteras. Klicka på ärendet och bekräfta när det är åtgärdat.
+          Här samlas dina ärenden som ska hanteras. Klicka på ärendet och bekräfta när det är åtgärdat.
         </p>
         <hr />
               {newOrders.length ? (
@@ -53,14 +55,16 @@ class EmployeeIncomingList extends Component {
                     <li key={order.id}>
                       <Link to={`services/${order.id}`}>
                         <div className="edit">
+                        <p>Jobb: <Moment format="DD/MM  HH:mm">{order.datetime}</Moment></p>
                           {order.company_name ? (
                             <p>{order.company_name} </p>
                           ) : (
                             <p>{order.con_pers} </p>
                           )}
-                          <p> Hantera </p>
+                          <p> Detaljer </p>
                         </div>
                       </Link>
+                      <hr />
                     </li>
                   ))}
                 </ul>
@@ -71,20 +75,23 @@ class EmployeeIncomingList extends Component {
               )}
 
         <h4> Reklamationer </h4>
+        <hr />
               {newComplaints.length ? (
                 <ul className="BasicList__list">
                   {newComplaints.map(order => (
                     <li key={order.id}>
                       <Link to={`services/${order.id}`}>
                         <div className="edit">
+                        <p>Åtgärdas: <Moment format="DD/MM  HH:mm">{order.datetime}</Moment></p>
                           {order.company_name ? (
                             <p>{order.company_name} </p>
                           ) : (
                             <p>{order.con_pers} </p>
                           )}
-                          <p> Hantera </p>
+                          <p> Detaljer </p>
                         </div>
                       </Link>
+                      <hr />
                     </li>
                   ))}
                 </ul>
