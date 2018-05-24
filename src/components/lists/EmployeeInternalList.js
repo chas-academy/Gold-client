@@ -50,13 +50,16 @@ class EmployeeInternalList extends Component {
                     {newInternal.length ? (
                       newInternal.map(order => (
                       <li key={order.id}>
-                        <Link to={`/admin/services/${order.id}`}>
+                        <Link to={`services/${order.id}`}>
                           <div className="edit">
                             {order.company_name ? (
                               <p>{order.company_name} </p>
                               ) : (
                               <p>{order.con_pers} </p>
                               )}
+                            {!order.company_name && !order.con_pers ? (
+                              <p>Internal beställning </p>
+                              ) : ('')}
                             <p> Hantera </p>
                           </div>
                         </Link>
@@ -64,13 +67,16 @@ class EmployeeInternalList extends Component {
                       ))
                     ) : (
                       <li key={newInternal.id}>
-                      <Link to={`/admin/services/${newInternal.id}`}>
+                      <Link to={`services/${newInternal.id}`}>
                       <div className="edit">
                           {newInternal.company_name ? (
                             <p>{newInternal.company_name} </p>
                             ) : (
                             <p>{newInternal.con_pers} </p>
                             )}
+                            {!newInternal.company_name && !newInternal.con_pers ? (
+                              <p>Internal beställning </p>
+                              ) : ('')}
                           <p> Hantera </p>
                         </div>
                       </Link>
