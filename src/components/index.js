@@ -50,7 +50,6 @@ export { default as OrderDetails } from './orderDetails'
 
 //EMPLOYEE VIEW COMPONENTS
 export { default as EmployeeBottomNav } from './menus/employee-bottom-nav'
-export { default as EmployeeConfirmJob } from './buttons/EmployeeConfirmJob'
 export { default as EmployeeCompleteJob } from './buttons/EmployeeCompleteJob'
 export { default as EmployeeIncomingList } from './lists/EmployeeIncomingList'
 export { default as EmployeeInternalList } from './lists/EmployeeInternalList'

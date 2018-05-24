@@ -55,29 +55,58 @@ class EmployeeOrderDetails extends Component {
 
     return (
   <div className="BasicList__container">    
-
     {service.order_type === 'order' ?
     <div className="EmployeeOrderDetails">
           <ul className="BasicList__list orderDetails">
             <li>
+            <h2 className="Order_header">Beställning</h2>
               {service.company_name ?
               <h3>{service.company_name}</h3>
               : <h3>{service.con_pers}</h3>
             }
               <hr/>
             </li>
-            <li><Moment format="DD/MM  HH:mm">{service.datetime}</Moment></li>
+            <li>Åtgärdas: <Moment format="DD/MM  HH:mm">{service.datetime}</Moment></li>
             <li>Adress: {service.order.address}</li>
             <hr/>
             <li>Beskrivning: {service.order.description} </li>
             <hr/>
-
-            <li>Foton</li>
-          </ul>
-            <div>
               <div className="employee__addPhoto">
                 <AddPhotos />
               </div>  
+          </ul>
+            <div>
+            <EmployeeCompleteJob completeJob={this.completeJob.bind(this)} />
+            {errorMessage && <div className="help-block">{errorMessage}</div>}
+            </div>
+
+        </div>
+        : 
+        service.order_type === 'complaint' ?
+        <div className="EmployeeOrderDetails">
+          <ul className="BasicList__list orderDetails">
+            <li>
+              <h2 className="Complaint_header">Reklamation</h2>
+              {service.company_name ?
+              <div>
+                <h3>{service.company_name}</h3>
+                <h5>Kontaktperson: {service.con_pers}</h5>
+              </div>
+              : <h3>{service.con_pers}</h3>
+            }
+              <hr/>
+            </li>
+            <li>Åtgärdas: <Moment format="DD/MM  HH:mm">{service.datetime}</Moment></li>
+            <li>Adress: {service.complaint.order.address}</li>
+            <hr/>
+            <li>Beskrivning: {service.complaint.description} </li>
+            <hr/>
+
+              <div className="employee__addPhoto">
+                <AddPhotos />
+              </div>  
+          </ul>
+            <div>
             <EmployeeCompleteJob completeJob={this.completeJob.bind(this)} />
             {errorMessage && <div className="help-block">{errorMessage}</div>}
             </div>
