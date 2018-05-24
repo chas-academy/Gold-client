@@ -1,17 +1,3 @@
-<<<<<<< HEAD
-const initialState = {};
-
-const authReducer = (state = initialState, action) => {
-    switch (action.type) {
-    //     case SOMETHING:
-    //         return { }
-        default:
-            return state;
-    }
-};
-
-export default authReducer;
-=======
 import {
     LOGIN_REQUEST,
     LOGIN_SUCCESS,
@@ -82,4 +68,3 @@ const authReducer = (state = initialState, action) => {
 }
 
 export default authReducer;
->>>>>>> origin/master

@@ -1,17 +1,3 @@
-<<<<<<< HEAD
-const initialState = {};
-
-const customerReducer = (state = initialState, action) => {
-    switch (action.type) {
-    //     case SOMETHING:
-    //         return { }
-        default:
-            return state;
-    }
-};
-
-export default customerReducer;
-=======
 import {
     FETCH_SERVICES_START,
     FETCH_SERVICES_SUCCESS,
@@ -154,4 +140,3 @@ const customerReducer = (state = initialState, action) => {
 }
 
 export default customerReducer;
->>>>>>> origin/master

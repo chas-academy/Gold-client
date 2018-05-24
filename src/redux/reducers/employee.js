@@ -1,14 +1,3 @@
-<<<<<<< HEAD
-const initialState = {};
-
-const employeeReducer = (state = initialState, action) => {
-    switch (action.type) {
-    //     case SOMETHING:
-    //         return { }
-        default:
-            return state;
-    }
-=======
 import {
   FETCH_SERVICE_START,
   FETCH_SERVICE_SUCCESS,
@@ -106,7 +95,6 @@ const employeeReducer = (state = initialState, action) => {
     default:
       return state;
   }
->>>>>>> origin/master
 };
 
 export default employeeReducer;
