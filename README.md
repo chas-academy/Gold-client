@@ -11,7 +11,11 @@ Table of contents
       * [Docker](#docker)
       * [Bash Commands](#bash-commands)
       * [Database](#database)
+<<<<<<< HEAD
       * [Users](#users)
+=======
+
+>>>>>>> origin/master
 <!--te-->
 
 ## Directory Layout
@@ -21,8 +25,12 @@ Table of contents
 ├── /src/                        # Directory for the app code, a standard create-react-app with Redux and other goodies
 │   ├── /Assets/                 #
 │   ├── /Components/             #
+<<<<<<< HEAD
 │   ├── /Config.dist/            #
 │   ├── /Lib/                    #
+=======
+│   ├── /Containers/             #
+>>>>>>> origin/master
 │   ├── /Redux/                  #
 │   ├── /Tests/                  #
 │   ├── /Views/                  #
@@ -116,6 +124,7 @@ Note: To view the Docker containers, open another terminal console then enter `d
 | `./bin/css/watch` | Watch and compile *.scss files on file changes (for Mac users only) |
 | `./bin/css/build` | Manually compile *.scss files                                       |
 
+<<<<<<< HEAD
 ## Users
 
 | Name              | Email                  | Description |
@@ -127,3 +136,11 @@ Note: To view the Docker containers, open another terminal console then enter `d
 | Redirect User     | `redirect@email.com`   | When `redirect` is set with complete URL, e.i. `https://github.com/anthub-services`, user shall be redirected to external page if no location path (referrer) found on the Sign In page |
 | Blocked User      | `blocked@email.com`    | User is signed in but the account is blocked |
 | Unauthorized User | `<any invalid email>`  | Simply enter wrong `email` and/or `password` |
+=======
+<<<<<<< HEAD
+=======
+
+
+
+>>>>>>> origin/master
+>>>>>>> origin/master

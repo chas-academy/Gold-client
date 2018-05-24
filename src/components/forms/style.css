@@ -1,0 +1,189 @@
+.loginForm {
+  position: absolute;
+  width: 92%;
+  margin: auto;
+  left: 0;
+  right: 0;
+  background-color: rgba(197, 197, 197, 0.055);
+  box-shadow: 0 2px 4px 0 rgba(77, 77, 79, 0.2);
+  padding: 20px;
+  margin-bottom: 25%;
+  margin-top: 30px; }
+  .loginForm > h5 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 16px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: rgba(32, 32, 32, 0.726); }
+
+.BasicForm {
+  position: absolute;
+  width: 92%;
+  margin: auto;
+  left: 0;
+  right: 0;
+  background-color: rgba(197, 197, 197, 0.055);
+  box-shadow: 0 2px 4px 0 rgba(77, 77, 79, 0.2);
+  padding: 20px;
+  margin-bottom: 25%;
+  margin-top: 80px; }
+  .BasicForm > h5 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 16px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: rgba(32, 32, 32, 0.726); }
+
+.btn-primary {
+  width: 100%;
+  margin-top: 10px;
+  padding: 15px;
+  border: none;
+  font-size: 15px;
+  background-color: #3161A6;
+  box-shadow: 0 1px 2px 0 rgba(20, 20, 20, 0.753);
+  color: rgba(250, 249, 249, 0.726); }
+
+.btn-danger {
+  width: 100%;
+  margin: auto;
+  padding: 15px;
+  background: #ca1010; }
+
+.App-signup-text {
+  display: flex;
+  margin: auto;
+  justify-content: center;
+  margin-top: 15px;
+  font-size: 16px; }
+
+.help-block {
+  background-color: #fffdfd00 !important;
+  color: #242424; }
+
+.form-control {
+  background: white;
+  color: black;
+  box-shadow: 0 1px 2px 0 rgba(180, 180, 184, 0.068);
+  border-bottom: 2px solid #e0e0e0;
+  border-radius: 4px;
+  width: 100%; }
+
+.Contact__container {
+  margin-top: 120px;
+  margin-bottom: -120px;
+  width: 100%;
+  text-align: center;
+  position: absolute; }
+  .Contact__container > a {
+    color: #292828;
+    font-size: 40px;
+    padding: 40px; }
+
+.BasicForm__urgent {
+  display: flex;
+  color: #f17070; }
+  .BasicForm__urgent > p {
+    margin-left: 5px; }
+
+.BasicForm__textArea {
+  width: 100%;
+  padding-left: 15px;
+  border: 0.5px solid #c5c5c5;
+  background: white;
+  box-shadow: 0 1px 2px 0 rgba(180, 180, 184, 0.068);
+  border-bottom: 2px solid #e0e0e0;
+  border-radius: 4px;
+  margin-bottom: 14px; }
+
+.BasicForm__select {
+  width: 100%;
+  padding-left: 15px;
+  border: 0.5px solid #c5c5c5;
+  background: white;
+  box-shadow: 0 1px 2px 0 rgba(180, 180, 184, 0.068);
+  border-bottom: 2px solid #e0e0e0;
+  border-radius: 4px;
+  margin-bottom: 14px;
+  height: 35px;
+  width: 100%;
+  color: black; }
+
+.BasicForm__check {
+  color: #3164a5;
+  display: flex;
+  align-items: center; }
+
+.BasicForm__autoCheck {
+  float: right;
+  font-size: 20px;
+  color: #3164a5 !important;
+  margin-top: -30px; }
+
+.BasicForm__check > .fa-check {
+  margin-left: 10px;
+  font-size: 16px; }
+
+.BasicForm__passwordOk {
+  color: green; }
+
+.BasicForm__passwordNotOk {
+  color: red; }
+
+input:focus {
+  border: #3164a5; }
+
+::placeholder {
+  color: rgba(14, 46, 95, 0.336) !important; }
+
+.BasicForm__checkboxContainer {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-top: 25px;
+  cursor: pointer;
+  font-size: 15px;
+  color: grey;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none; }
+  .BasicForm__checkboxContainer input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer; }
+
+.BasicForm__checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: #999898;
+  width: 100%;
+  text-align: center; }
+
+.BasicForm__checkboxContainer input:checked ~ .BasicForm__checkmark {
+  color: red; }
+
+.BasicForm__checkmark:after {
+  content: "";
+  position: absolute;
+  display: none; }
+
+.BasicForm__checkboxContainer input:checked ~ .BasicForm__checkmark:after {
+  display: block; }
+
+.fa-circle {
+  margin-right: 5px;
+  font-size: 18px; }
+
+@media (min-width: 800px) {
+  .BasicForm {
+    width: 80% !important;
+    margin: 5px 0 0 30vh !important;
+    padding: 20px !important; }
+    .BasicForm h5 {
+      margin-top: 0 !important; }
+  #add-order {
+    margin-top: 20px !important; } }

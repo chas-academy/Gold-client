@@ -7,6 +7,12 @@ const adminReducer = (state = initialState, action) => {
         default:
             return state;
     }
+<<<<<<< HEAD
 };
 
 export default adminReducer;
+=======
+}
+
+export default adminReducer;
+>>>>>>> origin/master

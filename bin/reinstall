@@ -3,10 +3,17 @@ source $PWD/bin/bash.sh
 
 execute docker-compose down
 
+<<<<<<< HEAD
 # execute rm -rf $PWD/.env $PWD/node_modules $PWD/src/Config
 
 execute cp $PWD/.env.dist $PWD/.env
 # execute cp -r $PWD/src/Config.dist $PWD/src/Config
+=======
+execute rm -rf $PWD/.env $PWD/node_modules $PWD/src/Config
+
+execute cp $PWD/.env.dist $PWD/.env
+execute cp -r $PWD/src/Config.dist $PWD/src/Config
+>>>>>>> origin/master
 
 execute docker-compose build
 execute docker-compose up

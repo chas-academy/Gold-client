@@ -1,0 +1,148 @@
+.TopNav
+  width: 100%
+  display: flex
+  justify-content: space-around
+  background-color: rgb(49, 100, 165)
+
+.navBar
+  position: absolute
+  top: 0
+  display: flex
+  width: 100%
+  justify-content: space-around
+  background-color: rgb(49, 100, 165)
+  padding: 10px
+  border-bottom: 1px solid rgb(43, 41, 41)
+  list-style: none
+  z-index: 2
+  > li > a
+    color: rgb(244, 244, 245)
+    font-size: 36px
+    &:focus, &:hover
+      color: rgb(45, 46, 46)
+
+#app 
+	div 
+		div 
+			div.navBar 
+				li.dropdown.open 
+					ul 
+						li 
+							a
+								a 
+									p
+									padding: 10px
+									color: rgb(139, 177, 219)
+									&:hover
+										background-color: #0000e8
+										text-decoration: none
+
+.slide-menu
+  background-color: rgba(49, 99, 165, 0.979)
+  margin-top: 0px
+  height: 100vh
+
+.accounts
+  right: 0
+  float: right
+
+.menu-item2
+  font-size: 16px
+  padding: 30px
+  color: white
+  padding-right: 40px
+  width: 100%
+  text-align: end
+  border-bottom: 1px solid rgba(249, 250, 252, 0.24)
+
+.services
+  left: 0
+
+.bm-overlay
+  margin-top: -10px
+  background-color: rgba(19, 18, 18, 0.637) !important
+
+.menu-item
+  font-size: 16px
+  padding: 30px
+  color: white
+  padding-left: 40px
+  border-bottom: 1px solid rgba(249, 250, 252, 0.24)
+
+.menu-item2:hover .menu-item:hover
+  color: rgb(175, 174, 174)
+  text-decoration: none
+
+.slide
+  margin-right: 15px
+  color: rgb(207, 207, 207)
+  font-size: 20px
+
+.slide2
+  margin-left: 15px
+  color: rgb(207, 207, 207)
+  font-size: 20px
+
+.slide-menu__header
+  text-transform: uppercase
+  padding-left: 40px
+  font-size: 18px
+  line-height: 2.9
+  margin-top: 0
+  background-color: #c4c1c1
+  color: rgba(41, 40, 40, 0.418)
+
+.slide-menu__header2
+  text-transform: uppercase
+  text-align: center
+  width: 100%
+  padding-right: 20px
+  font-size: 18px
+  line-height: 2.9
+  margin-top: 0
+  background-color: #c4c1c1
+  color: rgba(41, 40, 40, 0.418)
+
+.slide-menu__press
+  top: 0
+  z-index: 9999
+  margin-top: 10px
+  margin-bottom: 0px
+  margin-left: 10px
+  color: rgb(244, 244, 245)
+  font-size: 34px
+  border: 0
+  background: none
+
+.slide-logout
+  padding-top: 9px
+  margin-top: 10px
+  padding-bottom: 20px
+  padding-left: 40px
+  &:hover
+    color: white
+    text-decoration: none
+
+.slide-menu__press 
+	i:hover
+  	color: rgb(45, 46, 46)
+@media (min-width: 800px)
+	.fa-sign-out-alt
+		margin-left: 2px!important
+	.services
+		transition: none!important
+	.slide-menu
+		width: 30%!important
+		height: 86vh!important
+	.menu-item
+		padding: 3.64vh
+	.services__press
+		visibility: hidden
+	.slide-menu__header, .slide-menu__header2
+		color: #F2F2F2
+		background: none
+		font-size: 18px
+		font-weight: 600
+		text-align: center
+		padding: 0px!important
+    
