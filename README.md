@@ -115,3 +115,9 @@ Note: To view the Docker containers, open another terminal console then enter `d
 | `./bin/css/watch` | Watch and compile *.scss files on file changes (for Mac users only) |
 | `./bin/css/build` | Manually compile *.scss files                                       |
 
+<<<<<<< HEAD
+=======
+
+
+
+>>>>>>> origin/master
