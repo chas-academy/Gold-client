@@ -60,7 +60,7 @@ class EmployeeHome extends Component {
           <div>
             <button className="CustomerHome__buttons">
               <Link to={`/employee/incoming`} >
-                {newOrders || newComplaints !== null ? 
+                {newOrders.length > 0 || newComplaints.length > 0  ? 
                 <i className="fas fa-compass employeeNew" />
                 : 
                 <i className="fas fa-compass" />}
@@ -69,7 +69,7 @@ class EmployeeHome extends Component {
             </button>
             <button className="CustomerHome__buttons">
               <Link to={`/employee/internal`}>
-              {newInternal !== null ?
+              {newInternal.length > 0 ?
                 <i className="far fa-check-circle employeeNew" />
                 : 
                 <i className="far fa-check-circle" />}

@@ -6,7 +6,6 @@ const AddUser = () => {
       return (
         <Link to={`/admin/accounts/create`} >
           <button className="Create__button">
-            <i className="fas fa-user"></i>
             <i className="fas fa-plus"></i>
           </button>
         </Link>  

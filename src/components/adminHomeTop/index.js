@@ -15,7 +15,7 @@ class AdminHomeTop extends Component {
     );
 
     return (
-      <div className="BasicList__container AdminHome">
+      <div >
           <Tabs>
             <div className="history-tabs">
               <TabLink className="history-tablink" to="beställningar">
@@ -33,7 +33,6 @@ class AdminHomeTop extends Component {
                 <ul className="BasicList__list">
                   {newOrders.map(order => (
                     <li key={order.id}>
-                    {console.log(order)}
                       <Link to={`/admin/services/${order.id}`}>
                         <div className="edit">
                           {order.company_name ? (
@@ -68,7 +67,7 @@ class AdminHomeTop extends Component {
                 <ul className="BasicList__list">
                   {newComplaints.map(order => (
                     <li key={order.id}>
-                      <Link to={`/admin/complaints/${order.id}`}>
+                      <Link to={`/admin/services/${order.id}`}>
                         <div className="edit">
                           {order.company_name ? (
                             <div className="top_new">

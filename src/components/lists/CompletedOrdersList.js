@@ -56,7 +56,7 @@ class CompletedOrdersList extends Component {
 
     return (
       <div className="BasicList__container">
-        <h4>Avslutade ärenden</h4>
+        <h4>Historik</h4>
         <Tabs>
         <div className="history-tabs">
           <TabLink className="history-tablink" to="beställningar">

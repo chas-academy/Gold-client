@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
-import Cookies from 'universal-cookie';
-
+import Cookies from "universal-cookie";
 
 class EmployeeBottomNav extends Component {
   constructor(props) {
@@ -9,32 +8,41 @@ class EmployeeBottomNav extends Component {
     this.logOut = this.logOut.bind(this);
   }
 
-  logOut(event){
+  logOut(event) {
     const cookies = new Cookies();
-    cookies.remove("token")
+    cookies.remove("token");
   }
 
   render() {
-
     const { newOrders, newComplaints, newInternal } = this.props;
     return (
       <nav className="bottomNav">
         <ul className="bottomNavList">
           <li>
             <Link to={`/employee/incoming`}>
-            {newOrders || newComplaints !== null ? 
-                <i className="fas fa-compass employeeNew" />
-                : 
-                <i className="fas fa-compass" />}
+              {newOrders ? (
+                newOrders.length > 0 || newComplaints.length > 0 ? (
+                  <i className="fas fa-compass employeeNew" />
+                ) : (
+                  <i className="fas fa-compass" />
+                )
+              ) : (
+                <i className="fas fa-compass" />
+              )}
             </Link>
           </li>
           <li>
-          <Link to={`/employee/internal`}>
-            {newInternal !== null ?
-              <i className="far fa-check-circle employeeNew" />
-              : 
-              <i className="far fa-check-circle" />}
-          </Link>
+            <Link to={`/employee/internal`}>
+              {newInternal ? (
+                newInternal.length > 0 ? (
+                  <i className="far fa-check-circle employeeNew" />
+                ) : (
+                  <i className="far fa-check-circle" />
+                )
+              ) : (
+                <i className="far fa-check-circle" />
+              )}
+            </Link>
           </li>
           <li>
             <Link to={`/home`}>
