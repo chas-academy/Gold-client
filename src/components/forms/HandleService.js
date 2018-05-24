@@ -146,7 +146,7 @@ class HandleService extends Component {
         : <h5> {service.con_pers} </h5>}
         <hr />
           <p> Tel: <a href={`tel:${service.con_tel}`}> {service.con_tel} </a> </p>
-          <p> Önskat datum: <Moment format="YY-MM-DD" >{service.datetime}</Moment></p>
+          <p> Önskat datum: <Moment format="YYYY-MM-DD" >{service.datetime}</Moment></p>
           <p> Önskad tid: <Moment format="HH:mm" >{service.datetime}</Moment></p>
           {/* {this.photos.map(photo => {
             <img src={photo} />

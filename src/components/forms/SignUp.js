@@ -87,7 +87,9 @@ class SignUp extends Component {
         .then((res) => {
           if (!res) {
             this.setState({ success: true })
+            window.location.reload(true)
           } else {
+            console.log(res)
             res.errors.forEach(error => {
               errorMessage = error.message
               if (error.message === "Validation isEmail on email failed") {

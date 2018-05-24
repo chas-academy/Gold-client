@@ -20,7 +20,7 @@ export default class Login extends Component {
             </div>  
               <TabContent for="signin"><SignIn/></TabContent>
               <TabContent for="signup"><SignUp/></TabContent>
-        </Tabs> 
+        </Tabs>
         </div>
         </div>
       )
