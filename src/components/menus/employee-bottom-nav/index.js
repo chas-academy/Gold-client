@@ -42,9 +42,9 @@ class EmployeeBottomNav extends Component {
             </Link>
           </li>
           <li>
-            <button className="logout" onClick={this.logOut}>
+            <a href="/logout" className="logout" onClick={this.logOut}>
               <i className="fas fa-sign-out-alt" />
-            </button>
+            </a>
           </li>
         </ul>
       </nav>
