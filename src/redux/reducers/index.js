@@ -1,13 +1,11 @@
 import { combineReducers } from 'redux';
-import adminOrdersReducer from './AdminOrders';
-import adminAccountsReducer from './AdminAccounts';
+import adminReducer from './Admin';
 import customerReducer from './Customer';
 import employeeReducer from './Employee';
 import authReducer from './Auth';
 
 const rootReducer = combineReducers({
-    adminOrders: adminOrdersReducer,
-    adminAccounts: adminAccountsReducer,
+    admin: adminReducer,
     customer: customerReducer,
     employee: employeeReducer,
     auth: authReducer
