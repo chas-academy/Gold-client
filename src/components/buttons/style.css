@@ -21,9 +21,12 @@
   background: white;
   border-radius: 50%;
   display: flex;
-  padding: 20px;
-  font-size: 20px;
-  margin: 8px; }
+  padding: 25px;
+  font-size: 35px;
+  margin: auto;
+  margin-bottom: 35px;
+  margin-top: 35px;
+}
 
 .AddPhotos__text {
   color: #3161A6;

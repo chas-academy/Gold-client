@@ -44,7 +44,7 @@ body {
     color: rgba(175, 174, 174, 0.815);
     line-height: 0.2;
     font-size: 28px;
-    letter-spacing: 2px;
+    letter-spacing: 0.5px;
     font-family: 'Montserrat', sans-serif;
     font-weight: 800;
 }

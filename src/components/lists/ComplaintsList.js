@@ -47,8 +47,9 @@ class ComplaintsList extends Component {
             {AssignedComplaints.length ? (
               <ul className="BasicList__list">
                 {AssignedComplaints.map(order => (
-                  <li key={order.id}>
-                    <Link to={`/admin/services/${order.id}`}>
+                  <li key={order.service_id}>
+                  {console.log(order)}
+                    <Link to={`/admin/services/${order.service_id}`}>
                       <div className="edit">
                         {order.service.company_name ? (
                           <div>
@@ -58,7 +59,6 @@ class ComplaintsList extends Component {
                         ) : (
                           <h5 className="customer">{order.service.con_pers} </h5>
                         )}
-                        <Moment format="DD/MM HH:mm">{order.service.datetime}</Moment>
                       </div>
                       <div className="employees">
                         Tilldelat:
@@ -66,6 +66,7 @@ class ComplaintsList extends Component {
                         <p className="employee"> {employee.name} </p>
                       ))}
                       </div>  
+                      <p>Åtgärdas : <Moment format="DD/MM HH:mm">{order.service.datetime}</Moment></p>
                     </Link>
                     <hr />
                   </li>
