@@ -32,8 +32,8 @@ body {
 .Login__img {
     float: left;
     margin-top: -5px;
-    margin-bottom: -50px;
-    margin-left: 25px;
+    margin-bottom: -27px;
+    margin-left: 12px;
 }
 
 .Login__header1 {
@@ -43,7 +43,7 @@ body {
     text-transform: uppercase;
     color: rgba(175, 174, 174, 0.815);
     line-height: 0.2;
-    font-size: 30px;
+    font-size: 28px;
     letter-spacing: 2px;
     font-family: 'Montserrat', sans-serif;
     font-weight: 800;

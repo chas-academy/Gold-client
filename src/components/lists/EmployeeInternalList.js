@@ -58,7 +58,7 @@ class EmployeeInternalList extends Component {
                               <p>{order.con_pers} </p>
                               )}
                             {!order.company_name && !order.con_pers ? (
-                              <p>Internal beställning </p>
+                              <p> Servicebyrån internt </p>
                               ) : ('')}
                             <p> Hantera </p>
                           </div>
