@@ -4,10 +4,11 @@
     overflow: hidden;
     margin-top: 5px;
 }
-.orders-list-fml {
+.orders-list {
     max-height: 150px!important;
     overflow: scroll;
 }
+
 .AdminHomeTop__li {
     margin: 5px;
 }
