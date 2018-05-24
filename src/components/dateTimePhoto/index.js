@@ -39,9 +39,10 @@ class DateTimePhoto extends Component {
   }
 
   render() {
-    const { time } = this.state;
+    const { time, admin } = this.state;
     
     return (
+      <div>
       <div className="DateTime__container">
         <div className="DateTime__buttons">  
           <button className="DateTime_small">    
@@ -68,8 +69,12 @@ class DateTimePhoto extends Component {
               onBlur={this.setTime.bind(this)}
             />
           </div>  
-            <AddPhotos setPhoto={this.setPhoto.bind(this)} />
       </div>
+      <hr />
+          {!admin ?
+            <AddPhotos setPhoto={this.setPhoto.bind(this)} />
+            : ('')}
+        </div>
     );
   }
 }

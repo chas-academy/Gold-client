@@ -39,7 +39,6 @@ export const fetchServices = (token, id) => dispatch => {
 		return dispatch(recieveServices(services));
 	})
 	.catch(response => {
-		console.error("An error occured when fetching the services");
 		return dispatch({ type: FETCH_SERVICES_FAILURE });
 	});
 };
@@ -69,7 +68,6 @@ export const fetchService = (token, id) => dispatch => {
 		return dispatch(recieveService(service));
 	})
 	.catch(response => {
-		console.error("An error occured when fetching the service");
 		return dispatch({ type: FETCH_SERVICE_FAILURE });
 	});
 };

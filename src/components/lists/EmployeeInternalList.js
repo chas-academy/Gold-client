@@ -4,6 +4,8 @@ import { fetchAssigned } from "../../redux/actions/employees";
 import { Link, withRouter } from "react-router-dom";
 import { EmployeeBottomNav } from '../../components';
 import Cookies from "universal-cookie";
+import Moment from "react-moment";
+
 import "./style.css";
 
 class EmployeeInternalList extends Component {
@@ -39,13 +41,9 @@ class EmployeeInternalList extends Component {
  
     return (
         <div className="BasicList__container">
-          <h4>  Interna ärenden  </h4>
-        <p>
-          Här samlas interna ärenden som ska hanteras. Klicka på ärendet och bekräfta när det är åtgärdat.
-        </p>
-        <hr />
-
-              {newInternal !== null ? (
+          <h4> Interna ärenden </h4>
+          <p> Här samlas interna ärenden som ska hanteras. Klicka på ärendet och bekräfta när det är åtgärdat. </p>
+          <hr />
                 <ul className="BasicList__list">
                     {newInternal.length ? (
                       newInternal.map(order => (
@@ -58,9 +56,9 @@ class EmployeeInternalList extends Component {
                               <p>{order.con_pers} </p>
                               )}
                             {!order.company_name && !order.con_pers ? (
-                              <p>Internal beställning </p>
+                              <p> Åtgärdas senast: <Moment format="DD/MM  HH:mm">{order.datetime}</Moment> </p>
                               ) : ('')}
-                            <p> Hantera </p>
+                            <p> Detaljer </p>
                           </div>
                         </Link>
                       </li>
@@ -68,17 +66,13 @@ class EmployeeInternalList extends Component {
                     ) : (
                       <div className="BasicList__container">
                         <p>Inga interna ärenden att hantera </p>
-                      </div>)}
-                    </ul>  
-                  ) : (
-                    <div className="BasicList__container">
-                      <p>Inga interna ärenden att hantera </p>
-                    </div>
-                  )
-            }
+                      </div>
+                    )}
+                    </ul> 
+
             <EmployeeBottomNav />
           </div>
-      )
+    )
   }
 }
 

@@ -27,6 +27,17 @@ class CustomerOrderDetails extends Component {
               <li>
                 <p><strong>Datum:</strong> {moment(service.datetime).format('Y-MM-DD HH:mm')}</p>
                 {service.order ? <div>
+                  {service.status == "new" ? (
+                    <p><strong>Status:</strong> Hanteras</p>
+                  ) : (
+                    service.status == "assigned" ? (
+                      <p><strong>Status:</strong> Pågående</p>
+                    ) : (
+                      service.status == "done" ? (
+                        <p><strong>Status:</strong> Klart</p>
+                      ) : ('')
+                    )
+                  )}
                   <p><strong>Adress:</strong> {service.order.address}</p>
                   <p><strong>Description:</strong> {service.order.description}</p>
 

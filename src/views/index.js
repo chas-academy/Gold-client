@@ -1,22 +1,4 @@
 export { default as Home } from './Home';
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> origin/master
-export { default as Accounts } from './admin/accounts/Accounts';
-export { default as CreateAccounts } from './admin/accounts/CreateAccounts';
-export { default as AddOrders } from './admin/orders/AddOrders';
-export { default as Complaints } from './admin/orders/Complaints';
-export { default as CompletedOrders } from './admin/orders/CompletedOrders';
-export { default as HandleOrders } from './admin/orders/HandleOrders';
-export { default as IncomingOrders } from './admin/orders/IncomingOrders';
-export { default as InternalOrders } from './admin/orders/InternalOrders';
-export { default as NotFoundPage } from './NotFoundPage';
-<<<<<<< HEAD
-export { default as Login } from './Login';
-=======
-export { default as Login } from './Login';
-=======
 export { default as NotFoundPage } from './NotFoundPage';
 export { default as Login } from './Login';
 export { default as Register } from './Register';
@@ -61,5 +43,3 @@ export { default as CustomerOrderDetails } from './customers/CustomerOrderDetail
 export { default as CustomerProfile } from './customers/CustomerProfile'
 export { default as CustomerHome } from './customers/CustomerHome'
 
->>>>>>> origin/master
->>>>>>> origin/master

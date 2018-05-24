@@ -71,8 +71,22 @@ class CustomerHistoryList extends Component {
                             <Link to={`/services/${order.id}`}>
                                 <p>Beställningsnummer - {order.id} <br></br> Beställare - {order.con_pers}</p>
                                 <p>Datum:<br></br>{moment(order.datetime).format('Y-MM-DD HH:mm')}</p>
+                                {order.status == "new" ? (
+                                  <p><strong>Status:</strong> Hanteras</p>
+                                ) : (
+                                  order.status == "assigned" ? (
+                                    <p><strong>Status:</strong> Pågående</p>
+                                  ) : (
+                                    order.status == "done" ? (
+                                      <p><strong>Status:</strong> Klart</p>
+                                    ) : ('')
+                                  )
+                                )}
                             </Link>
-                            <Link to={`/complaints/${order.id}`}><i className="fas fa-exclamation-triangle" /> Skapa Reklamation</Link>
+                            {order.status == "done" ?
+                              <Link to={`/complaints/${order.id}`}><i className="fas fa-exclamation-triangle" /> Skapa Reklamation</Link>
+                              : ('')
+                            }
                           </div>
                           <hr></hr>
                       </li>
@@ -93,6 +107,17 @@ class CustomerHistoryList extends Component {
                           <Link to={`/services/${complaint.id}`}>
                               <p>Beställare - {complaint.con_pers}</p>
                               <p>Datum:<br></br>{moment(complaint.datetime).format('Y-MM-DD HH:mm')}</p>
+                                {complaint.status == "new" ? (
+                                  <p><strong>Status:</strong> Hanteras</p>
+                                ) : (
+                                  complaint.status == "assigned" ? (
+                                    <p><strong>Status:</strong> Pågående</p>
+                                  ) : (
+                                    complaint.status == "done" ? (
+                                      <p><strong>Status:</strong> Klart</p>
+                                    ) : ('')
+                                  )
+                                )}
                           </Link>
                         </div>
                         <hr></hr>

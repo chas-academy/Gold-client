@@ -2,19 +2,21 @@
   width: 100%;
   top: 0;
   display: flex;
+  position: fixed;
   justify-content: space-around;
   height: 70px;
-  background-color: #3164a5; }
+  background-color: #3163a5; 
+  z-index: 9999;}
 
 .navBar {
   display: flex;
   width: 100%;
   justify-content: space-around;
-  background-color: #3164a5;
+  background-color: #3163a5;
   padding: 10px;
   border-bottom: 1px solid #2b2929;
   list-style: none;
-  z-index: 2; }
+  z-index: 9999; }
   .navBar > li > a {
     color: #f4f4f5;
     font-size: 36px; }
@@ -29,9 +31,10 @@
     text-decoration: none; }
 
 .slide-menu {
-  background-color: rgba(49, 99, 165, 0.979);
-  margin-top: 0px;
-  height: 100vh; }
+  background-color: rgb(49, 99, 165);
+  margin-top: 12px;
+  height: 100vh; 
+}
 
 .accounts {
   right: 0;
@@ -39,7 +42,7 @@
 
 .menu-item2 {
   font-size: 16px;
-  padding: 30px;
+  padding: 20px;
   color: white;
   padding-right: 40px;
   width: 100%;
@@ -55,7 +58,7 @@
 
 .menu-item {
   font-size: 16px;
-  padding: 30px;
+  padding: 20px;
   color: white;
   padding-left: 40px;
   border-bottom: 1px solid rgba(249, 250, 252, 0.24); }
@@ -78,18 +81,18 @@
   text-transform: uppercase;
   padding-left: 40px;
   font-size: 18px;
-  line-height: 2.9;
+  line-height: 2;
   margin-top: 0;
   background-color: #c4c1c1;
   color: rgba(41, 40, 40, 0.418); }
 
 .slide-menu__header2 {
   text-transform: uppercase;
-  text-align: center;
+  text-align: right;
   width: 100%;
   padding-right: 20px;
   font-size: 18px;
-  line-height: 2.9;
+  line-height: 2;
   margin-top: 0;
   background-color: #c4c1c1;
   color: rgba(41, 40, 40, 0.418); }

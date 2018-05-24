@@ -90,16 +90,15 @@ class EmployeeCompleteList extends Component {
               <ul className="BasicList__list">
                 {completedComplaints.map(order => (
                   <li key={order.service_id}>
-                  {console.log(order)}
-                        <Link to={`/orders/${order.service_id}`}>
-                          <div className="edit">
-                            <p>Beställare : XXXX, orderId: </p>
-                            <i className="fas fa-exclamation-triangle" /> Skapa
-                            Reklamation
-                          </div>
-                        </Link>
-                      </li>
-                    ))}
+                    <Link to={`/orders/${order.service_id}`}>
+                      <div className="edit">
+                        <p>Beställare : XXXX, orderId: </p>
+                        <i className="fas fa-exclamation-triangle" /> Skapa
+                        Reklamation
+                      </div>
+                    </Link>
+                  </li>
+                ))}
               </ul>
             ) : (
               <div className="BasicList__container">

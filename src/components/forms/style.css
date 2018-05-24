@@ -26,7 +26,8 @@
   background-color: rgba(197, 197, 197, 0.055);
   box-shadow: 0 2px 4px 0 rgba(77, 77, 79, 0.2);
   padding: 20px;
-  margin-bottom: 25%;
+  margin-bottom: 30%;
+  padding-bottom: 50px;
   margin-top: 80px; }
   .BasicForm > h5 {
     text-align: center;
@@ -50,7 +51,9 @@
   width: 100%;
   margin: auto;
   padding: 15px;
-  background: #ca1010; }
+  background: #ec9b9b; 
+  border: 1px solid #ec9b9b;
+}
 
 .App-signup-text {
   display: flex;
@@ -96,7 +99,9 @@
   box-shadow: 0 1px 2px 0 rgba(180, 180, 184, 0.068);
   border-bottom: 2px solid #e0e0e0;
   border-radius: 4px;
-  margin-bottom: 14px; }
+  margin-bottom: 14px;
+  margin-top: 10px;
+}
 
 .BasicForm__select {
   width: 100%;
@@ -177,6 +182,26 @@ input:focus {
 .fa-circle {
   margin-right: 5px;
   font-size: 18px; }
+
+.handle_status {
+  color: rgb(245, 158, 158) !important;
+  font-size: 15px !important;
+}  
+
+.employees_list {
+  padding: 0;
+  display: flex;
+  justify-content: space-around;
+  margin-top: 50px;
+  color: #3164a5;
+}
+
+.handle_header {
+  text-transform: uppercase;
+  width: 100%;
+  text-align: center;
+}
+
 
 @media (min-width: 800px) {
   .BasicForm {

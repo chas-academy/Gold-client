@@ -20,6 +20,7 @@
 
 .tab-link-active {
     border-bottom: 3px solid rgba(128, 128, 128, 0.185);
+    color: rgb(63, 62, 62);
 }
 
 

@@ -1,9 +1,3 @@
-<<<<<<< HEAD
-export { default as SignIn } from './forms/signIn';
-=======
-<<<<<<< HEAD
-export { default as SignIn } from './forms/signIn';
-=======
 export { default as App } from './app'
 export { default as SignUp } from './forms/SignUp'
 export { default as SignIn } from './forms/SignIn'
@@ -69,5 +63,3 @@ export { default as CustomerOrderDetails } from './customerOrderDetails'
 export { default as CustomerHistoryList } from './lists/CustomerHistoryList'
 
 
->>>>>>> origin/master
->>>>>>> origin/master

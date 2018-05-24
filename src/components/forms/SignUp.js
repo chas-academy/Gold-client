@@ -87,6 +87,7 @@ class SignUp extends Component {
         .then((res) => {
           if (!res) {
             this.setState({ success: true })
+            window.location.reload(true)
           } else {
             res.errors.forEach(error => {
               errorMessage = error.message

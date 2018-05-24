@@ -4,11 +4,30 @@
     overflow: hidden;
     margin-top: 5px;
 }
-.orders-list-fml {
+.orders-list {
     max-height: 150px!important;
     overflow: scroll;
 }
+
 .AdminHomeTop__li {
     margin: 5px;
 }
 
+.top_handle {
+    color: rgb(66, 135, 214) !important;
+}
+
+.top_date {
+    color: rgb(66, 135, 214) !important;
+}
+
+.top_name {
+    text-transform: uppercase;
+    margin: 0;
+    margin-left: 10px;
+}
+
+.top_new {
+    display: flex;
+    align-items: baseline;
+}

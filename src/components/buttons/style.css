@@ -4,10 +4,9 @@
   border: 3px solid  #3161A6;
   background: rgba(255, 255, 255, 0.884);
   display: flex;
-  padding: 15px;
-  width: 120px;
+  padding: 25px;
   font-size: 22px;
-  border-radius: 5px;
+  border-radius: 50%;
   justify-content: center;
   margin: auto;
   right: 40%; 
@@ -17,20 +16,20 @@
 .AddPhotos__button {
   color: #3161A6;
   box-shadow: 0 1px 2px 0 rgba(20, 20, 20, 0.288);
-  border: 5px solid  #3161A6;
+  border: 3px solid  #3161A6;
   background: white;
   border-radius: 50%;
   display: flex;
   padding: 25px;
-  font-size: 28px;
-  align-content: center;
-  margin: 8px; }
+  font-size: 35px;
+  margin: auto;
+  margin-bottom: 35px;
+  margin-top: 35px;
+}
 
 .AddPhotos__text {
   color: #3161A6;
-  margin-left: -90px;
-
-   }
+}
 
 .fa-clock, .fa-calendar-alt {
   color: #3161A6; }
@@ -38,7 +37,7 @@
 .take, .accept {
   background-color: green;
   text-transform: uppercase;
-  margin-bottom: 0; }
+  margin-bottom: 30px; }
 
 @media (min-width: 800px) {
   .Create__button {

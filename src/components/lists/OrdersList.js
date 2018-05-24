@@ -25,7 +25,6 @@ class OrdersList extends Component {
     const AssignedOrders = orders.filter(order => order.service.status === "assigned");
     const DoneOrders = orders.filter(order => order.service.status === "done");
     
-    console.log(orders)
     return (
       <div className="BasicList__container">
         <h4> Beställningar </h4>

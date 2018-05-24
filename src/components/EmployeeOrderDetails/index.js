@@ -43,7 +43,6 @@ class EmployeeOrderDetails extends Component {
       if (res.type == "FETCH_SERVICE_COMPLETE_SUCCESS") {
         this.props.history.push("/employee/incoming")
       } else {
-        console.log(res)
         this.setState({ errorMessage: res.payload })
       }
     })
@@ -54,9 +53,29 @@ class EmployeeOrderDetails extends Component {
     const { service } = this.props;
 
     return (
-  <div className="BasicList__container">    
+  <div>    
     {service.order_type === 'order' ?
-    <div className="EmployeeOrderDetails">
+            service.status === "done" ?
+            <div className="EmployeeOrderDetails">
+                  <ul className="BasicList__list orderDetails">
+                    <li>
+                    {console.log(service)}
+                    <h2 className="Order_header">Beställning</h2>
+                      {service.company_name ?
+                      <h3>{service.company_name}</h3>
+                      : <h3>{service.con_pers}</h3>
+                    }
+                      <hr/>
+                    </li>
+                    <li>Datum: <Moment format="DD/MM  HH:mm">{service.datetime}</Moment></li>
+                    <li>Adress: {service.order.address}</li>
+                    <hr/>
+                    <li>Avslutat: <Moment format="DD/MM  HH:mm">{service.updatedAt}</Moment> </li>
+                    <hr/>
+                  </ul>
+                </div>
+            :    
+          <div className="EmployeeOrderDetails">
           <ul className="BasicList__list orderDetails">
             <li>
             <h2 className="Order_header">Beställning</h2>
@@ -79,10 +98,28 @@ class EmployeeOrderDetails extends Component {
             <EmployeeCompleteJob completeJob={this.completeJob.bind(this)} />
             {errorMessage && <div className="help-block">{errorMessage}</div>}
             </div>
-
         </div>
-        : 
-        service.order_type === 'complaint' ?
+      :  service.order_type === 'complaint' ?
+          service.status === "done" ?
+          <div className="EmployeeOrderDetails">
+                <ul className="BasicList__list orderDetails">
+                  <li>
+                  {console.log(service)}
+                  <h2 className="Complaint_header">Reklamation</h2>
+                  {service.company_name ?
+                    <h3>{service.company_name}</h3>
+                    : <h3>{service.con_pers}</h3>
+                  }
+                    <hr/>
+                  </li>
+                  <li>Datum: <Moment format="DD/MM  HH:mm">{service.datetime}</Moment></li>
+                  <li>Adress: {service.complaint.order.address}</li>
+                  <hr/>
+                  <li>Avslutat: <Moment format="DD/MM  HH:mm">{service.updatedAt}</Moment> </li>
+                  <hr/>
+                </ul>
+              </div>
+          :  
         <div className="EmployeeOrderDetails">
           <ul className="BasicList__list orderDetails">
             <li>
@@ -100,6 +137,50 @@ class EmployeeOrderDetails extends Component {
             <li>Adress: {service.complaint.order.address}</li>
             <hr/>
             <li>Beskrivning: {service.complaint.description} </li>
+            <hr/>
+
+              <div className="employee__addPhoto">
+                <AddPhotos />
+              </div>  
+          </ul>
+            <div>
+            <EmployeeCompleteJob completeJob={this.completeJob.bind(this)} />
+            {errorMessage && <div className="help-block">{errorMessage}</div>}
+            </div>
+
+        </div>
+        : service.order_type === 'int_order' ?
+        service.status === "done" ?
+        <div className="EmployeeOrderDetails">
+              <ul className="BasicList__list orderDetails">
+                <li>
+                {console.log(service)}
+                <h2 className="Order_header">Internt ärende</h2>
+                {service.company_name ?
+                  <h3>{service.company_name}</h3>
+                  : <h3>{service.con_pers}</h3>
+                }
+                  <hr/>
+                </li>
+                <li>Datum: <Moment format="DD/MM  HH:mm">{service.datetime}</Moment></li>
+                <li>Adress: {service.internal_order.address}</li>
+                <hr/>
+                <li>Avslutat: <Moment format="DD/MM  HH:mm">{service.updatedAt}</Moment> </li>
+                <hr/>
+              </ul>
+            </div>
+        :  
+        <div className="EmployeeOrderDetails">
+          <ul className="BasicList__list orderDetails">
+            <li>
+              <h2 className="Order_header">Internt ärende</h2>
+              <hr/>
+            </li>
+            {console.log(service)}
+            <li>Åtgärdas: <Moment format="DD/MM  HH:mm">{service.datetime}</Moment></li>
+            <li>Adress: {service.internal_order.address}</li>
+            <hr/>
+            <li>Beskrivning: {service.internal_order.description} </li>
             <hr/>
 
               <div className="employee__addPhoto">

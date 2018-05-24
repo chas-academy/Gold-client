@@ -45,7 +45,6 @@ export const loginUser = user => dispatch => {
         return res.json();
       }
       else {
-        console.log("connection")
         dispatch(loginError("could not connect to server check you internet connection"));
       }
     })

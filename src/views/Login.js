@@ -1,29 +1,4 @@
 import React, { Component } from 'react';
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> origin/master
-import { SignIn } from '../components'
-
-export default class Login extends Component {
-
-<<<<<<< HEAD
-    render() {
-      return (  
-        <div> 
-          <SignIn />
-=======
-  render() {
-    return (
-      <div>
-        <SignIn />
-      </div>
-    )
-  }
-
-}
-
-=======
 import { SignIn, SignUp} from '../components';
 import { Tabs, TabContent, TabLink } from 'react-tabs-redux';
 
@@ -45,17 +20,12 @@ export default class Login extends Component {
             </div>  
               <TabContent for="signin"><SignIn/></TabContent>
               <TabContent for="signup"><SignUp/></TabContent>
-        </Tabs> 
+        </Tabs>
         </div>
->>>>>>> origin/master
         </div>
       )
   }
 
 }
   
-<<<<<<< HEAD
-=======
->>>>>>> origin/master
->>>>>>> origin/master
 

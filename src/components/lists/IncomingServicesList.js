@@ -36,7 +36,7 @@ class IncomingServicesList extends Component {
 
     return (
       <div className="BasicList__container">
-        <h4> Nya inkomna ärenden </h4>
+        <h4> Nya ärenden </h4>
         <Tabs>
           <div className="history-tabs">
             <TabLink className="history-tablink" to="beställningar">
@@ -61,6 +61,7 @@ class IncomingServicesList extends Component {
                         <p> Hantera </p>
                       </div>
                     </Link>
+                    <hr />
                   </li>
                 ))}
               </ul>
@@ -86,6 +87,7 @@ class IncomingServicesList extends Component {
                       <p> Hantera </p>
                     </div>
                   </Link>
+                  <hr />
                 </li>
               ))}
             </ul>
