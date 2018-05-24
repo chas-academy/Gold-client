@@ -189,7 +189,8 @@ class HandleService extends Component {
               <button type="submit" className="btn btn-primary">
                 Skicka ärende till anställd
               </button>
-              {errorMessage && successMessage && <div className="help-block">{errorMessage}{successMessage}</div>}
+              {errorMessage && <div className="help-block">{errorMessage}</div>}
+              {successMessage && <div className="help-block">{successMessage}</div>}
             </div>
             <div className="form-group">
               <button className="btn btn-danger" onClick={this.delete}>

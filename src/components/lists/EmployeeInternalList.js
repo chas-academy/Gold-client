@@ -66,22 +66,9 @@ class EmployeeInternalList extends Component {
                       </li>
                       ))
                     ) : (
-                      <li key={newInternal.id}>
-                      <Link to={`services/${newInternal.id}`}>
-                      <div className="edit">
-                          {newInternal.company_name ? (
-                            <p>{newInternal.company_name} </p>
-                            ) : (
-                            <p>{newInternal.con_pers} </p>
-                            )}
-                            {!newInternal.company_name && !newInternal.con_pers ? (
-                              <p>Internal beställning </p>
-                              ) : ('')}
-                          <p> Hantera </p>
-                        </div>
-                      </Link>
-                      </li> 
-                      )}
+                      <div className="BasicList__container">
+                        <p>Inga interna ärenden att hantera </p>
+                      </div>)}
                     </ul>  
                   ) : (
                     <div className="BasicList__container">
