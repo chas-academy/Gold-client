@@ -68,7 +68,7 @@ class MapContainer extends Component {
           height: "40vh",
           width: "100%",
           margin: "auto",
-          marginTop: "30px",
+          marginTop: "0px",
           marginBottom: "0px"
         }}
       >
