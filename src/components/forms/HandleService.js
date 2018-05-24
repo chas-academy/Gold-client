@@ -62,6 +62,7 @@ class HandleService extends Component {
         .then(res => {
           if (res.type === "SERVICE_HANDLE_SUCCESS") {
             this.setState({ successMessage: res.payload });
+            this.setState({ errorMessage: '' });
           } else {
             this.setState({ errorMessage: res.payload });
           }
@@ -142,9 +143,9 @@ class HandleService extends Component {
     } else this.description = "Ingen beskrivning av ärendet";
 
     return (
-      <div className="col-md-6 col-md-offset-3">
+      <div>
         <form name="form" className="BasicForm" onSubmit={this.handleSubmit}>
-          <h5> Hantera {this.type}</h5>
+          <h5 className="handle_header"> Hantera {this.type}</h5>
           {service.status == "new" ? (
             <h5 className="handle_status">
               <strong>Status:</strong> Nytt

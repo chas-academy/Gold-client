@@ -42,8 +42,8 @@ class OrdersList extends Component {
             {AssignedOrders.length ? (
               <ul className="BasicList__list">
                 {AssignedOrders.map(order => (
-                  <li key={order.id}>
-                    <Link to={`/admin/services/${order.id}`}>
+                  <li key={order.service_id}>
+                    <Link to={`/admin/services/${order.service_id}`}>
                       <div className="edit">
                         {order.service.company_name ? (
                           <div>

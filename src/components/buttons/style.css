@@ -1,35 +1,31 @@
 .Create__button {
   color: #3161A6;
-  box-shadow: 0 1px 2px 0 rgba(20, 20, 20, 0.521);
-  border: 3px solid  #3161A6;
-  background: rgba(255, 255, 255, 0.884);
-  display: flex;
-  padding: 25px;
-  font-size: 22px;
+  box-shadow: 0 1px 2px 0 rgba(20, 20, 20, 0.288);
+  border: 5px solid  #3161A6;
+  background: rgba(255, 255, 255, 0.308);
   border-radius: 50%;
+  display: flex;
+  padding: 20px;
+  font-size: 28px;
   justify-content: center;
   margin: auto;
-  right: 40%; 
-  margin-bottom: 40px;
-}
+  right: 40%; }
 
 .AddPhotos__button {
   color: #3161A6;
   box-shadow: 0 1px 2px 0 rgba(20, 20, 20, 0.288);
-  border: 3px solid  #3161A6;
+  border: 5px solid  #3161A6;
   background: white;
   border-radius: 50%;
   display: flex;
   padding: 25px;
-  font-size: 35px;
-  margin: auto;
-  margin-bottom: 35px;
-  margin-top: 35px;
-}
+  font-size: 28px;
+  justify-content: center;
+  margin: 8px; }
 
 .AddPhotos__text {
   color: #3161A6;
-}
+  margin-left: 10px; }
 
 .fa-clock, .fa-calendar-alt {
   color: #3161A6; }
@@ -37,7 +33,7 @@
 .take, .accept {
   background-color: green;
   text-transform: uppercase;
-  margin-bottom: 30px; }
+  margin-bottom: 0; }
 
 @media (min-width: 800px) {
   .Create__button {

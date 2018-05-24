@@ -5,8 +5,8 @@
   position: fixed;
   justify-content: space-around;
   height: 70px;
-  background-color: #3163a5; 
-  z-index: 9999;}
+  background-color: #3163a5;
+  z-index: 9999; }
 
 .navBar {
   display: flex;
@@ -17,24 +17,23 @@
   border-bottom: 1px solid #2b2929;
   list-style: none;
   z-index: 9999; }
-  .navBar > li > a {
+  .navBar .navBar > li > a {
     color: #f4f4f5;
     font-size: 36px; }
-    .navBar > li > a:focus, .navBar > li > a:hover {
+    .navBar .navBar > li > a .navBar > li > a:focus, .navBar .navBar > li > a .navBar > li > a:hover {
       color: #2d2e2e; }
 
 #app div div div.navBar li.dropdown.open ul li a a {
   padding: 10px;
   color: #8bb1db; }
-  #app div div div.navBar li.dropdown.open ul li a a:hover {
+  #app div div div.navBar li.dropdown.open ul li a a #app div div div.navBar li.dropdown.open ul li a a:hover {
     background-color: #0000e8;
     text-decoration: none; }
 
 .slide-menu {
-  background-color: rgb(49, 99, 165);
+  background-color: #3163a5;
   margin-top: 12px;
-  height: 100vh; 
-}
+  height: 100vh; }
 
 .accounts {
   right: 0;
@@ -113,7 +112,7 @@
   margin-top: 10px;
   padding-bottom: 20px;
   padding-left: 40px; }
-  .slide-logout:hover {
+  .slide-logout .slide-logout:hover {
     color: white;
     text-decoration: none; }
 
