@@ -1,12 +1,12 @@
 .TopNav {
   width: 100%;
+  top: 0;
   display: flex;
   justify-content: space-around;
+  height: 70px;
   background-color: #3164a5; }
 
 .navBar {
-  position: absolute;
-  top: 0;
   display: flex;
   width: 100%;
   justify-content: space-around;

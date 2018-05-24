@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { AdminTopNav, AdminBottomNav, EmployeeList, AddUser } from "../../../components";
+import { AdminTopNav, AdminBottomNav, EmployeeList } from "../../../components";
 
 export default class Employees extends Component {
   render() {
@@ -7,7 +7,6 @@ export default class Employees extends Component {
       <div>
         <AdminTopNav />
           <EmployeeList />
-          <AddUser />
         <AdminBottomNav />
       </div>
     );

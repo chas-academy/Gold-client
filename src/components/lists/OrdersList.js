@@ -4,7 +4,7 @@ import { fetchOrders } from "../../redux/actions/admin/Orders";
 import Cookies from "universal-cookie";
 import { Tabs, TabLink, TabContent } from "react-tabs-redux";
 import Moment from "react-moment";
-
+import { CreateOrder } from '../../components';
 import { Link, withRouter } from "react-router-dom";
 import "./style.css";
 
@@ -22,13 +22,14 @@ class OrdersList extends Component {
       return <i className="fas fa-circle-notch fa-spin"></i>;
     }
 
-
     const AssignedOrders = orders.filter(order => order.service.status === "assigned");
     const DoneOrders = orders.filter(order => order.service.status === "done");
     
+    console.log(orders)
     return (
       <div className="BasicList__container">
         <h4> Beställningar </h4>
+        <CreateOrder />
         <Tabs>
           <div className="history-tabs">
             <TabLink className="history-tablink" to="hanterade">
@@ -42,26 +43,25 @@ class OrdersList extends Component {
             {AssignedOrders.length ? (
               <ul className="BasicList__list">
                 {AssignedOrders.map(order => (
-                  <li key={order.service_id}>
-                  {console.log(order.service.employees[0].name)}
-                    <Link to={`/admin/services/${order.service_id}`}>
+                  <li key={order.id}>
+                    <Link to={`/admin/services/${order.id}`}>
                       <div className="edit">
-                      <p><Moment format="MM/DD HH:mm">{order.service.datetime}</Moment></p>
                         {order.service.company_name ? (
                           <div>
-                            <p>{order.service.company_name}</p>
-                            <p>{order.service.con_pers}</p>
+                          <h5 className="customer">{order.service.company_name} </h5>
+                          <p>Kontaktperson: {order.service.con_pers} </p>
                           </div>
                         ) : (
-                          <p>{order.service.con_pers}</p>
+                          <h5 className="customer">{order.service.con_pers} </h5>
                         )}
-                        <p>Anställd: </p>
-                        <div>
-                        {order.service.employees.map(employee => (
-                            <p>{employee.name}</p>
-                        ))}
-                        </div>
+                        <Moment format="DD/MM HH:mm">{order.datetime}</Moment>
                       </div>
+                      <div className="employees">
+                        Tilldelat:
+                      {order.service.employees.map(employee => (
+                        <p className="employee"> {employee.name} </p>
+                      ))}
+                      </div>  
                     </Link>
                     <hr />
                   </li>
@@ -80,14 +80,24 @@ class OrdersList extends Component {
                   <li key={order.service_id}>
                     <Link to={`/admin/services/${order.service_id}`}>
                       <div className="edit">
-                        {order.service.company_name ? (
-                          <p>{order.service.company_name}</p>
+                      {order.service.company_name ? (
+                          <div>
+                          <h5 className="customer">{order.service.company_name} </h5>
+                          <p>Kontaktperson: {order.service.con_pers} </p>
+                          </div>
                         ) : (
-                          <p>{order.service.con_pers}</p>
+                          <h5 className="customer">{order.service.con_pers} </h5>
                         )}
-                        <p>status: {order.service.status}</p>
+                        <Moment format="DD/MM HH:mm">{order.datetime}</Moment>
                       </div>
+                      <div className="employees">
+                        Tilldelat:
+                      {order.service.employees.map(employee => (
+                        <p className="employee"> {employee.name} </p>
+                      ))}
+                      </div>  
                     </Link>
+                    <hr />
                   </li>
                 ))}
               </ul>

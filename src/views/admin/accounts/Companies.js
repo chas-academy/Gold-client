@@ -8,7 +8,6 @@ export default class Companies extends Component {
         <div> 
             <AdminTopNav />
                 <CompanyList />
-                <AddUser />
             <AdminBottomNav />
         </div>    
     )

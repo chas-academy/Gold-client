@@ -1,17 +1,18 @@
 .Create__button {
   color: #3161A6;
-  box-shadow: 0 1px 2px 0 rgba(20, 20, 20, 0.288);
-  border: 5px solid  #3161A6;
-  background: rgba(255, 255, 255, 0.308);
-  border-radius: 50%;
+  box-shadow: 0 1px 2px 0 rgba(20, 20, 20, 0.521);
+  border: 3px solid  #3161A6;
+  background: rgba(255, 255, 255, 0.884);
   display: flex;
-  padding: 20px;
-  font-size: 28px;
+  padding: 15px;
+  width: 120px;
+  font-size: 22px;
+  border-radius: 5px;
   justify-content: center;
   margin: auto;
-  position: absolute;
-  bottom: 12%;
-  right: 40%; }
+  right: 40%; 
+  margin-bottom: 40px;
+}
 
 .AddPhotos__button {
   color: #3161A6;

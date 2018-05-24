@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import { AdminTopNav, AdminBottomNav, PrivateCustomerList, AddUser } from '../../../components'
+import { AdminTopNav, AdminBottomNav, PrivateCustomerList } from '../../../components'
 
 export default class PrivateCustomers extends Component {
 
@@ -8,7 +8,6 @@ export default class PrivateCustomers extends Component {
         <div> 
             <AdminTopNav />
                 <PrivateCustomerList />
-                <AddUser />
             <AdminBottomNav />
         </div>    
     )

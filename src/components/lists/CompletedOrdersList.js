@@ -58,17 +58,20 @@ class CompletedOrdersList extends Component {
       <div className="BasicList__container">
         <h4>Avslutade ärenden</h4>
         <Tabs>
-          <div className="history-tabs">
-            <TabLink className="history-tablink" to="beställningar">
-              Beställningar
-            </TabLink>
-            <TabLink className="history-tablink" to="reklamationer">
-              Reklamationer
-            </TabLink>
-            <TabLink className="history-tablink" to="Interna">
-              Interna
-            </TabLink>
-          </div>
+        <div className="history-tabs">
+          <TabLink className="history-tablink" to="beställningar">
+            <i className="fas fa-list slide"></i>
+            <p>Beställningar</p>
+          </TabLink>
+          <TabLink className="history-tablink" to="reklamationer">
+            <i className="fas fa-exclamation-circle slide"></i>
+            <p>Reklamationer</p>
+          </TabLink>
+          <TabLink className="history-tablink" to="Interna">
+            <i className="fas fa-envelope-open slide"></i>
+            <p>Interna</p>
+          </TabLink>
+      </div>
           <TabContent for="beställningar">
             {completedOrders.length ? (
               <ul className="BasicList__list">
@@ -77,25 +80,32 @@ class CompletedOrdersList extends Component {
                       <li key={order.id}>
                         <div className="edit">
                           <Link to={`/admin/services/${order.id}`}>
-                            <p>Beställningsnummer - {order.id} <br></br> Beställare - {order.company_name ? order.company_name : order.con_pers}
-                            {order.company_name ?  <span><br></br>Contact person - {order.con_pers}</span> : ('')}
-                            </p>
-                            <p>Datum:<br></br>{moment(order.datetime).format('Y-MM-DD HH:mm')}</p>
+                            <p>Beställare - {order.company_name ? order.company_name : order.con_pers}
+                              {order.company_name ?  <span><br></br>Kontaktperson - {order.con_pers}</span> : ('')}
+                            </p>                         
+                            <div className="edit">
+                              <p>Avslutat: {moment(order.updatedAt).format('MM-DD HH:mm')}</p>
+                            </div>
                           </Link>
-                          <a><i className="fas fa-exclamation-triangle" /> Skapa Reklamation </a>
+                          Skapa reklamation 
                           </div>
-                          <hr></hr>
+                          <hr />
                       </li>
                     ))
                   : completedOrders.map(order => (
-                      <li key={order.id}>
-                        <Link to={`/orders/${order.id}`}>
-                          <div className="edit">
-                            <p>Beställare : XXXX, orderId: </p>
-                            <i className="fas fa-exclamation-triangle" /> Skapa
-                            Reklamation
+                    <li key={order.id}>
+                        <div className="edit">
+                          <Link to={`/services/${order.id}`}>
+                            <p>Beställare - {order.company_name ? order.company_name : order.con_pers}
+                              {order.company_name ?  <span><br></br>Kontaktperson - {order.con_pers}</span> : ('')}
+                            </p>                         
+                            <div className="edit">
+                              <p>Avslutat: {moment(order.updatedAt).format('MM-DD HH:mm')}</p>
+                            </div>
+                          </Link>
+                          Skapa reklamation 
                           </div>
-                        </Link>
+                          <hr />
                       </li>
                     ))}
               </ul>
@@ -113,25 +123,31 @@ class CompletedOrdersList extends Component {
                       <li key={order.id}>
                           <div className="edit">
                           <Link to={`/admin/services/${order.id}`}>
-                            <p>Beställare - {order.company_name ? order.company_name : order.con_pers}
-                            {order.company_name ?  <span><br></br>Contact person - {order.con_pers}</span> : ('')}
-                            </p>
-                            <p>Datum:<br></br>{moment(order.datetime).format('Y-MM-DD HH:mm')}</p>
+                          <p>Beställare - {order.company_name ? order.company_name : order.con_pers}
+                            {order.company_name ?  <span><br></br>Kontaktperson - {order.con_pers}</span> : ('')}
+                          </p>  
+                            <div className="edit">
+                            <p>Avslutat:{moment(order.updatedAt).format('MM-DD HH:mm')}</p>
+                            </div>
                           </Link>
                           </div>
-                          <hr></hr>
+                          <hr />
                       </li>
                     ))
                   : completedComplaints.map(order => (
                       <li key={order.id}>
-                        <Link to={`/orders/${order.id}`}>
+                        <div className="edit">
+                          <Link to={`/services/${order.id}`}>
+                          <p>Beställare - {order.company_name ? order.company_name : order.con_pers}
+                            {order.company_name ?  <span><br></br>Kontaktperson - {order.con_pers}</span> : ('')}
+                          </p>                         
                           <div className="edit">
-                            <p>Beställare : XXXX, orderId: </p>
-                            <i className="fas fa-exclamation-triangle" /> Skapa
-                            Reklamation
+                            <p>Avslutat: {moment(order.updatedAt).format('MM-DD HH:mm')}</p>
                           </div>
                         </Link>
-                      </li>
+                        </div>
+                        <hr />
+                    </li>
                     ))}
               </ul>
             ) : (
@@ -148,24 +164,26 @@ class CompletedOrdersList extends Component {
                     <li key={order.id}>
                       <div className="edit">
                         <Link to={`/admin/services/${order.id}`}>
-                          <p>Beställningsnummer - {order.id} <br></br> Beställare - {order.company_name ? order.company_name : order.con_pers}
-                          {order.company_name ?  <span><br></br>Contact person - {order.con_pers}</span> : ('')}
-                          </p>
-                          <p>Datum:<br></br>{moment(order.datetime).format('Y-MM-DD HH:mm')}</p>
+                        <p>Ärende nr: {order.id}</p>  
+                          <p>Avslutat:<br></br>{moment(order.updatedAt).format('MM-DD HH:mm')}</p>
                         </Link>
                         </div>
                         <hr></hr>
                     </li>
                   ))
                 : completedInternalOrders.map(order => (
-                    <li key={order.id}>
-                      <Link to={`/orders/${order.id}`}>
-                        <div className="edit">
-                          <p>Beställare : XXXX, orderId: </p>
-                          <i className="fas fa-exclamation-triangle" /> Skapa
-                          Reklamation
+                  <li key={order.id}>
+                    <div className="edit">
+                          <Link to={`/services/${order.id}`}>
+                          <p>Beställare - {order.company_name ? order.company_name : order.con_pers}
+                            {order.company_name ?  <span><br></br>Kontaktperson - {order.con_pers}</span> : ('')}
+                          </p>                         
+                          <div className="edit">
+                            <p>Avslutat: {moment(order.updatedAt).format('MM-DD HH:mm')}</p>
+                          </div>
+                        </Link>
                         </div>
-                      </Link>
+                        <hr />
                     </li>
                   ))}
             </ul>
