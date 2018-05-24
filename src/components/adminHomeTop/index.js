@@ -1,12 +1,14 @@
 import React, { Component } from "react";
 import { Tabs, TabLink, TabContent } from "react-tabs-redux";
 import { Link, withRouter } from "react-router-dom";
+import Moment from "react-moment";
+
 import "./style.css";
 
 class AdminHomeTop extends Component {
 
   render() {
-    const { servicesNew } = this.props;
+    const { servicesNew, isFetching } = this.props;
     const newOrders = servicesNew.filter(order => order.order_type === "order");
     const newComplaints = servicesNew.filter(
       order => order.order_type === "complaint"
@@ -23,21 +25,26 @@ class AdminHomeTop extends Component {
                 Reklamationer
               </TabLink>
             </div>
-            <TabContent for="beställningar" className="orders-list-fml">
-              {newOrders.length ? (
+            <TabContent for="beställningar" className="orders-list">
+            {isFetching ? 
+             <i className="fas fa-circle-notch fa-spin"></i>
+              : 
+              newOrders.length ? (
                 <ul className="BasicList__list">
                   {newOrders.map(order => (
                     <li key={order.id}>
+                    {console.log(order)}
                       <Link to={`/admin/services/${order.id}`}>
                         <div className="edit">
                           {order.company_name ? (
-                            <p> {order.company_name} </p>
+                            <p> <Moment format="DD/MM HH:mm">{order.datetime}</Moment> beställare: {order.company_name} </p>
                           ) : (
-                            <p> {order.con_pers} </p>
+                            <p> <Moment format="DD/MM HH:mm">{order.datetime}</Moment> beställare: {order.con_pers} </p>
                           )}
                             <p> Hantera </p>
                         </div>
                       </Link>
+                      <hr />
                     </li>
                   ))}
                 </ul>
@@ -48,20 +55,24 @@ class AdminHomeTop extends Component {
               )}
             </TabContent>
             <TabContent for="reklamationer">
-              {newComplaints.length ? (
+            {isFetching ? 
+             <i className="fas fa-circle-notch fa-spin"></i>
+              : 
+              newComplaints.length ? (
                 <ul className="BasicList__list">
                   {newComplaints.map(order => (
                     <li key={order.id}>
                       <Link to={`/admin/complaints/${order.id}`}>
                         <div className="edit">
                           {order.company_name ? (
-                            <p> {order.company_name} </p>
+                            <p> <Moment format="DD/MM HH:mm">{order.datetime}</Moment> beställare: {order.company_name} </p>
                           ) : (
-                            <p> {order.con_pers} </p>
+                            <p> <Moment format="DD/MM HH:mm">{order.datetime}</Moment> beställare: {order.con_pers} </p>
                           )}
                           <p> Hantera </p>
                         </div>
                       </Link>
+                      <hr />
                     </li>
                   ))}
                 </ul>
