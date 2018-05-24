@@ -44,9 +44,7 @@ class EmployeeIncomingList extends Component {
         <div className="BasicList__container">
           <h4> nya ärenden  </h4>
         <p>
-          Här samlas alla dina inkomna jobb. Klicka på ärendet för att få mer
-          detaljer och bekräfta att du påbörjat jobbet när du har anlänt till
-          kunden med knappen "Påbörja jobb".
+          Här samlas interna ärenden som ska hanteras. Klicka på ärendet och bekräfta när det är åtgärdat.
         </p>
         <hr />
               {newOrders.length ? (

@@ -40,17 +40,14 @@ export const fetchService = ( token, id ) => dispatch => {
         return res.json();
       }
       else {
-        return dispatch({ type: FETCH_SERVICE_FAILURE,
-                          message:"Kunde inte Koppla till nätverket kontrollera internetuppkoppling."});
+        return dispatch({ type: FETCH_SERVICE_FAILURE, message:"Kunde inte Koppla till nätverket kontrollera internetuppkoppling."});
       }
     })
     .then(service => {
       return dispatch(recieveService(service));
     })
     .catch(response => {
-      console.error("An error occured when fetching the service");
-      return dispatch({ type: FETCH_SERVICE_FAILURE,
-                        message:"kunde inte hämta ärende."});
+      return dispatch({ type: FETCH_SERVICE_FAILURE, payload:"Kunde inte hämta ärende."});
     });
 };
 
@@ -216,8 +213,7 @@ export const fetchServiceComplete = (token, id) => dispatch => {
         return dispatch({ type: FETCH_SERVICE_COMPLETE_FAILURE, payload: res.error });
       }
     })
-    .catch(response => {
-      console.error("An error occured when fetching the service");
-      return dispatch({ type: FETCH_SERVICE_COMPLETE_FAILURE, payload: response.message });
+    .catch(res => {
+      return dispatch({ type: FETCH_SERVICE_COMPLETE_FAILURE, payload: res.error });
     });
 };

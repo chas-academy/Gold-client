@@ -30,8 +30,7 @@ export const fetchUser = (token) => dispatch => {
     .then((user) => {
         return dispatch(recieveUser(user));
     })
-    .catch(response => {
-        console.error('An error occured when fetching the user')
+    .catch(res => {
         return dispatch({ type: FETCH_USER_FAILURE })
     });
 };
@@ -60,8 +59,7 @@ export const updateUser = (token) => dispatch => {
     .then((user) => {
         return dispatch(updateUserSuccess(user));
     })
-    .catch(response => {
-        console.error('An error occured when fetching the user')
-        return dispatch({ type: USER_UPDATE_FAILURE, payload: response.error })
+    .catch(res => {
+        return dispatch({ type: USER_UPDATE_FAILURE })
     });
 }; 

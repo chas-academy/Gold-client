@@ -145,6 +145,17 @@ class HandleService extends Component {
         </div>
         : <h5> {service.con_pers} </h5>}
         <hr />
+          {service.status == "new" ? (
+            <p><strong>Status:</strong> Ny ärende</p>
+          ) : (
+            service.status == "assigned" ? (
+              <p><strong>Status:</strong> Hanterade</p>
+            ) : (
+              service.status == "done" ? (
+                <p><strong>Status:</strong> Klart</p>
+              ) : ('')
+            )
+          )}
           <p> Tel: <a href={`tel:${service.con_tel}`}> {service.con_tel} </a> </p>
           <p> Önskat datum: <Moment format="YYYY-MM-DD" >{service.datetime}</Moment></p>
           <p> Önskad tid: <Moment format="HH:mm" >{service.datetime}</Moment></p>

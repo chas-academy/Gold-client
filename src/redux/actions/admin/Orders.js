@@ -58,11 +58,9 @@ export const fetchService = ( token, id ) => dispatch => {
   })
     .then(res => res.json())
     .then(service => {
-      console.log(service)
       return dispatch(recieveService(service));
     })
     .catch(response => {
-      console.error("An error occured when fetching the service");
       return dispatch({ type: FETCH_SERVICE_FAILURE });
     });
 };
@@ -92,7 +90,6 @@ export const fetchServices = token => dispatch => {
       return dispatch(recieveServices(services));
     })
     .catch(response => {
-      console.error("An error occured when fetching the services");
       return dispatch({ type: FETCH_SERVICES_FAILURE });
     });
 };
@@ -121,7 +118,6 @@ export const fetchServicesNew = token => dispatch => {
       return dispatch(recieveServicesNew(servicesNew));
     })
     .catch(response => {
-      console.error("An error occured when fetching the new services");
       return dispatch({ type: FETCH_SERVICES_NEW_FAILURE });
     });
 };
@@ -150,7 +146,6 @@ export const fetchServicesAssigned = token => dispatch => {
       return dispatch(recieveServicesAssigned(servicesAssigned));
     })
     .catch(response => {
-      console.error("An error occured when fetching the assigned services");
       return dispatch({ type: FETCH_SERVICES_ASSIGNED_FAILURE });
     });
 };
@@ -187,7 +182,6 @@ export const fetchServicesDone = token => dispatch => {
       return dispatch(recieveServicesDone(servicesDone));
     })
     .catch(response => {
-      console.error("An error occured when fetching the services");
       return dispatch({ type: FETCH_SERVICES_DONE_FAILURE });
     });
 };
@@ -224,7 +218,6 @@ export const fetchServicesHandle = (token, id, form) => dispatch => {
       }
     })
     .catch(response => {
-      console.error("An error occured when fetching the services");
       return dispatch({ type: SERVICE_HANDLE_FAILURE, payload: response.message });
     });
 };
@@ -260,7 +253,6 @@ export const fetchOrder = (token, id) => dispatch => {
       return dispatch(recieveOrder(order));
     })
     .catch(response => {
-      console.error("An error occured when fetching the order");
       return dispatch({ type: FETCH_ORDER_FAILURE,
                         message:"kunde inte hämta beställing" });
     });
@@ -298,7 +290,6 @@ export const fetchOrders = token => dispatch => {
       return dispatch(recieveOrders(orders));
     })
     .catch(response => {
-      console.error("An error occured when fetching the orders");
       return dispatch({ type: FETCH_ORDERS_FAILURE ,
                         message:"kunde inte hämta beställingar" });
     });
@@ -336,7 +327,6 @@ export const fetchInternalOrder = (token, id ) => dispatch => {
       return dispatch(recieveInternalOrder(internalOrder));
     })
     .catch(response => {
-      console.error("An error occured when fetching the internal order");
       return dispatch({ type: FETCH_INTERNAL_ORDER_FAILURE,
                         message:"det var ett problem att hämta interna beställningar"  });
     });
@@ -374,7 +364,6 @@ export const fetchInternalOrders = token => dispatch => {
       return dispatch(recieveInternalOrders(internalOrders));
     })
     .catch(response => {
-      console.error("An error occured when fetching the orders");
       return dispatch({ type: FETCH_INTERNAL_ORDERS_FAILURE,
         message:"det var ett problem att hämta interna beställningar" });
     });
@@ -412,7 +401,6 @@ export const fetchComplaint = (token, id ) => dispatch => {
       return dispatch(recieveComplaint(complaint));
     })
     .catch(response => {
-      console.error("An error occured when fetching the complaint");
       return dispatch({ type: FETCH_COMPLAINT_FAILURE,
         message:"Det var problem att hämta klagomål" });
     });
@@ -450,7 +438,6 @@ export const fetchComplaints = token => dispatch => {
       return dispatch(recieveComplaints(complaints));
     })
     .catch(response => {
-      console.error("An error occured when fetching the complaints");
       return dispatch({ type: FETCH_COMPLAINTS_FAILURE,
                         message: "det var problem att hämta klagomål" });
     });

@@ -43,7 +43,6 @@ class EmployeeOrderDetails extends Component {
       if (res.type == "FETCH_SERVICE_COMPLETE_SUCCESS") {
         this.props.history.push("/employee/incoming")
       } else {
-        console.log(res)
         this.setState({ errorMessage: res.payload })
       }
     })

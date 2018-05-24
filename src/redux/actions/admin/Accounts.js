@@ -58,7 +58,6 @@ export const CreateUser = (id, token) => dispatch => {
           return dispatch(SaveUser(user));
       })
       .catch(response => {
-          console.error('An error occured when fetching the user')
           return dispatch({ type: CREATE_USER_FAILURE,
                             message: "Kunde inte Koppla till nätverket kontrollera internetuppkoppling."})
       });
@@ -98,7 +97,6 @@ export const fetchUser = (id, token) => dispatch => {
           debugger;
       })
       .catch(response => {
-          console.error('An error occured when fetching the user')
           return dispatch({ type: FETCH_USER_FAILURE,
                             message: "Kunde inte Koppla till nätverket kontrollera internetuppkoppling." })
       });
@@ -137,7 +135,6 @@ export const fetchUsers = (token) => dispatch => {
           return dispatch(recieveUsers(users));
       })
       .catch(response => {
-          console.error('An error occured when fetching the users')
           return dispatch({ type: FETCH_USERS_FAILURE,
                             message: "Kunde inte Koppla till nätverket kontrollera internetuppkoppling."})
       });
@@ -180,7 +177,6 @@ export const updateUser = (user, token) => dispatch => {
           return dispatch(updateSuccess(user));
       })
       .catch(response => {
-          console.error('The user was not updated')
           return dispatch({ type: UPDATE_USER_FAILURE,
                             message: "kunde inte hämta användare" })
       });
@@ -218,7 +214,6 @@ export const fetchEmployees = (token) => dispatch => {
           return dispatch(recieveEmployees(users));
       })
       .catch(response => {
-          console.error('An error occured when fetching the employee')
           return dispatch({ type: FETCH_EMPLOYEES_FAILURE,
                             message: "Något Gick fill med att hämta informationen"})
       });
@@ -257,7 +252,6 @@ export const fetchPrivateCustomers = (token) => dispatch => {
           return dispatch(recievePrivateCustomers(users));
       })
       .catch(response => {
-          console.error('An error occured when fetching the private customers')
           return dispatch({ type: FETCH_CUSTOMERS_PRIVATE_FAILURE,
                             message:"det var ett problem att hämta kunder" })
       });
@@ -295,7 +289,6 @@ export const fetchCompanies = (token) => dispatch => {
           return dispatch(recieveCompanies(companies));
       })
       .catch(response => {
-          console.error('An error occured when fetching the companies')
           return dispatch({ type: FETCH_CUSTOMERS_COMPANIES_FAILURE,
                             message:"Kunde inte hämta kunder företag." })
       });
@@ -333,7 +326,6 @@ export const fetchCustomer = (id, token) => dispatch => {
           return dispatch(recieveCustomer(customer));
       })
       .catch(response => {
-          console.error('An error occured when fetching the customer')
           return dispatch({ type: FETCH_CUSTOMER_FAILURE,
                             message: "Kunde inte Koppla till nätverket kontrollera internetuppkoppling." })
       });
@@ -376,7 +368,6 @@ export const fetchCustomer = (id, token) => dispatch => {
               return dispatch(updateCustomerSuccess(customer));
           })
           .catch(response => {
-              console.error('The customer was not updated')
               return dispatch({ type: UPDATE_CUSTOMER_FAILURE,
                                 message:"Kunde inte uppdatera kund" })
           });
