@@ -62,6 +62,7 @@ class HandleService extends Component {
         .then(res => {
           if (res.type === "SERVICE_HANDLE_SUCCESS") {
             this.setState({ successMessage: res.payload });
+            this.setState({ errorMessage: '' });
           } else {
             this.setState({ errorMessage: res.payload });
           }
