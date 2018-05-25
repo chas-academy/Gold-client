@@ -170,7 +170,8 @@ class AddOrder extends Component {
 		return (
 		<div className="col-md-6 col-md-offset-3">
 			<form name="form" id="add-order" className="BasicForm" onSubmit={this.handleSubmit} encType="multipart/form-data">
-				<h5> Skapa Beställning</h5>
+				<h5 className="handle_header"> Skapa Beställning</h5>
+				<hr />
 				{isAdmin === true ? (
 					<div className="form-group">
 						<div className="BasicForm__check">
@@ -273,6 +274,7 @@ class AddOrder extends Component {
 						)}
 					</div>
 					) : ('')}
+					<p className="pick_time">Välj önskat datum och tid</p>
 					<DateTimePhoto getDate={this.getDate.bind(this)} getTime={this.getTime.bind(this)} getPhoto={this.getPhoto.bind(this)} />
 					<div className="form-group">
 						<button type="submit" className="btn btn-primary">

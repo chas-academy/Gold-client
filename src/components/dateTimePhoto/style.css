@@ -40,7 +40,8 @@
     display: flex;
     flex-direction: row;
     width: 100%;
-    margin-bottom: 3%;
+    margin-bottom: 30px;
+    margin-top: 20px;
 }
 
 .DateTime__buttons {
