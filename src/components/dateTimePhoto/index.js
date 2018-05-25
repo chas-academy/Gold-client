@@ -72,7 +72,9 @@ class DateTimePhoto extends Component {
       </div>
       <hr />
           {!admin ?
+          <div className="employee__addPhoto">
             <AddPhotos setPhoto={this.setPhoto.bind(this)} />
+          </div>  
             : ('')}
         </div>
     );
