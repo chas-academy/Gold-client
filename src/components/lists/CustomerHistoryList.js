@@ -69,16 +69,15 @@ class CustomerHistoryList extends Component {
                       <li key={order.id}>
                           <div className="edit">
                             <Link to={`/services/${order.id}`}>
-                                <p>Beställningsnummer - {order.id} <br></br> Beställare - {order.con_pers}</p>
                                 <p>Datum:<br></br>{moment(order.datetime).format('Y-MM-DD HH:mm')}</p>
                                 {order.status == "new" ? (
-                                  <p><strong>Status:</strong> Hanteras</p>
+                                  <p className="handle_status"><strong>Status:</strong> Hanteras</p>
                                 ) : (
                                   order.status == "assigned" ? (
-                                    <p><strong>Status:</strong> Pågående</p>
+                                    <p className="handle_status"><strong>Status:</strong> Pågående</p>
                                   ) : (
                                     order.status == "done" ? (
-                                      <p><strong>Status:</strong> Klart</p>
+                                      <p className="handle_status"><strong>Status:</strong> Klart</p>
                                     ) : ('')
                                   )
                                 )}
@@ -105,16 +104,15 @@ class CustomerHistoryList extends Component {
                       <li key={complaint.id}>
                         <div className="edit">
                           <Link to={`/services/${complaint.id}`}>
-                              <p>Beställare - {complaint.con_pers}</p>
                               <p>Datum:<br></br>{moment(complaint.datetime).format('Y-MM-DD HH:mm')}</p>
                                 {complaint.status == "new" ? (
-                                  <p><strong>Status:</strong> Hanteras</p>
+                                  <p className="handle_status"><strong>Status:</strong> Hanteras</p>
                                 ) : (
                                   complaint.status == "assigned" ? (
-                                    <p><strong>Status:</strong> Pågående</p>
+                                    <p className="handle_status"><strong>Status:</strong> Pågående</p>
                                   ) : (
                                     complaint.status == "done" ? (
-                                      <p><strong>Status:</strong> Klart</p>
+                                      <p className="handle_status"><strong>Status:</strong> Klart</p>
                                     ) : ('')
                                   )
                                 )}

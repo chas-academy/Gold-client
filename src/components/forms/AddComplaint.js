@@ -92,8 +92,8 @@ class AddComplaint extends Component {
     return (
     <div className="col-md-6 col-md-offset-3">
         <form name="form" className="BasicForm" onSubmit={this.handleSubmit}>
-          <h5>Skapa Reklamation</h5>
-
+          <h5 className="handle_header">Skapa Reklamation</h5>
+          <hr />
           <div className="form-group">
             <input type='text' name='orderId' className="form-control" placeholder='Ärende id' value={orderId} onChange={this.handleChange}/>
             {submitted && !orderId &&
@@ -114,6 +114,9 @@ class AddComplaint extends Component {
             }
           </div>
           : ('')}
+            <hr />
+          	<p className="pick_time">Välj önskat datum och tid</p>
+
             <DateTimePhoto getDate={this.getDate.bind(this)} getTime={this.getTime.bind(this)} getPhoto={this.getPhoto.bind(this)} />
           <div className="buttons">
           <div className="form-group">
