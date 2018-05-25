@@ -39,7 +39,7 @@ class CustomerOrderDetails extends Component {
                     )
                   )}
                   <p><strong>Adress:</strong> {service.order.address}</p>
-                  <p><strong>Description:</strong> {service.order.description}</p>
+                  <p><strong>Beskrivning:</strong> {service.order.description}</p>
 
                 </div> : ('')}
                 {service.complaint ? <div>
