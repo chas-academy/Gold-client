@@ -29,7 +29,15 @@
 }
 
 #add-order > div:nth-child(5) > div.DateTime__container > div:nth-child(1) > div > div.react-datepicker-popper {
-    transform: translate3d(0px, 377px, 0px) !important;
+    transform: translate3d(0px, 520px, 0px) !important;
+}
+
+div.react-datepicker-popper {
+    position: absolute;
+    will-change: transform;
+    top: 0px;
+    left: 0px;
+    transform: translate3d(0px, 520px, 0px) !important;
 }
 
 .react-datepicker__triangle {
