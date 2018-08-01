@@ -8,12 +8,6 @@ import { Link, withRouter } from "react-router-dom";
 import "./style.css";
 
 class IncomingServicesList extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-    };
-  }
-
   
   componentWillMount() {
     const cookies = new Cookies();
@@ -25,7 +19,11 @@ class IncomingServicesList extends Component {
     const { servicesNew, isFetching } = this.props;
 
     if(isFetching) {
-      return <i className="fas fa-circle-notch fa-spin"></i>;
+      return (
+        <div className="spinner">
+          <i className="fas fa-circle-notch fa-spin"></i>
+        </div>  
+      )
     }
     
     const newOrders = servicesNew.filter(order => order.order_type === "order");
@@ -48,11 +46,11 @@ class IncomingServicesList extends Component {
           </div>
           <TabContent for="beställningar">
             {newOrders.length ? (
-              <ul className="BasicList__list">
+              <ul className="BasicList">
                 {newOrders.map(order => (
                   <li key={order.id}>
                     <Link to={`/admin/services/${order.id}`}>
-                      <div className="edit">
+                      <div className="BasicList__edit">
                         {order.company_name ? (
                           <p>{order.company_name} </p>
                         ) : (
@@ -67,18 +65,17 @@ class IncomingServicesList extends Component {
               </ul>
             ) : (
               <div className="BasicList__container">
-                <h4> Nya ärenden </h4>
                 <p>Inga nya ärenden att visa</p>
               </div>
             )}
           </TabContent>
           <TabContent for="reklamationer">
           {newComplaints.length ? (
-            <ul className="BasicList__list">
+            <ul className="BasicList">
               {newComplaints.map(order => (
                 <li key={order.id}>
                   <Link to={`/admin/services/${order.id}`}>
-                    <div className="edit">
+                    <div className="BasicList__edit">
                       {order.company_name ? (
                         <p>{order.company_name} </p>
                       ) : (
@@ -93,10 +90,7 @@ class IncomingServicesList extends Component {
             </ul>
           ) : (
               <div className="BasicList__container">
-              <div className="BasicList__container inner">
-                <h4> Nya ärenden </h4>
                 <p>Inga nya reklamationer att visa</p>
-              </div>
               </div>
             )}
           </TabContent>

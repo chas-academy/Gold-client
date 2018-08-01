@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import { EmployeeInternalList } from '../../components'
+import { EmployeeInternalList, EmployeeBottomNav } from '../../components'
 
 export default class EmployeeInternal extends Component {
 
@@ -7,6 +7,7 @@ export default class EmployeeInternal extends Component {
     return (
         <div className="fix-employee">
             <EmployeeInternalList/>
+            <EmployeeBottomNav />
         </div>    
     )
   }

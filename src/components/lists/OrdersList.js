@@ -19,7 +19,11 @@ class OrdersList extends Component {
     const { orders, isFetching } = this.props;
     
     if(isFetching) {
-      return <i className="fas fa-circle-notch fa-spin"></i>;
+      return (
+        <div className="spinner">
+          <i className="fas fa-circle-notch fa-spin"></i>
+        </div>
+      )  
     }
 
     const AssignedOrders = orders.filter(order => order.service.status === "assigned");
@@ -40,11 +44,11 @@ class OrdersList extends Component {
           </div>
           <TabContent for="hanterade">
             {AssignedOrders.length ? (
-              <ul className="BasicList__list">
+              <ul className="BasicList">
                 {AssignedOrders.map(order => (
                   <li key={order.service_id}>
                     <Link to={`/admin/services/${order.service_id}`}>
-                      <div className="edit">
+                      <div className="BasicList__edit">
                         {order.service.company_name ? (
                           <div>
                           <h5 className="customer">{order.service.company_name} </h5>
@@ -74,11 +78,11 @@ class OrdersList extends Component {
           </TabContent>
           <TabContent for="avslutade">
             {DoneOrders.length ? (
-              <ul className="BasicList__list">
+              <ul className="BasicList">
                 {AssignedOrders.map(order => (
                   <li key={order.service_id}>
                     <Link to={`/admin/services/${order.service_id}`}>
-                      <div className="edit">
+                      <div className="BasicList__edit">
                       {order.service.company_name ? (
                           <div>
                           <h5 className="customer">{order.service.company_name} </h5>

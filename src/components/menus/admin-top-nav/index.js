@@ -8,7 +8,7 @@ class AdminTopNav extends Component {
 
     render() {
       return (
-        <div className="TopNav">
+        <div className="Admin-TopNav">
           <AdminTopServices />
           <AdminTopAccounts />
         </div>

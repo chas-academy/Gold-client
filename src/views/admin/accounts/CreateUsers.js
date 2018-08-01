@@ -8,7 +8,9 @@ export default class CreateUsers extends Component {
     return (
         <div> 
             <AdminTopNav />
-                    <CreateUser />
+            <div className="forms-adjustment">
+                <CreateUser />
+            </div>    
             <AdminBottomNav />
         </div>    
     )

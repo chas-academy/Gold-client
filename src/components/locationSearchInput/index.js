@@ -31,6 +31,7 @@ class LocationSearchInput extends React.Component {
 
   return (
     <div className="form-group">
+      <label className="BasicForm__label"> Adress </label>
       <PlacesAutocomplete
           value={this.state.address}
           onChange={this.handleChange}
@@ -47,7 +48,6 @@ class LocationSearchInput extends React.Component {
             <div className="autocomplete-dropdown-container">
               {suggestions.map(suggestion => {
                 const className = suggestion.active ? 'suggestion-item--active' : 'suggestion-item';
-                // inline style for demonstration purpose
                 const style = suggestion.active
                 ? { backgroundColor: '#fafafa', cursor: 'pointer' }
                 : { backgroundColor: '#ffffff44', cursor: 'pointer' };
@@ -64,9 +64,7 @@ class LocationSearchInput extends React.Component {
           </div>
         )}
       </PlacesAutocomplete>
-        {address && 
-          <i className="fas fa-check BasicForm__autoCheck" />}
-        </div>
+      </div>
     );
   }
 }

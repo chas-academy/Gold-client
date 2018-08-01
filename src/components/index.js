@@ -16,7 +16,7 @@ export { default as AdminTopAccounts } from './menus/admin-top-nav/Accounts'
 export { default as AdminBottomNav } from './menus/admin-bottom-nav'
 export { default as GoogleApiWrapper } from './googleApi'
 export { default as MapContainer } from './googleApi'
-export { default as AdminHomeTop } from './adminHomeTop'
+export { default as AdminTabs} from './adminTabs'
 
 
 /* ADMIN - ACCOUNTS -------------------------------------------------- */
@@ -45,7 +45,6 @@ export { default as AddOrder } from './forms/AddOrder'
 export { default as AddComplaint } from './forms/AddComplaint'
 export { default as AddInternalOrder } from './forms/AddInternalOrder'
 export { default as HandleService } from './forms/HandleService'
-export { default as OrderDetails } from './orderDetails'
 
 
 //EMPLOYEE VIEW COMPONENTS

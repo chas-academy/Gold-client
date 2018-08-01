@@ -1,88 +1,59 @@
-@import url('https://fonts.googleapis.com/css?family=Montserrat');
-
-*:focus {
-    outline: none;
-}
+@import url("https://fonts.googleapis.com/css?family=Montserrat");
 body {
-    background-color: #f9f9f9;
-    height: 100vh;
-    overflow: scroll;
-    width: auto;
-    font-family: 'Quicksand', sans-serif;
+  background-color: #f9f9f9;
+  height: 100vh;
+  overflow: scroll;
+  width: auto;
+  font-family: 'Quicksand', sans-serif; }
 
-}
-.link-group {
-    display: flex;
-    width: 93%;
-    margin: auto;
-    margin-top: 17%;
-}
+.sign-in__container {
+  width: 50vh;
+  margin: auto; }
 
-.signin-link {
-    width: 100%;
-    padding: 20px;
-    text-align: center;
-    background-color:  rgb(49, 100, 165);
-    border-radius: 5px;
-    border: 1px solid white;
-    color: white;
-    font-size: 16px;
-}
+.sign-in__tabs {
+  display: flex;
+  width: 47vh;
+  margin: auto;
+  margin-top: 10vh; }
 
-.Login__img {
-    float: left;
-    margin-top: -5px;
-    margin-bottom: -27px;
-    margin-left: 12px;
-}
+.sign-in__tabs__link {
+  width: 100vh;
+  padding: 2vh;
+  text-align: center;
+  background-color: #476eb7;
+  border-radius: 5px;
+  border: 1px solid white;
+  color: white;
+  font-size: 16px; }
 
-.Login__header1 {
-    text-align: right;
-    margin-right: 10px;
-    margin-top: 25%;
-    text-transform: uppercase;
-    color: rgba(175, 174, 174, 0.815);
-    line-height: 0.2;
-    font-size: 28px;
-    letter-spacing: 0.5px;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 800;
-}
+.sign-in__logo__img {
+  float: left;
+  margin-bottom: 4vh;
+  margin-left: -9vh;
+  margin-top: -1vh;
+  height: 10vh;
+  position: absolute;
+  z-index: -1; }
 
+.sign-in__logo__line1 {
+  text-align: right;
+  margin-right: 3vh;
+  margin-top: 20vh;
+  text-transform: uppercase;
+  color: rgba(175, 174, 174, 0.815);
+  line-height: 0.2;
+  font-size: 32px;
+  letter-spacing: 0.5px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 800; }
 
-.Login__header2 {
-    text-align: right;
-    margin-right: 10px;
-    line-height: 0.2;
-    letter-spacing: 1px;
-    font-size: 18px;
-}
+.sign-in__logo__line2 {
+  text-align: right;
+  margin-right: 3vh;
+  line-height: 0.2;
+  letter-spacing: 1px;
+  font-size: 18px; }
 
-.link-group {
-    margin: auto;
-    margin-top: 20%;
-    display: flex;
-    width: 95%;
-}
-
-.signin-link {
-    width: 80%;
-    background-color:  rgb(49, 100, 165);
-    color: white;
-    padding: 15px;
-    border-radius: 4px;
-    border: 1px solid white;
-    text-align: center;
-    font-size: 18px;
-}
-
-.login {
-    position: absolute;
-    top: 50px;
-    margin-left: 20px;
-}
 button, li {
-    padding: 0;
-    margin: 0;
-}
-
+  padding: 0;
+  margin: 0; }

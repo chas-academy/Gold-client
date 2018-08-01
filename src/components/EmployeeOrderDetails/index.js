@@ -6,7 +6,7 @@ import { fetchServiceComplete } from "../../redux/actions/employees";
 import Cookies from "universal-cookie";
 import Moment from "react-moment";
 
-import { EmployeeConfirmJob, EmployeeCompleteJob } from "../../components";
+import { EmployeeCompleteJob } from "../../components";
 import AddPhotos from "../buttons/AddPhotos";
 
 class EmployeeOrderDetails extends Component {
@@ -23,14 +23,6 @@ class EmployeeOrderDetails extends Component {
   componentWillMount() { 
     const cookies = new Cookies();
     var token = cookies.get("token");
-    const user = JSON.parse(
-      window.atob(
-        token
-        .split(".")[1]
-        .replace("-", "+")
-        .replace("_", "/")
-      ))
-    
     this.setState({ token: token })
       
     this.props.dispatch(fetchService(token, this.state.id));
@@ -40,7 +32,7 @@ class EmployeeOrderDetails extends Component {
     e.preventDefault()
     this.props.dispatch(fetchServiceComplete(this.state.token, this.state.id))
     .then((res) => {
-      if (res.type == "FETCH_SERVICE_COMPLETE_SUCCESS") {
+      if (res.type === "FETCH_SERVICE_COMPLETE_SUCCESS") {
         this.props.history.push("/employee/incoming")
       } else {
         this.setState({ errorMessage: res.payload })
@@ -57,7 +49,7 @@ class EmployeeOrderDetails extends Component {
     {service.order_type === 'order' ?
             service.status === "done" ?
             <div className="EmployeeOrderDetails">
-                  <ul className="BasicList__list orderDetails">
+                  <ul className="BasicList orderDetails">
                     <li>
                     {console.log(service)}
                     <h2 className="Order_header">Beställning</h2>
@@ -76,7 +68,7 @@ class EmployeeOrderDetails extends Component {
                 </div>
             :    
           <div className="EmployeeOrderDetails">
-          <ul className="BasicList__list orderDetails">
+          <ul className="BasicList orderDetails">
             <li>
             <h2 className="Order_header">Beställning</h2>
               {service.company_name ?
@@ -102,7 +94,7 @@ class EmployeeOrderDetails extends Component {
       :  service.order_type === 'complaint' ?
           service.status === "done" ?
           <div className="EmployeeOrderDetails">
-                <ul className="BasicList__list orderDetails">
+                <ul className="BasicList orderDetails">
                   <li>
                   {console.log(service)}
                   <h2 className="Complaint_header">Reklamation</h2>
@@ -121,7 +113,7 @@ class EmployeeOrderDetails extends Component {
               </div>
           :  
         <div className="EmployeeOrderDetails">
-          <ul className="BasicList__list orderDetails">
+          <ul className="BasicList orderDetails">
             <li>
               <h2 className="Complaint_header">Reklamation</h2>
               {service.company_name ?
@@ -152,7 +144,7 @@ class EmployeeOrderDetails extends Component {
         : service.order_type === 'int_order' ?
         service.status === "done" ?
         <div className="EmployeeOrderDetails">
-              <ul className="BasicList__list orderDetails">
+              <ul className="BasicList orderDetails">
                 <li>
                 {console.log(service)}
                 <h2 className="Order_header">Internt ärende</h2>
@@ -171,7 +163,7 @@ class EmployeeOrderDetails extends Component {
             </div>
         :  
         <div className="EmployeeOrderDetails">
-          <ul className="BasicList__list orderDetails">
+          <ul className="BasicList orderDetails">
             <li>
               <h2 className="Order_header">Internt ärende</h2>
               <hr/>

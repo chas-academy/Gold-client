@@ -35,7 +35,11 @@ class EmployeeCompleteList extends Component {
     const  {isFetching, Done} = this.props;
 
     if(isFetching) {
-      return <i className="fas fa-circle-notch fa-spin"></i>;
+      return (
+        <div className="spinner">
+          <i className="fas fa-circle-notch fa-spin"></i>
+        </div>
+      )  
     }
 
     
@@ -66,11 +70,11 @@ class EmployeeCompleteList extends Component {
           </div>
           <TabContent for="beställningar">
             {completedOrders.length ? (
-              <ul className="BasicList__list">
+              <ul className="BasicList">
                 {completedOrders.map(order => (
                       <li key={order.service_id}>
                         <Link to={`/orders/${order.service_id}`}>
-                          <div className="edit">
+                          <div className="BasicList__edit">
                             <p>Beställare : XXXX, orderId: </p>
                             <i className="fas fa-exclamation-triangle" /> Skapa
                             Reklamation
@@ -87,11 +91,11 @@ class EmployeeCompleteList extends Component {
           </TabContent>
           <TabContent for="reklamationer">
             {completedComplaints.length ? (
-              <ul className="BasicList__list">
+              <ul className="BasicList">
                 {completedComplaints.map(order => (
                   <li key={order.service_id}>
                     <Link to={`/orders/${order.service_id}`}>
-                      <div className="edit">
+                      <div className="BasicList__edit">
                         <p>Beställare : XXXX, orderId: </p>
                         <i className="fas fa-exclamation-triangle" /> Skapa
                         Reklamation
@@ -108,11 +112,11 @@ class EmployeeCompleteList extends Component {
           </TabContent>
           <TabContent for="Interna">
           {completedInternalOrders.length ? (
-            <ul className="BasicList__list">
+            <ul className="BasicList">
                 {completedInternalOrders.map(order => (
                     <li key={order.service_id}>
                       <Link to={`/orders/${order.service_id}`}>
-                        <div className="edit">
+                        <div className="BasicList__edit">
                           <p>Beställare : XXXX, orderId: </p>
                           <i className="fas fa-exclamation-triangle" /> Skapa
                           Reklamation

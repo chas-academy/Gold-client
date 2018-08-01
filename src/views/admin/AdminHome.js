@@ -3,9 +3,7 @@ import Cookies from "universal-cookie";
 import { fetchServicesNew, fetchServicesAssigned, fetchServicesDone } from "../../redux/actions/admin/Orders";
 import { connect } from "react-redux";
 
-import { AdminTopNav, AdminHomeTop, MapContainer } from "../../components";
-
-import './../style.css';
+import { AdminTopNav, AdminTabs, MapContainer } from "../../components";
 
 class AdminHome extends Component {
   constructor(props) {
@@ -30,7 +28,7 @@ class AdminHome extends Component {
       <div>
         <AdminTopNav />
         <MapContainer servicesNew={servicesNew} servicesAssigned={servicesAssigned} servicesDone={servicesDone} />
-        <AdminHomeTop servicesNew={servicesNew} />
+        <AdminTabs servicesNew={servicesNew} />
       </div>
     );
   }

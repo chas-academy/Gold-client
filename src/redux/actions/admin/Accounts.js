@@ -94,7 +94,6 @@ export const fetchUser = (id, token) => dispatch => {
       })
       .then((user) => {
           return dispatch(recieveUser(user));
-          debugger;
       })
       .catch(response => {
           return dispatch({ type: FETCH_USER_FAILURE,

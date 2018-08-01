@@ -3,16 +3,12 @@ import { Tabs, TabLink, TabContent } from "react-tabs-redux";
 import { Link, withRouter } from "react-router-dom";
 import Moment from "react-moment";
 
-import "./style.css";
-
-class AdminHomeTop extends Component {
+class AdminTabs extends Component {
 
   render() {
     const { servicesNew, isFetching } = this.props;
     const newOrders = servicesNew.filter(order => order.order_type === "order");
-    const newComplaints = servicesNew.filter(
-      order => order.order_type === "complaint"
-    );
+    const newComplaints = servicesNew.filter(order => order.order_type === "complaint");
 
     return (
       <div >
@@ -30,7 +26,7 @@ class AdminHomeTop extends Component {
              <i className="fas fa-circle-notch fa-spin"></i>
               : 
               newOrders.length ? (
-                <ul className="BasicList__list">
+                <ul className="BasicList">
                   {newOrders.map(order => (
                     <li key={order.id}>
                       <Link to={`/admin/services/${order.id}`}>
@@ -64,7 +60,7 @@ class AdminHomeTop extends Component {
              <i className="fas fa-circle-notch fa-spin"></i>
               : 
               newComplaints.length ? (
-                <ul className="BasicList__list">
+                <ul className="BasicList">
                   {newComplaints.map(order => (
                     <li key={order.id}>
                       <Link to={`/admin/services/${order.id}`}>
@@ -99,4 +95,4 @@ class AdminHomeTop extends Component {
   }
 }
 
-export default withRouter(AdminHomeTop);
+export default withRouter(AdminTabs);

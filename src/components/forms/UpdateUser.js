@@ -37,7 +37,7 @@ class UpdateUser extends Component {
       )
     );
     
-    !this.state.id && user.user_type === 'admin' ? 
+    this.state.id && user.user_type !== 'admin' ? 
     (
       this.setState({ isAdmin: true, adminProfile: true }),
       this.props.dispatch(fetchUser(user.id, token))
@@ -112,7 +112,7 @@ class UpdateUser extends Component {
     return (
       <div className="col-md-6 col-md-offset-3">
         <form name="form" className="BasicForm" onSubmit={this.handleSubmit}>
-          <h5> Uppdatera profil</h5>
+          <h5>Uppdatera profil</h5>
           {user.type === 'admin' ?
            <p> Din profil </p>
            : user.type === "employee" ? (
@@ -123,49 +123,42 @@ class UpdateUser extends Component {
             ""
           )}
           <div className="form-group">
-            <div className="BasicForm__check">
+          <label htmlFor="user.name">Namn</label>
               <input
                 type="text"
                 name="user.name"
                 className="form-control"
-                placeholder="Namn"
+                placeholder="namn"
                 value={user.name}
               />
-              {user.name && <i className="fas fa-check BasicForm__check" />}
-            </div>
             {submitted &&
               !user.name && (
                 <div className="help-block">Glöm inte fylla i namnet!</div>
               )}
           </div>
           <div className="form-group">
-            <div className="BasicForm__check">
+            <label htmlFor="user.email">Email</label>
               <input
                 type="text"
                 name="user.email"
                 className="form-control"
-                placeholder="Email"
+                placeholder="example@email.com"
                 value={user.email}
               />
-              {user.email && <i className="fas fa-check BasicForm__check" />}
-            </div>
             {submitted &&
               !user.email && (
                 <div className="help-block">Glöm inte fylla i email!</div>
               )}
           </div>
           <div className="form-group">
-            <div className="BasicForm__check">
+          <label htmlFor="user.tel">Telefonnummer</label>
               <input
                 type="text"
                 name="user.tel"
                 className="form-control"
-                placeholder="Telefonnummer"
+                placeholder="telefonnummer"
                 value={user.tel}
               />
-              {user.tel &&
-                !phoneError && <i className="fas fa-check BasicForm__check" />}
-            </div>
             {submitted &&
               !user.tel && (
                 <div className="help-block">
@@ -178,28 +171,29 @@ class UpdateUser extends Component {
               )}
           </div>
           <div className="form-group">
-            <div className="BasicForm__check">
+          <label htmlFor="password">Byt lösenord</label>
+            <div className="validation__checkmark">
               <input
                 type="password"
                 name="password"
                 className="form-control"
-                placeholder="Lösenord"
+                placeholder="minst 6 tecken"
                 value={password}
               />
               {password &&
                 passwordError &&
                 password !== ValidatePassword && (
-                  <i className="fas fa-check BasicForm__passwordNotOk" />
+                  <i className="fas fa-check validation--password--failed" />
                 )}
               {password &&
                 password !== ValidatePassword &&
                 !passwordError && (
-                  <i className="fas fa-check BasicForm__check" />
+                  <i className="fas fa-check validation__checkmark" />
                 )}
 
               {password &&
                 password === ValidatePassword && (
-                  <i className="fas fa-check BasicForm__passwordOk" />
+                  <i className="fas fa-check validation--password--passed" />
                 )}
             </div>
             {password &&
@@ -221,21 +215,22 @@ class UpdateUser extends Component {
               )}
           </div>
           <div className="form-group">
-            <div className="BasicForm__check">
+          <label htmlFor="ValidatePassword">Bekräfta lösenord</label>
+            <div className="validation__checkmark">
               <input
                 type="password"
                 name="ValidatePassword"
                 className="form-control"
-                placeholder="Bekräfta Lösenord"
+                placeholder="minst 6 tecken"
                 value={ValidatePassword}
               />
               {ValidatePassword &&
                 user.password !== ValidatePassword && (
-                  <i className="fas fa-check BasicForm__passwordNotOk" />
+                  <i className="fas fa-check validation--password--failed" />
                 )}
               {ValidatePassword &&
                 user.password === ValidatePassword && (
-                  <i className="fas fa-check BasicForm__passwordOk" />
+                  <i className="fas fa-check validation--password--passed" />
                 )}
             </div>
             {submitted &&

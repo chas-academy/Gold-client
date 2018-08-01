@@ -1,0 +1,20 @@
+@import 'src/colors', 'src/fonts'
+
+.bottomNav 
+    background-color: $dark-grey
+    position: fixed
+    bottom: 0
+    width: 100%
+    z-index: 9999
+    ul
+      justify-content: space-around
+      display: flex
+      width: 100%
+      list-style: none
+      li > a > i
+        color: $off-white
+        font-size: $menu-icons
+        padding: 15px
+        &:hover
+          color: $logo-blue
+

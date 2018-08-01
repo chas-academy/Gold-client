@@ -38,9 +38,7 @@ class EmployeeHome extends Component {
 
         this.setState({ userName: user.name })
         this.props.dispatch(fetchAssigned(user.id, token));
-
     }
-
   }
 
   render() {
@@ -50,29 +48,28 @@ class EmployeeHome extends Component {
     const newComplaints = Assigned.filter(order => order.order_type === "complaint");
     const newInternal = Assigned.filter(order => order.order_type === "int_order");
 
-
     const { userName } = this.state;
 
     return (
       <div>
-        <div className="CustomerHome__menu">
-          <h3 className="CustomerHome__welcome">Välkommen {userName}!</h3>
+        <div className="Customer-Employee-Home__menu">
+          <h3>Välkommen {userName}!</h3>
           <div>
-            <button className="CustomerHome__buttons">
+            <button>
               <Link to={`/employee/incoming`} >
                 {newOrders.length > 0 || newComplaints.length > 0  ? 
-                <i className="fas fa-compass employeeNew" />
+                <i className="fas fas fa-location-arrow employeeNew" />
                 : 
-                <i className="fas fa-compass" />}
+                <i className="fas fas fa-location-arrow" />}
                 <p className="CustomerHome__buttonText"> Inkomna Jobb</p>
               </Link>
             </button>
-            <button className="CustomerHome__buttons">
+            <button>
               <Link to={`/employee/internal`}>
               {newInternal.length > 0 ?
-                <i className="far fa-check-circle employeeNew" />
+                <i className="fas fa-info-circle employeeNew" />
                 : 
-                <i className="far fa-check-circle" />}
+                <i className="fas fa-info-circle" />}
                 <p className="CustomerHome__buttonText">
                   Interna ärenden
                 </p>
@@ -80,19 +77,22 @@ class EmployeeHome extends Component {
             </button>
           </div>
           <div>
-            <button className="CustomerHome__buttons">
+            <button>
               <Link to={`employee/history`}>
                 <i className="fas fa-history" />
                 <p className="CustomerHome__buttonText">Ärendehistorik</p>
               </Link>
             </button>
-            <button className="CustomerHome__buttons">
+            <button>
               <Link to={`employee/profile`}>
                 <i className="fas fa-user-circle" />
                 <p className="CustomerHome__buttonText"> Redigera profil</p>
               </Link>
             </button>
           </div>
+          <a href="/logout" onClick={this.logOut}>
+            <h4>Logga ut</h4>
+          </a>  
         </div>
       </div>
     );

@@ -1,26 +1,21 @@
-import React, { Component } from 'react';
-import { registerUser } from '../../redux/actions/Auth';
-import { connect } from 'react-redux';
+import React, { Component } from "react";
+import { registerUser } from "../../redux/actions/Auth";
+import { connect } from "react-redux";
 
-import './style.css';
-
+import "./style.css";
 
 const mapDispatchToProps = dispatch => {
   return { registerUser: regUser => dispatch(registerUser(regUser)) };
 };
 
-
 class CreateUser extends Component {
-  constructor (props) {
+  constructor(props) {
     super(props);
-
 
     this.state = {
       email: "",
       errorMessage: "",
-
       name: "",
-
       password: "",
       passwordError: "",
       tel: "",
@@ -37,7 +32,7 @@ class CreateUser extends Component {
   handleSelectChange(event) {
     this.setState({
       customer_type: event.target.value
-    })
+    });
   }
 
   handleChange(event) {
@@ -52,7 +47,7 @@ class CreateUser extends Component {
       this.setState({ telError: true });
     }
 
-    if (this.state.password.length >= 6) {
+    if (this.state.password.length >= 5) {
       this.setState({ passwordError: false });
     } else {
       this.setState({ passwordError: true });
@@ -68,31 +63,35 @@ class CreateUser extends Component {
       email: this.state.email,
       password: this.state.password,
       passwordVal: this.state.ValidatePassword,
-      type: this.state.customer_type,
-    }
+      type: this.state.customer_type
+    };
 
-    var errorMessage = ''
-    if (!this.state.numberError && !this.state.passwordError && !this.state.telError) {
-      if ( regUser ) {
-        this.props.registerUser({ regUser })
-        .then((res) => {
+    var errorMessage = "";
+    if (
+      !this.state.numberError &&
+      !this.state.passwordError &&
+      !this.state.telError
+    ) {
+      if (regUser) {
+        this.props.registerUser({ regUser }).then(res => {
           if (res) {
-            this.setState({ success: true })
+            this.setState({ success: true });
             // send email?
           } else {
             res.errors.forEach(error => {
-              errorMessage = error.message
+              errorMessage = error.message;
               if (error.message === "pers_org_num must be unique") {
-                errorMessage = "Person/Organisationsnummer är redan registrerat"
+                errorMessage =
+                  "Person/Organisationsnummer är redan registrerat";
               }
             });
-            this.setState({ errorMessage: errorMessage, submitted: false })
+            this.setState({ errorMessage: errorMessage, submitted: false });
           }
-        })
+        });
       }
     }
   }
-  
+
   render() {
     const {
       customer_type,
@@ -104,70 +103,61 @@ class CreateUser extends Component {
       passwordError,
       tel,
       telError,
-      ValidatePassword,
+      ValidatePassword
     } = this.state;
 
     return (
       <div className="col-md-6 col-md-offset-3">
         <form name="form" className="BasicForm" onSubmit={this.handleSubmit}>
-        <h5> Skapa Användare </h5>
+          <h5> Skapa Användare </h5>
           <div className="form-group">
-            <div className="BasicForm__check">
+          <label htmlFor="name">Namn</label>
               <input
                 type="text"
                 name="name"
-                className="form-control obl"
-                placeholder="Namn *"
+                className="form-control"
+                placeholder="namn *"
                 value={name}
                 onChange={this.handleChange}
               />
-              {name && <i className="fas fa-check BasicForm__check" />}
-            </div>
             {submitted &&
               !name && (
                 <div className="help-block">Glöm inte fylla i namnet!</div>
               )}
           </div>
-          <div className="form-group">
-            <div className="BasicForm__check">
-              <select className="BasicForm__select" onChange={this.handleSelectChange.bind(this)}>
-                <option selected disabled>Välj typ av användare * </option>
+          <label htmlFor="customer_type">Typ av användare</label>
+              <select onChange={this.handleSelectChange.bind(this)}>
+                <option selected disabled>
+                  välj *{" "}
+                </option>
                 <option value="admin">Admin</option>
                 <option value="employee">Anställd</option>
-              </select>  
-          {customer_type && <i className="fas fa-check BasicForm__check" />}
-            </div>
-          </div>
+              </select>
           <div className="form-group">
-            <div className="BasicForm__check">
+          <label htmlFor="email">Email</label>
               <input
                 type="text"
                 name="email"
                 className="form-control"
-                placeholder="Email *"
+                placeholder="email *"
                 value={email}
                 onChange={this.handleChange}
               />
-              {email && <i className="fas fa-check BasicForm__check" />}
-            </div>
             {submitted &&
               !email && (
                 <div className="help-block">Glöm inte fylla i email!</div>
               )}
           </div>
           <div className="form-group">
-            <div className="BasicForm__check">
+          <label htmlFor="tel">Telefonnummer</label>
               <input
                 type="text"
                 name="tel"
                 className="form-control"
-                placeholder="Telefonnummer"
+                placeholder="telefonnummer"
                 value={tel}
                 onChange={this.handleChange}
               />
-              {tel &&
-                !telError && <i className="fas fa-check BasicForm__check" />}
-            </div>
             {submitted &&
               !tel && (
                 <div className="help-block">
@@ -180,78 +170,96 @@ class CreateUser extends Component {
               )}
           </div>
           <div className="form-group">
-            <div className="BasicForm__check">
+          <label htmlFor="password">Lösenord</label>
+            <div className="validation__checkmark ">
               <input
                 type="password"
                 name="password"
-                className="form-control obl"
-                placeholder="Lösenord *"
+                className="form-control"
+                placeholder="minst 6 tecken *"
                 value={password}
-                minLength='6'
+                minLength="6"
                 onChange={this.handleChange}
               />
-              {password && passwordError &&
-                password !== ValidatePassword &&  (
-                  <i className="fas fa-check BasicForm__passwordNotOk" />
+              {password &&
+                passwordError &&
+                password !== ValidatePassword && (
+                  <i className="fas fa-check validation--password--failed" />
                 )}
-              {password && password !== ValidatePassword && !passwordError && (
-                  <i className="fas fa-check BasicForm__check" />
+              {password &&
+                password !== ValidatePassword &&
+                !passwordError && (
+                  <i className="fas fa-check validation__checkmark" />
                 )}
-                
+
               {password &&
                 password === ValidatePassword && (
-                  <i className="fas fa-check BasicForm__passwordOk" />
+                  <i className="fas fa-check validation--password--passed" />
                 )}
             </div>
-                {password && passwordError  &&
-                <div className="help-block">Lösenordet måste vara minst 6 tecken långt</div>
-                }
-                {!passwordError && password && password !== ValidatePassword &&
+            {password &&
+              passwordError && (
+                <div className="help-block">
+                  Lösenordet måste vara minst 6 tecken långt
+                </div>
+              )}
+            {!passwordError &&
+              password &&
+              password !== ValidatePassword && (
                 <div className="help-block">Bekräfta lösenordet nedan</div>
-                }
+              )}
             {submitted &&
               !password && (
                 <div className="help-block">
-                  Glöm inte att fylla i nytt lösenord
+                  Glöm inte att fylla i lösenord
                 </div>
               )}
           </div>
           <div className="form-group">
-            <div className="BasicForm__check">
+          <label htmlFor="ValidatePassword">Bekräfta lösenordet</label>
+            <div className="validation__checkmark">
               <input
                 type="password"
                 name="ValidatePassword"
-                className="form-control obl"
-                placeholder="Bekräfta Lösenord *"
+                className="form-control"
+                placeholder="minst 6 tecken*"
                 value={ValidatePassword}
-                minLength='6'
+                minLength="6"
                 onChange={this.handleChange}
               />
               {ValidatePassword &&
                 password !== ValidatePassword && (
-                  <i className="fas fa-check BasicForm__passwordNotOk" />
+                  <i className="fas fa-check validation--password--failed" />
                 )}
               {ValidatePassword &&
                 password === ValidatePassword && (
-                  <i className="fas fa-check BasicForm__passwordOk" />
+                  <i className="fas fa-check validation--password--passed" />
                 )}
             </div>
             {submitted &&
               !ValidatePassword && (
-                <div className="help-block">Du måste upprepa lösenordet!</div>
+                <div className="help-block">Du måste bekräfta lösenordet</div>
               )}
           </div>
 
-          {!name || !customer_type || !email || !password ||
-              !ValidatePassword ? (
-                <div className="help-block">* Dessa fält är obligatoriska</div>
-              )
-              :('')}
+          {!name ||
+          !customer_type ||
+          !email ||
+          !password ||
+          !ValidatePassword ? (
+            <div className="help-block">* Dessa fält är obligatoriska</div>
+          ) : (
+            ""
+          )}
           <div className="buttons">
             <div className="form-group">
+            {customer_type && name && email && tel && password === ValidatePassword ?
               <button type="submit" className="btn btn-primary">
-                Registrera ny användare
-              </button>
+                Registrera
+              </button> :
+              <button type="submit" disabled className="btn btn-secondary">
+              Registrera
+            </button>}
               {errorMessage && <div className="help-block">{errorMessage}</div>}
             </div>
           </div>
@@ -261,5 +269,7 @@ class CreateUser extends Component {
   }
 }
 
-  
-export default connect(null, mapDispatchToProps)(CreateUser);
+export default connect(
+  null,
+  mapDispatchToProps
+)(CreateUser);

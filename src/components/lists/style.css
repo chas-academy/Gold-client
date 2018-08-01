@@ -1,83 +1,68 @@
 .BasicList__container {
-  width: 100%;
+  width: 96%;
   margin: auto;
-  left: 0;
-  right: 0;
   background-color: rgba(197, 197, 197, 0.055);
   box-shadow: 0 2px 4px 0 rgba(77, 77, 79, 0.2);
   padding-bottom: 15px;
-  z-index: 10;
-  margin-top: 25px;
-}
+  z-index: 10; }
+  .BasicList__container h4 {
+    text-align: center;
+    margin-bottom: 20px;
+    padding-top: 60px;
+    color: #476eb7;
+    text-transform: uppercase; }
+  .BasicList__container p {
+    padding: 20px 0 0 10px;
+    text-align: center;
+    font-style: italic;
+    color: #476eb7; }
 
-.BasicList__container > h4 {
-  margin: auto;
-  text-align: center;
-  margin-bottom: 20px;
-  padding-top: 60px;
-  color: rgb(124, 123, 123);
-  text-transform: uppercase;
-}
-
-.BasicList__container > h5 {
-  margin: auto;
-  text-align: center;
-  padding-top: 10px;
-  text-transform: uppercase;
-  color: rgb(124, 123, 123);
-}
-
-.BasicList__container > p {
-  padding: 20px 0 0 10px;
-  text-align: center;
-  font-style: italic;
-  color: rgb(124, 123, 123);
-}
-
-.BasicList__list {
+.BasicList {
   list-style: none;
   text-align: center;
   padding: 20px;
   padding-top: 25px;
-  margin: 0 !important;
-}
+  margin: 0 !important; }
+  .BasicList p {
+    color: #1b1b1b; }
+  .BasicList li > a {
+    text-decoration: none; }
 
-.BasicList__list > li > a > div > p {
-  color: rgb(27, 27, 27);
-}
-
-.edit {
+.BasicList__edit {
   margin: auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  color: rgb(94, 93, 93);
-  font-size: 14px;
-}
+  color: #5e5d5d;
+  font-size: 14px; }
+  .BasicList__edit:hover {
+    color: #8bb1db; }
 
-.edit:hover {
-  color: rgb(139, 177, 219);
-}
-
-#app > div > div > div.BasicList__container > ul > li > a {
-  text-decoration: none;
-}
-
-.IncomingJobAccept {
-  color: rgb(7, 199, 7) !important;
-}
-
-.customer {
-  font-size: 16px;
-  text-transform: uppercase;
-}
-
-.employees {
+.spinner {
   display: flex;
-  width: 200px;
-}
+  justify-content: center;
+  margin-top: 45vh; }
 
-.employee {
-  margin-left: 10px;
-}
+.fa-circle-notch {
+  font-size: 60px;
+  color: rgba(217, 215, 215, 0.2); }
+
+.history-tabs {
+  width: 96%;
+  margin: auto;
+  display: flex;
+  border-top: 1px solid rgba(175, 174, 174, 0.815); }
+
+.history-tablink {
+  background-color: rgba(197, 197, 197, 0.055);
+  color: rgba(175, 174, 174, 0.815);
+  padding: 2vh;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-transform: uppercase; }
+
+.tab-link-active {
+  color: #476eb7; }

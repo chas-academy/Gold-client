@@ -14,7 +14,7 @@ import {
   FETCH_SERVICE_COMPLETE_START,
   FETCH_SERVICE_COMPLETE_SUCCESS,
   FETCH_SERVICE_COMPLETE_FAILURE
-} from "./Types";
+} from "./types";
 
 /* ------------ SERVICE --------------- */
 

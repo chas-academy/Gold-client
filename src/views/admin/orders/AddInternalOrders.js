@@ -8,7 +8,7 @@ export default class AddInternalOrders extends Component {
     return (
         <div> 
             <AdminTopNav />
-                <AddInternalOrder />
+            <AddInternalOrder />
             <AdminBottomNav />
         </div>    
     )

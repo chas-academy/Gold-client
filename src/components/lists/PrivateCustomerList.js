@@ -21,21 +21,25 @@ class PrivateCustomerList extends Component {
     const { privateCustomers, isFetching } = this.props;
 
     if(isFetching) {
-      return <i className="fas fa-circle-notch fa-spin"></i>;
+      return (
+        <div className="spinner">
+          <i className="fas fa-circle-notch fa-spin"></i>
+        </div>
+      )  
     }
     
     return (
       privateCustomers ?
       <div className="BasicList__container">
         <h4> Privatkunder </h4>
-        <ul className="BasicList__list">
+        <ul className="BasicList">
         <li>
             <AddUser />
         </li>
           {privateCustomers.map(customer => (
           <li key={customer.user_id}>
             <Link to={`/admin/accounts/customer/${customer.user_id}`}>
-              <div className="edit">
+              <div className="BasicList__edit">
                 <p> {customer.user.name} </p>
                 <i className="fas fa-cog fa-spin"></i>
              </div>
@@ -46,7 +50,7 @@ class PrivateCustomerList extends Component {
         </ul>
       </div>
       : (
-        <div className="BasicList__container inner">
+        <div className="BasicList__container">
           <h4> Privatkunder </h4>
           <p>Inga användare att visa</p>
         </div>  

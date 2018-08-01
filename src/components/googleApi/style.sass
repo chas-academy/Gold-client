@@ -1,0 +1,57 @@
+@keyframes glowing-new 
+  0% 
+    box-shadow: 0 0 -10px red
+  40%  
+    box-shadow: 0 0 30px red
+  60%  
+    box-shadow: 0 0 30px  red
+  100%  
+      box-shadow: 0 0 -10px red
+
+@keyframes glowing-active 
+  0%  
+    box-shadow: 0 0 -10px #ff8800
+  40%
+    box-shadow: 0 0 30px #ff8800
+  60%  
+    box-shadow: 0 0 30px  #ff8800
+  100%  
+    box-shadow: 0 0 -10px #ff8800
+
+@keyframes glowing-completed 
+  0%  
+    box-shadow: 0 0 -10px #018f01
+  40%  
+    box-shadow: 0 0 30px #018f01
+  60%  
+    box-shadow: 0 0 30px  #018f01
+  100%  
+    box-shadow: 0 0 -10px #018f01
+
+
+.button-glow-completed 
+  animation: glowing-completed 2000ms infinite
+  border-radius: 100%
+
+.button-glow-new 
+  animation: glowing-new 2000ms infinite
+  border-radius: 100%
+
+.button-glow-assigned 
+  animation: glowing-active 2000ms infinite
+  border-radius: 100%
+
+
+.Sleep 
+  color: rgb(219, 109, 109)
+  text-align: center
+  background-color: rgba(0, 0, 0, 0.712)
+  width: 330px
+  line-height: 90px
+  font-size: 23px
+  font-family: 'Quicksand', sans-serif
+  letter-spacing: 1px
+
+.gmnoprint, #app > div > div > div.map > div:nth-child(1) > div > div > div > div:nth-child(3) > a > div > img, #app > div > div > div.map > div:nth-child(1) > div > div > div > div.gmnoprint.gm-style-cc > div:nth-child(1) > div:nth-child(2), #app > div > div > div.map > div:nth-child(1) > div > div > div > div.gmnoprint.gm-style-cc > div:nth-child(2) > a, #app > div > div > div.map > div:nth-child(1) > div > div > div > div.gmnoprint.gm-style-cc > div:nth-child(2), #app > div > div > div.map > div:nth-child(1) > div > div > div > div:nth-child(5) > div > div:nth-child(1) > div:nth-child(2), #app > div > div > div.map > div:nth-child(1) > div > div > div > div:nth-child(5) > div > div:nth-child(2) > span 
+  display: none
+

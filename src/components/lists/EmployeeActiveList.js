@@ -29,14 +29,18 @@ class EmployeeActiveList extends Component {
     const  {isFetching, Taken } = this.props;
 
     if(isFetching) {
-      return <i className="fas fa-circle-notch fa-spin"></i>
+      return (
+        <div className="spinner">
+          <i className="fas fa-circle-notch fa-spin"></i>
+        </div>
+      )  
     }
 
-    const ongoingList =  Taken.map((active) => 
+    const ongoingList = Taken.map((active) => 
     <div>
       <li>
         <Link to={`/employee/orders/${active.employee_services.serviceId}`}>
-          <div className="edit">
+          <div className="BasicList__edit">
             <p>{active.employee_services.serviceId}</p>
             <p>Kund: {active.con_pers}</p>
             <p>datum: {active.datetime}</p>
@@ -55,7 +59,7 @@ class EmployeeActiveList extends Component {
         <p> När du klickar på slutför jobb så skickas 
           en bekräftelse till kunden med tidpunkt och foton. </p>
         <hr />
-        <ul className="BasicList__list">
+        <ul className="BasicList">
           {ongoingList}
           {/* <li>
             <EmployeeOrderDetails Ongoing={true}/>

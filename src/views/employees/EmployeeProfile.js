@@ -7,12 +7,10 @@ export default class EmployeeProfile extends Component {
 
   render() {
     return (
-      <div className="fix-employee">
-        <div className="customerOrder">
+        <div className="forms-adjustment">
           <UserProfile />
           <EmployeeBottomNav />
         </div>
-      </div>
     )
   }
 

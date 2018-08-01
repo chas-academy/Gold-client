@@ -34,7 +34,11 @@ class EmployeeIncomingList extends Component {
     const { isFetching, Assigned } = this.props;
 
     if(isFetching) {
-      return <i className="fas fa-circle-notch fa-spin"></i>;
+      return (
+        <div className="spinner">
+          <i className="fas fa-circle-notch fa-spin"></i>
+        </div>
+      )  
     }
     const newOrders = Assigned.filter(order => order.order_type === "order");
     const newComplaints = Assigned.filter(order => order.order_type === "complaint");
@@ -44,17 +48,17 @@ class EmployeeIncomingList extends Component {
 
     return (
         <div className="BasicList__container">
-          <h4> nya ärenden  </h4>
+          <h4> nya ärenden </h4>
         <p>
           Här samlas dina ärenden som ska hanteras. Klicka på ärendet och bekräfta när det är åtgärdat.
         </p>
         <hr />
               {newOrders.length ? (
-                <ul className="BasicList__list">
+                <ul className="BasicList">
                   {newOrders.map(order => (
                     <li key={order.id}>
                       <Link to={`services/${order.id}`}>
-                        <div className="edit">
+                        <div className="BasicList__edit">
                         <p>Jobb: <Moment format="DD/MM  HH:mm">{order.datetime}</Moment></p>
                           {order.company_name ? (
                             <p>{order.company_name} </p>
@@ -69,19 +73,17 @@ class EmployeeIncomingList extends Component {
                   ))}
                 </ul>
               ) : (
-                <div className="BasicList__container">
                   <p>Inga nya jobb</p>
-                </div>
               )}
 
         <h4> Reklamationer </h4>
         <hr />
               {newComplaints.length ? (
-                <ul className="BasicList__list">
+                <ul className="BasicList">
                   {newComplaints.map(order => (
                     <li key={order.id}>
                       <Link to={`services/${order.id}`}>
-                        <div className="edit">
+                        <div className="BasicList__edit">
                         <p>Åtgärdas: <Moment format="DD/MM  HH:mm">{order.datetime}</Moment></p>
                           {order.company_name ? (
                             <p>{order.company_name} </p>
@@ -96,9 +98,7 @@ class EmployeeIncomingList extends Component {
                   ))}
                 </ul>
               ) : (
-                <div className="BasicList__container">
                   <p>Inga nya reklamationer</p>
-                </div>
               )}
               <EmployeeBottomNav newOrders={newOrders} newComplaints={newComplaints} newInternal={newInternal}/>
         </div>

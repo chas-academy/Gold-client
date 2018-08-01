@@ -22,12 +22,12 @@ class EmployeeBottomNav extends Component {
             <Link to={`/employee/incoming`}>
               {newOrders ? (
                 newOrders.length > 0 || newComplaints.length > 0 ? (
-                  <i className="fas fa-compass employeeNew" />
+                  <i className="fas fa-location-arrow employeeNew" />
                 ) : (
-                  <i className="fas fa-compass" />
+                  <i className="fas fa-location-arrow" />
                 )
               ) : (
-                <i className="fas fa-compass" />
+                <i className="fas fa-location-arrow" />
               )}
             </Link>
           </li>
@@ -35,12 +35,12 @@ class EmployeeBottomNav extends Component {
             <Link to={`/employee/internal`}>
               {newInternal ? (
                 newInternal.length > 0 ? (
-                  <i className="far fa-check-circle employeeNew" />
+                  <i className="fas fa-info-circleemployeeNew" />
                 ) : (
-                  <i className="far fa-check-circle" />
+                  <i className="fas fa-info-circle" />
                 )
               ) : (
-                <i className="far fa-check-circle" />
+                <i className="fas fa-info-circle" />
               )}
             </Link>
           </li>

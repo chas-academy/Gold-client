@@ -2,8 +2,6 @@ import React, { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
 import Cookies from 'universal-cookie';
 
-import "./style.css";
-
 class CustomerBottomNav extends Component {
   constructor(props) {
     super(props);
@@ -17,7 +15,7 @@ class CustomerBottomNav extends Component {
 
   render() {
     return (
-      <nav className="CustomerBottomNav__container">
+      <nav className="bottomNav customer">
         <ul className="bottomNavList">
           <li>
             <Link to={`/orders/add`}>

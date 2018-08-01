@@ -19,7 +19,11 @@ class AssignedOrdersList extends Component {
     const { servicesAssigned, isFetching } = this.props;
 
     if(isFetching) {
-      return <i className="fas fa-circle-notch fa-spin"></i>;
+      return (
+        <div className="spinner">
+          <i className="fas fa-circle-notch fa-spin"></i>
+        </div>
+        )  
     }
     
     const assignedOrders = servicesAssigned.filter(

@@ -34,7 +34,11 @@ class EmployeeInternalList extends Component {
     const { isFetching, Assigned } = this.props;
 
     if(isFetching) {
-      return <i className="fas fa-circle-notch fa-spin"></i>;
+      return (
+        <div className="spinner">
+          <i className="fas fa-circle-notch fa-spin"></i>
+        </div>
+      )  
     }
     
     const newInternal = Assigned.filter(order => order.order_type === "int_order");
@@ -44,17 +48,17 @@ class EmployeeInternalList extends Component {
           <h4> Interna ärenden </h4>
           <p> Här samlas interna ärenden som ska hanteras. Klicka på ärendet och bekräfta när det är åtgärdat. </p>
           <hr />
-                <ul className="BasicList__list">
+                <ul className="BasicList">
                     {newInternal.length ? (
                       newInternal.map(order => (
                       <li key={order.id}>
                         <Link to={`services/${order.id}`}>
-                          <div className="edit">
-                            {order.company_name ? (
+                          <div className="BasicList__edit">
+                            {order.company_name ? 
                               <p>{order.company_name} </p>
-                              ) : (
+                               : 
                               <p>{order.con_pers} </p>
-                              )}
+                              }
                             {!order.company_name && !order.con_pers ? (
                               <p> Åtgärdas senast: <Moment format="DD/MM  HH:mm">{order.datetime}</Moment> </p>
                               ) : ('')}
@@ -64,9 +68,7 @@ class EmployeeInternalList extends Component {
                       </li>
                       ))
                     ) : (
-                      <div className="BasicList__container">
                         <p>Inga interna ärenden att hantera </p>
-                      </div>
                     )}
                     </ul> 
 

@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { UpdateUser } from '../../components'
-import './style.css'
 
 export default class UserProfile extends Component {
   constructor(props) {
@@ -12,7 +11,7 @@ export default class UserProfile extends Component {
   render() {
     return (
       <div>
-            <UpdateUser />
+          <UpdateUser />
       </div>
     );
   }

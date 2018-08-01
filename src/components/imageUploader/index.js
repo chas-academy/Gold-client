@@ -1,7 +1,6 @@
 import React from 'react'
 import Dropzone from 'react-dropzone'
 
-import './style.css'
 //   GraphQL
 //   Important: react-dropzone doesn't manage dropped files. You need to destroy 
 //   the object URL yourself whenever you don't need the preview by calling 

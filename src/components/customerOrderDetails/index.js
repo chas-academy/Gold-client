@@ -23,17 +23,17 @@ class CustomerOrderDetails extends Component {
     
     return (
       <div className="EmployeeOrderDetails">
-            <ul className="BasicList__list orderDetails">
+            <ul className="BasicList orderDetails">
               <li>
                 <p><strong>Datum:</strong> {moment(service.datetime).format('Y-MM-DD HH:mm')}</p>
                 {service.order ? <div>
-                  {service.status == "new" ? (
+                  {service.status === "new" ? (
                     <p><strong>Status:</strong> Hanteras</p>
                   ) : (
-                    service.status == "assigned" ? (
+                    service.status === "assigned" ? (
                       <p><strong>Status:</strong> Pågående</p>
                     ) : (
-                      service.status == "done" ? (
+                      service.status === "done" ? (
                         <p><strong>Status:</strong> Klart</p>
                       ) : ('')
                     )

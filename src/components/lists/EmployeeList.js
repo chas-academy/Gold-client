@@ -19,21 +19,25 @@ class EmployeeList extends Component {
     const { employees, isFetching } = this.props;
 
     if(isFetching) {
-      return <i className="fas fa-circle-notch fa-spin"></i>;
+      return (
+        <div className="spinner">
+          <i className="fas fa-circle-notch fa-spin"></i>
+        </div>
+      )  
     }
     
     return (
       employees ?
       <div className="BasicList__container">
         <h4> Anställda </h4>
-        <ul className="BasicList__list">
+        <ul className="BasicList">
           <li>
             <AddUser />
           </li>
           {employees.map(employee => (
           <li key={employee.id}>
             <Link to={`/admin/accounts/employees/${employee.id}`}>
-              <div className="edit">
+              <div className="BasicList__edit">
                 <p> {employee.name} </p>
                 <i className="fas fa-cog fa-spin"></i>
               </div>

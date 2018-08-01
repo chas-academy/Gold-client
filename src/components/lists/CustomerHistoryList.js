@@ -46,13 +46,18 @@ class CustomerHistoryList extends Component {
     }
     
     if(isFetching) {
-      return <i className="fas fa-circle-notch fa-spin"></i>
+      return (
+        <div className="spinner">
+          <i className="fas fa-circle-notch fa-spin"></i>
+        </div>
+      )  
     }
 
 
     return (
       <div className="BasicList__container">
         <h4>Historik</h4>
+        <hr />
         <Tabs>
           <div className="history-tabs">
             <TabLink className="history-tablink" to="beställningar">
@@ -64,25 +69,25 @@ class CustomerHistoryList extends Component {
           </div>
           <TabContent for="beställningar">
             {Orders.length ? (
-              <ul className="BasicList__list">
+              <ul className="BasicList">
                  {Orders.map(order => (
                       <li key={order.id}>
-                          <div className="edit">
+                          <div className="BasicList__edit">
                             <Link to={`/services/${order.id}`}>
                                 <p>Datum:<br></br>{moment(order.datetime).format('Y-MM-DD HH:mm')}</p>
-                                {order.status == "new" ? (
+                                {order.status === "new" ? (
                                   <p className="handle_status"><strong>Status:</strong> Hanteras</p>
                                 ) : (
-                                  order.status == "assigned" ? (
+                                  order.status === "assigned" ? (
                                     <p className="handle_status"><strong>Status:</strong> Pågående</p>
                                   ) : (
-                                    order.status == "done" ? (
+                                    order.status === "done" ? (
                                       <p className="handle_status"><strong>Status:</strong> Klart</p>
                                     ) : ('')
                                   )
                                 )}
                             </Link>
-                            {order.status == "done" ?
+                            {order.status === "done" ?
                               <Link to={`/complaints/${order.id}`}><i className="fas fa-exclamation-triangle" /> Skapa Reklamation</Link>
                               : ('')
                             }
@@ -92,26 +97,24 @@ class CustomerHistoryList extends Component {
                     ))}
               </ul>
             ) : (
-              <div className="BasicList__container inner">
                 <p>Inga beställningar att visa</p>
-              </div>
             )}
           </TabContent>
           <TabContent for="reklamationer">
             {Complaints.length ? (
-              <ul className="BasicList__list">
+              <ul className="BasicList">
                     {Complaints.map(complaint => (
                       <li key={complaint.id}>
-                        <div className="edit">
+                        <div className="BasicList__edit">
                           <Link to={`/services/${complaint.id}`}>
                               <p>Datum:<br></br>{moment(complaint.datetime).format('Y-MM-DD HH:mm')}</p>
-                                {complaint.status == "new" ? (
+                                {complaint.status === "new" ? (
                                   <p className="handle_status"><strong>Status:</strong> Hanteras</p>
                                 ) : (
-                                  complaint.status == "assigned" ? (
+                                  complaint.status === "assigned" ? (
                                     <p className="handle_status"><strong>Status:</strong> Pågående</p>
                                   ) : (
-                                    complaint.status == "done" ? (
+                                    complaint.status === "done" ? (
                                       <p className="handle_status"><strong>Status:</strong> Klart</p>
                                     ) : ('')
                                   )
@@ -123,7 +126,7 @@ class CustomerHistoryList extends Component {
                     ))}
               </ul>
             ) : (
-              <div className="BasicList__container inner">
+              <div className="BasicList__container">
                 <p>Inga reklamationer att visa</p>
               </div>
             )}

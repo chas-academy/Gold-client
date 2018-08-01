@@ -11,7 +11,7 @@ import {
   FETCH_EMP_DONE_REQUEST,
   FETCH_EMP_DONE_SUCCESS,
   FETCH_EMP_DONE_FAILURE
-} from "../actions/employees/Types";
+} from "../actions/employees/types";
 
 const initialState = {
   Assigned: [],

@@ -6,15 +6,12 @@ import Cookies from "universal-cookie";
 
 import { Link, withRouter } from "react-router-dom";
 import "./style.css";
-import CompletedOrders from "../../views/admin/orders/CompletedOrders";
 import moment from "moment";
 
 class CompletedOrdersList extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      isAdmin: false
-    };
+    this.state = { isAdmin: false };
   }
 
   componentWillMount() {
@@ -35,6 +32,7 @@ class CompletedOrdersList extends Component {
       this.setState({ isAdmin: true });
     }
   }
+
   render() {
     const { isAdmin } = this.state;
 
@@ -51,7 +49,11 @@ class CompletedOrdersList extends Component {
     );
 
     if(isFetching) {
-      return <i className="fas fa-circle-notch fa-spin"></i>
+      return (
+        <div className="spinner">
+          <i className="fas fa-circle-notch fa-spin"></i>
+        </div>  
+          )
     }
 
     return (

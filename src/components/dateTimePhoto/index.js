@@ -42,25 +42,22 @@ class DateTimePhoto extends Component {
     const { time, admin } = this.state;
     
     return (
-      <div>
-      <div className="DateTime__container">
-        <div className="DateTime__buttons">  
-          <button className="DateTime_small">    
-            <i className="fas fa-calendar-alt" />
-          </button>  
+      <div className="date-time-photo__container">
+      <div className="date-time-photo__picker">
+         <label htmlFor="date">Välj Datum:</label> 
             <DatePicker
+              name="date"
               selected={this.state.startDate}
               onChange={this.handleChange}
               dateFormat='Y-MM-DD'
               onBlur={this.setDate.bind(this)}
             />
-        </div>
-        <div className="DateTime__buttons"> 
-          <button className="DateTime_small">    
-            <i className="fas fa-clock" />
-          </button>    
-            <input
-              className="DateTime__input"
+      </div>    
+        <hr />
+        <div >  
+        <label htmlFor="time">Välj önskad tid:</label> 
+          <input
+              className="time__input"
               type="time"
               name="time"
               placeholder=" HH:MM"
@@ -69,10 +66,9 @@ class DateTimePhoto extends Component {
               onBlur={this.setTime.bind(this)}
             />
           </div>  
-      </div>
       <hr />
           {!admin ?
-          <div className="employee__addPhoto">
+          <div>
             <AddPhotos setPhoto={this.setPhoto.bind(this)} />
           </div>  
             : ('')}

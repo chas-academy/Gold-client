@@ -21,7 +21,11 @@ class InternalOrdersList extends Component {
     const { internalOrders, isFetching } = this.props;
 
     if(isFetching) {
-      return <i className="fas fa-circle-notch fa-spin"></i>;
+      return (
+        <div className="spinner">
+          <i className="fas fa-circle-notch fa-spin"></i>
+        </div>
+      )  
     }
 
     const AssignedInternalOrders = internalOrders.filter(
@@ -46,11 +50,11 @@ class InternalOrdersList extends Component {
           </div>
           <TabContent for="hanterade">
             {AssignedInternalOrders.length ? (
-              <ul className="BasicList__list">
+              <ul className="BasicList">
                 {AssignedInternalOrders.map(order => (
                   <li key={order.service_id}>
                     <Link to={`/admin/services/${order.service_id}`}>
-                      <div className="edit">
+                      <div className="BasicList__edit">
                         <p>Ärende nr: {order.service.id}</p>
                         <p>Skapat: <Moment format="DD/MM HH:mm">{order.service.createdAt}</Moment></p>
                       </div>
@@ -72,11 +76,11 @@ class InternalOrdersList extends Component {
           </TabContent>
           <TabContent for="avslutade">
             {DoneInternalOrders.length ? (
-              <ul className="BasicList__list">
+              <ul className="BasicList">
                 {DoneInternalOrders.map(order => (
                   <li key={order.service_id}>
                     <Link to={`/admin/services/${order.service_id}`}>
-                      <div className="edit">
+                      <div className="BasicList__edit">
                         <p>Ärende nr: {order.service.id}</p>
                         <p>Avslutat: <Moment format="DD/MM HH:mm">{order.service.updatedAt}</Moment></p>
                       </div>

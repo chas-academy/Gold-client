@@ -146,15 +146,15 @@ class HandleService extends Component {
       <div>
         <form name="form" className="BasicForm" onSubmit={this.handleSubmit}>
           <h5 className="handle_header"> Hantera {this.type}</h5>
-          {service.status == "new" ? (
+          {service.status === "new" ? (
             <h5 className="handle_status">
               <strong>Status:</strong> Nytt
             </h5>
-          ) : service.status == "assigned" ? (
+          ) : service.status === "assigned" ? (
             <h5 className="handle_status">
               <strong>Status:</strong> Hanterat
             </h5>
-          ) : service.status == "done" ? (
+          ) : service.status === "done" ? (
             <h5 className="handle_status">
               <strong>Status:</strong> Avslutat
             </h5>
@@ -192,7 +192,6 @@ class HandleService extends Component {
             <textarea
               rows="5"
               type="text"
-              className="BasicForm__textArea"
               name="description"
               placeholder="Detaljerad beskrivning av ärendet"
               value={this.description}
@@ -213,14 +212,13 @@ class HandleService extends Component {
             </ul>
           ) : (
             <div>
-              <h5 className="handle_header">Ändra datum eller tid</h5>
               <DateTimePhoto
                 admin={admin}
                 getDate={this.getDate.bind(this)}
                 getTime={this.getTime.bind(this)}
               />
               <div className="form-group">
-                {service.status == "assigned" ? (
+                {service.status === "assigned" ? (
                   <div>
                     <ul className="employees_list">
                       <li>Ärende tilldelat: </li>

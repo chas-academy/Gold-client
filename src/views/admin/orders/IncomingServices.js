@@ -7,7 +7,9 @@ export default class IncomingServices extends Component {
     return (
         <div> 
             <AdminTopNav />
-                    <IncomingServicesList />
+            <div className="forms-adjustment">
+                <IncomingServicesList />
+            </div>
             <AdminBottomNav />
         </div>    
     )

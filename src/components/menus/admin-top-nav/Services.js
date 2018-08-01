@@ -1,92 +1,66 @@
 import React, { Component } from 'react'
-
 import { withRouter } from 'react-router-dom'
+
 import { slide as Menu } from 'react-burger-menu'
 import './style.css'
-import $ from 'jquery'; 
 
 
-class AdminTopServices extends Component {
-    constructor(props) {
-      super(props);
-  
-      this.state = {
-        openServices: false
-      }
-  
-      this.openMenuServices = this.openMenuServices.bind(this);
-    }
-    componentDidMount(event) {
-      let width = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
-      if(width > '800') {
-        this.setState({ openServices: true })
-      } else {
-        this.setState({ openServices: false })
-      }
-      let btn = $('.services__press');
-      let icon = $('i');
-      $(btn).click(function() {
-        if(icon.hasClass('fa-bars')){
-          $('.fa-bars').addClass('fa-times');
-          $('.fa-bars').removeClass('fa-bars');
-        }
-        else {
-          $('.fa-times').addClass('fa-bars');
-          $('.fa-times').removeClass('fa-times');
-        }
-      });
-    }
+class AdminTopServices extends Component { 
+  constructor(props) {
+    super(props);
+    this.state = { openServices: false }
+    this.openMenuServices = this.openMenuServices.bind(this);
+  }
 
-    openMenuServices(event) {
-        event.preventDefault();
-        if (this.state.openServices === true) {
-          this.setState({ openServices: false })
-        } else {
-          this.setState({ openServices: true })
-        }
-        
-      }
+  openMenuServices(event) {   
+    event.preventDefault();
 
-      render() {
-        const { openServices } = this.state;
-        return (
+    this.state.openServices === true ?
+      this.setState({ openServices: false })
+    : this.setState({ openServices: true })
+  }
+
+  render() {
+    const { openServices } = this.state;
     
-          <div>
-            <button className="slide-menu__press services__press" onClick={this.openMenuServices}>
-              <i className="fas fa-bars"></i>
-            </button>
-          <Menu isOpen={openServices} customBurgerIcon={ false } noOverlay className="slide-menu services" width={'100%'}>
-            <h3 className="slide-menu__header">Ärenden</h3>
-              <a id="incoming" className="menu-item" href={`/admin/services/incoming`}>                
-                <i className="fas fa-inbox slide"></i>
-                Nya
-              </a>
-              <a id="incoming" className="menu-item" href={`/admin/services/assigned`}>                
-              <i className="fas fa-arrow-right slide"></i>
-                Hanterade
-              </a>
-              <a id="active" className="menu-item" href={`/admin/orders`}>
-              <i className="fas fa-list slide"></i>
-                Beställningar
-              </a>
-              <a id="internal" className="menu-item" href={`/admin/orders/internal`}>
-                <i className="fas fa-envelope-open slide"></i>
-                Interna</a>
-              <a id="complaints" className="menu-item" href={`/admin/orders/complaints`}>
-                <i className="fas fa-exclamation-circle slide"></i>
-                Reklamationer</a>
-              <a id="completed" className="menu-item" href={`/admin/services/completed`}>
-                <i className="fas fa-history slide"></i>
-                Avslutade
-              </a> 
-              <a id="logout" className="menu-item" href={`/logout`} onClick={this.logOut}>
-                <i className="fas fa-sign-out-alt slide" />
-                Logga ut
-              </a>
+    return (
+      <div>
+        <button className="slide-menu__icon-top services__press" onClick={this.openMenuServices}>
+          <i className="fas fa-bars"></i>
+        </button>
+        
+        <Menu isOpen={openServices} customBurgerIcon={ false } className="slide-menu services" width={'40vh'}>
+        <h3> Hantera ärenden</h3>
+          <a id="incoming" href={`/admin/services/incoming`}>                
+            <i className="fas fa-inbox"></i>
+            Nya
+          </a>
+          <a id="incoming" href={`/admin/services/assigned`}>                
+          <i className="fas fa-arrow-right"></i>
+            Hanterade
+          </a>
+          <a id="active" href={`/admin/orders`}>
+          <i className="fas fa-list"></i>
+            Beställningar
+          </a>
+          <a id="internal" href={`/admin/orders/internal`}>
+            <i className="fas fa-envelope-open"></i>
+            Interna</a>
+          <a id="complaints" href={`/admin/orders/complaints`}>
+            <i className="fas fa-exclamation-circle"></i>
+            Reklamationer</a>
+          <a id="completed" href={`/admin/services/completed`}>
+            <i className="fas fa-history"></i>
+            Avslutade
+          </a> 
+          <a id="logout" href={`/logout`} onClick={this.logOut}>
+            <i className="fas fa-sign-out-alt" />
+            Logga ut
+          </a>
         </Menu>  
       </div>
-    );
+    )
   }
 }
 
-export default withRouter(AdminTopServices);
+export default withRouter(AdminTopServices)

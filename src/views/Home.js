@@ -46,9 +46,7 @@ class Home extends Component {
     function renderSwitch(state) {
       switch (userType) {
         case "admin":
-          return (
-              <AdminHome />
-          );
+          return <AdminHome />;
           break;
         case "customer":
           return <CustomerHome />;

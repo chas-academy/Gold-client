@@ -18,6 +18,7 @@ import {
     USER_UPDATE_SUCCESS,
     USER_UPDATE_FAILURE
 } from "../actions/customers/Action-types"
+
 import { UPDATE_CUSTOMER_SUCCESS, UPDATE_CUSTOMER_FAILURE } from "../actions/admin/Action-types";
 
 const initialState = {
@@ -121,6 +122,18 @@ const customerReducer = (state = initialState, action) => {
             return {
                 ...state,
                 isFetching: true
+            };
+        case USER_UPDATE_SUCCESS:
+            return {
+                ...state,
+                isFetching: false,
+                user: action.payload
+            };
+        case USER_UPDATE_FAILURE:
+            return {
+                ...state,
+                isFetching: false,
+                errorMessage: action.message
             };
         case UPDATE_CUSTOMER_SUCCESS:
             return {

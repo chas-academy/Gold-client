@@ -7,7 +7,7 @@ export default class PrivateCustomers extends Component {
     return (
         <div> 
             <AdminTopNav />
-                <PrivateCustomerList />
+            <PrivateCustomerList />
             <AdminBottomNav />
         </div>    
     )

@@ -1,7 +1,6 @@
 export { default as Home } from './Home';
 export { default as NotFoundPage } from './NotFoundPage';
 export { default as Login } from './Login';
-export { default as Register } from './Register';
 
 // Admin - accounts
 export { default as HandleAccounts } from './admin/accounts/HandleAccounts';

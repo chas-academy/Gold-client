@@ -5,7 +5,7 @@ export default class EmployeeIncoming extends Component {
 
   render() {
     return (
-        <div className="fix-employee">
+        <div className="forms-adjust">
             <EmployeeIncomingList/>
             <EmployeeBottomNav/>
         </div>    

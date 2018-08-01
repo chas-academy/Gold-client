@@ -1,5 +1,4 @@
 import React, { Component } from "react"
-// import { connect } from "react-redux";
 import { AdminTopNav, AdminBottomNav, AddComplaint } from '../../../components'
 
 export default class AddComplaints extends Component {
@@ -8,7 +7,7 @@ export default class AddComplaints extends Component {
     return (
         <div> 
             <AdminTopNav />
-                    <AddComplaint />
+            <AddComplaint />
             <AdminBottomNav />
         </div>    
     )

@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import Cookies from 'universal-cookie'
 import { createComplaint } from '../../redux/actions/customers/Services';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
 
 import { DateTimePhoto, MultipleSelect  } from '../../components'
 
@@ -92,20 +91,20 @@ class AddComplaint extends Component {
     return (
     <div className="col-md-6 col-md-offset-3">
         <form name="form" className="BasicForm" onSubmit={this.handleSubmit}>
-          <h5 className="handle_header">Skapa Reklamation</h5>
+          <h5>Skapa Reklamation</h5>
           <hr />
           <div className="form-group">
-            <input type='text' name='orderId' className="form-control" placeholder='Ärende id' value={orderId} onChange={this.handleChange}/>
+          <label htmlFor="orderId">Ärendenummer</label> <i className="far fa-question-circle"></i>
+            <input type='text' name='orderId' className="form-control" placeholder='Ärendenummer' value={orderId} onChange={this.handleChange}/>
             {submitted && !orderId &&
               <div className="help-block">Välj ärendenummer!</div>
               }
           </div>
-          <div className="form-group">
-            <textarea type="text" rows="5" name='description' className="BasicForm__textArea" placeholder='Detaljerad beskrivning av reklamationen' value={description} onChange={this.handleChange}/>
+          <label htmlFor="description">Beskrivning</label>
+            <textarea type="text" rows="5" name='description' placeholder='Beskriv gärna så detaljerat du kan vad du inte blev nöjd med så att vi kan åtgärda det. Bifoga gärna bilder' value={description} onChange={this.handleChange}/>
             {submitted && !description &&
               <div className="help-block">Glöm inte bort att beskriva vad vi ska åtgärda</div>
             }
-          </div>
           {isAdmin === true? 
           <div className="form-group">
           <MultipleSelect />
@@ -115,10 +114,7 @@ class AddComplaint extends Component {
           </div>
           : ('')}
             <hr />
-          	<p className="pick_time">Välj önskat datum och tid</p>
-
             <DateTimePhoto getDate={this.getDate.bind(this)} getTime={this.getTime.bind(this)} getPhoto={this.getPhoto.bind(this)} />
-          <div className="buttons">
           <div className="form-group">
             <button type="submit" className="btn btn-primary">
               Skicka
@@ -126,7 +122,6 @@ class AddComplaint extends Component {
               {errorMessage && <div className="help-block">{errorMessage}</div>}
               {successMessage && <div className="help-block">{successMessage}</div>}
               </div>
-          </div>  
         </form> 
         </div>    
     )
